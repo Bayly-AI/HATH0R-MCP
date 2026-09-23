@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.hath0r.dev/hath0r-cli-doctor-v1.schema.json",
+  "title": "hath0r.cli.doctor.data/1",
+  "description": "Command-specific data payload for the doctor operation (HATHOR-TS-005 §10). Placed under response envelope field data when command is doctor.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["group_id", "control_tower", "checks", "counts"],
+  "properties": {
+    "group_id": {
+      "type": "string",
+      "description": "Resolved suite/group identity.",
+      "minLength": 1,
+      "examples": ["hath0r-opensource"]
+    },
+    "control_tower": {
+      "type": "object",
+      "description": "Control-tower product identity and configuration state.",
+      "additionalProperties": true,
+      "required": ["product_id", "configured"],
+      "properties": {
+        "product_id": {
+          "type": "string",
+          "description": "Control-tower product identifier.",
+          "minLength": 1,
+          "examples": ["hath0r-cli"]
+        },
+        "configured": {
+          "type": "boolean",
+          "description": "Whether a control tower is configured for the group."
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "description": "Individual doctor check results. Check IDs are stable kebab-case identifiers.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["id", "state", "message"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable kebab-case check identifier.",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+            "examples": ["canonical-kb"]
+          },
+          "state": {
+            "type": "string",
+            "description": "Per-check result state.",
+            "enum": ["ok", "degraded", "unavailable", "error"]
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable check result summary; no secrets.",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "description": "Aggregate check counts; must agree with checks.",
+      "additionalProperties": true,
+      "required": ["ok", "failed"],
+      "properties": {
+        "ok": {
+          "type": "integer",
+          "description": "Number of checks in a passing state.",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "description": "Number of checks in a non-passing state.",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

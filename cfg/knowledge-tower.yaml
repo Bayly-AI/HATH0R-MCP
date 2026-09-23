@@ -1,0 +1,15 @@
+# Knowledge tower pointer — BAI-1-NATION-MCP (non-secret)
+group_id: hath0r-opensource
+group_label: OpenSource Project
+is_control_tower: false
+control_tower_path: /Users/raybayly/Development/OpenSource/HATH0R-CLI
+control_tower_remote: Bayly-AI/HATH0R-CLI
+operator_cli: hath0r
+project_knowledgebase_mode: stub
+canonical_knowledgebase: /Users/raybayly/Development/OpenSource/.hath0r/knowledgebase
+framework_hidden_root: .hath0r
+legacy_roots_forbidden:
+  - .ai
+  - .aegis
+  - .infraOS
+updated_at: 2026-09-23T13:40:00Z

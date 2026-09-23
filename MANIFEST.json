@@ -1,0 +1,26 @@
+{
+  "schema": "hath0r.fileset.manifest/1",
+  "fileset_version": "0.2.0",
+  "cli_version": "0.2.0",
+  "contracts_version": "0.2.0",
+  "product_id_default": "bai-1-nation-mcp",
+  "product_name": "BAI-1-NATION-MCP",
+  "mode": "member",
+  "generated_at": "2026-09-23T13:40:00Z",
+  "modes": [
+    "member",
+    "standalone"
+  ],
+  "contracts": [
+    "README.md",
+    "exit-codes.yaml",
+    "hath0r-cli-diagnostic-v1.schema.json",
+    "hath0r-cli-doctor-v1.schema.json",
+    "hath0r-cli-kb-path-v1.schema.json",
+    "hath0r-cli-kb-products-v1.schema.json",
+    "hath0r-cli-response-v1.schema.json",
+    "hath0r-cli-version-v1.schema.json"
+  ],
+  "engine_package": "hath0r-cli",
+  "binary": "hath0r"
+}

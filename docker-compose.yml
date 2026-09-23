@@ -1,0 +1,46 @@
+# Hath0r OpenSource Suite MCP service
+name: hath0r
+services:
+  hath0r-mcp:
+    build:
+      context: .
+      args:
+        GIT_SHA: ${GIT_SHA:-unknown}
+        BUILD_TIMESTAMP: ${BUILD_TIMESTAMP:-unknown}
+    image: hath0r/mcp:local
+    container_name: hath0r-mcp
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${HATH0R_MCP_HOST_PORT:-38083}:8083"
+    environment:
+      HATH0R_MCP_ENVIRONMENT: ${HATH0R_MCP_ENVIRONMENT:-local}
+      HATH0R_MCP_KNOWLEDGE_ROOT: /app/knowledgebase/canonical
+      HATH0R_MCP_TOKEN: ${HATH0R_MCP_TOKEN:-}
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    init: true
+    stop_grace_period: 20s
+    volumes:
+      - ./knowledgebase:/app/knowledgebase:ro
+    networks:
+      hath0r-net:
+        aliases: [hath0r-mcp, mcp]
+    labels:
+      com.hath0r.org: bayly-ai
+      com.hath0r.project: hath0r-opensource
+      com.hath0r.component: mcp
+      com.hath0r.container: hath0r-mcp
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8083/ready', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    mem_limit: ${HATH0R_MCP_MEM_LIMIT:-512m}
+    cpus: ${HATH0R_MCP_CPU_LIMIT:-1.0}
+networks:
+  hath0r-net:
+    name: hath0r-net
+    external: true

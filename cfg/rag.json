@@ -1,0 +1,10 @@
+{
+  "top_k": 7,
+  "min_score": 0.7,
+  "default_index": "knowledgebase",
+  "max_context_tokens": 4096,
+  "max_answer_tokens": 1024,
+  "include_sources": false,
+  "use_reranker": true,
+  "return_debug_metadata": true
+}
