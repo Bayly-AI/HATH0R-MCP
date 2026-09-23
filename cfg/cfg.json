@@ -4,8 +4,8 @@
     "modes": {
       "docker": {
         "compose_file": "docker-compose.yml",
-        "service": "1n-mcp",
-        "port": 58083
+        "service": "hath0r-mcp",
+        "port": 38083
       },
       "local": {
         "host": "127.0.0.1",

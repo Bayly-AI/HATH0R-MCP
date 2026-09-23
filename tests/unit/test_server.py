@@ -1,4 +1,4 @@
-"""Unit tests for knowledgebase.server (FastMCP 1-Nation service)."""
+"""Unit tests for knowledgebase.server (FastMCP Hath0r service)."""
 
 from pathlib import Path
 import pytest
@@ -19,7 +19,7 @@ def test_service_settings_defaults():
 
 
 def test_service_settings_production_requires_token():
-    with pytest.raises(ValueError, match="Production requires N1_MCP_TOKEN"):
+    with pytest.raises(ValueError, match="Production requires HATH0R_MCP_TOKEN"):
         ServiceSettings(environment="production", token=SecretStr("short"))
 
     valid_token = "a" * 32
@@ -49,7 +49,7 @@ def test_load_documents_empty_raises(tmp_path: Path):
 
 def test_server_endpoints(tmp_path: Path):
     doc = tmp_path / "guide.md"
-    doc.write_text("# 1-Nation Guide\n\nVoting records and transparency.", encoding="utf-8")
+    doc.write_text("# Hath0r Guide\n\nVoting records and transparency.", encoding="utf-8")
 
     settings = ServiceSettings(
         environment="local",
@@ -63,7 +63,7 @@ def test_server_endpoints(tmp_path: Path):
         res = client.get("/health")
         assert res.status_code == 200
         assert res.json()["status"] == "healthy"
-        assert res.json()["service"] == "1n-mcp"
+        assert res.json()["service"] == "hath0r-mcp"
 
         # Version check
         res = client.get("/version")

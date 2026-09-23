@@ -13,7 +13,7 @@ HEADERS = {"Accept": "application/json, text/event-stream"}
 
 @pytest.fixture
 def config(tmp_path):
-    (tmp_path / "suite.md").write_text("# Suite\nATC owns the 1-nation Docker network.")
+    (tmp_path / "suite.md").write_text("# Suite\nATC owns the hath0r Docker network.")
     return ServiceSettings(
         _env_file=None, knowledge_root=tmp_path, allowed_hosts=["testserver"], token=""
     )
@@ -31,7 +31,7 @@ def test_protocol_lifecycle_and_real_tools(config):
     with TestClient(create_app(config)) as client:
         assert client.get("/health").json()["status"] == "healthy"
         assert client.get("/ready").json() == {"status": "ready", "documents": 1}
-        assert client.get("/version").json()["service"] == "1n-mcp"
+        assert client.get("/version").json()["service"] == "hath0r-mcp"
         init = rpc(
             client,
             "initialize",
@@ -41,7 +41,7 @@ def test_protocol_lifecycle_and_real_tools(config):
                 "clientInfo": {"name": "test", "version": "1"},
             },
         )
-        assert init.json()["result"]["serverInfo"]["name"] == "1NMCP"
+        assert init.json()["result"]["serverInfo"]["name"] == "HATH0R-MCP"
         assert (
             client.post(
                 "/mcp",
@@ -145,7 +145,7 @@ async def test_sdk_smoke_checks_real_asgi_service(config, monkeypatch):
     def local_client(**kwargs):
         return client_type(transport=httpx.ASGITransport(app=app), **kwargs)
 
-    monkeypatch.setenv("N1_MCP_TOKEN", "smoke-token")
+    monkeypatch.setenv("HATH0R_MCP_TOKEN", "smoke-token")
     monkeypatch.setattr(smoke.httpx, "AsyncClient", local_client)
     async with app.router.lifespan_context(app):
         assert await smoke.verify("http://testserver") == {"api": "ok", "mcp": "ok", "tools": 3}
