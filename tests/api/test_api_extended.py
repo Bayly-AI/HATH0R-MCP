@@ -447,7 +447,7 @@ class TestMCPParityTools:
             assert "cwd" in context_payload
             assert "version" in context_payload
             assert "system" in context_payload
-            assert context_payload["version"]["name"] == "1-Nation MCP"
+            assert context_payload["version"]["name"] == "Hath0r MCP"
 
             echo = await _execute_mcp_tool("aegis_echo", {"message": "hello"})
             assert echo.get("isError") is not True

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Post-init checks for bai-1-nation-mcp (HATHOR member).
+# Post-init checks for hath0r-mcp (HATHOR member).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-echo "==> HATHOR member bootstrap (bai-1-nation-mcp)"
+echo "==> HATHOR member bootstrap (hath0r-mcp)"
 echo "    root: $ROOT"
 
 missing=0

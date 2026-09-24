@@ -126,7 +126,7 @@ class Settings(BaseSettings):
     )
 
     # Application metadata
-    app_name: str = "1n-mcp"
+    app_name: str = "hath0r-mcp"
     version: str = "0.1.0"
     env: Literal["development", "staging", "production"] = "development"
     debug: bool = False

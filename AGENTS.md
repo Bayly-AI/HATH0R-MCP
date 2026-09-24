@@ -1,30 +1,30 @@
-# AGENTS.md — BAI-1-NATION-MCP (1-Nation MCP Server)
+# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)
 
-> HATHOR OpenSource member · 1-Nation Suite MCP service  
+> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service
 > Initialized: 2026-09-23 · fileset pin `0.2.0` · engine version `1.0.1`
 
 ## Identity (CRITICAL)
 
 | Field | Value |
 |---|---|
-| Product | **BAI-1-NATION-MCP** (1-Nation MCP Server) |
-| Product ID | `bai-1-nation-mcp` (service alias: `1n-mcp`) |
+| Product | **HATH0R-MCP** (Hath0r MCP Server) |
+| Product ID | `hath0r-mcp` (service alias: `hath0r-mcp`) |
 | Local Path | `/Users/raybayly/Development/OpenSource/hath0r-mcp` |
-| GitHub | **`Bayly-AI/BAI-1-NATION-MCP`** |
+| GitHub | **`Bayly-AI/HATH0R-MCP`** |
 | Group Membership | **`hath0r-opensource`** (OpenSource Project member) |
-| Suite Role | MCP service provider for **`1-Nation Suite`** (`1n-suite`) |
+| Suite Role | MCP service provider for **`Hath0r OpenSource Suite`** (`hath0r-opensource`) |
 | Control Tower (Governance) | **`HATH0R-CLI`** (`Bayly-AI/HATH0R-CLI`) |
-| Control Tower (Suite Infra) | **`1-Nation ATC`** (`Bayly-AI/1-Nation-ATC`) |
+| Control Tower (Suite Infra) | **`HATH0R-ATC`** (`Bayly-AI/HATH0R-ATC`) |
 | Operator CLI | **`hath0r`** |
 | Hidden Root | **`.hath0r/` only** |
 | Project KB | `.hath0r/knowledgebase` (stub pointing to group hub) |
 | Group KB Hub | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |
 | Setup Playbook | `/Users/raybayly/Development/OpenSource/hathor-cli/docs/hathor-playbook-001-repo-init-setup-20260919.md` |
 | Tech Runbook | [`docs/runbook.md`](docs/runbook.md) |
-| Docker Group | **`1-nation`** (CANONICAL — `CR-DOCKER-1N-GROUP-001`) |
-| Docker Network | **`1-nation-net`** (CANONICAL) |
-| Container / Image | `1NMCP` / `1-nation/mcp:local` |
-| Host / Container Port | `127.0.0.1:58083` / `8083` |
+| Docker Group | **`hath0r`** (CANONICAL — `Hath0r Compose configuration`) |
+| Docker Network | **`hath0r-net`** (CANONICAL) |
+| Container / Image | `hath0r-mcp` / `hath0r/mcp:local` |
+| Host / Container Port | `127.0.0.1:38083` / `8083` |
 
 ---
 
@@ -80,19 +80,19 @@
 
 ---
 
-## CR-DOCKER-1N-GROUP-001: Docker Group Membership (CRITICAL · CANONICAL)
+## Hath0r Compose configuration: Docker Group Membership (CRITICAL · CANONICAL)
 
-All services for the 1-Nation Suite belong to the `1-nation` Docker group:
+All services for the Hath0r OpenSource Suite belong to the `hath0r` Docker group:
 
 | Requirement | Canonical Value |
 |---|---|
-| Compose project `name:` | **`1-nation`** |
-| Network | external **`1-nation-net`** |
-| Container name | **`1NMCP`** |
-| Service name | **`1n-mcp`** |
-| Image tag | **`1-nation/mcp:local`** |
-| Host publish port | **`127.0.0.1:58083`** (container: `8083`) |
-| Labels | `com.1nation.org=bayly-ai`<br>`com.1nation.project=1n-suite`<br>`com.1nation.component=mcp`<br>`com.1nation.container=1NMCP` |
+| Compose project `name:` | **`hath0r`** |
+| Network | external **`hath0r-net`** |
+| Container name | **`hath0r-mcp`** |
+| Service name | **`hath0r-mcp`** |
+| Image tag | **`hath0r/mcp:local`** |
+| Host publish port | **`127.0.0.1:38083`** (container: `8083`) |
+| Labels | `com.hath0r.org=bayly-ai`<br>`com.hath0r.project=hath0r-opensource`<br>`com.hath0r.component=mcp`<br>`com.hath0r.container=hath0r-mcp` |
 | Security | Non-root `mcp:mcp`, read-only rootfs, dropped capabilities, no-new-privileges |
 
 ---
@@ -115,4 +115,4 @@ All services for the 1-Nation Suite belong to the `1-nation` Docker group:
 ## Secrets Management
 
 Never commit secrets to git. Always use gitignored `.env` or external credentials in `/Users/raybayly/Development/.credentials/`.
-In production, set `N1_MCP_ENVIRONMENT=production` and `N1_MCP_TOKEN` with at least 32 characters.
+In production, set `HATH0R_MCP_ENVIRONMENT=production` and `HATH0R_MCP_TOKEN` with at least 32 characters.

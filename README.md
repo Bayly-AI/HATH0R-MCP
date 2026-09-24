@@ -1,16 +1,16 @@
-# BAI-1-NATION-MCP
+# HATH0R-MCP
 
-Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for the 1-Nation Suite, hosted as an OpenSource Project member under `OpenSource/hath0r-mcp`.
+Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for the Hath0r OpenSource Suite, hosted as an OpenSource Project member under `OpenSource/hath0r-mcp`.
 
 | Contract | Value |
 |---|---|
-| Product ID | `bai-1-nation-mcp` (service alias: `1n-mcp`) |
-| Repository | `Bayly-AI/BAI-1-NATION-MCP` |
+| Product ID | `hath0r-mcp` (service alias: `hath0r-mcp`) |
+| Repository | `Bayly-AI/HATH0R-MCP` |
 | Local Path | `/Users/raybayly/Development/OpenSource/hath0r-mcp` |
-| Compose project / network | `1-nation` / `1-nation-net` (`CR-DOCKER-1N-GROUP-001`) |
-| Container / service / image | `1NMCP` / `1n-mcp` / `1-nation/mcp:local` |
-| Host base URL | `http://127.0.0.1:58083` |
-| Suite internal URL | `http://1NMCP:8083` |
+| Compose project / network | `hath0r` / `hath0r-net` (`Hath0r Compose configuration`) |
+| Container / service / image | `hath0r-mcp` / `hath0r-mcp` / `hath0r/mcp:local` |
+| Host base URL | `http://127.0.0.1:38083` |
+| Suite internal URL | `http://hath0r-mcp:8083` |
 | MCP transport | Streamable HTTP at `/mcp` via official MCP Python SDK |
 | Probes | `/health` (liveness), `/ready` (readiness), `/version` |
 | Hath0r Fileset Pin | `0.2.0` (`CR-HATH0R-INIT-001`) |
@@ -19,10 +19,10 @@ Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for
 
 ## Capabilities & MCP Tools
 
-`BAI-1-NATION-MCP` starts without an external database, Redis, or cloud credentials. Deterministic lexical search operates against the bundled canonical reference corpus.
+`HATH0R-MCP` starts without an external database, Redis, or cloud credentials. Deterministic lexical search operates against the bundled canonical reference corpus.
 
 ### Available Tools
-1. **`suite_info()`**: Returns 1-Nation Suite identity, ATC control tower reference, and the available reference document catalog.
+1. **`suite_info()`**: Returns Hath0r OpenSource Suite identity, ATC control tower reference, and the available reference document catalog.
 2. **`kb_search(query, limit=5)`**: Case-insensitive word search across reference markdown documents, returning scores, excerpts, and document IDs.
 3. **`kb_get_document(document_id)`**: Safe retrieval by exact document ID (never executes client-supplied filesystem paths).
 
@@ -45,13 +45,13 @@ In another terminal, test tool execution with the smoke client:
 make smoke-local
 ```
 
-### 2. Docker Deployment (`1-nation` Docker Group)
+### 2. Docker Deployment (`hath0r` Docker Group)
 ```bash
 # Ensure ATC external network exists (or create locally)
-docker network create 1-nation-net 2>/dev/null || true
+docker network create hath0r-net 2>/dev/null || true
 
 make docker-config   # Validate compose
-make docker-up       # Builds and runs 1n-mcp with readiness wait
+make docker-up       # Builds and runs hath0r-mcp with readiness wait
 make smoke           # In-container smoke check
 make docker-status   # View container status
 ```
@@ -72,7 +72,7 @@ make docker-status   # View container status
 │   └── hath0r-bootstrap.sh # Hath0r post-unpack smoke check
 ├── cfg/
 │   ├── product.yaml        # Hath0r product identity
-│   ├── suite.yaml          # Suite membership (OpenSource + 1-Nation)
+│   ├── suite.yaml          # Suite membership (OpenSource)
 │   ├── knowledge-tower.yaml# KB tower pointer
 │   ├── knowledgebase.json  # Search index definitions
 │   └── rag.json            # RAG defaults
@@ -103,8 +103,7 @@ make docker-status   # View container status
 
 ## Sibling Integration
 
-- **1-Nation ATC** (`../1-Nation/ATC`): Canonical control tower and infrastructure owner. Routes to `1NMCP:8083` over `1-nation-net`.
-- **1-Nation UXP** (`../1-Nation/UXP`): Frontend web application. Vite dev/preview server proxies `/api/mcp/*` to `http://127.0.0.1:58083`.
-- **HATH0R-CLI** (`../OpenSource/HATH0R-CLI`): Operator control tower and CLI for Hath0r suite operations (`hath0r doctor`, `hath0r kb *`).
+- **HATH0R-ATC** (`../hath0r-atc`): Canonical control tower and infrastructure owner. Routes to `hath0r-mcp:8083` over `hath0r-net`.
+- **HATH0R-CLI** (`../hathor-cli`): Operator control tower and CLI for Hath0r suite operations (`hath0r doctor`, `hath0r kb *`).
 
 See [`docs/runbook.md`](docs/runbook.md) for full operational instructions.

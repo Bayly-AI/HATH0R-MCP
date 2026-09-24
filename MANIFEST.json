@@ -3,8 +3,8 @@
   "fileset_version": "0.2.0",
   "cli_version": "0.2.0",
   "contracts_version": "0.2.0",
-  "product_id_default": "bai-1-nation-mcp",
-  "product_name": "BAI-1-NATION-MCP",
+  "product_id_default": "hath0r-mcp",
+  "product_name": "HATH0R-MCP",
   "mode": "member",
   "generated_at": "2026-09-23T20:00:17Z",
   "modes": [

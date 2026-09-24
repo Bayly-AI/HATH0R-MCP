@@ -141,7 +141,7 @@ def test_version_endpoint_returns_cvs_payload(monkeypatch: Any) -> None:
 
     assert response.status_code == 200
     data = response.json()
-    assert data["service"] == "1n-mcp"
+    assert data["service"] == "hath0r-mcp"
     assert data["version"] == "1.2.3"
     assert data["aws_push_counter"] == 7
     assert data["aws_release_ver"] == "1.2.3.7"

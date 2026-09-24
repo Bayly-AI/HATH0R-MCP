@@ -3,25 +3,25 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bai-1-nation-mcp"
+name = "hath0r-mcp"
 version = "1.0.1"
-description = "BAI-1-NATION-MCP: 1-Nation MCP knowledge server and hybrid search engine"
+description = "HATH0R-MCP: Hath0r MCP knowledge server and hybrid search engine"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "Apache-2.0"}
 authors = [
-    {name = "Bayly AI / 1-Nation Team"}
+    {name = "Bayly AI / Hath0r Team"}
 ]
-keywords = ["hath0r", "mcp", "knowledgebase", "search", "1-nation"]
+keywords = ["hath0r", "mcp", "knowledgebase", "search"]
 dynamic = ["dependencies"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 
 [project.urls]
-Homepage = "https://github.com/Bayly-AI/BAI-1-NATION-MCP"
-Repository = "https://github.com/Bayly-AI/BAI-1-NATION-MCP"
-Issues = "https://github.com/Bayly-AI/BAI-1-NATION-MCP/issues"
+Homepage = "https://github.com/Bayly-AI/HATH0R-MCP"
+Repository = "https://github.com/Bayly-AI/HATH0R-MCP"
+Issues = "https://github.com/Bayly-AI/HATH0R-MCP/issues"
 
 # Tool configurations
 [tool.black]

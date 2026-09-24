@@ -79,7 +79,7 @@ class TestMCPInitialize:
         assert "capabilities" in result
         assert "serverInfo" in result
         assert result["serverInfo"]["version"]
-        assert result["serverInfo"]["name"] == "1NMCP"
+        assert result["serverInfo"]["name"] == "hath0r-mcp"
 
 
 class TestMCPToolsList:

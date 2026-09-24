@@ -1,4 +1,4 @@
-# Dockerfile for BAI-1-NATION-MCP Service
+# Dockerfile for HATH0R-MCP Service
 FROM python:3.12-slim
 
 ARG GIT_SHA=unknown

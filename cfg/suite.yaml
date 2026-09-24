@@ -1,8 +1,8 @@
-# Suite orientation — BAI-1-NATION-MCP (non-secret)
+# Suite orientation — HATH0R-MCP (non-secret)
 group_id: hath0r-opensource
 group_label: OpenSource Project
-product_id: bai-1-nation-mcp
-product_name: BAI-1-NATION-MCP
+product_id: hath0r-mcp
+product_name: HATH0R-MCP
 is_control_tower: false
 control_tower_product_id: hath0r-cli
 control_tower_path: /Users/raybayly/Development/OpenSource/HATH0R-CLI
@@ -10,17 +10,16 @@ control_tower_github: Bayly-AI/HATH0R-CLI
 operator_cli: hath0r
 mode: member
 workspace_root: ".."
-github: Bayly-AI/BAI-1-NATION-MCP
+github: Bayly-AI/HATH0R-MCP
 
-# 1-Nation Suite integration
-suite_1nation:
-  group_id: 1n-suite
-  group_label: 1-Nation Suite
-  product_id: 1n-mcp
-  container_name: 1NMCP
-  compose_project_name: 1-nation
-  docker_network: 1-nation-net
-  image_prefix: 1-nation/
-  control_tower_path: /Users/raybayly/Development/1-Nation/ATC
-  control_tower_github: Bayly-AI/1-Nation-ATC
-  rule_docker: cr-docker-1n-group-001
+# Hath0r OpenSource Suite integration
+suite_hath0r:
+  group_id: hath0r-opensource
+  group_label: Hath0r OpenSource Suite
+  product_id: hath0r-mcp
+  container_name: hath0r-mcp
+  compose_project_name: hath0r
+  docker_network: hath0r-net
+  image_prefix: hath0r/
+  control_tower_path: /Users/raybayly/Development/OpenSource/hath0r-atc
+  control_tower_github: Bayly-AI/HATH0R-ATC

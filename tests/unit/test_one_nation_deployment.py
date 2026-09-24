@@ -50,3 +50,17 @@ def test_makefile_never_tears_down_shared_project():
     assert "stop $(SERVICE)" in makefile
     assert "shared hath0r infra untouched" in makefile
     assert "hath0r-net" in makefile or "NETWORK_NAME" in makefile
+
+
+def test_package_and_product_identity_match_deployed_service():
+    import tomllib
+
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+    product = yaml.safe_load((ROOT / "cfg/product.yaml").read_text())
+    suite = yaml.safe_load((ROOT / "cfg/suite.yaml").read_text())
+    manifest = json.loads((ROOT / "MANIFEST.json").read_text())
+    compose = yaml.safe_load((ROOT / "docker-compose.yml").read_text())
+    assert project["name"] == product["product_id"] == suite["product_id"] == manifest["product_id_default"] == "hath0r-mcp"
+    assert product["github"] == suite["github"] == "Bayly-AI/HATH0R-MCP"
+    assert project["urls"]["Repository"] == "https://github.com/" + product["github"]
+    assert suite["suite_hath0r"]["container_name"] == compose["services"]["hath0r-mcp"]["container_name"]

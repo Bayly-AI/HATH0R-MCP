@@ -1,18 +1,18 @@
-# Runbook: BAI-1-NATION-MCP Service
+# Runbook: HATH0R-MCP Service
 
-> Canonical operations and developer runbook for **BAI-1-NATION-MCP** (`1n-mcp` / `1NMCP`).  
+> Canonical operations and developer runbook for **HATH0R-MCP** (`hath0r-mcp` / `hath0r-mcp`).
 > Satisfies Hath0r initialization gate requirement **CR-HATH0R-INIT-001**.
 
 ---
 
 ## 1. Overview & Architecture
 
-`BAI-1-NATION-MCP` is the knowledge Model Context Protocol (MCP) server for the 1-Nation Suite, hosted as an OpenSource Project member under `OpenSource/hath0r-mcp`.
+`HATH0R-MCP` is the knowledge Model Context Protocol (MCP) server for the Hath0r OpenSource Suite, hosted as an OpenSource Project member under `OpenSource/hath0r-mcp`.
 
 Key capabilities:
 - **FastMCP Transport**: Exposes stateless Streamable HTTP at `/mcp` via the official `mcp` Python SDK.
 - **Suite Tools**:
-  - `suite_info`: Returns canonical 1-Nation Suite identity and loaded document catalog.
+  - `suite_info`: Returns canonical Hath0r OpenSource Suite identity and loaded document catalog.
   - `kb_search(query, limit=5)`: Deterministic lexical word match search against canonical reference documents.
   - `kb_get_document(document_id)`: Exact document retrieval by identifier.
 - **Knowledge Engine**: Preserves the complete hybrid search (dense embeddings + BM25 keyword matching), chunking, storage adapters, runbooks engine, and legacy REST/SSE API (`/mcp/sse`).
@@ -57,12 +57,12 @@ Performs automated MCP client connection, tool enumeration, and search execution
 
 ---
 
-## 4. Docker Container Operations (`CR-DOCKER-1N-GROUP-001`)
+## 4. Docker Container Operations (`Hath0r Compose configuration`)
 
-The service deploys as part of the `1-nation` Docker project:
-- Network: `1-nation-net` (external, managed by 1-Nation ATC)
-- Container: `1NMCP`
-- Host publish port: `127.0.0.1:58083` -> `8083`
+The service deploys as part of the `hath0r` Docker project:
+- Network: `hath0r-net` (external, managed by HATH0R-ATC)
+- Container: `hath0r-mcp`
+- Host publish port: `127.0.0.1:38083` -> `8083`
 
 ### 4.1 Validate Compose Configuration
 ```bash
@@ -96,7 +96,7 @@ make smoke
 make docker-stop
 ```
 > [!CAUTION]
-> Never run `docker compose down` or `--remove-orphans` against the shared `1-nation` Docker project. Scope all operations strictly to `1n-mcp`.
+> Never run `docker compose down` or `--remove-orphans` against the shared `hath0r` Docker project. Scope all operations strictly to `hath0r-mcp`.
 
 ---
 
@@ -118,11 +118,11 @@ hath0r doctor
 
 ## 6. Sibling Client Integration
 
-### 6.1 1-Nation ATC (Control Tower)
-ATC routes requests to `1NMCP:8083` across the internal `1-nation-net` bridge.
+### 6.1 HATH0R-ATC (Control Tower)
+ATC routes requests to `hath0r-mcp:8083` across the internal `hath0r-net` bridge.
 
-### 6.2 1-Nation UXP (Frontend)
-UXP's Vite dev server proxies `/api/mcp/*` to `http://127.0.0.1:58083`.
+### 6.2 Hath0r UXP (Frontend)
+UXP's Vite dev server proxies `/api/mcp/*` to `http://127.0.0.1:38083`.
 Browser clients access the Streamable HTTP transport at `/api/mcp/mcp`.
 
 ---
@@ -144,5 +144,5 @@ local → development → testing → staging → master (Production)
 ## 8. Rollback & Troubleshooting
 
 - **Container fails `/ready`**: Check that `knowledgebase/canonical/` contains valid markdown files and does not exceed memory or document limits (max 1000 docs, 256 KiB per doc).
-- **Port conflicts on 58083**: Check for lingering containers: `docker ps --filter "publish=58083"`.
-- **Unauthorized errors**: When `N1_MCP_ENVIRONMENT=production`, clients must pass `Authorization: Bearer <N1_MCP_TOKEN>`.
+- **Port conflicts on 38083**: Check for lingering containers: `docker ps --filter "publish=38083"`.
+- **Unauthorized errors**: When `HATH0R_MCP_ENVIRONMENT=production`, clients must pass `Authorization: Bearer <HATH0R_MCP_TOKEN>`.

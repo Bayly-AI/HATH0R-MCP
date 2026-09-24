@@ -1,13 +1,13 @@
 # Product identity — non-secret
-product_id: bai-1-nation-mcp
-product_name: BAI-1-NATION-MCP
+product_id: hath0r-mcp
+product_name: HATH0R-MCP
 description: >
-  1-Nation MCP knowledge server and hybrid search engine.
+  Hath0r MCP knowledge server and hybrid search engine.
   OpenSource suite member.
 role: mcp-server
 canonical: true
 is_control_tower: false
-github: Bayly-AI/BAI-1-NATION-MCP
+github: Bayly-AI/HATH0R-MCP
 local_path_hint: OpenSource/hath0r-mcp
 layout: hathor-upl
 fileset_version: "0.2.0"

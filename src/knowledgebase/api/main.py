@@ -344,7 +344,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 # Create FastAPI application
 settings = get_settings()
 app = FastAPI(
-    title="1-Nation MCP API",
+    title="Hath0r MCP API",
     description="AWS-integrated hybrid RAG API (kNN/vector + BM25) for semantic document retrieval",
     version=__version__,
     lifespan=lifespan,
@@ -698,7 +698,7 @@ def _build_version_payload(internal_header_value: str | None = None) -> dict[str
         "kb.version_endpoint.internal_metadata.enabled", default=False
     ) and _version_header_truthy(internal_header_value)
     payload: dict[str, Any] = {
-        "service": "1n-mcp",
+        "service": "hath0r-mcp",
         "version": app_version,
         "aws_push_counter": push_counter,
         "aws_release_ver": aws_release_ver,
@@ -722,8 +722,8 @@ def _render_version_html(payload: dict[str, Any]) -> str:
     return (
         "<!DOCTYPE html>"
         '<html lang="en">'
-        '<head><meta charset="utf-8"><title>1-Nation MCP Version</title></head>'
-        "<body><h1>1-Nation MCP Version</h1><pre>"
+        '<head><meta charset="utf-8"><title>Hath0r MCP Version</title></head>'
+        "<body><h1>Hath0r MCP Version</h1><pre>"
         f"{pretty_payload}"
         "</pre></body></html>"
     )
@@ -785,7 +785,7 @@ async def status_endpoint() -> Any:
     all_healthy = all(c.get("healthy", False) for c in components.values())
     payload = {
         "overallStatus": "healthy" if all_healthy else "degraded",
-        "service": "1n-mcp",
+        "service": "hath0r-mcp",
         "version": __version__,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "environment": settings.aegis_environment or "local",
@@ -1668,7 +1668,7 @@ async def _rpc_initialize(
                     "resources": {},
                 },
                 "serverInfo": {
-                    "name": "1NMCP",
+                    "name": "hath0r-mcp",
                     "version": __version__,
                 },
             }
@@ -3834,7 +3834,7 @@ async def _mcp_tool_infraos_ping(
     output = {
         "status": "pong",
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "service": "1NMCP",
+        "service": "hath0r-mcp",
     }
     return _mcp_text(json.dumps(output, indent=2, default=str))
 
@@ -3852,7 +3852,7 @@ async def _mcp_tool_infraos_context(
         },
         "cwd": cwd,
         "version": {
-            "name": "1-Nation MCP",
+            "name": "Hath0r MCP",
             "version": __version__,
             "python": sys.version,
         },

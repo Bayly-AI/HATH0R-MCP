@@ -38,14 +38,14 @@ def _fallback_version_from_pyproject() -> str | None:
 try:
     # Use installed package metadata so the version is always in sync with
     # pyproject.toml and automated release tooling.
-    __version__ = _get_version("1-nation-mcp")
+    __version__ = _get_version("hath0r-mcp")
 except PackageNotFoundError:  # pragma: no cover - fallback during editable installs
     try:
         __version__ = _get_version("python-service-template")
     except PackageNotFoundError:
         __version__ = _fallback_version_from_pyproject() or "0.0.0"
 
-__author__ = "1-Nation Team"
+__author__ = "Hath0r Team"
 
 __all__ = [
     "__version__",

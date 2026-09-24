@@ -1,4 +1,4 @@
-"""Small, read-only 1-Nation MCP service; legacy API remains in api.main."""
+"""Small, read-only Hath0r MCP service; legacy API remains in api.main."""
 
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -31,8 +31,6 @@ class ServiceSettings(BaseSettings):
         "127.0.0.1:*",
         "hath0r-mcp:*",
         "hath0rmcp:*",
-        "1NMCP:*",
-        "1n-mcp:*",
     ]
     allowed_origins: list[str] = [
         "http://localhost:5173",
