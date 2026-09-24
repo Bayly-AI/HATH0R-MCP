@@ -23,3 +23,14 @@ suite_hath0r:
   image_prefix: hath0r/
   control_tower_path: /Users/raybayly/Development/OpenSource/hath0r-atc
   control_tower_github: Bayly-AI/HATH0R-ATC
+
+# Suite standards pointers (docs-first fan-out)
+suite_standards:
+  doc: docs/governance/SUITE_STANDARDS.md
+  control_tower_github: Bayly-AI/HATH0R-CLI
+  control_tower_branch: development
+  otel_stub: cfg/observability/otel.json
+  openfeature_stub: cfg/feature-flags/openfeature.json
+  openobservation_stub: cfg/observability/openobservation.json
+  mcp_priority_doc: cfg/mcp/README.md
+  docker_group_doc: cfg/docker/groups/README.md

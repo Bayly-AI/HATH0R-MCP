@@ -21,10 +21,24 @@
 | Group KB Hub | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |
 | Setup Playbook | `/Users/raybayly/Development/OpenSource/hathor-cli/docs/hathor-playbook-001-repo-init-setup-20260919.md` |
 | Tech Runbook | [`docs/runbook.md`](docs/runbook.md) |
+| Suite standards | [`docs/governance/SUITE_STANDARDS.md`](docs/governance/SUITE_STANDARDS.md) |
 | Docker Group | **`hath0r`** (CANONICAL — `Hath0r Compose configuration`) |
 | Docker Network | **`hath0r-net`** (CANONICAL) |
 | Container / Image | `hath0r-mcp` / `hath0r/mcp:local` |
-| Host / Container Port | `127.0.0.1:38083` / `8083` |
+| Host / Container Port | `*********:38083` / `8083` |
+| Project MCP priority | **1** — tower [`cfg/mcp.servers.json`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/cfg/mcp.servers.json) · local [`cfg/mcp/README.md`](cfg/mcp/README.md) |
+
+---
+
+## CLI-First & Missing Capability Offer (CRITICAL — `cr-cli-first-001`)
+
+Canonical: [HATH0R-CLI `docs/governance/cli-first-rules.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md).
+
+1. **CLI-First**: For connections, MCP, workflows, factories, Docker group ops, KB path, or suite orientation, invoke **`hath0r`** (or the documented operator entrypoint) instead of ad-hoc scripts.
+2. **Missing Capability Offer**: If a required connection/MCP/workflow/factory is missing, do not silently invent workarounds. Offer to create the missing capability and use the original request as its acceptance test.
+3. **Session start**: Prefer tower checklist `docs/governance/checklists/agent-session-start.md` when present.
+4. **Docs before code**: Follow workflow documentation standard (playbook → procedure → runbook) before scaffolding implementation — see suite standards pointers.
+5. **Project MCP first**: Prefer **`hath0r-mcp` (priority 1)** from the tower MCP registry for suite knowledge/tools.
 
 ---
 
@@ -116,3 +130,17 @@ All services for the Hath0r OpenSource Suite belong to the `hath0r` Docker group
 
 Never commit secrets to git. Always use gitignored `.env` or external credentials in `/Users/raybayly/Development/.credentials/`.
 In production, set `HATH0R_MCP_ENVIRONMENT=production` and `HATH0R_MCP_TOKEN` with at least 32 characters.
+
+---
+
+## Suite standards & observability stubs
+
+See [`docs/governance/SUITE_STANDARDS.md`](docs/governance/SUITE_STANDARDS.md) for control-tower URLs (OTel, OpenFeature, OpenObservation, workflow docs, docker groups, SemVer).
+
+Local stubs (identity only; policy stays in tower):
+
+- `cfg/observability/otel.json` — `service_name: hath0r-mcp`
+- `cfg/observability/openobservation.json`
+- `cfg/feature-flags/openfeature.json`
+- `cfg/docker/groups/README.md` — pointer to tower `hath0r` group template
+- `.hath0r/audits/hathor-adopt-2026-09-24.md` — adopt audit for issue #3
