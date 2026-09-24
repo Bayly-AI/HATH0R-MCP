@@ -1,0 +1,53 @@
+# HATHOR CLI exit code contract v1
+# Source: HATHOR-TS-005 §6, HATHOR-REQ-002
+# Authority: Framework canonical contract
+schema: hath0r.cli.exit-codes/1
+updated_at: 2026-09-16
+
+exits:
+  - code: 0
+    meaning: "Success, including dry-run, idempotent no-op, and any explicitly declared non-blocking outcome"
+    envelope_states: [ok, degraded]
+    notes: "degraded with exit 0 only when report-only mode downgrades a refusal"
+
+  - code: 1
+    meaning: "Runtime or internal failure"
+    envelope_states: [error]
+    diagnostic_codes: [INTERNAL_ERROR, CONTRACT_OUTPUT_INVALID]
+
+  - code: 2
+    meaning: "Usage or validation error"
+    envelope_states: [error]
+    diagnostic_codes: [USAGE_INVALID, PRODUCT_CATALOG_INVALID, PROJECT_RULE_REFUSED, POLICY_CONFLICT]
+
+  - code: 3
+    meaning: "Not found"
+    envelope_states: [unavailable]
+    diagnostic_codes: [KNOWLEDGEBASE_NOT_FOUND, PRODUCT_CATALOG_NOT_FOUND]
+
+  - code: 4
+    meaning: "Authentication or permission failure"
+    envelope_states: [error]
+    diagnostic_codes: [SOURCE_PERMISSION_DENIED, PROVENANCE_UNVERIFIED]
+
+  - code: 5
+    meaning: "Conflict or already exists"
+    envelope_states: [error]
+    notes: "Reserved for future use"
+
+  - code: 6
+    meaning: "Dependency unhealthy"
+    envelope_states: [degraded, unavailable]
+    diagnostic_codes: []
+    notes: "Used by doctor when required dependency checks fail"
+
+  - code: 7
+    meaning: "Confirmation required in non-interactive context"
+    envelope_states: [error]
+    notes: "Reserved for future interactive prompts"
+
+rules:
+  - "A process exit and a diagnostic code describe the same failure class"
+  - "degraded is an envelope state, not a second meaning for exit 2"
+  - "A missing executable is a caller spawn failure — no CLI process exists to return an exit"
+  - "State alone does not determine exit: doctor may report degraded and exit 6"

@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.hath0r.dev/hath0r-cli-kb-products-v1.schema.json",
+  "title": "hath0r.cli.kb-products.data/1",
+  "description": "Command-specific data payload for the kb.products operation (HATHOR-TS-005 §12). Placed under response envelope field data when command is kb.products.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["group_id", "control_tower_product_id", "products"],
+  "properties": {
+    "group_id": {
+      "type": "string",
+      "description": "Suite/group identity for the catalog.",
+      "minLength": 1,
+      "examples": ["hath0r-opensource"]
+    },
+    "control_tower_product_id": {
+      "type": "string",
+      "description": "Product ID of the group control tower.",
+      "minLength": 1,
+      "examples": ["hath0r-cli"]
+    },
+    "products": {
+      "type": "array",
+      "description": "Documented product catalog entries only; no credentials or arbitrary file contents.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "product_id",
+          "product_name",
+          "role",
+          "canonical",
+          "is_control_tower"
+        ],
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "description": "Stable product identifier.",
+            "minLength": 1,
+            "examples": ["hath0r-poc"]
+          },
+          "product_name": {
+            "type": "string",
+            "description": "Human-readable product name.",
+            "minLength": 1,
+            "examples": ["HATHOR POC"]
+          },
+          "role": {
+            "type": "string",
+            "description": "Product role within the suite.",
+            "minLength": 1,
+            "examples": ["integration-test-bed", "agentic-application-framework", "control-tower"]
+          },
+          "canonical": {
+            "type": "boolean",
+            "description": "Whether this entry is a canonical suite member."
+          },
+          "is_control_tower": {
+            "type": "boolean",
+            "description": "Whether this product is the group control tower."
+          }
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "description": "Optional pagination block for bounded collections (HATHOR-TS-005 §13). Available before unbounded catalog growth.",
+      "additionalProperties": true,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "description": "Page size limit applied to this response.",
+          "minimum": 1,
+          "default": 25
+        },
+        "next_cursor": {
+          "description": "Opaque cursor for the next page, or null when no further pages.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
+        },
+        "truncated": {
+          "type": "boolean",
+          "description": "True when the result set was truncated by the limit."
+        }
+      }
+    }
+  }
+}

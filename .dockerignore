@@ -1,0 +1,17 @@
+.git
+.env
+.env.*
+.venv
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.coverage*
+coverage.xml
+htmlcov
+data
+logs
+reports
+knowledgebase
+tests
+.infraOS
+.hath0r

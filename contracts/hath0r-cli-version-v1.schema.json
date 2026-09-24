@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.hath0r.dev/hath0r-cli-version-v1.schema.json",
+  "title": "hath0r.cli.version.data/1",
+  "description": "Command-specific data payload for the version operation (HATHOR-TS-005 §9). Placed under response envelope field data when command is version.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["binary", "package", "version"],
+  "properties": {
+    "binary": {
+      "type": "string",
+      "description": "Invoked binary name.",
+      "minLength": 1,
+      "examples": ["hath0r"]
+    },
+    "package": {
+      "type": "string",
+      "description": "Python/distribution package name producing the binary.",
+      "minLength": 1,
+      "examples": ["hath0r-cli"]
+    },
+    "version": {
+      "type": "string",
+      "description": "Package version as SemVer. Consumers must compare with a SemVer parser, not lexical ordering.",
+      "minLength": 1,
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+      "examples": ["0.1.0"]
+    }
+  }
+}
