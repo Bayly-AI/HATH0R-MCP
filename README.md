@@ -28,6 +28,10 @@ Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for
 
 Additionally, the preserved BAI knowledge engine remains available under `src/knowledgebase/` for hybrid dense-vector and BM25 search and legacy REST/SSE API endpoints (`/mcp/sse`).
 
+### Client Configuration (Claude, Warp, Gemini, VS Code)
+For instant setup in your AI tools, see the complete guide:  
+👉 **[`docs/HOWTO-MCP-SETUP.md`](docs/HOWTO-MCP-SETUP.md)** — Step-by-step instructions and JSON configurations for **Claude**, **Warp**, **Gemini**, and **VS Code**.
+
 ---
 
 ## Quick Start
