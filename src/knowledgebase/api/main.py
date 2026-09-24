@@ -30,6 +30,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 from knowledgebase import __version__
 from knowledgebase.core.config import get_settings
 from knowledgebase.core.feature_flags import is_feature_enabled
+from knowledgebase.core.jev_tool_guard import evaluate_tool_guard, format_block_message
 from knowledgebase.core.mcp_tools import get_default_mcp_tool_schema
 from knowledgebase.core.models import (
     Document,
@@ -4141,7 +4142,11 @@ _MCP_TOOL_HANDLERS.update({
 })
 
 async def _execute_mcp_tool(tool_name: str, args: dict[str, Any]) -> dict[str, Any]:
-    """Execute an MCP tool and return the result."""
+    """Execute an MCP tool and return the result.
+
+    When JEV tool-guard is enabled (JEV_MODE=stub|live), consequential mutating
+    tools are evaluated before the handler runs. See docs/jev-tool-guard-poc.md.
+    """
     import time
 
     start_time = time.time()
@@ -4153,6 +4158,18 @@ async def _execute_mcp_tool(tool_name: str, args: dict[str, Any]) -> dict[str, A
         return _mcp_error(message)
 
     try:
+        guard_result = await evaluate_tool_guard(tool_name, args)
+        if guard_result is not None and guard_result.blocked:
+            tool_success = False
+            logger.warning(
+                "mcp_tool_blocked_by_jev",
+                tool=tool_name,
+                decision=guard_result.decision,
+                confidence=guard_result.confidence,
+                source=guard_result.source,
+            )
+            return _mcp_error(format_block_message(tool_name, guard_result))
+
         handler = _MCP_TOOL_HANDLERS.get(tool_name)
         if handler is not None:
             return await handler(tool_name, args, fail)
