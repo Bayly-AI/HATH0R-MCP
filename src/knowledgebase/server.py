@@ -15,6 +15,7 @@ from pydantic import Field, SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from knowledgebase import __version__
+from knowledgebase.core.jev_client import JevSettings, get_jev_client
 
 
 class ServiceSettings(BaseSettings):
@@ -72,6 +73,19 @@ def load_documents(root: Path) -> dict[str, dict[str, str]]:
     return documents
 
 
+
+def _jev_status() -> dict:
+    """Report JEV tool-guard configuration (does not enable the guard)."""
+    settings = JevSettings.from_env()
+    return {
+        "mode": settings.mode,
+        "enabled": settings.enabled,
+        "protocol": settings.protocol,
+        "on_error": settings.on_error,
+        "docs": "docs/jev-tool-guard-poc.md",
+    }
+
+
 def create_app(config: ServiceSettings | None = None) -> FastAPI:
     config = config or ServiceSettings()
     documents: dict[str, dict[str, str]] = {}
@@ -99,6 +113,7 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
             "network": "hath0r-net",
             "control_tower": "HATH0R-ATC",
             "operator_cli": "hath0r",
+            "jev": _jev_status(),
             "documents": [{"id": doc["id"], "title": doc["title"]} for doc in documents.values()],
         }
 
@@ -125,7 +140,15 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
                     }
                 )
         matches.sort(key=lambda hit: (-hit["score"], hit["id"]))
-        return {"results": matches[:limit], "total": len(matches)}
+        results = matches[:limit]
+        jev = get_jev_client()
+        meta = {"jev_mode": jev.settings.mode, "jev_enabled": jev.enabled}
+        # When stub/live, attach a simple answerability hint (full live scoring is optional).
+        if jev.enabled and jev.settings.mode == "stub" and results:
+            # Heuristic: mark top hit as preferred; agents should still verify.
+            results = [{**hit, "jev_stub_rank": i} for i, hit in enumerate(results)]
+            meta["jev_note"] = "stub mode: lexical rank retained; enable live for System One scoring"
+        return {"results": results, "total": len(matches), "jev": meta}
 
     @mcp.tool(annotations=annotations)
     def kb_get_document(document_id: Annotated[str, Field(min_length=1, max_length=512)]) -> dict:
