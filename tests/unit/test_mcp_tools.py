@@ -25,6 +25,7 @@ def test_default_mcp_tool_specs_include_expected_key_tools() -> None:
     assert {"docs_kb_list", "docs_kb_search", "docs_kb_info", "docs_read_meta"}.issubset(names)
     assert {"aegis_context", "aegis_echo"}.issubset(names)
     assert {"runbook_list", "runbook_create", "runbook_reindex"}.issubset(names)
+    assert {"voice_speak", "voice_listen", "voice_dispatch_action"}.issubset(names)
 
 
 def test_get_default_mcp_tool_schema_returns_defensive_copy() -> None:

@@ -15,6 +15,9 @@ Key capabilities:
   - `suite_info`: Returns canonical Hath0r OpenSource Suite identity and loaded document catalog.
   - `kb_search(query, limit=5)`: Deterministic lexical word match search against canonical reference documents.
   - `kb_get_document(document_id)`: Exact document retrieval by identifier.
+  - `voice_speak(text, voice=None)`: Synthesize and speak feedback text to the user via host audio.
+  - `voice_listen(prompt=None, timeout_seconds=10.0, simulated_input=None)`: Request spoken input from user with timeout/cancellation.
+  - `voice_dispatch_action(transcript, intent, routing_tier, ...)`: Dispatch standardized `hath0r.voice.action/1` intent guarded by JEV tool-guard policy.
 - **Knowledge Engine**: Preserves the complete hybrid search (dense embeddings + BM25 keyword matching), chunking, storage adapters, runbooks engine, and legacy REST/SSE API (`/mcp/sse`).
 - **Health Probes**: Liveness `/health`, Readiness `/ready` (verifies corpus load and session runner), and Version `/version`.
 

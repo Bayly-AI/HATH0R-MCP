@@ -4087,9 +4087,81 @@ async def _mcp_tool_kb_status_full(
         return fail(f"Failed to get full status: {e}")
 
 
+async def _mcp_tool_voice_speak(
+    tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
+) -> dict[str, Any]:
+    text_val = args.get("text")
+    if not text_val or not isinstance(text_val, str) or not text_val.strip():
+        return fail("Missing required parameter: text")
+    voice_val = args.get("voice") if isinstance(args.get("voice"), str) else None
+    from knowledgebase.services.voice_service import voice_speak_service
+
+    result = await voice_speak_service(text=text_val.strip(), voice=voice_val)
+    return _mcp_text(json.dumps(result, indent=2, default=str))
+
+
+async def _mcp_tool_voice_listen(
+    tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
+) -> dict[str, Any]:
+    prompt_val = args.get("prompt") if isinstance(args.get("prompt"), str) else None
+    timeout_val = _coerce_float(args.get("timeout_seconds", 10.0), default=10.0, minimum=0.5, maximum=60.0)
+    sim_input = args.get("simulated_input") if isinstance(args.get("simulated_input"), str) else None
+    from knowledgebase.services.voice_service import voice_listen_service
+
+    result = await voice_listen_service(
+        prompt=prompt_val,
+        timeout_seconds=timeout_val,
+        simulated_input=sim_input,
+    )
+    return _mcp_text(json.dumps(result, indent=2, default=str))
+
+
+async def _mcp_tool_voice_dispatch_action(
+    tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
+) -> dict[str, Any]:
+    transcript_val = args.get("transcript")
+    if not transcript_val or not isinstance(transcript_val, str) or not transcript_val.strip():
+        return fail("Missing required parameter: transcript")
+    intent_val = args.get("intent")
+    if not intent_val or not isinstance(intent_val, str) or not intent_val.strip():
+        return fail("Missing required parameter: intent")
+
+    routing_tier = args.get("routing_tier", "system_one")
+    if not isinstance(routing_tier, str) or routing_tier not in ("system_one", "system_two"):
+        routing_tier = "system_one"
+
+    confidence = _coerce_float(args.get("confidence", 1.0), default=1.0, minimum=0.0, maximum=1.0)
+    command = args.get("command") if isinstance(args.get("command"), str) else None
+    raw_args = args.get("args")
+    action_args = [str(a) for a in raw_args] if isinstance(raw_args, list) else None
+    target = args.get("target") if isinstance(args.get("target"), str) else None
+    feedback_text = args.get("feedback_text") if isinstance(args.get("feedback_text"), str) else None
+    metadata = args.get("metadata") if isinstance(args.get("metadata"), dict) else None
+
+    from knowledgebase.services.voice_service import voice_dispatch_action_service
+
+    result = await voice_dispatch_action_service(
+        transcript=transcript_val.strip(),
+        intent=intent_val.strip(),
+        routing_tier=routing_tier,
+        confidence=confidence,
+        command=command,
+        args=action_args,
+        target=target,
+        feedback_text=feedback_text,
+        metadata=metadata,
+    )
+    if "error" in result:
+        return fail(result.get("message") or "Voice action blocked by policy")
+    return _mcp_text(json.dumps(result, indent=2, default=str))
+
+
 _MCP_TOOL_HANDLERS: dict[
     str, Callable[[str, dict[str, Any], Callable[[str], dict[str, Any]]], Any]
 ] = {
+    "voice_speak": _mcp_tool_voice_speak,
+    "voice_listen": _mcp_tool_voice_listen,
+    "voice_dispatch_action": _mcp_tool_voice_dispatch_action,
     "kb_get_document": _mcp_tool_kb_get_document,
     "kb_search": _mcp_tool_kb_search,
     "kb_index_list": _mcp_tool_kb_index_list,

@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.baylyai.com/hath0r/contracts/hath0r-docker-workflow-v1.schema.json",
+  "title": "Hath0r Docker Workflow Specification",
+  "description": "Declarative Docker workflow contract for Hath0r container validation and Docker Factory execution.",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "hath0r.docker.workflow/v1",
+      "description": "API schema version."
+    },
+    "kind": {
+      "type": "string",
+      "const": "DockerWorkflow",
+      "description": "Document kind."
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "group"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Unique identifier for this workflow document."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable workflow name."
+        },
+        "group": {
+          "type": "string",
+          "enum": [
+            "hath0r-opensource",
+            "bai",
+            "1-nation"
+          ],
+          "description": "Target organizational group."
+        },
+        "product": {
+          "type": "string",
+          "description": "Optional associated product identifier."
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional descriptive summary of the workflow."
+        }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "factory",
+        "steps"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "factory": {
+          "type": "string",
+          "enum": [
+            "docker-factory",
+            "docker-monitor-factory"
+          ],
+          "default": "docker-factory",
+          "description": "Target execution factory."
+        },
+        "container": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Container name."
+            },
+            "image": {
+              "type": "string",
+              "description": "Image name."
+            },
+            "tag": {
+              "type": "string",
+              "default": "latest",
+              "description": "Image tag."
+            }
+          }
+        },
+        "compose": {
+          "type": "object",
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "file": {
+              "type": "string",
+              "description": "Relative path to docker-compose file."
+            },
+            "project": {
+              "type": "string",
+              "description": "Docker compose project name."
+            }
+          }
+        },
+        "services": {
+          "type": "array",
+          "description": "List of services participating in the workflow stack.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "atc",
+              "mcp",
+              "uxp",
+              "redis",
+              "nginx",
+              "poc-ui",
+              "hath0r-poc-ui"
+            ]
+          }
+        },
+        "env_refs": {
+          "type": "array",
+          "description": "Pointers to credentials store keys or files (never raw secrets).",
+          "items": {
+            "type": "string"
+          }
+        },
+        "steps": {
+          "type": "array",
+          "description": "Ordered operational steps executed by the Docker Factory.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "op"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "op": {
+                "type": "string",
+                "enum": [
+                  "validate",
+                  "build",
+                  "up",
+                  "healthcheck",
+                  "diagnose",
+                  "down"
+                ],
+                "description": "Operation code."
+              },
+              "params": {
+                "type": "object",
+                "description": "Optional parameters passed to the operation."
+              },
+              "on_failure": {
+                "type": "string",
+                "enum": [
+                  "abort",
+                  "continue",
+                  "retry"
+                ],
+                "default": "abort"
+              }
+            }
+          }
+        },
+        "progress": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "report_to": {
+              "type": "string",
+              "default": "hath0r"
+            },
+            "checkpoints": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

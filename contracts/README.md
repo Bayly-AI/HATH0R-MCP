@@ -98,15 +98,3 @@ Prose authority (until superseded by a released Framework contract tag):
 
 Introduced in Framework issue
 [#21](https://github.com/Bayly-AI/HATH0R-Agentic-Framework/issues/21).
-
-
-## Fileset pin (member)
-
-| Field | Value |
-|-------|-------|
-| Product | HATH0R-MCP |
-| Fileset / contracts pin | `0.2.0` (see root `VERSION`, `MANIFEST.json`) |
-| Source of schemas | HATH0R Agentic Framework / control tower packaging |
-| Refresh policy | When tower/framework advances the fileset pin, re-copy schema list into `contracts/` and bump `MANIFEST.json` — do not vendor large binaries |
-
-Adopt audit: `.hath0r/audits/hathor-adopt-2026-09-24.md`
