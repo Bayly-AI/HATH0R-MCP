@@ -51,7 +51,14 @@ def test_protocol_lifecycle_and_real_tools(config):
             == 202
         )
         tools = rpc(client, "tools/list").json()["result"]["tools"]
-        assert {t["name"] for t in tools} == {"suite_info", "kb_search", "kb_get_document"}
+        assert {t["name"] for t in tools} == {
+            "suite_info",
+            "kb_search",
+            "kb_get_document",
+            "voice_speak",
+            "voice_listen",
+            "voice_dispatch_action",
+        }
         for name, args in [
             ("suite_info", {}),
             ("kb_search", {"query": "Docker"}),
@@ -148,7 +155,7 @@ async def test_sdk_smoke_checks_real_asgi_service(config, monkeypatch):
     monkeypatch.setenv("HATH0R_MCP_TOKEN", "smoke-token")
     monkeypatch.setattr(smoke.httpx, "AsyncClient", local_client)
     async with app.router.lifespan_context(app):
-        assert await smoke.verify("http://testserver") == {"api": "ok", "mcp": "ok", "tools": 3}
+        assert await smoke.verify("http://testserver") == {"api": "ok", "mcp": "ok", "tools": 6}
     assert not app.state.ready
 
 
@@ -157,8 +164,8 @@ def test_smoke_cli_reports_results(monkeypatch, capsys):
 
     async def verify(base_url):
         assert base_url == "http://localhost:8083"
-        return {"api": "ok", "mcp": "ok", "tools": 3}
+        return {"api": "ok", "mcp": "ok", "tools": 6}
 
     monkeypatch.setattr(smoke, "verify", verify)
     smoke.smoke("http://localhost:8083/")
-    assert json.loads(capsys.readouterr().out)["tools"] == 3
+    assert json.loads(capsys.readouterr().out)["tools"] == 6

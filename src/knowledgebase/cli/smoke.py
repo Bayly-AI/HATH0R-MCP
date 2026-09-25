@@ -27,6 +27,9 @@ async def verify(base_url: str) -> dict:
                     "suite_info",
                     "kb_search",
                     "kb_get_document",
+                    "voice_speak",
+                    "voice_listen",
+                    "voice_dispatch_action",
                 }
                 info = await session.call_tool("suite_info", {})
                 assert not info.isError

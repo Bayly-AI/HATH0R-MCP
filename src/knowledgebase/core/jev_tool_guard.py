@@ -148,6 +148,13 @@ GUARDED_TOOL_PROFILES: dict[str, ToolRiskProfile] = {
         policy=("Do not log secrets",),
         reversibility="reversible",
     ),
+    "voice_dispatch_action": ToolRiskProfile(
+        action_template="Dispatch voice action intent {intent} command {command}",
+        side_effects=("Executes voice-driven command or intent dispatch", "Potentially executes system commands"),
+        safeguards=("Routing tier validation and confidence bounds",),
+        policy=("Voice commands with destructive arguments require confirmation",),
+        reversibility="partially_reversible",
+    ),
 }
 
 
@@ -190,7 +197,7 @@ def build_tool_guard_request(tool_name: str, args: Mapping[str, Any]) -> Optiona
 
     format_args = {
         key: args.get(key, "")
-        for key in ("name", "id", "doc_id", "target", "path", "index", "index_name")
+        for key in ("name", "id", "doc_id", "target", "path", "index", "index_name", "intent", "command")
     }
     try:
         action = profile.action_template.format_map(format_args)

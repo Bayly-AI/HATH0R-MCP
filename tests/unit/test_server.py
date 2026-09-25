@@ -105,3 +105,33 @@ def test_server_auth_and_origin(tmp_path: Path):
             headers={"origin": "http://evil.com", "authorization": f"Bearer {token}"},
         )
         assert res.status_code == 403
+
+
+@pytest.mark.asyncio
+async def test_fastmcp_voice_tools_registered(tmp_path: Path):
+    doc = tmp_path / "test.md"
+    doc.write_text("# Test\nSample content.", encoding="utf-8")
+    settings = ServiceSettings(environment="local", knowledge_root=tmp_path)
+    app = create_app(settings)
+
+    # Voice tools should be registered on app or callable through service
+    from knowledgebase.services.voice_service import (
+        voice_speak_service,
+        voice_listen_service,
+        voice_dispatch_action_service,
+    )
+
+    speak_res = await voice_speak_service("test voice")
+    assert speak_res["status"] in ("spoken", "simulated")
+
+    listen_res = await voice_listen_service(simulated_input="hath0r doctor")
+    assert listen_res["status"] == "captured"
+    assert listen_res["transcript"] == "hath0r doctor"
+
+    dispatch_res = await voice_dispatch_action_service(
+        transcript="test command",
+        intent="cli_command",
+        command="hath0r status",
+    )
+    assert dispatch_res["dispatched"] is True
+    assert dispatch_res["action"]["intent"] == "cli_command"

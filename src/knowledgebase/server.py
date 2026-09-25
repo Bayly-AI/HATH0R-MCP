@@ -157,6 +157,63 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
             raise ValueError("Unknown document ID")
         return documents[document_id]
 
+    voice_annotations = ToolAnnotations(readOnlyHint=False, destructiveHint=False, openWorldHint=False)
+
+    @mcp.tool(annotations=voice_annotations)
+    async def voice_speak(
+        text: Annotated[str, Field(min_length=1, max_length=2000, description="Text to synthesize and speak")],
+        voice: Annotated[str | None, Field(max_length=64, description="Optional voice name")] = None,
+    ) -> dict:
+        """Synthesize and speak feedback text to the user via host audio."""
+        from knowledgebase.services.voice_service import voice_speak_service
+
+        return await voice_speak_service(text=text, voice=voice)
+
+    @mcp.tool(annotations=voice_annotations)
+    async def voice_listen(
+        prompt: Annotated[str | None, Field(max_length=500, description="Spoken prompt for user")] = None,
+        timeout_seconds: Annotated[float, Field(ge=0.5, le=60.0, description="Listen timeout in seconds")] = 10.0,
+        simulated_input: Annotated[str | None, Field(max_length=1000, description="Simulated speech input")] = None,
+    ) -> dict:
+        """Request spoken input from the user with optional spoken prompt."""
+        from knowledgebase.services.voice_service import voice_listen_service
+
+        return await voice_listen_service(
+            prompt=prompt,
+            timeout_seconds=timeout_seconds,
+            simulated_input=sim_input if (sim_input := simulated_input) else None,
+        )
+
+    @mcp.tool(annotations=voice_annotations)
+    async def voice_dispatch_action(
+        transcript: Annotated[str, Field(min_length=1, max_length=1000, description="Transcribed spoken utterance")],
+        intent: Annotated[
+            Literal["cli_command", "computer_use", "agent_delegate", "system_control", "unresolved"],
+            Field(description="Categorized intent classification"),
+        ],
+        routing_tier: Annotated[Literal["system_one", "system_two"], Field(description="Routing tier")] = "system_one",
+        confidence: Annotated[float, Field(ge=0.0, le=1.0, description="Confidence score")] = 1.0,
+        command: Annotated[str | None, Field(max_length=500, description="Command or CLI subcommand")] = None,
+        args: Annotated[list[str] | None, Field(description="Command arguments")] = None,
+        target: Annotated[str | None, Field(max_length=200, description="Target application or agent")] = None,
+        feedback_text: Annotated[str | None, Field(max_length=500, description="Spoken feedback")] = None,
+        metadata: Annotated[dict | None, Field(description="Optional metadata")] = None,
+    ) -> dict:
+        """Dispatch a standardized hath0r.voice.action/1 intent with JEV tool-guard policy."""
+        from knowledgebase.services.voice_service import voice_dispatch_action_service
+
+        return await voice_dispatch_action_service(
+            transcript=transcript,
+            intent=intent,
+            routing_tier=routing_tier,
+            confidence=confidence,
+            command=command,
+            args=args,
+            target=target,
+            feedback_text=feedback_text,
+            metadata=metadata,
+        )
+
     transport = mcp.streamable_http_app()
 
     @asynccontextmanager

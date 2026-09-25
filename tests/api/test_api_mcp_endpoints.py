@@ -119,6 +119,63 @@ class TestMCPToolsCall:
         assert data["jsonrpc"] == "2.0"
         assert data["error"]["code"] == -32602
 
+    def test_tools_call_voice_speak(self, client):
+        """tools/call should execute voice_speak."""
+        with patch("knowledgebase.services.voice_service.synthesize_speech", return_value=True):
+            response = client.post(
+                "/mcp/sse",
+                json={
+                    "jsonrpc": "2.0",
+                    "method": "tools/call",
+                    "params": {"name": "voice_speak", "arguments": {"text": "hello test"}},
+                    "id": 101,
+                },
+            )
+            assert response.status_code == 200
+            data = response.json()
+            assert data["jsonrpc"] == "2.0"
+            assert "result" in data
+            assert "spoken" in data["result"]["content"][0]["text"]
+
+    def test_tools_call_voice_listen(self, client):
+        """tools/call should execute voice_listen."""
+        response = client.post(
+            "/mcp/sse",
+            json={
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {"name": "voice_listen", "arguments": {"simulated_input": "doctor"}},
+                "id": 102,
+            },
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["jsonrpc"] == "2.0"
+        assert "doctor" in data["result"]["content"][0]["text"]
+
+    def test_tools_call_voice_dispatch_action(self, client):
+        """tools/call should execute voice_dispatch_action."""
+        response = client.post(
+            "/mcp/sse",
+            json={
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "voice_dispatch_action",
+                    "arguments": {
+                        "transcript": "run check",
+                        "intent": "cli_command",
+                        "command": "hath0r doctor",
+                    },
+                },
+                "id": 103,
+            },
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["jsonrpc"] == "2.0"
+        assert "hath0r.voice.action/1" in data["result"]["content"][0]["text"]
+
 
 class TestMCPNotifications:
     """Tests for notification handlers."""

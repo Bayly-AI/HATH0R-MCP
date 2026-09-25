@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hath0r.dev/schemas/hath0r-voice-action-v1.schema.json",
+  "title": "HATH0R Voice Action Contract v1",
+  "description": "Standardized contract for voice-driven intent recognition, routing, and dispatch across platforms and agents in HATHOR.",
+  "type": "object",
+  "required": [
+    "schema",
+    "action_id",
+    "timestamp",
+    "transcript",
+    "routing_tier",
+    "intent",
+    "confidence",
+    "payload"
+  ],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "hath0r.voice.action/1",
+      "description": "Schema identifier and major version"
+    },
+    "action_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Globally unique identifier for this voice event/action"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp of transcription/action generation"
+    },
+    "transcript": {
+      "type": "string",
+      "description": "Raw transcribed text of the user's spoken utterance"
+    },
+    "routing_tier": {
+      "type": "string",
+      "enum": ["system_one", "system_two"],
+      "description": "Tier that resolved this action: system_one (fast sub-50ms deterministic router, e.g. Jev) or system_two (deliberate agent reasoning)"
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "cli_command",
+        "computer_use",
+        "agent_delegate",
+        "system_control",
+        "unresolved"
+      ],
+      "description": "Categorized intent classification"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Confidence score from 0.0 to 1.0 of the classification"
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["darwin", "linux", "win32", "agnostic"],
+      "default": "agnostic",
+      "description": "Target or host operating system environment"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Action-specific parameters and execution details",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "Command string or CLI subcommand"
+        },
+        "args": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Arguments to pass to the command or tool"
+        },
+        "target": {
+          "type": "string",
+          "description": "Target application, window, UI element, or agent identifier"
+        },
+        "feedback_text": {
+          "type": "string",
+          "description": "Spoken acknowledgment or response returned to user"
+        }
+      },
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional telemetry, latency measurements, and session context",
+      "properties": {
+        "latency_ms": {
+          "type": "number",
+          "description": "Total routing latency in milliseconds"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "Identifier of the model or router engine (e.g. typesafe-jev-v1, active-agent)"
+        },
+        "session_id": {
+          "type": "string",
+          "description": "Voice interaction session identifier"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -520,6 +520,68 @@ DEFAULT_MCP_TOOL_SPECS: tuple[MCPToolSpec, ...] = (
         description="Get comprehensive status diagnostics for tools, endpoints, sync state, and system metrics",
         input_schema=_schema(),
     ),
+    # ========== Voice Interaction & Session Mediation Tools ==========
+    MCPToolSpec(
+        name="voice_speak",
+        description="Synthesize and speak feedback text to the user via host audio",
+        input_schema=_schema(
+            {
+                "text": {"type": "string", "description": "Text to synthesize and speak"},
+                "voice": {"type": "string", "description": "Optional voice identifier or persona name"},
+            },
+            required=["text"],
+        ),
+    ),
+    MCPToolSpec(
+        name="voice_listen",
+        description="Request spoken input from the user with optional spoken prompt",
+        input_schema=_schema(
+            {
+                "prompt": {"type": "string", "description": "Optional question or prompt spoken to user before listening"},
+                "timeout_seconds": {"type": "number", "description": "Maximum seconds to wait for speech input (default 10.0)"},
+                "simulated_input": {"type": "string", "description": "Optional simulated spoken input for headless/testing environments"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="voice_dispatch_action",
+        description="Dispatch a standardized hath0r.voice.action/1 intent to system or agent",
+        input_schema=_schema(
+            {
+                "transcript": {"type": "string", "description": "Transcribed spoken utterance"},
+                "intent": {
+                    "type": "string",
+                    "description": "Categorized intent classification",
+                    "enum": [
+                        "cli_command",
+                        "computer_use",
+                        "agent_delegate",
+                        "system_control",
+                        "unresolved",
+                    ],
+                },
+                "routing_tier": {
+                    "type": "string",
+                    "description": "Routing tier: system_one or system_two",
+                    "enum": ["system_one", "system_two"],
+                },
+                "confidence": {
+                    "type": "number",
+                    "description": "Confidence score from 0.0 to 1.0 (default 1.0)",
+                },
+                "command": {"type": "string", "description": "Optional command string or CLI subcommand"},
+                "args": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Optional arguments for the command",
+                },
+                "target": {"type": "string", "description": "Optional target application, element, or agent identifier"},
+                "feedback_text": {"type": "string", "description": "Optional spoken response acknowledging action"},
+                "metadata": {"type": "object", "description": "Optional metadata dictionary"},
+            },
+            required=["transcript", "intent"],
+        ),
+    ),
 )
 
 # Preserve original client names alongside the infraos rename.
