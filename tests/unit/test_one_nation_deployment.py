@@ -25,7 +25,7 @@ def test_compose_joins_atc_group_without_redefining_shared_services():
     assert "hath0r-net" in service["networks"]
     assert all("bai" not in mount.lower() for mount in service["volumes"])
     port = service["ports"][0]
-    assert "HATH0R_MCP_HOST_PORT" in port or port.startswith(f"127.0.0.1:")
+    assert "HATH0R_MCP_HOST_PORT" in port or port.startswith("127.0.0.1:")
     assert port.endswith(":8083")
 
 
