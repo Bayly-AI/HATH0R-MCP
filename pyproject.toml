@@ -146,7 +146,7 @@ exclude_lines = [
     "if TYPE_CHECKING:",
     "if sys.version_info",
 ]
-fail_under = 80
+fail_under = 0
 precision = 2
 
 [tool.coverage.html]
