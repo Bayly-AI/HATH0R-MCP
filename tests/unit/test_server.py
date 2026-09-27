@@ -112,7 +112,7 @@ async def test_fastmcp_voice_tools_registered(tmp_path: Path):
     doc = tmp_path / "test.md"
     doc.write_text("# Test\nSample content.", encoding="utf-8")
     settings = ServiceSettings(environment="local", knowledge_root=tmp_path)
-    app = create_app(settings)
+    _ = create_app(settings)
 
     # Voice tools should be registered on app or callable through service
     from knowledgebase.services.voice_service import (

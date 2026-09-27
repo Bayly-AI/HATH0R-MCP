@@ -19,7 +19,6 @@ import uuid
 
 import structlog
 
-from knowledgebase.core.jev_client import get_jev_client
 from knowledgebase.core.jev_tool_guard import evaluate_tool_guard, format_block_message
 
 logger = structlog.get_logger(__name__)

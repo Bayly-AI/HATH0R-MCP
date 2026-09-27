@@ -1,8 +1,7 @@
 """Unit tests for Hath0r MCP voice tools, session state, and JEV guard."""
 
 import pytest
-import os
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 from knowledgebase.services.voice_service import (
     get_voice_session_state,
@@ -13,7 +12,7 @@ from knowledgebase.services.voice_service import (
     voice_dispatch_action_service,
     VOICE_ACTION_SCHEMA,
 )
-from knowledgebase.core.jev_client import JevClient, JevSettings, ToolGuardResult
+from knowledgebase.core.jev_client import ToolGuardResult
 from knowledgebase.core.jev_tool_guard import is_guarded_tool, build_tool_guard_request
 
 
