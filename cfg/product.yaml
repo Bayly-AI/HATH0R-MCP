@@ -1,0 +1,15 @@
+# Product identity — non-secret
+product_id: hath0r-mcp
+product_name: HATH0R-MCP
+description: >
+  Hath0r MCP knowledge server and hybrid search engine.
+  OpenSource suite member.
+role: mcp-server
+canonical: true
+is_control_tower: false
+github: Bayly-AI/HATH0R-MCP
+local_path_hint: OpenSource/hath0r-mcp
+layout: hathor-upl
+fileset_version: "0.2.0"
+cli_version: "0.2.0"
+updated_at: "2026-09-23T20:00:17Z"

@@ -1,0 +1,196 @@
+{
+  "default_search_indices": [
+    "knowledge",
+    "lessons-learned",
+    "runbooks",
+    "workflows",
+    "plans",
+    "rules",
+    "playbooks",
+    "checklists",
+    "procedures",
+    "strategies"
+  ],
+  "search": {
+    "exclude_archive_by_default": true,
+    "default_indices": [
+      "knowledge",
+      "lessons-learned",
+      "runbooks",
+      "workflows",
+      "plans",
+      "rules",
+      "playbooks",
+      "checklists",
+      "procedures",
+      "strategies"
+    ]
+  },
+  "indices": [
+    {
+      "name": "knowledge",
+      "sync_source": "./knowledgebase/canonical/knowledge",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "knowledge"
+      ],
+      "taxonomy": {
+        "domain": "knowledge",
+        "top_group": "knowledge",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "runbooks",
+      "sync_source": "./knowledgebase/canonical/runbooks",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "runbooks"
+      ],
+      "taxonomy": {
+        "domain": "runbooks",
+        "top_group": "runbooks",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "playbooks",
+      "sync_source": "./knowledgebase/canonical/playbooks",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "playbooks"
+      ],
+      "taxonomy": {
+        "domain": "playbooks",
+        "top_group": "playbooks",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "workflows",
+      "sync_source": "./knowledgebase/canonical/workflows",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "workflows"
+      ],
+      "taxonomy": {
+        "domain": "workflows",
+        "top_group": "workflows",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "plans",
+      "sync_source": "./knowledgebase/canonical/plans",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "plans"
+      ],
+      "taxonomy": {
+        "domain": "plans",
+        "top_group": "plans",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "rules",
+      "sync_source": "./knowledgebase/canonical/rules",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "rules"
+      ],
+      "taxonomy": {
+        "domain": "rules",
+        "top_group": "rules",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "lessons-learned",
+      "sync_source": "./knowledgebase/canonical/lessons-learned",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "lessons-learned"
+      ],
+      "taxonomy": {
+        "domain": "lessons-learned",
+        "top_group": "lessons-learned",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "checklists",
+      "sync_source": "./knowledgebase/canonical/checklists",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "checklists"
+      ],
+      "taxonomy": {
+        "domain": "checklists",
+        "top_group": "checklists",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "procedures",
+      "sync_source": "./knowledgebase/canonical/procedures",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "procedures"
+      ],
+      "taxonomy": {
+        "domain": "procedures",
+        "top_group": "procedures",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    },
+    {
+      "name": "strategies",
+      "sync_source": "./knowledgebase/canonical/strategies",
+      "file_patterns": [
+        "*.md"
+      ],
+      "tags": [
+        "strategies"
+      ],
+      "taxonomy": {
+        "domain": "strategies",
+        "top_group": "strategies",
+        "subgroup": "",
+        "lifecycle_state": "active"
+      }
+    }
+  ],
+  "aliases": {
+    "knowledgebase": "knowledge",
+    "1n-docs": "knowledge",
+    "1n-rules": "rules"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "apiVersion": "hath0r.observability.otel/v1",
+  "kind": "OpenTelemetryConfig",
+  "metadata": {
+    "name": "hath0r-mcp-otel",
+    "control_tower": "Bayly-AI/HATH0R-CLI",
+    "control_tower_ref": "cfg/observability/otel.json",
+    "updated": "2026-09-24",
+    "issue": 3,
+    "product": "hath0r-mcp"
+  },
+  "resource": {
+    "service_name": "hath0r-mcp",
+    "service_namespace": "hath0r-opensource",
+    "deployment_environment": "local"
+  },
+  "exporters": {
+    "otlp": {
+      "protocol": "http/protobuf",
+      "endpoint_env": "OTEL_EXPORTER_OTLP_ENDPOINT",
+      "headers_env": "OTEL_EXPORTER_OTLP_HEADERS",
+      "default_endpoint": "http://localhost:4318"
+    }
+  },
+  "traces": {
+    "sampler": "parentbased_traceidratio",
+    "sampler_arg": "0.1",
+    "enabled": true
+  },
+  "metrics": {
+    "enabled": true,
+    "export_interval_ms": 60000
+  },
+  "policy": {
+    "never_commit_secrets": true,
+    "credentials_root": "/Users/raybayly/Development/.credentials"
+  }
+}

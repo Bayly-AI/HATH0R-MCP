@@ -1,0 +1,43 @@
+{
+  "description": "JEV System One tool-guard POC for AegisCMCP agent control loops",
+  "enabled_by_default": false,
+  "modes": {
+    "off": "Guard disabled; all tools execute as before",
+    "stub": "Offline deterministic heuristics (no API key); good for local demos/tests",
+    "live": "Call JEV HTTP API with JEV_API_KEY / TYPESAFE_API_KEY"
+  },
+  "block_decisions": ["deny", "confirm", "review"],
+  "guarded_tools": [
+    "kb_index_create",
+    "kb_index_delete",
+    "kb_add_document",
+    "kb_add_file",
+    "kb_remove_document",
+    "kb_sync_all",
+    "kb_search_config_set",
+    "kb_rag_config_set",
+    "kb_index_directory",
+    "kb_upsert_document",
+    "kb_add_documents_batch",
+    "kb_index_reindex",
+    "runbook_create",
+    "runbook_delete",
+    "runbook_reindex",
+    "runbook_log_create"
+  ],
+  "env": {
+    "JEV_MODE": "off|stub|live",
+    "JEV_TOOL_GUARD_ENABLED": "true enables live when JEV_MODE unset",
+    "JEV_API_KEY": "Bearer token (also accepts TYPESAFE_API_KEY / AUTOJEV_API_KEY)",
+    "JEV_ENDPOINT": "https://www.jevai.org/api/v1/decisions/tool-guard",
+    "JEV_PROTOCOL": "preset|systemone",
+    "JEV_TIMEOUT_SECONDS": "2.5",
+    "JEV_ON_ERROR": "allow|deny",
+    "JEV_MIN_CONFIDENCE": "0.0"
+  },
+  "notes": [
+    "JEV returns signals; application policy still owns allow/deny enforcement.",
+    "Read-only tools (kb_search, kb_get_document, health/stats) are not guarded.",
+    "POC treats confirm and review as blocks so agents cannot self-approve."
+  ]
+}
