@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.hath0r.dev/hath0r-cli-kb-path-v1.schema.json",
+  "title": "hath0r.cli.kb-path.data/1",
+  "description": "Command-specific data payload for the kb.path operation (HATHOR-TS-005 §11). Placed under response envelope field data when command is kb.path. Path is operator data; POC adapters must strip it from normal browser responses.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["configured", "available"],
+  "properties": {
+    "configured": {
+      "type": "boolean",
+      "description": "Whether a knowledgebase path is configured for the group."
+    },
+    "available": {
+      "type": "boolean",
+      "description": "Whether the configured knowledgebase directory is present and usable."
+    },
+    "path": {
+      "type": "string",
+      "description": "Absolute local knowledgebase path. Optional; present in operator/verbose mode. Must not appear in normal browser-facing POC payloads.",
+      "minLength": 1
+    }
+  }
+}
