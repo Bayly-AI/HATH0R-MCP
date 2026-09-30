@@ -1,0 +1,17 @@
+{
+  "runtime": {
+    "default_start_mode": "docker",
+    "modes": {
+      "docker": {
+        "compose_file": "docker-compose.yml",
+        "service": "hath0r-mcp",
+        "port": 38083
+      },
+      "local": {
+        "host": "127.0.0.1",
+        "port": 8083,
+        "reload": false
+      }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-factory-v1.schema.json",
+  "title": "Hath0rFactoryManifest",
+  "description": "Schema definition for Hath0r declarative automation factories and orchestrated micro-bots.",
+  "type": "object",
+  "required": [
+    "factory_id",
+    "name",
+    "version",
+    "bots",
+    "workflows"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "factory_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Unique identifier for the factory, lowercase hyphen-separated."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable display name for the factory."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$",
+      "description": "SemVer version of the factory specification."
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the factory purpose and lifecycle responsibilities."
+    },
+    "author": {
+      "type": "string",
+      "description": "Author or organization responsible for the factory."
+    },
+    "category": {
+      "type": "string",
+      "description": "Categorization tag for filtering and reporting."
+    },
+    "bots": {
+      "type": "array",
+      "description": "List of micro-bots participating in the factory.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "capabilities"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Identifier for the bot, referenced in workflow steps."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Display name of the bot."
+          },
+          "role": {
+            "type": "string",
+            "description": "Functional role within the factory."
+          },
+          "description": {
+            "type": "string",
+            "description": "Summary of bot behavior."
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Named capabilities or supported actions for this bot."
+          }
+        }
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "description": "List of declarative workflows executed by the factory.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "steps"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Unique identifier for this workflow within the factory."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable workflow name."
+          },
+          "schedule": {
+            "type": "string",
+            "description": "Optional cron schedule expression (5 fields: minute hour day-of-month month day-of-week)."
+          },
+          "steps": {
+            "type": "array",
+            "description": "Sequential steps executed within the workflow.",
+            "items": {
+              "type": "object",
+              "required": [
+                "bot",
+                "action"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "bot": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$",
+                  "description": "Referenced bot ID from the bots list."
+                },
+                "action": {
+                  "type": "string",
+                  "description": "Action or capability invoked on the bot."
+                },
+                "args": {
+                  "type": "object",
+                  "description": "Optional key-value arguments for the action."
+                },
+                "on_failure": {
+                  "type": "string",
+                  "enum": ["continue", "abort", "retry"],
+                  "default": "abort",
+                  "description": "Failure policy when the step errors: continue, abort (default), or retry."
+                },
+                "retry_count": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 5,
+                  "default": 2,
+                  "description": "Maximum number of retry attempts when on_failure is set to retry."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

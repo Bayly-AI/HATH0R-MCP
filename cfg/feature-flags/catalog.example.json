@@ -1,0 +1,24 @@
+{
+  "apiVersion": "hath0r.feature-flags.catalog/v1",
+  "kind": "FeatureFlagCatalog",
+  "metadata": {
+    "name": "hath0r-mcp-flags-example",
+    "control_tower": "Bayly-AI/HATH0R-CLI",
+    "updated": "2026-09-24",
+    "note": "Example only — not production flag source"
+  },
+  "flags": [
+    {
+      "key": "mcp.kb_search.enabled",
+      "description": "Enable kb_search tool surface",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "mcp.streamable_http.enabled",
+      "description": "Expose Streamable HTTP /mcp transport",
+      "type": "boolean",
+      "default": true
+    }
+  ]
+}

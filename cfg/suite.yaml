@@ -1,0 +1,36 @@
+# Suite orientation — HATH0R-MCP (non-secret)
+group_id: hath0r-opensource
+group_label: OpenSource Project
+product_id: hath0r-mcp
+product_name: HATH0R-MCP
+is_control_tower: false
+control_tower_product_id: hath0r-cli
+control_tower_path: /Users/raybayly/Development/OpenSource/HATH0R-CLI
+control_tower_github: Bayly-AI/HATH0R-CLI
+operator_cli: hath0r
+mode: member
+workspace_root: ".."
+github: Bayly-AI/HATH0R-MCP
+
+# Hath0r OpenSource Suite integration
+suite_hath0r:
+  group_id: hath0r-opensource
+  group_label: Hath0r OpenSource Suite
+  product_id: hath0r-mcp
+  container_name: hath0r-mcp
+  compose_project_name: hath0r
+  docker_network: hath0r-net
+  image_prefix: hath0r/
+  control_tower_path: /Users/raybayly/Development/OpenSource/hath0r-atc
+  control_tower_github: Bayly-AI/HATH0R-ATC
+
+# Suite standards pointers (docs-first fan-out)
+suite_standards:
+  doc: docs/governance/SUITE_STANDARDS.md
+  control_tower_github: Bayly-AI/HATH0R-CLI
+  control_tower_branch: development
+  otel_stub: cfg/observability/otel.json
+  openfeature_stub: cfg/feature-flags/openfeature.json
+  openobservation_stub: cfg/observability/openobservation.json
+  mcp_priority_doc: cfg/mcp/README.md
+  docker_group_doc: cfg/docker/groups/README.md

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.bayly.ai/hath0r/contracts/hath0r-mcp-servers-v1.schema.json",
+  "title": "Hath0r MCP Servers Configuration",
+  "description": "Configuration specification for Model Context Protocol (MCP) servers with priority ordering and scope rules.",
+  "type": "object",
+  "required": ["version", "servers"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": ["1.0", "v1"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "servers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "scope", "priority", "enabled", "transport", "base_url"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string",
+            "enum": ["project", "group", "org", "user"]
+          },
+          "group": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "transport": {
+            "type": "string",
+            "enum": ["streamable-http", "http-jsonrpc", "stdio", "sse"]
+          },
+          "base_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "mcp_endpoint": {
+            "type": "string"
+          },
+          "health_endpoint": {
+            "type": "string"
+          },
+          "ready_endpoint": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "env_ref": {
+            "type": "string"
+          },
+          "local_path": {
+            "type": "string"
+          },
+          "github": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
