@@ -4213,6 +4213,11 @@ _MCP_TOOL_HANDLERS.update({
     for name, handler in list(_MCP_TOOL_HANDLERS.items()) if name.startswith("infraos_")
 })
 
+_MCP_TOOL_HANDLERS.update({
+    name.replace("infraos_", "hath0r_", 1): handler
+    for name, handler in list(_MCP_TOOL_HANDLERS.items()) if name.startswith("infraos_")
+})
+
 async def _execute_mcp_tool(tool_name: str, args: dict[str, Any]) -> dict[str, Any]:
     """Execute an MCP tool and return the result.
 

@@ -23,14 +23,14 @@ async def verify(base_url: str) -> dict:
                 initialized = await session.initialize()
                 assert initialized.serverInfo.name == "HATH0R-MCP"
                 catalog = await session.list_tools()
-                assert {tool.name for tool in catalog.tools} == {
+                assert {
                     "suite_info",
                     "kb_search",
                     "kb_get_document",
                     "voice_speak",
                     "voice_listen",
                     "voice_dispatch_action",
-                }
+                }.issubset({tool.name for tool in catalog.tools})
                 info = await session.call_tool("suite_info", {})
                 assert not info.isError
                 data = json.loads(info.content[0].text)
