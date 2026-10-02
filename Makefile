@@ -85,3 +85,7 @@ smoke-local:
 
 serve:
 	@$(PYTHON) -m uvicorn knowledgebase.server:app --host 0.0.0.0 --port 8083
+
+deploy-aws:
+	@./deploy/aws/deploy.sh
+

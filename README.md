@@ -60,7 +60,13 @@ make smoke           # In-container smoke check
 make docker-status   # View container status
 ```
 
-### 3. Hath0r Governance Bootstrap
+### 3. AWS App Runner Deployment (`mcp.hath0r-cli.com`)
+```bash
+make deploy-aws      # Builds linux/amd64, pushes to ECR, and triggers App Runner
+```
+Live endpoint: `https://mcp.hath0r-cli.com` (with fallback to App Runner URL).
+
+### 4. Hath0r Governance Bootstrap
 ```bash
 ./bin/hath0r-bootstrap.sh
 ```

@@ -101,6 +101,14 @@ make docker-stop
 > [!CAUTION]
 > Never run `docker compose down` or `--remove-orphans` against the shared `hath0r` Docker project. Scope all operations strictly to `hath0r-mcp`.
 
+### 4.7 AWS App Runner Deployment (`mcp.hath0r-cli.com`)
+```bash
+make deploy-aws
+# Or directly via deploy script:
+./deploy/aws/deploy.sh
+```
+Builds the `linux/amd64` container image, pushes to Amazon ECR (`066949051380.dkr.ecr.us-east-2.amazonaws.com/hath0r/mcp:latest`), and manages the AWS App Runner service `hath0r-mcp` with custom domain `mcp.hath0r-cli.com`.
+
 ---
 
 ## 5. Hath0r Fileset & Governance Verification
