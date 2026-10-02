@@ -22,7 +22,8 @@ registry (priorities, transports, endpoints) is owned by:
 | Product / id | HATH0R-MCP / `hath0r-mcp` |
 | GitHub | `Bayly-AI/HATH0R-MCP` |
 | Transport | streamable-http |
-| Base URL (local) | `http://localhost:38083` |
+| Base URL (canonical cloud) | `https://mcp.hath0r-cli.com` |
+| Base URL (local docker) | `http://localhost:38083` |
 | MCP endpoint | `/mcp` |
 | Health / ready | `/health` · `/ready` |
 

@@ -26,6 +26,7 @@
 | Docker Network | **`hath0r-net`** (CANONICAL) |
 | Container / Image | `hath0r-mcp` / `hath0r/mcp:local` |
 | Host / Container Port | `*********:38083` / `8083` |
+| Canonical Cloud URL | **`https://mcp.hath0r-cli.com`** |
 | Project MCP priority | **1** — tower [`cfg/mcp.servers.json`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/cfg/mcp.servers.json) · local [`cfg/mcp/README.md`](cfg/mcp/README.md) |
 
 ---
