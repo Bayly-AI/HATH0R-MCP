@@ -9,7 +9,8 @@ Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for
 | Local Path | `/Users/raybayly/Development/OpenSource/hath0r-mcp` |
 | Compose project / network | `hath0r` / `hath0r-net` (`Hath0r Compose configuration`) |
 | Container / service / image | `hath0r-mcp` / `hath0r-mcp` / `hath0r/mcp:local` |
-| Host base URL | `http://127.0.0.1:38083` |
+| Canonical Cloud URL | `https://mcp.hath0r-cli.com` |
+| Host base URL (local) | `http://127.0.0.1:38083` |
 | Suite internal URL | `http://hath0r-mcp:8083` |
 | MCP transport | Streamable HTTP at `/mcp` via official MCP Python SDK |
 | Probes | `/health` (liveness), `/ready` (readiness), `/version` |

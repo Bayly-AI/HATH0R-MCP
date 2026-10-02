@@ -10,17 +10,17 @@ Hath0r-MCP runs as a FastMCP Streamable HTTP server. Ensure the container or nat
 
 | Property | Value |
 |---|---|
-| **Host Base URL** | `http://127.0.0.1:38083` |
-| **MCP Endpoint** | `http://127.0.0.1:38083/mcp` |
-| **Health Probe** | `http://127.0.0.1:38083/health` |
-| **Readiness Probe** | `http://127.0.0.1:38083/ready` |
+| **Canonical Cloud URL** | `https://mcp.hath0r-cli.com` |
+| **MCP Endpoint** | `https://mcp.hath0r-cli.com/mcp` |
+| **Health Probe** | `https://mcp.hath0r-cli.com/health` |
+| **Readiness Probe** | `https://mcp.hath0r-cli.com/ready` |
 | **Protocol** | Streamable HTTP (FastMCP) / JSON-RPC 2.0 |
-| **Docker Container** | `hath0r-mcp` |
+| **Local Docker (dev)** | `http://127.0.0.1:38083` (container port 8083) |
 
 ### Verify Service Health
 ```bash
 # Check health probe
-curl -fsS http://127.0.0.1:38083/health
+curl -fsS https://mcp.hath0r-cli.com/health
 
 # Verify tools via Hath0r CLI
 hath0r mcp check
@@ -46,7 +46,7 @@ Add the `hath0r-mcp` entry under `mcpServers`:
       "args": [
         "-y",
         "mcp-remote",
-        "http://127.0.0.1:38083/mcp"
+        "https://mcp.hath0r-cli.com/mcp"
       ]
     }
   }
@@ -72,7 +72,7 @@ Add the `hath0r-mcp` entry under `mcpServers`:
 ### B. Claude Code (CLI)
 Add Hath0r-MCP directly to Claude Code CLI:
 ```bash
-claude mcp add --transport http hath0r-mcp http://127.0.0.1:38083/mcp
+claude mcp add --transport http hath0r-mcp https://mcp.hath0r-cli.com/mcp
 ```
 
 Verify connection in Claude:
@@ -91,7 +91,7 @@ Open or create `~/.warp/mcp_servers.json`:
 {
   "mcpServers": {
     "hath0r-mcp": {
-      "url": "http://127.0.0.1:38083/mcp"
+      "url": "https://mcp.hath0r-cli.com/mcp"
     }
   }
 }
@@ -102,7 +102,7 @@ Open or create `~/.warp/mcp_servers.json`:
 2. Navigate to **AI** > **MCP Servers**.
 3. Click **Add Server**:
    - **Name**: `hath0r-mcp`
-   - **URL / Endpoint**: `http://127.0.0.1:38083/mcp`
+   - **URL / Endpoint**: `https://mcp.hath0r-cli.com/mcp`
 4. Click **Save** and verify the status indicator shows active.
 
 ---
@@ -117,7 +117,7 @@ Antigravity discovers MCP servers declared in the user or workspace configuratio
 {
   "mcpServers": {
     "hath0r-mcp": {
-      "url": "http://127.0.0.1:38083/mcp"
+      "url": "https://mcp.hath0r-cli.com/mcp"
     }
   }
 }
@@ -126,7 +126,7 @@ Antigravity discovers MCP servers declared in the user or workspace configuratio
 ### B. Gemini CLI / Extensions
 For Gemini CLI integrations:
 ```bash
-gemini mcp add hath0r-mcp http://127.0.0.1:38083/mcp
+gemini mcp add hath0r-mcp https://mcp.hath0r-cli.com/mcp
 ```
 
 ---
@@ -142,7 +142,7 @@ In VS Code, open the extension settings (or edit `~/Library/Application Support/
 {
   "mcpServers": {
     "hath0r-mcp": {
-      "url": "http://127.0.0.1:38083/mcp",
+      "url": "https://mcp.hath0r-cli.com/mcp",
       "transport": "streamable-http",
       "autoApprove": [
         "suite_info",
@@ -164,7 +164,7 @@ Add under `experimental.modelContextProtocolServers`:
       {
         "transport": {
           "type": "http",
-          "url": "http://127.0.0.1:38083/mcp"
+          "url": "https://mcp.hath0r-cli.com/mcp"
         }
       }
     ]
@@ -180,7 +180,7 @@ Create `.vscode/mcp.json` in the root of your project:
   "servers": {
     "hath0r-mcp": {
       "type": "http",
-      "url": "http://127.0.0.1:38083/mcp"
+      "url": "https://mcp.hath0r-cli.com/mcp"
     }
   }
 }
