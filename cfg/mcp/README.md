@@ -14,6 +14,7 @@ registry (priorities, transports, endpoints) is owned by:
 | `hath0r-mcp` | project | **1** | Primary — Hath0r knowledge & tools (this repo) |
 | `bai-mcp` | org | 2 | Bayly AI enterprise |
 | `1-nation-mcp` | group | 3 | 1-Nation reference |
+| `paper-design-mcp` | tools | 4 | Paper.design — Canvas-to-code website design |
 
 ## This product
 
