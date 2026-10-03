@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-02T22:17:59.388111+00:00",
+  "timestamp": "2026-10-03T10:55:21.837288+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -36,19 +36,6 @@
       "properties": {
         "path": "data/AGENTS.md",
         "subsystem": "data"
-      },
-      "is_current": true
-    },
-    {
-      "id": "rule:rules",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule rules",
-      "content": "# Lib Subsystem - Local Rules\n\n> Specific rules and constraints for the Lib Subsystem module.\n\n## Constraints\n- \n",
-      "properties": {
-        "path": "lib/rules.md",
-        "priority": 3,
-        "restricted_actions": []
       },
       "is_current": true
     },
@@ -224,6 +211,81 @@
         ]
       },
       "is_current": true
+    },
+    {
+      "id": "rule:cr-bai-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "BAI Promotion Gate",
+      "content": "Canonical promotion development -> testing -> staging -> master.",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-BAI-001"
+      }
+    },
+    {
+      "id": "rule:cr-hath0r-init-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Hath0r Repo Init Gate",
+      "content": "Follow canonical playbook and runbook before repo initialization.",
+      "policy_type": "workflow",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-HATH0R-INIT-001"
+      }
+    },
+    {
+      "id": "rule:cr-branch-gov-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Branch Governance",
+      "content": "Branch & Promotion Governance: work PRs target development only, canonical promotion path.",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-BRANCH-GOV-001"
+      }
+    },
+    {
+      "id": "rule:cr-cli-first-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-CLI-FIRST-001",
+      "content": "Governance policy rule CR-CLI-FIRST-001",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-CLI-FIRST-001"
+      }
+    },
+    {
+      "id": "rule:cr-hath0r-root-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Hidden Root Rule",
+      "content": "Use only .hath0r/ as hidden project root. Never create legacy .ai/ or .infraOS/.",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-HATH0R-ROOT-001"
+      }
     }
   ],
   "edges": [
@@ -237,6 +299,46 @@
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-bai-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-hath0r-init-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-branch-gov-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-cli-first-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-hath0r-root-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:21.837147+00:00",
+      "valid_to": null,
       "is_current": true
     }
   ],
