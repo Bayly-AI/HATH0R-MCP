@@ -38,8 +38,12 @@ Canonical: [HATH0R-CLI `docs/governance/cli-first-rules.md`](https://github.com/
 1. **CLI-First**: For connections, MCP, workflows, factories, Docker group ops, KB path, or suite orientation, invoke **`hath0r`** (or the documented operator entrypoint) instead of ad-hoc scripts.
 2. **Missing Capability Offer**: If a required connection/MCP/workflow/factory is missing, do not silently invent workarounds. Offer to create the missing capability and use the original request as its acceptance test.
 3. **Session start**: Prefer tower checklist `docs/governance/checklists/agent-session-start.md` when present.
-4. **Docs before code**: Follow workflow documentation standard (playbook → procedure → runbook) before scaffolding implementation — see suite standards pointers.
-5. **Project MCP first**: Prefer **`hath0r-mcp` (priority 1)** from the tower MCP registry for suite knowledge/tools.
+4. **CR-CLI-FEATURE-STANDARD-001 (Shared Code in CLI & Artifact Hexad — CRITICAL · CANONICAL)**:
+   - Anything usable across multiple repos MUST live in `HATH0R-CLI`.
+   - Feature packages must include CLI commands, managing bots, workflows, and the documentation hexad (Strategy, Procedure, Playbook, Runbook, Workflow, Bot Spec).
+   - This repo contains declarative configuration files (`cfg/`, `otel.json`, factory YAMLs) that bind to CLI tools.
+5. **Docs before code**: Follow workflow documentation standard (playbook → procedure → runbook) before scaffolding implementation — see suite standards pointers.
+6. **Project MCP first**: Prefer **`hath0r-mcp` (priority 1)** from the tower MCP registry for suite knowledge/tools.
 
 ---
 
