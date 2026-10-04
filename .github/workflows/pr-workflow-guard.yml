@@ -1,0 +1,71 @@
+# PR workflow hardening — classify and guard stage promotions
+# Companion to enforce-promotion-path.yml (ticket branch-rules)
+name: PR Workflow Guard
+
+"on":
+  pull_request:
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
+    branches: [development, testing, staging, master]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  classify-and-guard:
+    name: pr-workflow-guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Classify PR and enforce human-gate policy hints
+        env:
+          BASE: ${{ github.base_ref }}
+          HEAD: ${{ github.head_ref }}
+          EVENT: ${{ github.event_name }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          set -euo pipefail
+          echo "PR #$PR : $HEAD → $BASE (author=$AUTHOR)"
+
+          WORK='^(feature|bugfix|hotfix|enhancement|research|fix|chore)/'
+          RELEASE='^release/'
+
+          case "$BASE" in
+            development)
+              echo "class=feature-work"
+              if echo "$HEAD" | grep -Eq "$RELEASE"; then
+                echo "::error::release/* must not target development. Cut release then promote to testing."
+                exit 1
+              fi
+              if ! echo "$HEAD" | grep -Eq "$WORK"; then
+                echo "::warning::Work branch should match feature|bugfix|hotfix|enhancement|research|fix|chore/<issue>-slug"
+              fi
+              # label best-effort
+              gh pr edit "$PR" -R "$REPO" --add-label "pr:work" 2>/dev/null || true
+              ;;
+            testing)
+              echo "class=promote-testing"
+              gh pr edit "$PR" -R "$REPO" --add-label "pr:release" 2>/dev/null || true
+              ;;
+            staging|master)
+              echo "class=human-gate-promotion"
+              echo "Human review required before merge to $BASE."
+              gh pr edit "$PR" -R "$REPO" --add-label "pr:human-gate" 2>/dev/null || true
+              gh pr edit "$PR" -R "$REPO" --add-label "pr:release" 2>/dev/null || true
+              # Soft policy: warn if only bots in author (cannot fully know approvals yet)
+              case "$AUTHOR" in
+                *bot*|github-actions[bot]|dependabot[bot])
+                  echo "::warning::Promotion PR author looks automated. Staging/master require human approval."
+                  ;;
+              esac
+              ;;
+            *)
+              echo "Unknown base $BASE"
+              ;;
+          esac
+
+          echo "See docs/governance/pr-workflow.md"

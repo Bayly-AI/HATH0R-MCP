@@ -4,7 +4,6 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 import hmac
 import json
-import os
 import re
 from typing import Annotated, Any, Literal
 
