@@ -1,0 +1,213 @@
+# CR-BAI-001 — Environment Promotion Path (CRITICAL)
+# cr-branch-gov-001 — Issue-driven branching + canonical branch lock
+# Canonical policy: group WARP.md / cfg/group/* (HATH0R-CLI control tower)
+#
+# Enforces:
+#   issue → feature|bugfix|hotfix|enhancement|research|fix|chore/<n>-slug
+#        → development
+#   release/x.x.x (from development) → testing → staging → master (Production)
+#
+# Work PRs may ONLY target development.
+# Stage promotion uses development and/or release/x.x.x heads only (never feature/*).
+#
+# Required branch protection check context: validate-promotion-path
+name: Enforce Promotion Path
+
+"on":
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    branches:
+      - development
+      - testing
+      - staging
+      - master
+  push:
+    branches:
+      - testing
+      - staging
+      - master
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+
+concurrency:
+  group: promotion-path-${{ github.repository }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-promotion-path:
+    name: validate-promotion-path
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce CR-BAI-001 + cr-branch-gov-001
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+          PUSH_REF: ${{ github.ref_name }}
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          echo "════════════════════════════════════════════════════════"
+          echo " CR-BAI-001 Environment Promotion Path"
+          echo " cr-branch-gov-001 Issue-driven branching"
+          echo " work → development | release/x.x.x → testing → staging → master"
+          echo "════════════════════════════════════════════════════════"
+
+          CANONICAL='^(development|testing|staging|master)$'
+          WORK_TYPES='feature|bugfix|hotfix|enhancement|research|fix|chore'
+          WORK_BRANCH="^(${WORK_TYPES})/[0-9]+-[A-Za-z0-9][A-Za-z0-9._-]*$"
+          RELEASE_BRANCH='^release/[0-9]+\.[0-9]+\.[0-9]+([.-][A-Za-z0-9._-]+)?$'
+
+          is_release_branch() {
+            echo "$1" | grep -Eq "$RELEASE_BRANCH"
+          }
+
+          allowed_head_for_base() {
+            local base="$1" head="$2"
+            case "$base" in
+              development)
+                case "$head" in
+                  testing|staging|master)
+                    echo "❌ PRs into development cannot come from canonical branch '$head'."
+                    echo "   Never merge canonical → canonical sideways/downward."
+                    echo "   Use ${WORK_TYPES}/<issue>-slug → development."
+                    return 1
+                    ;;
+                esac
+                if is_release_branch "$head"; then
+                  echo "❌ release/* branches must not PR into development."
+                  echo "   Cut release/x.x.x from development, then promote release → testing."
+                  return 1
+                fi
+                if echo "$head" | grep -Eq "$CANONICAL"; then
+                  echo "❌ Head '$head' is canonical. Work must use a non-canonical branch."
+                  return 1
+                fi
+                if ! echo "$head" | grep -Eq "$WORK_BRANCH"; then
+                  echo "❌ Invalid work branch name: '$head'"
+                  echo "   Required: <type>/<issue-number>-short-slug"
+                  echo "   Types: feature | bugfix | hotfix | enhancement | research | fix | chore"
+                  echo "   Example: feature/42-add-kb-sync"
+                  echo "   Create a GitHub issue first if you do not have a number."
+                  return 1
+                fi
+                ISSUE_NUM=$(echo "$head" | sed -E "s#^(${WORK_TYPES})/([0-9]+)-.*#\2#")
+                echo "Resolved issue number from branch: #$ISSUE_NUM"
+                if ! gh api "repos/${REPO}/issues/${ISSUE_NUM}" --jq '.number' >/dev/null 2>&1; then
+                  echo "❌ GitHub issue #${ISSUE_NUM} not found in ${REPO}."
+                  echo "   Create the issue first, then name the branch with that number."
+                  return 1
+                fi
+                echo "✅ Issue #${ISSUE_NUM} exists."
+                return 0
+                ;;
+              testing)
+                if [ "$head" = "development" ] || is_release_branch "$head"; then
+                  echo "✅ testing accepts head '$head' (development or release/x.x.x)."
+                  return 0
+                fi
+                echo "❌ PRs into testing must come from development or release/x.x.x (got '$head')."
+                echo "   Feature/bugfix/hotfix branches must merge to development first."
+                return 1
+                ;;
+              staging)
+                if [ "$head" = "testing" ] || is_release_branch "$head"; then
+                  echo "✅ staging accepts head '$head' (testing or release/x.x.x)."
+                  return 0
+                fi
+                echo "❌ PRs into staging must come from testing or release/x.x.x (got '$head')."
+                return 1
+                ;;
+              master)
+                if [ "$head" = "staging" ] || is_release_branch "$head"; then
+                  echo "✅ master accepts head '$head' (staging or release/x.x.x)."
+                  return 0
+                fi
+                echo "❌ PRs into master (production) must come from staging or release/x.x.x (got '$head')."
+                return 1
+                ;;
+              *)
+                echo "❌ Unsupported base branch '$base' for promotion enforcement."
+                return 1
+                ;;
+            esac
+          }
+
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            BASE="$BASE_REF"
+            HEAD="$HEAD_REF"
+            echo "PR promotion check: '$HEAD' → '$BASE'"
+            if ! allowed_head_for_base "$BASE" "$HEAD"; then
+              echo ""
+              echo "Required path:"
+              echo "  issue → type/<n>-slug → development"
+              echo "  cut release/x.x.x → testing → staging → master"
+              echo "Policy: CR-BAI-001 + cr-branch-gov-001"
+              exit 1
+            fi
+            echo "✅ PR source/target allowed under CR-BAI-001 / cr-branch-gov-001."
+            exit 0
+          fi
+
+          TARGET="$PUSH_REF"
+          echo "Push promotion check on branch: $TARGET"
+
+          case "$TARGET" in
+            testing) REQUIRED_PREV="development" ;;
+            staging) REQUIRED_PREV="testing" ;;
+            master) REQUIRED_PREV="staging" ;;
+            *)
+              echo "No push gate for '$TARGET'"
+              exit 0
+              ;;
+          esac
+
+          git fetch origin "$REQUIRED_PREV" --depth=1 2>/dev/null || git fetch origin "$REQUIRED_PREV"
+          PREV_SHA=$(git rev-parse "origin/${REQUIRED_PREV}" 2>/dev/null || true)
+          if [ -z "$PREV_SHA" ]; then
+            echo "❌ Could not resolve origin/${REQUIRED_PREV}. Cannot verify promotion ancestry."
+            exit 1
+          fi
+
+          if git merge-base --is-ancestor "$PREV_SHA" HEAD; then
+            echo "✅ origin/${REQUIRED_PREV} ($PREV_SHA) is an ancestor of $TARGET HEAD."
+            echo "   Promotion path satisfied for push to $TARGET."
+            exit 0
+          fi
+
+          echo "❌ Push to '$TARGET' rejected: origin/${REQUIRED_PREV} is NOT an ancestor of HEAD."
+          echo "   Promote via: $REQUIRED_PREV → $TARGET (after deploy+validate on $REQUIRED_PREV)."
+          echo "   Policy: CR-BAI-001"
+          exit 1
+
+      - name: Emit governance summary
+        if: always()
+        run: |
+          cat <<'SUMMARY'
+          Canonical branches (protected; never delete; never use as feature branches):
+            development | testing | staging | master
+
+          Work branches (PR ONLY into development; issue number required):
+            feature|bugfix|hotfix|enhancement|research|fix|chore/<issue>-short-slug
+
+          Release branches (promotion path only — not day-to-day feature work):
+            release/x.x.x   e.g. release/1.4.0
+            Cut from development; PR into testing (then staging → master with human review).
+
+          Branch protection (public repos / org plan allowing classic protection):
+            PR required, CODEOWNERS (@somesayray), no force-push,
+            no deletions, required check: validate-promotion-path, conversation resolution
+
+          Default branch: development
+          SUMMARY
