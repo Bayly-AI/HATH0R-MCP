@@ -25,8 +25,11 @@ jobs:
     environment: ${{ inputs.target_environment }}
     steps:
       - name: Record promotion intent
+        env:
+          TARGET_ENV: ${{ inputs.target_environment }}
+          REF_NAME: ${{ inputs.ref_name }}
         run: |
-          echo "Promotion gate for environment=${{ inputs.target_environment }}"
-          echo "ref=${{ inputs.ref_name }}"
+          echo "Promotion gate for environment=${TARGET_ENV}"
+          echo "ref=${REF_NAME}"
           echo "Human approval is required for staging and production when the org plan supports environment required reviewers."
           echo "See docs/governance/pr-workflow.md"
