@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-03T10:55:21.837288+00:00",
+  "timestamp": "2026-10-05T17:11:26.021421+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -36,6 +36,19 @@
       "properties": {
         "path": "data/AGENTS.md",
         "subsystem": "data"
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Lib Subsystem - Local Rules\n\n> Specific rules and constraints for the Lib Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "lib/rules.md",
+        "priority": 3,
+        "restricted_actions": []
       },
       "is_current": true
     },
@@ -173,6 +186,162 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__HOWTO-MCP-SETUP_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Howto Mcp Setup",
+      "content": "# HOWTO: Configuring MCP Clients (Claude, Warp, Gemini, VS Code) for Hath0r-MCP\n\nThis guide provides step-by-step instructions to configure **Hath0r-MCP** in your favorite AI development tools and environments: **Claude (Desktop & Code)**, **Warp**, **Gemini (Antigravity & CLI)**, and **VS Code (Roo Code, Cline, Continue, GitHub Copilot)**.\n\n---\n\n## 1. Service Endpoints & Health Check\n\nHath0r-MCP runs as a FastMCP Streamable HTTP server. Ensure the container or native server is running:\n\n| Property | Value |\n|---|---|\n| **Canonical Cloud URL** | `https://mcp.hath0r-cli.com` |\n| **MCP Endpoint** | `https://mcp.hath0r-cli.com/mcp` |\n| **Health Probe** | `https://mcp.hath0r-cli.com/health` |\n| **Readiness Probe** | `https://mcp.hath0r-cli.com/ready` |\n| **Protocol** | Streamable HTTP (FastMCP) / JSON-RPC 2.0 |\n| **Local Docker (dev)** | `http://127.0.0.1:38083` (container port 8083) |\n\n### Verify Service Health\n```bash\n# Check health probe\ncurl -fsS https://mcp.hath0r-cli.com/health\n\n# Verify tools via Hath0r CLI\nhath0r mcp check\n```\n\nExpected response: `{\"status\":\"healthy\",\"service\":\"hath0r-mcp\"}`\n\n---\n\n## 2. Claude Setup\n\n### A. Claude Desktop (macOS)\nClaude Desktop configuration is",
+      "properties": {
+        "path": "docs/HOWTO-MCP-SETUP.md",
+        "category": "docs",
+        "size_bytes": 4763
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__jev-tool-guard-performance_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Jev Tool Guard Performance",
+      "content": "# JEV Tool-Guard — Performance Impact\n\n**Date:** 2026-09-23  \n**Host:** macOS developer workstation (local FastAPI `TestClient`, no Docker network hop)  \n**Code:** AegisCMCP JEV POC (`src/knowledgebase/core/jev_*.py`, hook in `_execute_mcp_tool`)  \n**Method:** Integration suite + dedicated micro-benchmarks and end-to-end MCP `tools/call` timing\n\n## Executive summary\n\n| Mode | Where cost lands | Typical added latency | Impact on agent loops |\n|------|------------------|----------------------|------------------------|\n| **`off` (default)** | Catalog check skipped when client disabled → early return | **~0 ms** (noise floor) | None |\n| **`stub`** | Local heuristics only | **~0.2 ms** guard-only; **~1–2 ms** on full MCP path vs off | Negligible vs tool/IO work |\n| **`live` (mock 0 RTT)** | httpx + JSON parse | **~2.5 ms** guard-only; **~2–3 ms** e2e vs off | Small fixed overhead |\n| **`live` (real JEV)** | Network + model | **~70–500 ms** (vendor band); measured **~80 ms** and **~250 ms** injected RTT | Dominates mutating tool calls; still cheap vs embeddings/sync |\n\n**Read-only tools are not guarded.** Search/health paths do not call JEV even when the guard is enabled.\n\n---\n\n## Test r",
+      "properties": {
+        "path": "docs/jev-tool-guard-performance.md",
+        "category": "docs",
+        "size_bytes": 6050
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__jev-tool-guard-poc_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Jev Tool Guard Poc",
+      "content": "# JEV Tool-Guard POC (AegisCMCP)\n\nProof-of-concept: insert **TypeSafe JEV** (System One) into the MCP **agent control loop** so consequential tool calls are judged before execution.\n\n## Control loop\n\n```text\nAgent ──tools/call──► AegisCMCP._execute_mcp_tool\n                         │\n                         ├─ read-only tool? ──► execute handler\n                         │\n                         └─ mutating tool + JEV enabled?\n                               │\n                               ▼\n                         JEV tool-guard (choice: allow|confirm|review|deny)\n                               │\n                    ┌──────────┴──────────┐\n                    │ blocked             │ allow\n                    ▼                     ▼\n             MCP isError + JSON     run tool handler\n             (no side effects)\n```\n\n## Files\n\n| Path | Role |\n|------|------|\n| `src/knowledgebase/core/jev_client.py` | Settings, HTTP/stub client, response parsing |\n| `src/knowledgebase/core/jev_tool_guard.py` | Mutating-tool catalog + evaluate/format helpers |\n| `cfg/jev.json` | Operator-facing reference config |\n| `tests/unit/test_jev_tool_guard.py` | Unit tests (no live network) |\n| `tests/in",
+      "properties": {
+        "path": "docs/jev-tool-guard-poc.md",
+        "category": "docs",
+        "size_bytes": 3545
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Runbook",
+      "content": "# Runbook: HATH0R-MCP Service\n\n> Canonical operations and developer runbook for **HATH0R-MCP** (`hath0r-mcp` / `hath0r-mcp`).\n> Satisfies Hath0r initialization gate requirement **CR-HATH0R-INIT-001**.\n\n---\n\n## 1. Overview & Architecture\n\n`HATH0R-MCP` is the knowledge Model Context Protocol (MCP) server for the Hath0r OpenSource Suite, hosted as an OpenSource Project member under `OpenSource/hath0r-mcp`.\n\nKey capabilities:\n- **FastMCP Transport**: Exposes stateless Streamable HTTP at `/mcp` via the official `mcp` Python SDK.\n- **Suite Tools**:\n  - `suite_info`: Returns canonical Hath0r OpenSource Suite identity and loaded document catalog.\n  - `kb_search(query, limit=5)`: Deterministic lexical word match search against canonical reference documents.\n  - `kb_get_document(document_id)`: Exact document retrieval by identifier.\n  - `voice_speak(text, voice=None)`: Synthesize and speak feedback text to the user via host audio.\n  - `voice_listen(prompt=None, timeout_seconds=10.0, simulated_input=None)`: Request spoken input from user with timeout/cancellation.\n  - `voice_dispatch_action(transcript, intent, routing_tier, ...)`: Dispatch standardized `hath0r.voice.action/1` intent guarded b",
+      "properties": {
+        "path": "docs/runbook.md",
+        "category": "docs",
+        "size_bytes": 5032
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__provenance_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Provenance",
+      "content": "# Source Provenance: BAI-1-NATION-MCP\n\nApplication core, hybrid search engine, and test fixtures adapted from `/Users/raybayly/Development/BAI/MCP` and `/Users/raybayly/Development/1-Nation/MCP`.\n\n- Pinned Hath0r OpenSource fileset `0.2.0` derived from `HATH0R-CLI` (`/Users/raybayly/Development/OpenSource/hathor-cli`).\n- Apache-2.0 LICENSE retained.\n- Docker group policies aligned with `1-Nation ATC` (`/Users/raybayly/Development/1-Nation/ATC`).\n- FastMCP Streamable HTTP transport powered by official MCP Python SDK (`mcp>=1.30.0`).\n",
+      "properties": {
+        "path": "docs/provenance.md",
+        "category": "docs",
+        "size_bytes": 538
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__INDEX_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Index",
+      "content": "# Documentation Index: HATH0R-MCP\n\n- [`README.md`](../README.md) — High-level architecture, contracts, and quick start.\n- [`AGENTS.md`](../AGENTS.md) — Agent governance rules, CR-HATH0R-INIT-001, CLI-first, docker group, and identity.\n- [`docs/runbook.md`](runbook.md) — Operational runbook covering setup, tests, Docker, MCP clients, and troubleshooting.\n- [`docs/HOWTO-MCP-SETUP.md`](HOWTO-MCP-SETUP.md) — How to configure Claude, Warp, Gemini, and VS Code MCP connections.\n- [`docs/provenance.md`](provenance.md) — Code origin and licensing provenance.\n- [`docs/governance/SUITE_STANDARDS.md`](governance/SUITE_STANDARDS.md) — Suite standards pointers (control tower).\n- [`docs/governance/semantic-versioning.md`](governance/semantic-versioning.md) — SemVer pointer + local `VERSION` rules.\n- [`contracts/`](../contracts) — Pinned Hath0r schemas and exit-code contracts.\n- [`.hath0r/audits/hathor-adopt-2026-09-24.md`](../.hath0r/audits/hathor-adopt-2026-09-24.md) — Hathor adopt audit (issue #3).\n",
+      "properties": {
+        "path": "docs/INDEX.md",
+        "category": "docs",
+        "size_bytes": 1019
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__TICKET-AGENTGRAPH-REFACTOR_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Ticket Agentgraph Refactor",
+      "content": "---\ntitle: \"Ticket: Refactor Agents Files to Utilize AgentGraph Substrate\"\nrepository: \"OpenSource/hath0r-mcp\"\ngithub_issue: \"https://github.com/Bayly-AI/HATH0R-MCP/issues/22\"\ncreated: \"2026-10-03\"\nstatus: \"closed\"\nclosed_at: \"2026-10-03\"\nvalidation_result: \"PASSED (21 nodes, 7 edges)\"\n---\n\n# Refactor Agent Files to Utilize Hath0r AgentGraph Substrate\n\n## Repository Context\n- **Repository**: `OpenSource/hath0r-mcp`\n- **System Archetype / Role**: Central Knowledge & Graph Remote Server\n- **Technology Stack**: Python 3.11 / FastMCP / Knowledge Server\n- **Primary Subsystems**: `cfg/mcp`, `data`, `lib`\n- **Current Agent Files**: `AGENTS.md`, `lib/AGENTS.md`, `data/AGENTS.md` (3 total)\n- **Current AgentGraph Snapshot**: Initialized (17 nodes, 2 edges)\n\n---\n\n## Architectural Purpose\n\nUnder **CR-BAI-001** and the **Hath0r Zero-Prompt-Tax Governance** model, storing static policies, rules, and tool authorizations as monolithic Markdown documents in `AGENTS.md` wastes 40%–60% of LLM context windows and introduces probabilistic security bypasses. \n\nThis work refactors this repository's agent configuration into the deterministic **AgentGraph Quad-Graph Substrate** (KnowledgeGraph, ContextGrap",
+      "properties": {
+        "path": "docs/TICKET-AGENTGRAPH-REFACTOR.md",
+        "category": "docs",
+        "size_bytes": 4278
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__semantic-versioning_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Semantic Versioning",
+      "content": "# Semantic versioning — HATH0R-MCP\n\n> **Pointer only.** Canonical policy:\n> [HATH0R-CLI `docs/governance/semantic-versioning.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/semantic-versioning.md)\n> on branch `development`.\n\n## Local rules\n\n1. Root **`VERSION`** is the exclusive SemVer source of truth for this repo.\n2. `MANIFEST.json` `fileset_version` / `cli_version` / `contracts_version` and\n   `cfg/product.yaml` `fileset_version` must stay aligned with `VERSION` when\n   the fileset pin changes.\n3. Every PR targeting `development` declares version impact:\n   `semver:major` | `semver:minor` | `semver:patch` | `semver:none`.\n4. Release trains: `development` → `release/x.x.x` → `testing` → `staging` → `master`.\n\nCurrent pin: see [`VERSION`](../../VERSION).\n",
+      "properties": {
+        "path": "docs/governance/semantic-versioning.md",
+        "category": "governance",
+        "size_bytes": 805
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__SUITE_STANDARDS_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Suite Standards",
+      "content": "# Suite standards — HATH0R-MCP\n\n> Member pointer document. **Canonical standards live in the control tower**  \n> (`Bayly-AI/HATH0R-CLI` on branch `development`). Do not fork policy here.\n\nProduct: **HATH0R-MCP** (`hath0r-mcp`)  \nGroup: **hath0r-opensource**  \nControl tower: **HATH0R-CLI** (`Bayly-AI/HATH0R-CLI`)  \nUpdated: 2026-09-24 · Issue: [#3](https://github.com/Bayly-AI/HATH0R-MCP/issues/3)\n\n---\n\n## Purpose\n\nThis file orients agents and operators to suite-wide governance owned by the\nOpenSource control tower. Local `cfg/` stubs mirror defaults with\n**product-specific `service.name` / identity only**.\n\n---\n\n## Canonical references (GitHub `development`)\n\nBase URL:\n\n`https://github.com/Bayly-AI/HATH0R-CLI/blob/development/`\n\n| Topic | Control tower doc | Local stub / note |\n|-------|-------------------|-------------------|\n| OpenTelemetry | [`docs/governance/opentelemetry-standards.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/opentelemetry-standards.md) | [`cfg/observability/otel.json`](../../cfg/observability/otel.json) |\n| OpenFeature | [`docs/governance/openfeature-standards.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/gove",
+      "properties": {
+        "path": "docs/governance/SUITE_STANDARDS.md",
+        "category": "governance",
+        "size_bytes": 4580
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:_hath0r__knowledgebase__README_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Readme",
+      "content": "# Knowledgebase stub\n\nThis directory is a **pointer/stub**, not the canonical OpenSource group hub.\n\n- Group hub (member mode): `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase`\n- Override: `HATH0R_KB_PATH`\n\nDo not store secrets here. Durable shared knowledge lives at the group hub.\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/README.md",
+        "category": "knowledgebase",
+        "size_bytes": 297
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:README_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Readme",
+      "content": "# HATH0R-MCP\n\n[![CI](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml/badge.svg)](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml)\n[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)\n[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)\n\nRunnable, read-only Model Context Protocol (MCP) server and knowledge engine for the Hath0r OpenSource Suite, hosted as an OpenSource Project member under `OpenSource/hath0r-mcp`.\n\n| Contract | Value |\n|---|---|\n| Product ID | `hath0r-mcp` (service alias: `hath0r-mcp`) |\n| Repository | `Bayly-AI/HATH0R-MCP` |\n| Local Path | `/Users/raybayly/Development/OpenSource/hath0r-mcp` |\n| Compose project / network | `hath0r` / `hath0r-net` (`Hath0r Compose configuration`) |\n| Container / service / image | `hath0r-mcp` / `hath0r-mcp` / `hath0r/mcp:local` |\n| Canonical Cloud URL | `https://mcp.hath0r-cli.com` |\n| Host base URL (local) | `http://127.0.0.1:38083` |\n| Suite internal URL | `http://hath0r-mcp:8083` |\n| MCP transport | Streamable HTTP at `/mcp` via official MCP Python SDK |\n| Probes | `/health` (liveness), `/ready` (readiness), `",
+      "properties": {
+        "path": "README.md",
+        "category": "root",
+        "size_bytes": 5945
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:WARP_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Warp",
+      "content": "# Synced from HATH0R-CLI/cfg/group (control tower) at 2026-09-22T19:07:59Z\n# Canonical git path: Bayly-AI/HATH0R-CLI → cfg/group/\n# Re-run: ./scripts/sync-group-hub.sh\n\n# WARP.md — OpenSource Project policy\n\n> Group: `hath0r-opensource`  \n> Control tower: `HATH0R-CLI` (`Bayly-AI/HATH0R-CLI`)  \n> Updated: 2026-09-19\n\n## Purpose\n\nAgent and operator policy for the **OpenSource Project**: every canonical repo under `/Users/raybayly/Development/OpenSource`.\n\n## Control tower\n\n| Field | Value |\n|-------|-------|\n| Tower product | HATH0R-CLI |\n| Path | `/Users/raybayly/Development/OpenSource/HATH0R-CLI` |\n| Remote | `Bayly-AI/HATH0R-CLI` |\n| CLI | `hath0r` |\n| Config | `HATH0R-CLI/cfg/control-tower.yaml` |\n\nMembers point `control_tower_path` at the tower repo, not at the bare group folder.\n\n## Membership\n\n- **In scope**: all sibling git repositories under the OpenSource folder.\n- **Registry**: tower `cfg/products.yaml` and hub `/.hath0r/knowledgebase/catalogs/suite-products.yaml`.\n- New sibling repos join the OpenSource Project by default and should add member `AGENTS.md` + stub KB pointer.\n\n## Knowledge & docs\n\n| Surface | Path | Role |\n|---------|------|------|\n| Group KB hub | `OpenSou",
+      "properties": {
+        "path": "WARP.md",
+        "category": "root",
+        "size_bytes": 3160
+      },
+      "is_current": true
+    },
+    {
       "id": "role:developer",
       "plane": "rules",
       "type": "agent_role",
@@ -211,81 +380,6 @@
         ]
       },
       "is_current": true
-    },
-    {
-      "id": "rule:cr-bai-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "BAI Promotion Gate",
-      "content": "Canonical promotion development -> testing -> staging -> master.",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-BAI-001"
-      }
-    },
-    {
-      "id": "rule:cr-hath0r-init-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Hath0r Repo Init Gate",
-      "content": "Follow canonical playbook and runbook before repo initialization.",
-      "policy_type": "workflow",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-HATH0R-INIT-001"
-      }
-    },
-    {
-      "id": "rule:cr-branch-gov-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Branch Governance",
-      "content": "Branch & Promotion Governance: work PRs target development only, canonical promotion path.",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-BRANCH-GOV-001"
-      }
-    },
-    {
-      "id": "rule:cr-cli-first-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule CR-CLI-FIRST-001",
-      "content": "Governance policy rule CR-CLI-FIRST-001",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-CLI-FIRST-001"
-      }
-    },
-    {
-      "id": "rule:cr-hath0r-root-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Hidden Root Rule",
-      "content": "Use only .hath0r/ as hidden project root. Never create legacy .ai/ or .infraOS/.",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-HATH0R-ROOT-001"
-      }
     }
   ],
   "edges": [
@@ -300,50 +394,10 @@
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-bai-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-hath0r-init-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-branch-gov-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-cli-first-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-hath0r-root-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:21.837147+00:00",
-      "valid_to": null,
-      "is_current": true
     }
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-mcp",
-    "synced_sources": 15
+    "synced_sources": 27
   }
 }
