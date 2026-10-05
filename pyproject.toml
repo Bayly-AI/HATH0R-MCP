@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hath0r-mcp"
-version = "0.2.2"
+version = "0.2.3"
 description = "HATH0R-MCP: Hath0r MCP knowledge server and hybrid search engine"
 readme = "README.md"
 requires-python = ">=3.11"
