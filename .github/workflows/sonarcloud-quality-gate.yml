@@ -1,7 +1,6 @@
 # PR Quality Gates — SonarCloud hard stop (canonical thresholds only)
-# Policy: SonarCloud Quality Gate is the ONLY threshold source. Do NOT add
-# local coverage/rating minimums in sonar-project.properties that diverge
-# from the org SonarCloud Quality Gate. Failed gate = hard stop (merge blocked).
+# Policy: SonarCloud Quality Gate is the ONLY threshold source.
+# Failed gate = hard stop (merge blocked).
 name: SonarCloud Quality Gate
 
 "on":
@@ -39,7 +38,6 @@ jobs:
           if [ -z "${SONAR_TOKEN:-}" ]; then
             echo "::error::SONAR_TOKEN secret is not configured on this repository."
             echo "Add a SonarCloud token (secret SONAR_TOKEN) and optional vars.SONAR_ORGANIZATION."
-            echo "See docs/governance/playbooks/sonarcloud-quality-gate-playbook.md"
             exit 1
           fi
           echo "SONAR_TOKEN present (value not logged)."
@@ -47,57 +45,44 @@ jobs:
       - name: Resolve Sonar organization and project key
         id: meta
         env:
-          VARS_ORG: ${{ vars.SONAR_ORGANIZATION }}
-          REPO: ${{ github.repository }}
+          ORG_VAR: ${{ vars.SONAR_ORGANIZATION }}
         run: |
           set -euo pipefail
-          ORG="${VARS_ORG:-bayly-ai}"
-          REPO_NAME="${REPO#*/}"
-          PROJECT_KEY="Bayly-AI_${REPO_NAME}"
-
-          if [ -f "sonar-project.properties" ]; then
-            if grep -Eq '^sonar\.organization=' sonar-project.properties; then
-              ORG=$(grep '^sonar\.organization=' sonar-project.properties | head -n1 | cut -d= -f2- | tr -d '[:space:]')
-            fi
-            if grep -Eq '^sonar\.projectKey=' sonar-project.properties; then
-              PROJECT_KEY=$(grep '^sonar\.projectKey=' sonar-project.properties | head -n1 | cut -d= -f2- | tr -d '[:space:]')
-            fi
+          ORG="${ORG_VAR:-}"
+          if [ -z "$ORG" ]; then
+            ORG="bayly-ai"
+            echo "::warning::vars.SONAR_ORGANIZATION unset; defaulting to '$ORG'. Override via repo/org Actions variable."
           fi
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          KEY="${ORG}_${REPO_NAME}"
+          if [ -f sonar-project.properties ]; then
+            FILE_KEY=$(grep -E '^sonar.projectKey=' sonar-project.properties | head -1 | cut -d= -f2- || true)
+            FILE_ORG=$(grep -E '^sonar.organization=' sonar-project.properties | head -1 | cut -d= -f2- || true)
+            if [ -n "$FILE_KEY" ]; then KEY="$FILE_KEY"; fi
+            if [ -n "$FILE_ORG" ]; then ORG="$FILE_ORG"; fi
+          fi
+          echo "organization=$ORG" >> "$GITHUB_OUTPUT"
+          echo "project_key=$KEY" >> "$GITHUB_OUTPUT"
+          echo "Using organization=$ORG projectKey=$KEY"
 
-          echo "organization=${ORG}" >> "$GITHUB_OUTPUT"
-          echo "projectKey=${PROJECT_KEY}" >> "$GITHUB_OUTPUT"
-          echo "Resolved Sonar org: ${ORG}, projectKey: ${PROJECT_KEY}"
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Generate coverage report
+      - name: SonarCloud scan
+        uses: SonarSource/sonarqube-scan-action@v4.2.1
         env:
-          KB_TEST_MODE: "1"
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt -e .
-          pytest --cov=src --cov-report=xml:coverage.xml || true
-
-      - name: SonarCloud Scan
-        id: sonar
-        continue-on-error: true
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
             -Dsonar.organization=${{ steps.meta.outputs.organization }}
-            -Dsonar.projectKey=${{ steps.meta.outputs.projectKey }}
-            -Dsonar.sources=src
-            -Dsonar.tests=tests
-            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.projectKey=${{ steps.meta.outputs.project_key }}
+            -Dsonar.qualitygate.wait=true
+            -Dsonar.qualitygate.timeout=300
 
-      - name: Check SonarCloud Scan Status
-        if: steps.sonar.outcome == 'failure'
+      - name: Quality Gate hard-stop summary
+        if: always()
         run: |
-          echo "::warning::SonarCloud scan failed or project is not yet provisioned in SonarCloud org '${{ steps.meta.outputs.organization }}'. Provision project in SonarCloud to enforce strict quality gates."
-
+          cat <<'EOF'
+          SonarCloud Quality Gate is canonical.
+          - Do NOT weaken or duplicate gate thresholds in-repo.
+          - Failed Quality Gate = hard stop until findings are fixed.
+          - Docs: docs/governance/sonarcloud-quality-gates.md
+          EOF
