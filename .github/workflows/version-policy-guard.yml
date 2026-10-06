@@ -1,0 +1,48 @@
+name: Version Policy Guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
+
+jobs:
+  validate-version-policy:
+    name: Validate SemVer Policy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate Canonical VERSION Format
+        run: |
+          if [ -f "VERSION" ]; then
+            VER=$(cat VERSION | tr -d '[:space:]')
+            echo "Checking VERSION: $VER"
+            if ! [[ "$VER" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$ ]]; then
+              echo "Error: VERSION '$VER' does not follow SemVer format (MAJOR.MINOR.PATCH)"
+              exit 1
+            fi
+            echo "VERSION is valid SemVer."
+          else
+            echo "Warning: No VERSION file in root."
+          fi
+
+      - name: Check PR Version Declaration
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const body = (pr.body || "").toLowerCase();
+            const labels = pr.labels.map(l => l.name.toLowerCase());
+            
+            const hasSemverLabel = labels.some(l => l.startsWith("semver:"));
+            const hasBodyImpact = body.includes("semver:") || 
+                                  body.includes("version impact") || 
+                                  body.includes("patch") || 
+                                  body.includes("minor") || 
+                                  body.includes("major");
+
+            if (!hasSemverLabel && !hasBodyImpact) {
+              core.setFailed("PR must declare SemVer impact (e.g. 'Version Impact: patch|minor|major|none' in body, or label 'semver:*').");
+            } else {
+              core.info("PR satisfies version impact declaration requirement.");
+            }

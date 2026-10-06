@@ -1,5 +1,9 @@
 # HATH0R-MCP
 
+[![CI](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml/badge.svg)](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+
 Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for the Hath0r OpenSource Suite, hosted as an OpenSource Project member under `OpenSource/hath0r-mcp`.
 
 | Contract | Value |
@@ -9,7 +13,8 @@ Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for
 | Local Path | `/Users/raybayly/Development/OpenSource/hath0r-mcp` |
 | Compose project / network | `hath0r` / `hath0r-net` (`Hath0r Compose configuration`) |
 | Container / service / image | `hath0r-mcp` / `hath0r-mcp` / `hath0r/mcp:local` |
-| Host base URL | `http://127.0.0.1:38083` |
+| Canonical Cloud URL | `https://mcp.hath0r-cli.com` |
+| Host base URL (local) | `http://127.0.0.1:38083` |
 | Suite internal URL | `http://hath0r-mcp:8083` |
 | MCP transport | Streamable HTTP at `/mcp` via official MCP Python SDK |
 | Probes | `/health` (liveness), `/ready` (readiness), `/version` |
@@ -60,7 +65,13 @@ make smoke           # In-container smoke check
 make docker-status   # View container status
 ```
 
-### 3. Hath0r Governance Bootstrap
+### 3. AWS App Runner Deployment (`mcp.hath0r-cli.com`)
+```bash
+make deploy-aws      # Builds linux/amd64, pushes to ECR, and triggers App Runner
+```
+Live endpoint: `https://mcp.hath0r-cli.com` (with fallback to App Runner URL).
+
+### 4. Hath0r Governance Bootstrap
 ```bash
 ./bin/hath0r-bootstrap.sh
 ```
@@ -111,3 +122,15 @@ make docker-status   # View container status
 - **HATH0R-CLI** (`../hathor-cli`): Operator control tower and CLI for Hath0r suite operations (`hath0r doctor`, `hath0r kb *`).
 
 See [`docs/runbook.md`](docs/runbook.md) for full operational instructions.
+
+---
+
+## Contributing & PRs
+
+We welcome community contributions! Please review our [**Contributing Guide**](CONTRIBUTING.md) and [**Code of Conduct**](CODE_OF_CONDUCT.md).
+
+- **Issue First**: Create a GitHub issue before creating your work branch.
+- **PR Target**: All feature and chore PRs must target the `development` branch.
+- **Branch Naming**: `feature|bugfix|chore/<issue>-short-slug`.
+- **Promotion Path**: `development → testing → staging → master`.
+

@@ -12,7 +12,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     BUILD_TIMESTAMP=${BUILD_TIMESTAMP} \
     APP_VERSION=${APP_VERSION} \
     AWS_PUSH_COUNTER=${AWS_PUSH_COUNTER} \
-    AWS_RELEASE_VER=${AWS_RELEASE_VER}
+    AWS_RELEASE_VER=${AWS_RELEASE_VER} \
+    HATH0R_MCP_KNOWLEDGE_ROOT=/app/knowledgebase/canonical
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -34,12 +35,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY pyproject.toml README.md ./
 COPY src ./src
 COPY cfg ./cfg
+COPY knowledgebase ./knowledgebase
 
 # Install package
 RUN pip install --no-deps .
 
 # Create necessary directories
-RUN mkdir -p /app/data /app/logs /app/knowledgebase /app/data/indices && \
+RUN mkdir -p /app/data /app/logs /app/data/indices && \
     chown -R mcp:mcp /app
 
 # Switch to non-root user
