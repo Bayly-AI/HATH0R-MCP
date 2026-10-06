@@ -37,6 +37,12 @@ install:
 test:
 	KB_TEST_MODE=1 $(PYTHON) -m pytest -v --tb=short
 
+test-pre-deploy:
+	KB_TEST_MODE=1 $(PYTHON) -m pytest -v --cov=src --cov=knowledgebase --cov-report=xml
+
+test-post-deploy: smoke-local
+
+
 network-ensure:
 	@docker network inspect $(NETWORK_NAME) >/dev/null 2>&1 || \
 		docker network create \
