@@ -19,7 +19,7 @@
       "protocol": "http/protobuf",
       "endpoint_env": "OTEL_EXPORTER_OTLP_ENDPOINT",
       "headers_env": "OTEL_EXPORTER_OTLP_HEADERS",
-      "default_endpoint": "http://localhost:4318"
+      "default_endpoint": "http://localhost:58000/phoenix"
     }
   },
   "traces": {

@@ -4,7 +4,6 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 import hmac
 import json
-import os
 import re
 from typing import Annotated, Any, Literal
 
@@ -34,12 +33,18 @@ class ServiceSettings(BaseSettings):
         "127.0.0.1:*",
         "hath0r-mcp:*",
         "hath0rmcp:*",
+        "mcp.hath0r-cli.com",
+        "mcp.hath0r-cli.com:*",
+        "*.awsapprunner.com",
+        "*.awsapprunner.com:*",
     ]
     allowed_origins: list[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "https://mcp.hath0r-cli.com",
+        "https://hath0r-cli.com",
     ]
 
     @model_validator(mode="after")
