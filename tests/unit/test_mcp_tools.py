@@ -42,3 +42,26 @@ def test_get_default_mcp_tool_schema_returns_empty_object_for_unknown() -> None:
     """Unknown tools should resolve to an empty object schema."""
     schema = get_default_mcp_tool_schema("tool-that-does-not-exist")
     assert schema == {"type": "object", "properties": {}}
+
+
+def _untyped_array_paths(node: object, path: str) -> list[str]:
+    """Collect paths of array schemas whose ``items`` lack a ``type``."""
+    found: list[str] = []
+    if isinstance(node, dict):
+        if node.get("type") == "array":
+            items = node.get("items")
+            if not isinstance(items, dict) or "type" not in items:
+                found.append(path)
+        for key, value in node.items():
+            found.extend(_untyped_array_paths(value, f"{path}.{key}"))
+    return found
+
+
+def test_default_mcp_tool_array_params_declare_typed_items() -> None:
+    """Gemini rejects array params without typed ``items`` (400 INVALID_ARGUMENT)."""
+    offenders = [
+        p
+        for spec in get_default_mcp_tool_specs()
+        for p in _untyped_array_paths(spec.input_schema, spec.name)
+    ]
+    assert offenders == []
