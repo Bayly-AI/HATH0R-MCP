@@ -37,6 +37,12 @@ install:
 test:
 	KB_TEST_MODE=1 $(PYTHON) -m pytest -v --tb=short
 
+test-pre-deploy:
+	KB_TEST_MODE=1 $(PYTHON) -m pytest -v --cov=src --cov=knowledgebase --cov-report=xml
+
+test-post-deploy: smoke-local
+
+
 network-ensure:
 	@docker network inspect $(NETWORK_NAME) >/dev/null 2>&1 || \
 		docker network create \
@@ -85,3 +91,7 @@ smoke-local:
 
 serve:
 	@$(PYTHON) -m uvicorn knowledgebase.server:app --host 0.0.0.0 --port 8083
+
+deploy-aws:
+	@./deploy/aws/deploy.sh
+

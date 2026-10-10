@@ -1,0 +1,35 @@
+# Binds promotion deploys to GitHub Environments so staging/production require human approval.
+name: Promotion Environment Gates
+
+"on":
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: testing | staging | production
+        required: true
+        type: choice
+        options: [testing, staging, production]
+      ref_name:
+        description: Branch or tag being promoted
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  gate:
+    name: environment-gate
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target_environment }}
+    steps:
+      - name: Record promotion intent
+        env:
+          TARGET_ENV: ${{ inputs.target_environment }}
+          REF_NAME: ${{ inputs.ref_name }}
+        run: |
+          echo "Promotion gate for environment=${TARGET_ENV}"
+          echo "ref=${REF_NAME}"
+          echo "Human approval is required for staging and production when the org plan supports environment required reviewers."
+          echo "See docs/governance/pr-workflow.md"

@@ -1,0 +1,131 @@
+# PR Quality Gates — SonarCloud hard stop (canonical thresholds only)
+# Policy: SonarCloud Quality Gate is the ONLY threshold source.
+# Failed gate = hard stop (merge blocked).
+name: SonarCloud Quality Gate
+
+"on":
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [development, testing, staging, master]
+  push:
+    branches: [development]
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: write
+
+concurrency:
+  group: sonar-${{ github.repository }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sonarcloud-quality-gate:
+    name: SonarCloud Quality Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require SONAR_TOKEN
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SONAR_TOKEN:-}" ]; then
+            echo "::error::SONAR_TOKEN secret is not configured on this repository."
+            echo "Add a SonarCloud token (secret SONAR_TOKEN) and optional vars.SONAR_ORGANIZATION."
+            exit 1
+          fi
+          echo "SONAR_TOKEN present (value not logged)."
+
+      - name: Resolve Sonar organization and project key
+        id: meta
+        env:
+          ORG_VAR: ${{ vars.SONAR_ORGANIZATION }}
+        run: |
+          set -euo pipefail
+          ORG="${ORG_VAR:-}"
+          if [ -z "$ORG" ]; then
+            ORG="bayly-ai"
+            echo "::warning::vars.SONAR_ORGANIZATION unset; defaulting to '$ORG'. Override via repo/org Actions variable."
+          fi
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          KEY="${ORG}_${REPO_NAME}"
+          if [ -f sonar-project.properties ]; then
+            FILE_KEY=$(grep -E '^sonar.projectKey=' sonar-project.properties | head -1 | cut -d= -f2- || true)
+            FILE_ORG=$(grep -E '^sonar.organization=' sonar-project.properties | head -1 | cut -d= -f2- || true)
+            if [ -n "$FILE_KEY" ]; then KEY="$FILE_KEY"; fi
+            if [ -n "$FILE_ORG" ]; then ORG="$FILE_ORG"; fi
+          fi
+          echo "organization=$ORG" >> "$GITHUB_OUTPUT"
+          echo "project_key=$KEY" >> "$GITHUB_OUTPUT"
+          echo "Using organization=$ORG projectKey=$KEY"
+
+      - name: Verify SonarCloud Quality Gate
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          ORG: ${{ steps.meta.outputs.organization }}
+          KEY: ${{ steps.meta.outputs.project_key }}
+          PR_NUM: ${{ github.event.pull_request.number }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          python3 - <<'EOF'
+          import os, sys, time, json, urllib.request, urllib.parse, base64
+
+          token = os.environ.get("SONAR_TOKEN", "").strip()
+          key = os.environ.get("KEY", "").strip()
+          pr_num = os.environ.get("PR_NUM", "").strip()
+          branch = os.environ.get("BRANCH", "").strip()
+
+          auth = "Basic " + base64.b64encode(f"{token}:".encode()).decode()
+
+          params = {}
+          if pr_num:
+              params["pullRequest"] = pr_num
+          else:
+              params["branch"] = branch
+          params["projectKey"] = key
+
+          url = "https://sonarcloud.io/api/qualitygates/project_status?" + urllib.parse.urlencode(params)
+          print(f"Checking SonarCloud Quality Gate for '{key}'...")
+
+          max_wait = 300
+          start = time.time()
+          while time.time() - start < max_wait:
+              try:
+                  req = urllib.request.Request(url, headers={"Authorization": auth})
+                  with urllib.request.urlopen(req) as resp:
+                      data = json.loads(resp.read().decode())
+                      status = data.get("projectStatus", {}).get("status")
+                      if status in ("OK", "ERROR"):
+                          print(f"Quality Gate Result: {status}")
+                          if status == "OK":
+                              print("SonarCloud Quality Gate Passed!")
+                              sys.exit(0)
+                          else:
+                              print("SonarCloud Quality Gate FAILED!")
+                              for cond in data.get("projectStatus", {}).get("conditions", []):
+                                  if cond.get("status") != "OK":
+                                      print(f"  Condition failed: {cond.get('metricKey')} (actual: {cond.get('actualValue')}, error threshold: {cond.get('errorThreshold')})")
+                              sys.exit(1)
+              except Exception as e:
+                  print(f"Waiting for SonarCloud analysis... ({e})")
+              time.sleep(10)
+
+          print("Timeout waiting for SonarCloud Quality Gate.")
+          sys.exit(1)
+          EOF
+
+      - name: Quality Gate hard-stop summary
+        if: always()
+        run: |
+          cat <<'EOF'
+          SonarCloud Quality Gate is canonical.
+          - Do NOT weaken or duplicate gate thresholds in-repo.
+          - Failed Quality Gate = hard stop until findings are fixed.
+          - Docs: docs/governance/sonarcloud-quality-gates.md
+          EOF
