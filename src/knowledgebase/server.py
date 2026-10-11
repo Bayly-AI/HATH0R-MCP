@@ -581,6 +581,34 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
             metadata=metadata,
         )
 
+    # ------------------------------------------------------------------------
+    # 8. Apache Airflow Integration Tools
+    # ------------------------------------------------------------------------
+
+    @mcp.tool(annotations=read_annotations)
+    async def airflow_list_dags(
+        limit: Annotated[int, Field(ge=1, le=100, description="Maximum DAGs to return")] = 20,
+        offset: Annotated[int, Field(ge=0, description="Offset for pagination")] = 0,
+    ) -> Any:
+        """List active DAGs in the enterprise Apache Airflow environment."""
+        return await _call_backend_tool("airflow_list_dags", {"limit": limit, "offset": offset})
+
+    @mcp.tool(annotations=write_annotations)
+    async def airflow_trigger_dag(
+        dag_id: Annotated[str, Field(min_length=1, max_length=250, description="Target Airflow DAG identifier")],
+        conf: Annotated[dict[str, Any] | None, Field(description="Optional configuration payload")] = None,
+    ) -> Any:
+        """Trigger execution of an Apache Airflow DAG."""
+        return await _call_backend_tool("airflow_trigger_dag", {"dag_id": dag_id, "conf": conf or {}})
+
+    @mcp.tool(annotations=read_annotations)
+    async def airflow_get_dag_run(
+        dag_id: Annotated[str, Field(min_length=1, max_length=250, description="Airflow DAG identifier")],
+        dag_run_id: Annotated[str, Field(min_length=1, max_length=250, description="Airflow DAG run identifier")],
+    ) -> Any:
+        """Inspect execution status and state of a specific Apache Airflow DAG run."""
+        return await _call_backend_tool("airflow_get_dag_run", {"dag_id": dag_id, "dag_run_id": dag_run_id})
+
     transport = mcp.streamable_http_app()
 
     @asynccontextmanager

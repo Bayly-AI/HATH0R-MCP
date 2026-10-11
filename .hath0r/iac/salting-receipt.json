@@ -1,0 +1,20 @@
+{
+  "schema_version": "hath0r.iac.salting/1",
+  "image_name": "hath0r-mcp",
+  "mutable_tag": "711387127111.dkr.ecr.us-east-1.amazonaws.com/hath0r-mcp:latest",
+  "pinned_digest": "sha256:7ff68c7532aaa724f971609463fdbed8cfabcf2b7b24822bf0c77d5ef63fa6c4",
+  "pinned_ref": "711387127111.dkr.ecr.us-east-1.amazonaws.com/hath0r-mcp@sha256:7ff68c7532aaa724f971609463fdbed8cfabcf2b7b24822bf0c77d5ef63fa6c4",
+  "timestamp": "2026-10-11T15:48:20Z",
+  "attestation": {
+    "builder": "hath0r-cicccdct-runner",
+    "predicate_type": "https://slsa.dev/provenance/v1",
+    "signature_provider": "cosign",
+    "verified": true,
+    "rekor_bundle_logged": true
+  },
+  "secret_salting": {
+    "provider": "aws_secrets_manager",
+    "path": "/hath0r/secrets/hath0r-mcp",
+    "injected_at_runtime": true
+  }
+}
