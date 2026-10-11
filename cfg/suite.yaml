@@ -17,7 +17,7 @@ suite_hath0r:
   group_id: hath0r-opensource
   group_label: Hath0r OpenSource Suite
   product_id: hath0r-mcp
-  container_name: hath0r-mcp
+  container_name: Hath0r-MCP
   compose_project_name: hath0r
   docker_network: hath0r-net
   image_prefix: hath0r/
