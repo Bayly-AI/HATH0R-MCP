@@ -16,22 +16,29 @@ from knowledgebase.core.config import Settings, get_settings
 from knowledgebase.core.models import Document, SearchResult
 
 
-def _fallback_version_from_pyproject() -> str | None:
-    """Best-effort fallback version lookup from a nearby pyproject.toml."""
-    pattern = re.compile(r'^version\s*=\s*["\']([^"\']+)["\']\s*$', re.MULTILINE)
+def _fallback_version_from_root() -> str | None:
+    """Best-effort fallback version lookup from canonical VERSION or pyproject.toml."""
     for parent in Path(__file__).resolve().parents:
+        version_path = parent / "VERSION"
+        if version_path.exists():
+            try:
+                v = version_path.read_text(encoding="utf-8").strip()
+                if v:
+                    return v
+            except OSError:
+                pass
         pyproject_path = parent / "pyproject.toml"
-        if not pyproject_path.exists():
-            continue
-        try:
-            contents = pyproject_path.read_text(encoding="utf-8")
-        except OSError:
-            continue
-        match = pattern.search(contents)
-        if match:
-            version = match.group(1).strip()
-            if version:
-                return version
+        if pyproject_path.exists():
+            try:
+                pattern = re.compile(r'^version\s*=\s*["\']([^"\']+)["\']\s*$', re.MULTILINE)
+                contents = pyproject_path.read_text(encoding="utf-8")
+                match = pattern.search(contents)
+                if match:
+                    version = match.group(1).strip()
+                    if version:
+                        return version
+            except OSError:
+                pass
     return None
 
 
@@ -43,7 +50,7 @@ except PackageNotFoundError:  # pragma: no cover - fallback during editable inst
     try:
         __version__ = _get_version("python-service-template")
     except PackageNotFoundError:
-        __version__ = _fallback_version_from_pyproject() or "0.0.0"
+        __version__ = _fallback_version_from_root() or "0.0.0"
 
 __author__ = "Hath0r Team"
 

@@ -13,13 +13,13 @@ def test_compose_joins_atc_group_without_redefining_shared_services():
     assert compose["name"] == "hath0r"
     assert set(compose["services"]) == {"hath0r-mcp"}
     service = compose["services"]["hath0r-mcp"]
-    assert service["container_name"] == "hath0r-mcp"
+    assert service["container_name"] == "Hath0r-MCP"
     assert service["image"] == "hath0r/mcp:local"
     assert service["labels"] == {
         "com.hath0r.org": "bayly-ai",
         "com.hath0r.project": "hath0r-opensource",
         "com.hath0r.component": "mcp",
-        "com.hath0r.container": "hath0r-mcp",
+        "com.hath0r.container": "Hath0r-MCP",
     }
     assert compose["networks"]["hath0r-net"]["external"] is True
     assert "hath0r-net" in service["networks"]
