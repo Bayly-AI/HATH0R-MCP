@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-05T17:11:26.021421+00:00",
+  "timestamp": "2026-10-11T11:42:32.162319+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -303,6 +303,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__playbooks__release-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Release Runbook",
+      "content": "# Release Runbook — HATH0R MCP\n\n> Role: Operational guide for versioning, package build, and release publishing.  \n> Status: Canonical · Member of `hath0r-opensource`  \n> Policy: [Semantic Versioning](../semantic-versioning.md) · [HATH0R-CLI SemVer](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/semantic-versioning.md)\n\n---\n\n## 1. Prerequisites\n\nBefore cutting a release:\n1. All PRs merged into `development`.\n2. Promotion gates satisfied: `development` -> `testing` -> `staging` -> `master`.\n3. Working tree is clean: `git status`.\n4. Tests and SonarCloud quality gates pass.\n\n---\n\n## 2. Release Steps\n\n### Step 1: Validate Version and Changelog\nVerify alignment between `VERSION`, `pyproject.toml`, and `CHANGELOG.md`:\n```bash\nhath0r release validate\n```\n\n### Step 2: Bump Version\nUpdate the root `VERSION` file and `pyproject.toml`:\n```bash\necho \"1.0.2\" > VERSION\n```\nUpdate `pyproject.toml` version string to match.\nUpdate `CHANGELOG.md` with the new version section under `## [X.Y.Z] - YYYY-MM-DD`.\n\n### Step 3: Promote along Canonical Path\nPromote branch following CR-BAI-001:\n```bash\ngit checkout testing && git merge development\ngit checkout staging && git merge te",
+      "properties": {
+        "path": "docs/governance/playbooks/release-runbook.md",
+        "category": "playbooks",
+        "size_bytes": 1672
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:_hath0r__knowledgebase__README_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -398,6 +411,6 @@
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-mcp",
-    "synced_sources": 27
+    "synced_sources": 28
   }
 }
