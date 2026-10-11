@@ -4156,9 +4156,52 @@ async def _mcp_tool_voice_dispatch_action(
     return _mcp_text(json.dumps(result, indent=2, default=str))
 
 
+async def _mcp_tool_airflow_list_dags(
+    tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
+) -> dict[str, Any]:
+    from knowledgebase.services.airflow_service import get_airflow_service
+
+    svc = get_airflow_service()
+    limit = int(args.get("limit", 20))
+    offset = int(args.get("offset", 0))
+    res = svc.list_dags(limit=limit, offset=offset)
+    return _mcp_text(json.dumps(res, indent=2, default=str))
+
+
+async def _mcp_tool_airflow_trigger_dag(
+    tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
+) -> dict[str, Any]:
+    from knowledgebase.services.airflow_service import get_airflow_service
+
+    svc = get_airflow_service()
+    dag_id = args.get("dag_id")
+    if not dag_id:
+        return fail("Missing required argument: 'dag_id'")
+    conf = args.get("conf")
+    res = svc.trigger_dag(dag_id=str(dag_id), conf=conf)
+    return _mcp_text(json.dumps(res, indent=2, default=str))
+
+
+async def _mcp_tool_airflow_get_dag_run(
+    tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
+) -> dict[str, Any]:
+    from knowledgebase.services.airflow_service import get_airflow_service
+
+    svc = get_airflow_service()
+    dag_id = args.get("dag_id")
+    dag_run_id = args.get("dag_run_id")
+    if not dag_id or not dag_run_id:
+        return fail("Missing required arguments: 'dag_id' and 'dag_run_id'")
+    res = svc.get_dag_run(dag_id=str(dag_id), dag_run_id=str(dag_run_id))
+    return _mcp_text(json.dumps(res, indent=2, default=str))
+
+
 _MCP_TOOL_HANDLERS: dict[
     str, Callable[[str, dict[str, Any], Callable[[str], dict[str, Any]]], Any]
 ] = {
+    "airflow_list_dags": _mcp_tool_airflow_list_dags,
+    "airflow_trigger_dag": _mcp_tool_airflow_trigger_dag,
+    "airflow_get_dag_run": _mcp_tool_airflow_get_dag_run,
     "voice_speak": _mcp_tool_voice_speak,
     "voice_listen": _mcp_tool_voice_listen,
     "voice_dispatch_action": _mcp_tool_voice_dispatch_action,
