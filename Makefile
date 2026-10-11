@@ -75,7 +75,7 @@ docker-down:
 
 docker-status:
 	@$(COMPOSE) ps $(SERVICE)
-	@docker inspect -f 'health={{if .State.Health}}{{.State.Health.Status}}{{else}}n/a{{end}} status={{.State.Status}}' $(SERVICE) 2>/dev/null || echo "$(SERVICE) missing"
+	@docker inspect -f 'health={{if .State.Health}}{{.State.Health.Status}}{{else}}n/a{{end}} status={{.State.Status}}' Hath0r-MCP 2>/dev/null || docker inspect -f 'health={{if .State.Health}}{{.State.Health.Status}}{{else}}n/a{{end}} status={{.State.Status}}' $(SERVICE) 2>/dev/null || echo "Hath0r-MCP missing"
 
 docker-ps:
 	@docker ps -a --filter label=com.docker.compose.project=hath0r --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'

@@ -8,7 +8,7 @@ services:
         GIT_SHA: ${GIT_SHA:-unknown}
         BUILD_TIMESTAMP: ${BUILD_TIMESTAMP:-unknown}
     image: hath0r/mcp:local
-    container_name: hath0r-mcp
+    container_name: Hath0r-MCP
     restart: unless-stopped
     ports:
       - "127.0.0.1:${HATH0R_MCP_HOST_PORT:-38083}:8083"
@@ -26,12 +26,12 @@ services:
       - ./knowledgebase:/app/knowledgebase:ro
     networks:
       hath0r-net:
-        aliases: [hath0r-mcp, mcp]
+        aliases: [Hath0r-MCP, hath0r-mcp, mcp]
     labels:
       com.hath0r.org: bayly-ai
       com.hath0r.project: hath0r-opensource
       com.hath0r.component: mcp
-      com.hath0r.container: hath0r-mcp
+      com.hath0r.container: Hath0r-MCP
     healthcheck:
       test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8083/ready', timeout=5)"]
       interval: 30s

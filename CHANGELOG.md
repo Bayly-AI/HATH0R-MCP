@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Updated canonical container name to `Hath0r-MCP` (#51).
+- Maintained legacy `hath0r-mcp` network alias for backwards compatibility across suite compose stacks.
+
 ## [1.0.1] - 2026-10-10
 
 First tagged release. Aligns the repository VERSION with the deployed container
