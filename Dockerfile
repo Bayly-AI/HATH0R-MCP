@@ -1,58 +1,56 @@
-# Dockerfile for HATH0R-MCP Service
-FROM python:3.12-slim
+# syntax=docker/dockerfile:1
+# ------------------------------------------------------------------------------
+# Stage 1: Build & Dependencies
+# ------------------------------------------------------------------------------
+FROM python:3.11-slim AS builder
 
-ARG GIT_SHA=unknown
-ARG BUILD_TIMESTAMP=unknown
-ARG APP_VERSION=1.0.1
-ARG AWS_PUSH_COUNTER=0
-ARG AWS_RELEASE_VER=0
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    GIT_SHA=${GIT_SHA} \
-    BUILD_TIMESTAMP=${BUILD_TIMESTAMP} \
-    APP_VERSION=${APP_VERSION} \
-    AWS_PUSH_COUNTER=${AWS_PUSH_COUNTER} \
-    AWS_RELEASE_VER=${AWS_RELEASE_VER} \
-    HATH0R_MCP_KNOWLEDGE_ROOT=/app/knowledgebase/canonical
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Install system dependencies
+WORKDIR /build
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git \
+    build-essential \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Create non-root user
-RUN useradd -m -u 1000 -s /bin/bash mcp
+COPY requirements*.txt pyproject.toml* ./
+RUN if [ -f requirements.txt ]; then \
+        pip install --prefix=/install -r requirements.txt; \
+    elif [ -f pyproject.toml ]; then \
+        pip install --prefix=/install .; \
+    fi
 
-# Set working directory
+# ------------------------------------------------------------------------------
+# Stage 2: Hardened Non-Root Runtime
+# ------------------------------------------------------------------------------
+FROM python:3.11-slim AS runner
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/install/bin:$PATH" \
+    PYTHONPATH="/install/lib/python3.11/site-packages:$PYTHONPATH"
+
+# Create dedicated non-root user (UID/GID 10001)
+RUN groupadd -g 10001 hath0r && \
+    useradd -u 10001 -g hath0r -s /bin/sh -m hath0r
+
 WORKDIR /app
 
-# Copy requirements first for better caching
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy installed packages from builder
+COPY --from=builder /install /install
 
-# Copy application and configs
-COPY pyproject.toml README.md ./
-COPY src ./src
-COPY cfg ./cfg
-COPY knowledgebase ./knowledgebase
-
-# Install package
-RUN pip install --no-deps .
-
-# Create necessary directories
-RUN mkdir -p /app/data /app/logs /app/data/indices && \
-    chown -R mcp:mcp /app
+# Copy application source code with non-root ownership
+COPY --chown=hath0r:hath0r . /app
 
 # Switch to non-root user
-USER mcp
+USER 10001:10001
 
-# Expose container port
-EXPOSE 8083
+EXPOSE 8000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 --start-period=15s \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8083/ready', timeout=5)"
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+    CMD python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health').read()" || exit 1
 
-# Start FastMCP server
-CMD ["python", "-m", "uvicorn", "knowledgebase.server:app", "--host", "0.0.0.0", "--port", "8083"]
+ENTRYPOINT ["python3", "-m", "hath0r_mcp"]
