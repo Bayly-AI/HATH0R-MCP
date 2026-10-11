@@ -24,3 +24,8 @@ reports/
 .aegis/
 cfg/status.json
 .DS_Store
+
+# Hath0r runtime spools
+.hath0r/events.jsonl
+.hath0r/finops/
+
