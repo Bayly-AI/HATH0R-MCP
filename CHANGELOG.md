@@ -5,7 +5,15 @@ All notable changes to **HATH0R-MCP** (Hath0r MCP Server) are documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.1.0] - 2026-10-11
+
+### Added
+- Semantic versioning compliance and release automation workflow (`.github/workflows/release.yml`, `version-policy-guard.yml`) (#49).
+- Integration and registration with HATH0R CLI Sibling Bot for automated suite sibling installation and lifecycle management (#49).
+
+### Changed
+- Updated canonical container name to `Hath0r-MCP` (#51).
+- Maintained legacy `hath0r-mcp` network alias for backwards compatibility across suite compose stacks (#51).
 
 ## [1.0.1] - 2026-10-10
 

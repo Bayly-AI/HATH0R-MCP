@@ -480,7 +480,19 @@ DEFAULT_MCP_TOOL_SPECS: tuple[MCPToolSpec, ...] = (
             {
                 "documents": {
                     "type": "array",
-                    "description": "List of documents to add (each with id, content, optional metadata)",
+                    "description": "List of documents to add (each with id, content, optional title)",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {"type": "string", "description": DOCUMENT_ID_DESC},
+                            "content": {"type": "string", "description": "Document content"},
+                            "title": {
+                                "type": "string",
+                                "description": "Document title (optional, defaults to id)",
+                            },
+                        },
+                        "required": ["id", "content"],
+                    },
                 },
                 "index": {"type": "string", "description": TARGET_INDEX_NAME_DESC},
                 "index_name": {"type": "string", "description": ALIAS_FOR_INDEX_DESC},
