@@ -594,6 +594,39 @@ DEFAULT_MCP_TOOL_SPECS: tuple[MCPToolSpec, ...] = (
             required=["transcript", "intent"],
         ),
     ),
+    # ========== Apache Airflow Enterprise Integration Tools ==========
+    MCPToolSpec(
+        name="airflow_list_dags",
+        description="List active DAGs in the enterprise Apache Airflow environment",
+        input_schema=_schema(
+            {
+                "limit": {"type": "integer", "description": "Maximum DAGs to return (default 20)"},
+                "offset": {"type": "integer", "description": "Offset for pagination (default 0)"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="airflow_trigger_dag",
+        description="Trigger execution of an Apache Airflow DAG with optional configuration parameters",
+        input_schema=_schema(
+            {
+                "dag_id": {"type": "string", "description": "Target Airflow DAG identifier"},
+                "conf": {"type": "object", "description": "Optional configuration payload for the DAG run"},
+            },
+            required=["dag_id"],
+        ),
+    ),
+    MCPToolSpec(
+        name="airflow_get_dag_run",
+        description="Inspect execution status and state of a specific Apache Airflow DAG run",
+        input_schema=_schema(
+            {
+                "dag_id": {"type": "string", "description": "Airflow DAG identifier"},
+                "dag_run_id": {"type": "string", "description": "Airflow DAG run identifier"},
+            },
+            required=["dag_id", "dag_run_id"],
+        ),
+    ),
 )
 
 # Preserve original client names alongside the infraos rename.

@@ -5,6 +5,12 @@ All notable changes to **HATH0R-MCP** (Hath0r MCP Server) are documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-10-11
+
+### Added
+- **Apache Airflow Integration Toolset** (#58): Added FastMCP tools `airflow_list_dags`, `airflow_trigger_dag`, and `airflow_get_dag_run` via `AirflowService` REST client.
+- **Infrastructure as Code (IaC) & AWS EKS Fargate Standards** (#56): Multi-stage Dockerfile hardening, non-root user execution, container salting, and EKS Fargate serverless manifests.
+
 ## [1.1.0] - 2026-10-11
 
 ### Added

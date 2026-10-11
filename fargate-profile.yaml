@@ -1,0 +1,14 @@
+schema_version: "hath0r.fargate.profile/1"
+fargate_profile_name: "hath0r-hath0r-mcp-profile"
+cluster_name: "hath0r-eks-cluster"
+pod_execution_role_arn: "arn:aws:iam::711387127111:role/AmazonEKSFargatePodExecutionRole"
+subnets:
+  - "subnet-0a1b2c3d4e5f67890"
+  - "subnet-0f9e8d7c6b5a43210"
+selectors:
+  - namespace: "hath0r-mcp"
+    labels:
+      fargate: "true"
+tags:
+  ManagedBy: "hath0r"
+  Service: "hath0r-mcp"
