@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "updated_at": "2026-10-16T15:24:56.302376+00:00",
+  "updated_at": "2026-10-16T15:48:34.355835+00:00",
   "nodes": [
     {
       "id": "rule:cr-cli-entry-001",
@@ -86,29 +86,70 @@
       "metadata": {}
     },
     {
+      "id": "episode:clean-repo-hath0r-mcp",
+      "type": "episode",
+      "label": "Clean Repo Lifecycle (hath0r-mcp)",
+      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "importance": 0.75,
+      "tags": [
+        "clean-repo",
+        "hygiene",
+        "hath0r-mcp",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T15:48:34.318294+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T15:48:34.318294+00:00",
+      "updated_at": "2026-10-16T15:48:34.318294+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:hath0r-mcp",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-mcp",
+      "content": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, license, python. Latest context: Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "importance": 0.95,
+      "tags": [
+        "hath0r-mcp",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T15:48:34.341933+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T15:48:34.341933+00:00",
+      "updated_at": "2026-10-16T15:48:34.341933+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "hath0r-mcp"
+      }
+    },
+    {
       "id": "session:sess-20261016-123220-bb3476",
       "type": "session",
       "label": "Micro Session sess-20261016-123220-bb3476",
-      "content": "Micro Session sess-20261016-123220-bb3476 [active] | Focus: Repository orientation verified for hath0r-mcp | Reads: 5, Writes: 5 | Entries: Compounded fact:repo-hath0r-mcp-orientation: hath0r-mcp Repository Memory Orientation",
+      "content": "Micro Session sess-20261016-123220-bb3476 [completed] | Focus: Repository orientation verified for hath0r-mcp | Reads: 6, Writes: 7 | Entries: Compounded episode:clean-repo-hath0r-mcp: Clean Repo Lifecycle (hath0r-mcp); Clean Repo Lifecycle completed for hath0r-mcp.",
       "importance": 0.75,
       "tags": [
         "session",
         "micro-session",
-        "active"
+        "completed"
       ],
       "valid_from": "2026-10-16T12:32:20.933229+00:00",
-      "valid_to": null,
+      "valid_to": "2026-10-16T15:48:34.351599+00:00",
       "is_current": true,
       "created_at": "2026-10-16T12:32:20.933229+00:00",
-      "updated_at": "2026-10-16T15:24:56.286575+00:00",
+      "updated_at": "2026-10-16T15:48:34.351599+00:00",
       "metadata": {
         "session_id": "sess-20261016-123220-bb3476",
         "prior_session_id": null,
         "parent_session_id": null,
-        "read_count": 5,
-        "write_count": 5,
-        "status": "active",
-        "byte_size": 1761
+        "read_count": 6,
+        "write_count": 7,
+        "status": "completed",
+        "byte_size": 2014
       }
     }
   ],
@@ -158,8 +199,48 @@
       "weight": 1.0,
       "valid_from": "2026-10-16T12:32:20.938038+00:00",
       "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.318294+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-mcp",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.318294+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-mcp",
+      "target": "session:sess-20261016-123220-bb3476",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.334282+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-mcp",
+      "target": "fact:repo-hath0r-mcp-orientation",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.341933+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-mcp",
+      "target": "episode:clean-repo-hath0r-mcp",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.341933+00:00",
+      "is_current": true
     }
   ],
-  "revision": 13,
-  "content_hash": "sha256:68603e88f20a54f34e66e26bdb9def0dd89e9c5a8f327b3770b9b14ce959b9ce"
+  "revision": 19,
+  "content_hash": "sha256:cd67472c128eb2a05859c06ad0b833df3d68d56c5d0639d318ed93812379e87f"
 }
