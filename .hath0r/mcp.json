@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "engine": "hath0r-mcp",
+  "default_provider": "hath0r-mcp",
+  "group": "hath0r-opensource",
+  "default_server": "hath0r-mcp",
+  "description": "Canonical Hath0r MCP configuration for hath0r-mcp (group: hath0r-opensource)",
+  "mcpServers": {
+    "hath0r-mcp": {
+      "type": "streamable-http",
+      "url": "https://mcp.hath0r-cli.com/mcp",
+      "engine": "hath0r-mcp",
+      "group": "hath0r-opensource",
+      "default": true
+    },
+    "ray-mcp": {
+      "type": "streamable-http",
+      "url": "https://mcp.raymondbayly.com/mcp",
+      "engine": "hath0r-mcp",
+      "group": "ray",
+      "default": false
+    },
+    "1-nation-mcp": {
+      "type": "streamable-http",
+      "url": "https://mcp.1-nation.com/mcp",
+      "engine": "hath0r-mcp",
+      "group": "1-nation",
+      "default": false
+    },
+    "bai-mcp": {
+      "type": "streamable-http",
+      "url": "https://mcp.baylyai.com/mcp",
+      "engine": "hath0r-mcp",
+      "group": "bai",
+      "default": false
+    }
+  },
+  "servers": [
+    {
+      "id": "hath0r-mcp",
+      "name": "Hath0rMCP",
+      "engine": "hath0r-mcp",
+      "scope": "project",
+      "group": "hath0r-opensource",
+      "priority": 1,
+      "product_id": "hath0r-mcp",
+      "transport": "streamable-http",
+      "base_url": "https://mcp.hath0r-cli.com",
+      "mcp_endpoint": "/mcp",
+      "health_endpoint": "/health",
+      "ready_endpoint": "/ready",
+      "description": "Hath0r OpenSource Suite MCP knowledge server and tools (Project MCP)",
+      "enabled": true,
+      "local_path": "/Users/raybayly/Development/OpenSource/hath0r-mcp",
+      "github": "Bayly-AI/HATH0R-MCP"
+    },
+    {
+      "id": "ray-mcp",
+      "name": "RayMCP",
+      "engine": "hath0r-mcp",
+      "scope": "group",
+      "group": "ray",
+      "priority": 3,
+      "product_id": "ray-mcp",
+      "transport": "streamable-http",
+      "base_url": "https://mcp.raymondbayly.com",
+      "mcp_endpoint": "/mcp",
+      "health_endpoint": "/health",
+      "ready_endpoint": "/ready",
+      "description": "Ray Bayly Hath0r MCP knowledgebase and executive tools",
+      "enabled": true,
+      "local_path": "/Users/raybayly/Development/Ray/mcp",
+      "github": "Bayly-AI/RAY-MCP"
+    },
+    {
+      "id": "1-nation-mcp",
+      "name": "1-NationMCP",
+      "engine": "hath0r-mcp",
+      "scope": "group",
+      "group": "1-nation",
+      "priority": 4,
+      "product_id": "1-nation-mcp",
+      "transport": "streamable-http",
+      "base_url": "https://mcp.1-nation.com",
+      "mcp_endpoint": "/mcp",
+      "health_endpoint": "/health",
+      "ready_endpoint": "/ready",
+      "description": "1-Nation Suite Hath0r MCP service and reference tools",
+      "enabled": true,
+      "local_path": "/Users/raybayly/Development/1-Nation/MCP",
+      "github": "Bayly-AI/1-Nation-MCP"
+    },
+    {
+      "id": "bai-mcp",
+      "name": "BaylyAIMCP",
+      "engine": "hath0r-mcp",
+      "scope": "org",
+      "group": "bai",
+      "priority": 2,
+      "product_id": "bai-mcp",
+      "transport": "streamable-http",
+      "base_url": "https://mcp.baylyai.com",
+      "mcp_endpoint": "/mcp",
+      "health_endpoint": "/health",
+      "ready_endpoint": "/ready",
+      "description": "Bayly AI Enterprise Hath0r MCP knowledgebase and runbook engine",
+      "enabled": true,
+      "local_path": "/Users/raybayly/Development/BAI/MCP",
+      "github": "Bayly-AI/BAI-MCP"
+    }
+  ]
+}
