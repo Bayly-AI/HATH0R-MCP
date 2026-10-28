@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-28T14:52:42.391540+00:00",
+  "timestamp": "2026-10-28T14:56:19.551366+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -459,6 +459,19 @@
       "is_current": true
     },
     {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__pr-78_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pr 78",
+      "content": "# Knowledge share pr-78\n\n- **Generated:** 2026-10-28T14:56:14.262481+00:00\n- **Repo:** local\n- **PR:** 78\n\n## Summary\nAutonomous bot completed PR #78 (chore/77-sync-warp-eval-rule)\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/pr-78.md",
+        "category": "lessons-learned",
+        "size_bytes": 181
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:README_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -663,7 +676,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e4798a28619c6317e35621aead6b6b7920b44ca7a894dadb44bf03d7f85fe9e9"
+          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
         },
         "source": "local_memory",
         "tags": [
@@ -704,7 +717,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e4798a28619c6317e35621aead6b6b7920b44ca7a894dadb44bf03d7f85fe9e9"
+          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
         },
         "source": "local_memory",
         "tags": [
@@ -745,7 +758,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e4798a28619c6317e35621aead6b6b7920b44ca7a894dadb44bf03d7f85fe9e9"
+          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
         },
         "source": "local_memory",
         "tags": [
@@ -782,19 +795,142 @@
       "is_current": true
     },
     {
+      "id": "memory:episode:pr-78",
+      "plane": "memory",
+      "type": "episode",
+      "label": "PR #78 Merged: Synchronized CR-TASK-EVAL-001 in WARP.md",
+      "content": "Synchronized canonical CR-TASK-EVAL-001 pre-announcement task evaluation directive in WARP.md and merged PR #78 (v1.2.5).",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "evals",
+          "cr-task-eval-001",
+          "pr-78",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:pr",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on pr",
+      "content": "Consolidated from 2 memory nodes tagged 'pr'. Recurring themes: completed, feature, merged, from. Latest context: Merged PR #78 from branch chore/77-sync-warp-eval-rule into development.",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "pr",
+        "source": "local_memory",
+        "tags": [
+          "pr",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 0.95
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:pr-78",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation pr-78 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e04529663a7573d2c08f2525d69c00a0872dc4c0ecd4d899bd63070facee1e43"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "pr-78",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:evals",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on evals",
+      "content": "Consolidated from 2 memory nodes tagged 'evals'. Recurring themes: task, eval, evals, merged. Latest context: Synchronized canonical CR-TASK-EVAL-001 pre-announcement task evaluation directive in WARP.md and merged PR #78 (v1.2.5).",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "evals",
+        "source": "local_memory",
+        "tags": [
+          "evals",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 0.95
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:cr-task-eval-001",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on cr-task-eval-001",
+      "content": "Consolidated from 2 memory nodes tagged 'cr-task-eval-001'. Recurring themes: task, eval, evals, merged. Latest context: Synchronized canonical CR-TASK-EVAL-001 pre-announcement task evaluation directive in WARP.md and merged PR #78 (v1.2.5).",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "cr-task-eval-001",
+        "source": "local_memory",
+        "tags": [
+          "cr-task-eval-001",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 0.95
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:pr-78-merged",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation pr-78-merged (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "pr-78-merged",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
       "id": "memory:session:sess-20261028-133331-a485eb",
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 4, Writes: 10 | Entries: Compounded eval:issue-77: Task Evaluation issue-77 (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 5, Writes: 16 | Entries: Compounded eval:pr-78-merged: Task Evaluation pr-78-merged (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 4,
-        "write_count": 10,
+        "read_count": 5,
+        "write_count": 16,
         "status": "completed",
-        "byte_size": 1895,
+        "byte_size": 1836,
         "source": "local_memory",
         "tags": [
           "session",
@@ -1070,6 +1206,108 @@
       "is_current": true
     },
     {
+      "source": "memory:episode:pr-78",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:pr-78",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:pr-78",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:pr",
+      "target": "memory:episode:pr-76",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:pr",
+      "target": "memory:episode:pr-78",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:evals",
+      "target": "memory:episode:issue-75-task-evals",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:evals",
+      "target": "memory:episode:pr-78",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:cr-task-eval-001",
+      "target": "memory:episode:issue-75-task-evals",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:cr-task-eval-001",
+      "target": "memory:episode:pr-78",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78-merged",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78-merged",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78-merged",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78-merged",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -1226,6 +1464,42 @@
       "is_current": true
     },
     {
+      "source": "memory:episode:pr-78",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:pr",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:evals",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:cr-task-eval-001",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-78-merged",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
       "source": "memory:session:sess-20261028-133331-a485eb",
       "target": "role:developer",
       "relation": "INFORMS",
@@ -1234,6 +1508,6 @@
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-mcp",
-    "synced_sources": 30
+    "synced_sources": 31
   }
 }

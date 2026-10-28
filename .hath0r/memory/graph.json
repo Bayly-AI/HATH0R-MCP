@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "updated_at": "2026-10-28T14:52:43.102738+00:00",
+  "updated_at": "2026-10-28T14:56:20.355478+00:00",
   "nodes": [
     {
       "id": "rule:cr-cli-entry-001",
@@ -192,7 +192,7 @@
       "updated_at": "2026-10-28T13:35:55.782782+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         }
       }
     },
@@ -236,7 +236,7 @@
       "updated_at": "2026-10-28T13:43:14.075525+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         }
       }
     },
@@ -280,7 +280,7 @@
       "updated_at": "2026-10-28T14:21:13.647307+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         }
       }
     },
@@ -304,7 +304,138 @@
       "updated_at": "2026-10-28T14:52:41.792412+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+        }
+      }
+    },
+    {
+      "id": "episode:pr-78",
+      "type": "episode",
+      "label": "PR #78 Merged: Synchronized CR-TASK-EVAL-001 in WARP.md",
+      "content": "Synchronized canonical CR-TASK-EVAL-001 pre-announcement task evaluation directive in WARP.md and merged PR #78 (v1.2.5).",
+      "importance": 0.8,
+      "tags": [
+        "evals",
+        "cr-task-eval-001",
+        "pr-78",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T14:56:17.334638+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T14:56:14.263065+00:00",
+      "updated_at": "2026-10-28T14:56:17.334638+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:pr",
+      "type": "insight",
+      "label": "Synthesized Insight on pr",
+      "content": "Consolidated from 2 memory nodes tagged 'pr'. Recurring themes: completed, feature, merged, from. Latest context: Merged PR #78 from branch chore/77-sync-warp-eval-rule into development.",
+      "importance": 0.95,
+      "tags": [
+        "pr",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T14:56:14.781024+00:00",
+      "is_current": true,
+      "created_at": "2026-10-28T14:56:14.781024+00:00",
+      "updated_at": "2026-10-28T14:56:14.781024+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "pr"
+      }
+    },
+    {
+      "id": "eval:pr-78",
+      "type": "eval",
+      "label": "Task Evaluation pr-78 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "pr-78",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T14:56:16.087630+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T14:56:16.087630+00:00",
+      "updated_at": "2026-10-28T14:56:16.087630+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+        }
+      }
+    },
+    {
+      "id": "insight:evals",
+      "type": "insight",
+      "label": "Synthesized Insight on evals",
+      "content": "Consolidated from 2 memory nodes tagged 'evals'. Recurring themes: task, eval, evals, merged. Latest context: Synchronized canonical CR-TASK-EVAL-001 pre-announcement task evaluation directive in WARP.md and merged PR #78 (v1.2.5).",
+      "importance": 0.95,
+      "tags": [
+        "evals",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T14:56:17.359538+00:00",
+      "is_current": true,
+      "created_at": "2026-10-28T14:56:17.359538+00:00",
+      "updated_at": "2026-10-28T14:56:17.359538+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "evals"
+      }
+    },
+    {
+      "id": "insight:cr-task-eval-001",
+      "type": "insight",
+      "label": "Synthesized Insight on cr-task-eval-001",
+      "content": "Consolidated from 2 memory nodes tagged 'cr-task-eval-001'. Recurring themes: task, eval, evals, merged. Latest context: Synchronized canonical CR-TASK-EVAL-001 pre-announcement task evaluation directive in WARP.md and merged PR #78 (v1.2.5).",
+      "importance": 0.95,
+      "tags": [
+        "cr-task-eval-001",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T14:56:17.359538+00:00",
+      "is_current": true,
+      "created_at": "2026-10-28T14:56:17.359538+00:00",
+      "updated_at": "2026-10-28T14:56:17.359538+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "cr-task-eval-001"
+      }
+    },
+    {
+      "id": "eval:pr-78-merged",
+      "type": "eval",
+      "label": "Task Evaluation pr-78-merged (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "pr-78-merged",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T14:56:19.078037+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T14:56:19.078037+00:00",
+      "updated_at": "2026-10-28T14:56:19.078037+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         }
       }
     },
@@ -312,7 +443,7 @@
       "id": "session:sess-20261028-133331-a485eb",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 4, Writes: 10 | Entries: Compounded eval:issue-77: Task Evaluation issue-77 (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 5, Writes: 16 | Entries: Compounded eval:pr-78-merged: Task Evaluation pr-78-merged (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -320,18 +451,18 @@
         "completed"
       ],
       "valid_from": "2026-10-28T13:33:31.993995+00:00",
-      "valid_to": "2026-10-28T13:43:10.463009+00:00",
+      "valid_to": "2026-10-28T14:56:15.089036+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:31.993995+00:00",
-      "updated_at": "2026-10-28T14:52:41.807185+00:00",
+      "updated_at": "2026-10-28T14:56:19.099150+00:00",
       "metadata": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 4,
-        "write_count": 10,
+        "read_count": 5,
+        "write_count": 16,
         "status": "completed",
-        "byte_size": 1895
+        "byte_size": 1836
       }
     }
   ],
@@ -629,8 +760,144 @@
       "weight": 1.0,
       "valid_from": "2026-10-28T14:52:41.809586+00:00",
       "is_current": true
+    },
+    {
+      "source": "episode:pr-78",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:14.263065+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:pr-78",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:14.263065+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:pr-78",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:14.285886+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:pr",
+      "target": "episode:pr-76",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:14.781024+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:pr",
+      "target": "episode:pr-78",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:14.781024+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:16.087630+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:16.087630+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:16.087630+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:16.104827+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:evals",
+      "target": "episode:issue-75-task-evals",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:17.359538+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:evals",
+      "target": "episode:pr-78",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:17.359538+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:cr-task-eval-001",
+      "target": "episode:issue-75-task-evals",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:17.359538+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:cr-task-eval-001",
+      "target": "episode:pr-78",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:17.359538+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78-merged",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:19.078037+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78-merged",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:19.078037+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78-merged",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:19.078037+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-78-merged",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:56:19.101634+00:00",
+      "is_current": true
     }
   ],
-  "revision": 52,
-  "content_hash": "sha256:6c07e149026c8195fc9511b71b1632175fda8fbcc13418a6b4b28541f50084c4"
+  "revision": 72,
+  "content_hash": "sha256:6773d5cf4f8368508b0100b1f5e0c1f0f34c8730132c1cc000ae91a9b1a6c06b"
 }

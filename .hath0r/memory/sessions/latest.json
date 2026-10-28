@@ -3,53 +3,53 @@
   "session_id": "sess-20261028-133331-a485eb",
   "prior_session_id": "sess-20261016-123220-bb3476",
   "parent_session_id": "sess-20261016-123220-bb3476",
-  "revision": 13,
-  "content_hash": "sha256:be96fc0e17b201fffd779ba6768dec928536622f609f86d0cf415294872c2faf",
-  "base_graph_hash": "sha256:3cb018c970655502a40827b144b2a79989f3d7131e138f770b204830fbbe51f6",
+  "revision": 20,
+  "content_hash": "sha256:4080f824c990f8e30b1bce53dad6142fc4bece4cf19121363a8c97513ca283dc",
+  "base_graph_hash": "sha256:5b4cbaba3ab72c8d483bb4066781d47f2180435221112b7112a5af59f99103c8",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
   "started_at": "2026-10-28T13:33:31.993995+00:00",
-  "updated_at": "2026-10-28T14:52:41.807185+00:00",
-  "ended_at": "2026-10-28T13:43:10.463009+00:00",
-  "read_count": 4,
-  "write_count": 10,
-  "last_read_at": "2026-10-28T14:21:13.092778+00:00",
-  "last_write_at": "2026-10-28T14:52:41.807185+00:00",
+  "updated_at": "2026-10-28T14:56:19.099150+00:00",
+  "ended_at": "2026-10-28T14:56:15.089036+00:00",
+  "read_count": 5,
+  "write_count": 16,
+  "last_read_at": "2026-10-28T14:56:14.746358+00:00",
+  "last_write_at": "2026-10-28T14:56:19.099150+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-  "prior_summary": "ounded eval:pr-76: Task Evaluation p; Compounded rule:cr-task-eval-001: Automa; Compounded eval:eval-baseline-hath0r-mcp",
+  "prior_summary": "leted PR #78 (chore/77-sync-warp-eva; Compounded eval:pr-78: Task Evaluation p; Compounded episode:pr-78: PR #78 Merged:",
   "recalled_nodes": [
     {
-      "id": "episode:issue-75-task-evals",
+      "id": "episode:pr-78",
       "type": "episode",
-      "label": "Configured Automatic Task Evaluations (CR-TASK-EVAL-001) in ",
-      "snippet": "Added declarative cfg/evals/task-eval.json binding hath0r-mcp to TaskEvaluatorBot, .hath0r"
+      "label": "Knowledge Share (pr-78)",
+      "snippet": "Autonomous bot completed PR #78 (chore/77-sync-warp-eval-rule)"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T14:52:41.807185+00:00",
+      "timestamp": "2026-10-28T14:56:19.099150+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:issue-77: Task Evaluation issue-77 (R=1.00, PASS)",
+      "summary": "Compounded eval:pr-78-merged: Task Evaluation pr-78-merged (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "issue-77",
+        "pr-78-merged",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:issue-77"
+      "node_id": "eval:pr-78-merged"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:issue-75",
-    "episode:pr-76",
-    "eval:pr-76",
     "rule:cr-task-eval-001",
     "eval:eval-baseline-hath0r-mcp",
-    "eval:issue-77"
+    "eval:issue-77",
+    "episode:pr-78",
+    "eval:pr-78",
+    "eval:pr-78-merged"
   ],
-  "capsule_bytes": 1895
+  "capsule_bytes": 1836
 }
