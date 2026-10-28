@@ -3,22 +3,22 @@
   "session_id": "sess-20261028-133331-a485eb",
   "prior_session_id": "sess-20261016-123220-bb3476",
   "parent_session_id": "sess-20261016-123220-bb3476",
-  "revision": 12,
-  "content_hash": "sha256:9251eb0ced83c1483a96df97505ce7da8864fd2804518f18b20ffc18c14c54fb",
+  "revision": 13,
+  "content_hash": "sha256:be96fc0e17b201fffd779ba6768dec928536622f609f86d0cf415294872c2faf",
   "base_graph_hash": "sha256:3cb018c970655502a40827b144b2a79989f3d7131e138f770b204830fbbe51f6",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
   "started_at": "2026-10-28T13:33:31.993995+00:00",
-  "updated_at": "2026-10-28T14:21:13.660380+00:00",
+  "updated_at": "2026-10-28T14:52:41.807185+00:00",
   "ended_at": "2026-10-28T13:43:10.463009+00:00",
   "read_count": 4,
-  "write_count": 9,
+  "write_count": 10,
   "last_read_at": "2026-10-28T14:21:13.092778+00:00",
-  "last_write_at": "2026-10-28T14:21:13.660380+00:00",
+  "last_write_at": "2026-10-28T14:52:41.807185+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-  "prior_summary": "leted PR #76 (feature) via EndOfTask; Compounded eval:pr-76: Task Evaluation p; Compounded rule:cr-task-eval-001: Automa",
+  "prior_summary": "ounded eval:pr-76: Task Evaluation p; Compounded rule:cr-task-eval-001: Automa; Compounded eval:eval-baseline-hath0r-mcp",
   "recalled_nodes": [
     {
       "id": "episode:issue-75-task-evals",
@@ -29,27 +29,27 @@
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T14:21:13.660380+00:00",
+      "timestamp": "2026-10-28T14:52:41.807185+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:eval-baseline-hath0r-mcp: Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)",
+      "summary": "Compounded eval:issue-77: Task Evaluation issue-77 (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "eval-baseline-hath0r-mcp",
+        "issue-77",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:eval-baseline-hath0r-mcp"
+      "node_id": "eval:issue-77"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "episode:issue-75-task-evals",
     "eval:issue-75",
     "episode:pr-76",
     "eval:pr-76",
     "rule:cr-task-eval-001",
-    "eval:eval-baseline-hath0r-mcp"
+    "eval:eval-baseline-hath0r-mcp",
+    "eval:issue-77"
   ],
-  "capsule_bytes": 1972
+  "capsule_bytes": 1895
 }
