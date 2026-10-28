@@ -97,6 +97,13 @@ Canonical: [HATH0R-CLI `docs/governance/cli-first-rules.md`](https://github.com/
    ```
 4. **Hidden root rule (`cr-hath0r-root-001`)**: Use **only** `.hath0r/`. NEVER create `.ai/`, `.aegis/`, or `.infraOS/`.
 
+## CR-SEMVER-BUMP-001 (Semantic Version Bump on Every PR — CANONICAL)
+- Every pull request that is created and merged must create or bump this product's Semantic Version (`MAJOR.MINOR.PATCH`, https://semver.org). The root `VERSION` file is the source of truth; keep `VERSION`, `pyproject.toml` and `CHANGELOG.md` in step with it.
+- Pick the bump by impact: MAJOR for breaking changes, MINOR for backward-compatible features, PATCH for fixes, docs, chores and everything else. `Version Impact: none` is not allowed.
+- New products start at `0.1.0`.
+- Declare the bump in the PR body as `Version Impact: patch|minor|major` and add a matching `CHANGELOG.md` entry. Verify with `hath0r release validate` before announcing complete.
+- A PR merged without a version bump is not Complete.
+
 ---
 
 ## Hath0r Compose configuration: Docker Group Membership (CRITICAL · CANONICAL)
