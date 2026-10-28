@@ -3,52 +3,43 @@
   "session_id": "sess-20261028-133331-a485eb",
   "prior_session_id": "sess-20261016-123220-bb3476",
   "parent_session_id": "sess-20261016-123220-bb3476",
-  "revision": 9,
-  "content_hash": "sha256:a23d4dae4bd16243716acc94793ded4c75dba77fae33de50d830416621d160c4",
-  "base_graph_hash": "sha256:74c7a188ff78d803d7dd57145e75d2d714023d13a47d77db8e0f8dd21425deaf",
+  "revision": 12,
+  "content_hash": "sha256:9251eb0ced83c1483a96df97505ce7da8864fd2804518f18b20ffc18c14c54fb",
+  "base_graph_hash": "sha256:3cb018c970655502a40827b144b2a79989f3d7131e138f770b204830fbbe51f6",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
   "started_at": "2026-10-28T13:33:31.993995+00:00",
-  "updated_at": "2026-10-28T13:43:14.126298+00:00",
+  "updated_at": "2026-10-28T14:21:13.660380+00:00",
   "ended_at": "2026-10-28T13:43:10.463009+00:00",
-  "read_count": 3,
-  "write_count": 7,
-  "last_read_at": "2026-10-28T13:43:08.938845+00:00",
-  "last_write_at": "2026-10-28T13:43:14.126298+00:00",
-  "active_focus": "feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001)",
-  "prior_summary": "ounded eval:issue-75: Task Evaluatio; Compounded episode:pr-76: Knowledge Shar; Compounded episode:pr-76: Completed PR #",
+  "read_count": 4,
+  "write_count": 9,
+  "last_read_at": "2026-10-28T14:21:13.092778+00:00",
+  "last_write_at": "2026-10-28T14:21:13.660380+00:00",
+  "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
+  "prior_summary": "leted PR #76 (feature) via EndOfTask; Compounded eval:pr-76: Task Evaluation p; Compounded rule:cr-task-eval-001: Automa",
   "recalled_nodes": [
     {
-      "id": "episode:pr-76",
+      "id": "episode:issue-75-task-evals",
       "type": "episode",
-      "label": "Knowledge Share (pr-76)",
-      "snippet": "Autonomous bot completed PR #76 (feature)"
+      "label": "Configured Automatic Task Evaluations (CR-TASK-EVAL-001) in ",
+      "snippet": "Added declarative cfg/evals/task-eval.json binding hath0r-mcp to TaskEvaluatorBot, .hath0r"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T13:43:10.463009+00:00",
-      "kind": "milestone",
-      "summary": "Completed PR #76 (feature) via EndOfTaskBot.",
-      "tags": [
-        "session-end"
-      ],
-      "node_id": null
-    },
-    {
-      "timestamp": "2026-10-28T13:43:14.126298+00:00",
+      "timestamp": "2026-10-28T14:21:13.660380+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:pr-76: Task Evaluation pr-76 (R=1.00, PASS)",
+      "summary": "Compounded eval:eval-baseline-hath0r-mcp: Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "pr-76",
+        "eval-baseline-hath0r-mcp",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:pr-76"
+      "node_id": "eval:eval-baseline-hath0r-mcp"
     }
   ],
   "next_steps": [],
@@ -56,7 +47,9 @@
     "episode:issue-75-task-evals",
     "eval:issue-75",
     "episode:pr-76",
-    "eval:pr-76"
+    "eval:pr-76",
+    "rule:cr-task-eval-001",
+    "eval:eval-baseline-hath0r-mcp"
   ],
-  "capsule_bytes": 1982
+  "capsule_bytes": 1972
 }

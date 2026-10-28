@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-28T13:43:15.709005+00:00",
+  "timestamp": "2026-10-28T14:21:13.986427+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -125,6 +125,19 @@
       "content": "Governance policy rule CR-SONAR-PREANNOUNCE-001 referenced in AGENTS.md",
       "properties": {
         "rule_code": "CR-SONAR-PREANNOUNCE-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-task-eval-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-TASK-EVAL-001",
+      "content": "Governance policy rule CR-TASK-EVAL-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-TASK-EVAL-001",
         "priority": 4,
         "restricted_actions": []
       },
@@ -467,7 +480,7 @@
       "properties": {
         "path": "WARP.md",
         "category": "root",
-        "size_bytes": 3160
+        "size_bytes": 4145
       },
       "is_current": true
     },
@@ -650,7 +663,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:a221ae5a70b1c2a082a22e1a3b7f040895328e61583a5c18c80b455dde62cc3c"
+          ".hath0r/evals/latest.json": "sha256:fd14755428e7a3e45981fce85983afc2b9f9c015908aeafd755955ab8659bb46"
         },
         "source": "local_memory",
         "tags": [
@@ -706,19 +719,60 @@
       "is_current": true
     },
     {
+      "id": "memory:rule:cr-task-eval-001",
+      "plane": "memory",
+      "type": "rule",
+      "label": "Automatic Task Evaluation Gate (CR-TASK-EVAL-001)",
+      "content": "Every task must execute and pass the 4-tier hybrid evaluation pipeline (R_task >= 0.80) and persist .hath0r/evals/latest.json prior to announcing complete.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "rule",
+          "governance",
+          "evals",
+          "cr-task-eval-001",
+          "compounded"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:eval-baseline-hath0r-mcp",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e4798a28619c6317e35621aead6b6b7920b44ca7a894dadb44bf03d7f85fe9e9"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "eval-baseline-hath0r-mcp",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
       "id": "memory:session:sess-20261028-133331-a485eb",
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 3, Writes: 7 | Entries: Completed PR #76 (feature) via EndOfTaskBot.; Compounded eval:pr-76: Task Evaluation pr-76 (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 4, Writes: 9 | Entries: Compounded eval:eval-baseline-hath0r-mcp: Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 3,
-        "write_count": 7,
+        "read_count": 4,
+        "write_count": 9,
         "status": "completed",
-        "byte_size": 1982,
+        "byte_size": 1972,
         "source": "local_memory",
         "tags": [
           "session",
@@ -928,6 +982,48 @@
       "is_current": true
     },
     {
+      "source": "memory:rule:cr-task-eval-001",
+      "target": "concept:tri-graph",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-task-eval-001",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-task-eval-001",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:eval-baseline-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:eval-baseline-hath0r-mcp",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:eval-baseline-hath0r-mcp",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:eval-baseline-hath0r-mcp",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -965,6 +1061,12 @@
     },
     {
       "source": "rule:cr-sonar-preannounce-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-task-eval-001",
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
@@ -1055,6 +1157,18 @@
     },
     {
       "source": "memory:eval:pr-76",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-task-eval-001",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:eval-baseline-hath0r-mcp",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
