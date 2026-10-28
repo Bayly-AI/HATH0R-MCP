@@ -1,0 +1,60 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261016-123220-bb3476",
+  "prior_session_id": null,
+  "parent_session_id": null,
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-mcp",
+  "status": "completed",
+  "started_at": "2026-10-16T12:32:20.933229+00:00",
+  "updated_at": "2026-10-16T15:48:34.351599+00:00",
+  "ended_at": "2026-10-16T15:48:34.351599+00:00",
+  "read_count": 6,
+  "write_count": 7,
+  "last_read_at": "2026-10-16T15:48:34.298215+00:00",
+  "last_write_at": "2026-10-16T15:48:34.351599+00:00",
+  "active_focus": "Repository orientation verified for hath0r-mcp",
+  "prior_summary": "ounded fact:repo-hath0r-mcp-orientat; Compounded fact:repo-hath0r-mcp-orientat; Compounded fact:repo-hath0r-mcp-orientat",
+  "recalled_nodes": [
+    {
+      "id": "fact:repo-hath0r-mcp-orientation",
+      "type": "fact",
+      "label": "hath0r-mcp Repository Memory Orientation",
+      "snippet": "hath0r-mcp: [![CI](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml/badge.s"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-16T15:48:34.330962+00:00",
+      "kind": "compound",
+      "summary": "Compounded episode:clean-repo-hath0r-mcp: Clean Repo Lifecycle (hath0r-mcp)",
+      "tags": [
+        "clean-repo",
+        "hygiene",
+        "hath0r-mcp",
+        "episode",
+        "compounded"
+      ],
+      "node_id": "episode:clean-repo-hath0r-mcp"
+    },
+    {
+      "timestamp": "2026-10-16T15:48:34.351599+00:00",
+      "kind": "milestone",
+      "summary": "Clean Repo Lifecycle completed for hath0r-mcp.",
+      "tags": [
+        "session-end"
+      ],
+      "node_id": null
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "fact:repo-hath0r-mcp-orientation",
+    "episode:clean-repo-hath0r-mcp"
+  ],
+  "capsule_bytes": 2014,
+  "revision": 9,
+  "base_graph_hash": "sha256:68603e88f20a54f34e66e26bdb9def0dd89e9c5a8f327b3770b9b14ce959b9ce",
+  "content_hash": "sha256:abe94f31b838b5b540927425d6342e8f48f3389394e2d7d000849aa91aa805b1"
+}

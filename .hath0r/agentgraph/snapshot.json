@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-11T18:30:29.809467+00:00",
+  "timestamp": "2026-10-16T15:48:34.975250+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -61,6 +61,84 @@
       "properties": {
         "path": "data/rules.md",
         "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-bai-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-BAI-001",
+      "content": "Governance policy rule CR-BAI-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-BAI-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-cli-feature-standard-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-CLI-FEATURE-STANDARD-001",
+      "content": "Governance policy rule CR-CLI-FEATURE-STANDARD-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-CLI-FEATURE-STANDARD-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-hath0r-init-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-HATH0R-INIT-001",
+      "content": "Governance policy rule CR-HATH0R-INIT-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-HATH0R-INIT-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-branch-gov-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-BRANCH-GOV-001",
+      "content": "Governance policy rule CR-BRANCH-GOV-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-BRANCH-GOV-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-cli-first-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-CLI-FIRST-001",
+      "content": "Governance policy rule CR-CLI-FIRST-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-CLI-FIRST-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-hath0r-root-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-HATH0R-ROOT-001",
+      "content": "Governance policy rule CR-HATH0R-ROOT-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-HATH0R-ROOT-001",
+        "priority": 4,
         "restricted_actions": []
       },
       "is_current": true
@@ -355,6 +433,158 @@
       "is_current": true
     },
     {
+      "id": "memory:rule:cr-cli-entry-001",
+      "plane": "memory",
+      "type": "rule",
+      "label": "Start with CLI Rule",
+      "content": "Always start with hath0r operator CLI before inventing ad-hoc actions.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "rule",
+          "governance",
+          "cli"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:rule:cr-bai-001",
+      "plane": "memory",
+      "type": "rule",
+      "label": "Promotion Path Policy",
+      "content": "Promotion order: local -> development -> testing -> staging -> master.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "rule",
+          "governance",
+          "ci"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:rule:cr-memory-compound-001",
+      "plane": "memory",
+      "type": "rule",
+      "label": "Mandatory MemoryGraph Compounding Rule",
+      "content": "Every project repo must maintain .hath0r/memory/graph.json and every task must compound knowledge prior to announcing complete.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "rule",
+          "governance",
+          "memorygraph",
+          "cr-memory-compound-001"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "concept:tri-graph",
+      "plane": "memory",
+      "type": "concept",
+      "label": "Tri-Graph Substrate",
+      "content": "Three-layer cognitive graph architecture: KnowledgeGraph, ContextGraph, MemoryGraph.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "architecture",
+          "substrate",
+          "tri-graph"
+        ],
+        "importance": 0.9
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:fact:repo-hath0r-mcp-orientation",
+      "plane": "memory",
+      "type": "fact",
+      "label": "hath0r-mcp Repository Memory Orientation",
+      "content": "hath0r-mcp: [![CI](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml/badge.svg)](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE) [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "orientation",
+          "repository",
+          "hath0r-mcp",
+          "cr-memory-compound-001",
+          "fact",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:clean-repo-hath0r-mcp",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Clean Repo Lifecycle (hath0r-mcp)",
+      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "clean-repo",
+          "hygiene",
+          "hath0r-mcp",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:hath0r-mcp",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-mcp",
+      "content": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, license, python. Latest context: Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "hath0r-mcp",
+        "source": "local_memory",
+        "tags": [
+          "hath0r-mcp",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 0.95
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261016-123220-bb3476",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261016-123220-bb3476",
+      "content": "Micro Session sess-20261016-123220-bb3476 [completed] | Focus: Repository orientation verified for hath0r-mcp | Reads: 6, Writes: 7 | Entries: Compounded episode:clean-repo-hath0r-mcp: Clean Repo Lifecycle (hath0r-mcp); Clean Repo Lifecycle completed for hath0r-mcp.",
+      "properties": {
+        "session_id": "sess-20261016-123220-bb3476",
+        "prior_session_id": null,
+        "parent_session_id": null,
+        "read_count": 6,
+        "write_count": 7,
+        "status": "completed",
+        "byte_size": 2014,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
       "id": "role:developer",
       "plane": "rules",
       "type": "agent_role",
@@ -397,6 +627,72 @@
   ],
   "edges": [
     {
+      "source": "memory:rule:cr-cli-entry-001",
+      "target": "concept:tri-graph",
+      "relation": "ENFORCES",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-memory-compound-001",
+      "target": "concept:tri-graph",
+      "relation": "ENFORCES",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-mcp-orientation",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-mcp-orientation",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-123220-bb3476",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-mcp-orientation",
+      "target": "memory:session:sess-20261016-123220-bb3476",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-mcp",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261016-123220-bb3476",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hath0r-mcp",
+      "target": "memory:fact:repo-hath0r-mcp-orientation",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hath0r-mcp",
+      "target": "memory:episode:clean-repo-hath0r-mcp",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -407,10 +703,94 @@
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
+    },
+    {
+      "source": "rule:cr-bai-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-cli-feature-standard-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-hath0r-init-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-branch-gov-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-cli-first-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-hath0r-root-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-cli-entry-001",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-bai-001",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-memory-compound-001",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "concept:tri-graph",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-mcp-orientation",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-mcp",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hath0r-mcp",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-123220-bb3476",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
     }
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-mcp",
-    "synced_sources": 28
+    "synced_sources": 29
   }
 }

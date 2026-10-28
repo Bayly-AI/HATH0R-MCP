@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0.0",
+  "graph_id": "canonical-memory-space",
+  "updated_at": "2026-10-16T15:48:34.355835+00:00",
+  "nodes": [
+    {
+      "id": "rule:cr-cli-entry-001",
+      "type": "rule",
+      "label": "Start with CLI Rule",
+      "content": "Always start with hath0r operator CLI before inventing ad-hoc actions.",
+      "importance": 1.0,
+      "tags": [
+        "rule",
+        "governance",
+        "cli"
+      ],
+      "is_current": true,
+      "created_at": "2026-10-16T11:47:29.481376+00:00",
+      "updated_at": "2026-10-16T11:47:29.481376+00:00"
+    },
+    {
+      "id": "rule:cr-bai-001",
+      "type": "rule",
+      "label": "Promotion Path Policy",
+      "content": "Promotion order: local -> development -> testing -> staging -> master.",
+      "importance": 1.0,
+      "tags": [
+        "rule",
+        "governance",
+        "ci"
+      ],
+      "is_current": true,
+      "created_at": "2026-10-16T11:47:29.481376+00:00",
+      "updated_at": "2026-10-16T11:47:29.481376+00:00"
+    },
+    {
+      "id": "rule:cr-memory-compound-001",
+      "type": "rule",
+      "label": "Mandatory MemoryGraph Compounding Rule",
+      "content": "Every project repo must maintain .hath0r/memory/graph.json and every task must compound knowledge prior to announcing complete.",
+      "importance": 1.0,
+      "tags": [
+        "rule",
+        "governance",
+        "memorygraph",
+        "cr-memory-compound-001"
+      ],
+      "is_current": true,
+      "created_at": "2026-10-16T11:47:29.481376+00:00",
+      "updated_at": "2026-10-16T11:47:29.481376+00:00"
+    },
+    {
+      "id": "concept:tri-graph",
+      "type": "concept",
+      "label": "Tri-Graph Substrate",
+      "content": "Three-layer cognitive graph architecture: KnowledgeGraph, ContextGraph, MemoryGraph.",
+      "importance": 0.9,
+      "tags": [
+        "architecture",
+        "substrate",
+        "tri-graph"
+      ],
+      "is_current": true,
+      "created_at": "2026-10-16T11:47:29.481376+00:00",
+      "updated_at": "2026-10-16T11:47:29.481376+00:00"
+    },
+    {
+      "id": "fact:repo-hath0r-mcp-orientation",
+      "type": "fact",
+      "label": "hath0r-mcp Repository Memory Orientation",
+      "content": "hath0r-mcp: [![CI](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml/badge.svg)](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE) [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)",
+      "importance": 0.85,
+      "tags": [
+        "orientation",
+        "repository",
+        "hath0r-mcp",
+        "cr-memory-compound-001",
+        "fact",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T15:24:55.128167+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T11:47:29.481334+00:00",
+      "updated_at": "2026-10-16T15:24:55.128167+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "episode:clean-repo-hath0r-mcp",
+      "type": "episode",
+      "label": "Clean Repo Lifecycle (hath0r-mcp)",
+      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "importance": 0.75,
+      "tags": [
+        "clean-repo",
+        "hygiene",
+        "hath0r-mcp",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T15:48:34.318294+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T15:48:34.318294+00:00",
+      "updated_at": "2026-10-16T15:48:34.318294+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:hath0r-mcp",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-mcp",
+      "content": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, license, python. Latest context: Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "importance": 0.95,
+      "tags": [
+        "hath0r-mcp",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T15:48:34.341933+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T15:48:34.341933+00:00",
+      "updated_at": "2026-10-16T15:48:34.341933+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "hath0r-mcp"
+      }
+    },
+    {
+      "id": "session:sess-20261016-123220-bb3476",
+      "type": "session",
+      "label": "Micro Session sess-20261016-123220-bb3476",
+      "content": "Micro Session sess-20261016-123220-bb3476 [completed] | Focus: Repository orientation verified for hath0r-mcp | Reads: 6, Writes: 7 | Entries: Compounded episode:clean-repo-hath0r-mcp: Clean Repo Lifecycle (hath0r-mcp); Clean Repo Lifecycle completed for hath0r-mcp.",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-16T12:32:20.933229+00:00",
+      "valid_to": "2026-10-16T15:48:34.351599+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T12:32:20.933229+00:00",
+      "updated_at": "2026-10-16T15:48:34.351599+00:00",
+      "metadata": {
+        "session_id": "sess-20261016-123220-bb3476",
+        "prior_session_id": null,
+        "parent_session_id": null,
+        "read_count": 6,
+        "write_count": 7,
+        "status": "completed",
+        "byte_size": 2014
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "rule:cr-cli-entry-001",
+      "target": "concept:tri-graph",
+      "relation": "ENFORCES",
+      "weight": 1.0,
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-memory-compound-001",
+      "target": "concept:tri-graph",
+      "relation": "ENFORCES",
+      "weight": 1.0,
+      "is_current": true
+    },
+    {
+      "source": "fact:repo-hath0r-mcp-orientation",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:47:29.481334+00:00",
+      "is_current": true
+    },
+    {
+      "source": "fact:repo-hath0r-mcp-orientation",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "RELATES_TO",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:47:29.481334+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261016-123220-bb3476",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-16T12:32:20.934724+00:00",
+      "is_current": true
+    },
+    {
+      "source": "fact:repo-hath0r-mcp-orientation",
+      "target": "session:sess-20261016-123220-bb3476",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:32:20.938038+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.318294+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-mcp",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.318294+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-mcp",
+      "target": "session:sess-20261016-123220-bb3476",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.334282+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-mcp",
+      "target": "fact:repo-hath0r-mcp-orientation",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.341933+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-mcp",
+      "target": "episode:clean-repo-hath0r-mcp",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:34.341933+00:00",
+      "is_current": true
+    }
+  ],
+  "revision": 19,
+  "content_hash": "sha256:cd67472c128eb2a05859c06ad0b833df3d68d56c5d0639d318ed93812379e87f"
+}
