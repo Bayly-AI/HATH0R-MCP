@@ -1,0 +1,40 @@
+{
+  "apiVersion": "hath0r.evals.task/v1",
+  "kind": "TaskEvaluationConfig",
+  "rule_id": "CR-TASK-EVAL-001",
+  "metadata": {
+    "name": "hath0r-mcp-task-evals",
+    "product": "HATH0R-MCP",
+    "suite": "hath0r-opensource",
+    "control_tower": "Bayly-AI/HATH0R-CLI",
+    "updated": "2026-10-28",
+    "issue": 75
+  },
+  "weights": {
+    "deterministic": 0.40,
+    "trajectory": 0.20,
+    "adversarial": 0.25,
+    "goal_alignment": 0.15
+  },
+  "thresholds": {
+    "min_reward": 0.80,
+    "min_deterministic": 1.00,
+    "min_adversarial": 0.80,
+    "min_consensus": 0.70,
+    "max_tokens": 50000,
+    "max_usd": 0.25,
+    "target_latency_ms": 2000.0
+  },
+  "hard_gates": {
+    "require_deterministic_pass": true,
+    "require_zero_critical_flaws": true,
+    "require_finops_budget": true,
+    "require_memory_compounded": true
+  },
+  "observability": {
+    "phoenix_enabled": true,
+    "mlflow_enabled": true,
+    "mlflow_experiment": "hath0r-task-evals",
+    "spool_when_offline": true
+  }
+}

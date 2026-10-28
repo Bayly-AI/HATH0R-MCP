@@ -1,0 +1,102 @@
+{
+  "schema_version": "hath0r.evals.scorecard/v1",
+  "rule_id": "CR-TASK-EVAL-001",
+  "eval_id": "eval-20261028-133554-082210",
+  "task_id": "issue-75",
+  "issue_number": 75,
+  "repo_name": "hath0r-mcp",
+  "branch": "feature/75-automatic-task-evals",
+  "evaluated_at": "2026-10-28T13:35:54.465419+00:00",
+  "duration_ms": 612.88,
+  "passed_gate": true,
+  "r_task": 1.0,
+  "min_reward_threshold": 0.8,
+  "weights": {
+    "deterministic": 0.4,
+    "trajectory": 0.2,
+    "adversarial": 0.25,
+    "goal_alignment": 0.15
+  },
+  "tier_scores": {
+    "deterministic": 1.0,
+    "trajectory": 1.0,
+    "adversarial": 1.0,
+    "goal_alignment": 1.0
+  },
+  "tiers": {
+    "deterministic": {
+      "score": 1.0,
+      "passed": true,
+      "passed_checks": 4,
+      "total_checks": 4,
+      "checks": {
+        "version_valid": {
+          "passed": true,
+          "version": "1.2.4",
+          "error": null
+        },
+        "agentgraph_valid": {
+          "passed": true,
+          "cycles": 0,
+          "contradictions": 0
+        },
+        "memory_compounded": {
+          "passed": true,
+          "compounded_nodes_count": 4,
+          "session_read_verified": true,
+          "session_write_verified": true,
+          "hashes_verified": true,
+          "graphs_not_ignored": true,
+          "error": null
+        },
+        "test_suite": {
+          "passed": true,
+          "skipped": true,
+          "message": "Test execution skipped via flag or dry-run."
+        }
+      }
+    },
+    "trajectory": {
+      "score": 1.0,
+      "passed": true,
+      "tokens_used": 0,
+      "max_tokens": 50000,
+      "estimated_usd": 0.0,
+      "max_usd": 0.25,
+      "session_id": "sess-20261028-133331-a485eb",
+      "session_reads": 2,
+      "session_writes": 2,
+      "session_bytes": 1815,
+      "within_capsule_budget": true,
+      "latency_ms": 178.83,
+      "taguchi_quality_loss": 0.0004,
+      "snr_db": 20.97
+    },
+    "adversarial": {
+      "score": 1.0,
+      "passed": true,
+      "adversarial_flaws_count": 0,
+      "adversarial_flaws": [],
+      "tech_debts_count": 0,
+      "auto_created_issues": [],
+      "change_categories": {},
+      "changed_files_count": 0
+    },
+    "goal_alignment": {
+      "score": 1.0,
+      "passed": true,
+      "task_id": "issue-75",
+      "issue_number": 75,
+      "active_focus": "feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001)",
+      "compounded_nodes_count": 4,
+      "consensus_score": 1.0
+    }
+  },
+  "blocking_reasons": [],
+  "observability_sync": {
+    "mode": "live_synced",
+    "phoenix_logged": true,
+    "mlflow_run_id": "02afaac60a72460aa4cb12841be6cd9f"
+  },
+  "content_hash": "sha256:2b754d50c9c5e55ec200a6c159976863d141350aa22578a0fb0df5628a277106"
+}
