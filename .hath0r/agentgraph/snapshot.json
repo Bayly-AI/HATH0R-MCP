@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-28T13:35:57.117585+00:00",
+  "timestamp": "2026-10-28T13:43:15.709005+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -433,6 +433,19 @@
       "is_current": true
     },
     {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__pr-76_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pr 76",
+      "content": "# Knowledge share pr-76\n\n- **Generated:** 2026-10-28T13:43:07.070627+00:00\n- **Repo:** local\n- **PR:** 76\n\n## Summary\nAutonomous bot completed PR #76 (feature)\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/pr-76.md",
+        "category": "lessons-learned",
+        "size_bytes": 160
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:README_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -652,24 +665,65 @@
       "is_current": true
     },
     {
+      "id": "memory:episode:pr-76",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Completed PR #76 (feature)",
+      "content": "Merged PR #76 from branch feature into development.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "pr",
+          "pr-76",
+          "feature",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:pr-76",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation pr-76 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:fd14755428e7a3e45981fce85983afc2b9f9c015908aeafd755955ab8659bb46"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "pr-76",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
       "id": "memory:session:sess-20261028-133331-a485eb",
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [active] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 2, Writes: 3 | Entries: Compounded eval:issue-75: Task Evaluation issue-75 (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 3, Writes: 7 | Entries: Completed PR #76 (feature) via EndOfTaskBot.; Compounded eval:pr-76: Task Evaluation pr-76 (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 2,
-        "write_count": 3,
-        "status": "active",
-        "byte_size": 1775,
+        "read_count": 3,
+        "write_count": 7,
+        "status": "completed",
+        "byte_size": 1982,
         "source": "local_memory",
         "tags": [
           "session",
           "micro-session",
-          "active"
+          "completed"
         ],
         "importance": 0.75
       },
@@ -832,6 +886,48 @@
       "is_current": true
     },
     {
+      "source": "memory:episode:pr-76",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:pr-76",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:pr-76",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-76",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-76",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-76",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-76",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -952,6 +1048,18 @@
       "is_current": true
     },
     {
+      "source": "memory:episode:pr-76",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-76",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
       "source": "memory:session:sess-20261028-133331-a485eb",
       "target": "role:developer",
       "relation": "INFORMS",
@@ -960,6 +1068,6 @@
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-mcp",
-    "synced_sources": 29
+    "synced_sources": 30
   }
 }

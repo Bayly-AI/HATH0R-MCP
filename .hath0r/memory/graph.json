@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "updated_at": "2026-10-28T13:35:55.835408+00:00",
+  "updated_at": "2026-10-28T14:06:50.359755+00:00",
   "nodes": [
     {
       "id": "rule:cr-cli-entry-001",
@@ -192,7 +192,51 @@
       "updated_at": "2026-10-28T13:35:55.782782+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:a221ae5a70b1c2a082a22e1a3b7f040895328e61583a5c18c80b455dde62cc3c"
+          ".hath0r/evals/latest.json": "sha256:fd14755428e7a3e45981fce85983afc2b9f9c015908aeafd755955ab8659bb46"
+        }
+      }
+    },
+    {
+      "id": "episode:pr-76",
+      "type": "episode",
+      "label": "Completed PR #76 (feature)",
+      "content": "Merged PR #76 from branch feature into development.",
+      "importance": 0.8,
+      "tags": [
+        "pr",
+        "pr-76",
+        "feature",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:43:08.958799+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T13:43:07.073215+00:00",
+      "updated_at": "2026-10-28T13:43:08.958799+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "eval:pr-76",
+      "type": "eval",
+      "label": "Task Evaluation pr-76 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "pr-76",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:43:14.075525+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T13:43:14.075525+00:00",
+      "updated_at": "2026-10-28T13:43:14.075525+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:fd14755428e7a3e45981fce85983afc2b9f9c015908aeafd755955ab8659bb46"
         }
       }
     },
@@ -200,26 +244,26 @@
       "id": "session:sess-20261028-133331-a485eb",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [active] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 2, Writes: 3 | Entries: Compounded eval:issue-75: Task Evaluation issue-75 (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 3, Writes: 7 | Entries: Completed PR #76 (feature) via EndOfTaskBot.; Compounded eval:pr-76: Task Evaluation pr-76 (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
         "micro-session",
-        "active"
+        "completed"
       ],
       "valid_from": "2026-10-28T13:33:31.993995+00:00",
-      "valid_to": null,
+      "valid_to": "2026-10-28T13:43:10.463009+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:31.993995+00:00",
-      "updated_at": "2026-10-28T13:35:55.822032+00:00",
+      "updated_at": "2026-10-28T13:43:14.126298+00:00",
       "metadata": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 2,
-        "write_count": 3,
-        "status": "active",
-        "byte_size": 1775
+        "read_count": 3,
+        "write_count": 7,
+        "status": "completed",
+        "byte_size": 1982
       }
     }
   ],
@@ -373,8 +417,64 @@
       "weight": 1.0,
       "valid_from": "2026-10-28T13:35:55.830803+00:00",
       "is_current": true
+    },
+    {
+      "source": "episode:pr-76",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:43:07.073215+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:pr-76",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:43:07.073215+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:pr-76",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:43:07.152642+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-76",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:43:14.075525+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-76",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:43:14.075525+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-76",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:43:14.075525+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-76",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:43:14.139341+00:00",
+      "is_current": true
     }
   ],
-  "revision": 27,
-  "content_hash": "sha256:30440a011a86bfcfd882655b2c50dd28a9adced4d1ee126c0b5c066e931acbe0"
+  "revision": 39,
+  "content_hash": "sha256:3cb018c970655502a40827b144b2a79989f3d7131e138f770b204830fbbe51f6"
 }
