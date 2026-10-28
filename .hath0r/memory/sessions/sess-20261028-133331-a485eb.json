@@ -1,0 +1,51 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261028-133331-a485eb",
+  "prior_session_id": "sess-20261016-123220-bb3476",
+  "parent_session_id": "sess-20261016-123220-bb3476",
+  "revision": 4,
+  "content_hash": "sha256:6c135722ee0d72890f77379a88bb54fc2666caf94e03cb29708bfa41fcac12b5",
+  "base_graph_hash": "sha256:58807a786f22a4e0da17f19252ec889bc68aa64be90c1ab52f580a4ac5c481bc",
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-mcp",
+  "status": "active",
+  "started_at": "2026-10-28T13:33:31.993995+00:00",
+  "updated_at": "2026-10-28T13:35:55.822032+00:00",
+  "ended_at": null,
+  "read_count": 2,
+  "write_count": 3,
+  "last_read_at": "2026-10-28T13:35:44.874424+00:00",
+  "last_write_at": "2026-10-28T13:35:55.822032+00:00",
+  "active_focus": "feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001)",
+  "prior_summary": "o Lifecycle completed for hath0r-mcp.; Started session focus: feat(evals): conf; Compounded episode:issue-75-task-evals:",
+  "recalled_nodes": [
+    {
+      "id": "fact:repo-hath0r-mcp-orientation",
+      "type": "fact",
+      "label": "hath0r-mcp Repository Memory Orientation",
+      "snippet": "hath0r-mcp: [![CI](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml/badge.s"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-28T13:35:55.822032+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:issue-75: Task Evaluation issue-75 (R=1.00, PASS)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "issue-75",
+        "passed",
+        "compounded"
+      ],
+      "node_id": "eval:issue-75"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:issue-75-task-evals",
+    "eval:issue-75"
+  ],
+  "capsule_bytes": 1775
+}
