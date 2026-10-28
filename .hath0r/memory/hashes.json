@@ -1,71 +1,72 @@
 {
   "schema_version": "hath0r.memory_hashes/1",
   "repo_name": "hath0r-mcp",
-  "revision": 65,
-  "updated_at": "2026-10-28T14:22:46.373947+00:00",
+  "revision": 71,
+  "updated_at": "2026-10-28T14:52:43.102738+00:00",
   "files": {
     ".hath0r/memory/architecture.md": {
       "sha256": "sha256:ff6a9063acefb8f5f75d38ef8caffb9ba8315f6ffe1ecf72138e6c68ffcb1084",
       "content_hash": "sha256:ff6a9063acefb8f5f75d38ef8caffb9ba8315f6ffe1ecf72138e6c68ffcb1084",
       "revision": 1,
       "byte_size": 246,
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     },
     ".hath0r/memory/core_rules.md": {
       "sha256": "sha256:8aea7c865c7e24656d6d09b53756c009bfd3f93a1cfa6e42acb2b40f446b1051",
       "content_hash": "sha256:8aea7c865c7e24656d6d09b53756c009bfd3f93a1cfa6e42acb2b40f446b1051",
       "revision": 2,
       "byte_size": 683,
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     },
     ".hath0r/memory/graph.json": {
-      "sha256": "sha256:855dcbc58180219add35aebfcd00a1347e18cd1c61730f2610fea9036de79d90",
-      "content_hash": "sha256:9eb5afbf58c56b2e667a71e3e1f6e7d1144148dfecdfbf09ebf022aa885e63ed",
-      "revision": 48,
-      "byte_size": 18846,
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "sha256": "sha256:50b7105b06ba1fcc55140bc7192239d82436b4c7a2c0a0bdb8043d81105639dd",
+      "content_hash": "sha256:6c07e149026c8195fc9511b71b1632175fda8fbcc13418a6b4b28541f50084c4",
+      "revision": 52,
+      "byte_size": 20567,
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     },
     ".hath0r/memory/sessions/current.json": {
-      "sha256": "sha256:e7e8e790d6a08af5271fa3419d653737c6cd9010f215eb54e7f2035e6c5190d4",
-      "content_hash": "sha256:9251eb0ced83c1483a96df97505ce7da8864fd2804518f18b20ffc18c14c54fb",
-      "revision": 21,
-      "byte_size": 1972,
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "sha256": "sha256:1ea8fdb1122d4968da1b6e8a38c7f4a75419da9cb75a6291098cb8c2a50b332a",
+      "content_hash": "sha256:be96fc0e17b201fffd779ba6768dec928536622f609f86d0cf415294872c2faf",
+      "revision": 22,
+      "byte_size": 1895,
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     },
     ".hath0r/memory/sessions/latest.json": {
-      "sha256": "sha256:e7e8e790d6a08af5271fa3419d653737c6cd9010f215eb54e7f2035e6c5190d4",
-      "content_hash": "sha256:9251eb0ced83c1483a96df97505ce7da8864fd2804518f18b20ffc18c14c54fb",
-      "revision": 21,
-      "byte_size": 1972,
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "sha256": "sha256:1ea8fdb1122d4968da1b6e8a38c7f4a75419da9cb75a6291098cb8c2a50b332a",
+      "content_hash": "sha256:be96fc0e17b201fffd779ba6768dec928536622f609f86d0cf415294872c2faf",
+      "revision": 22,
+      "byte_size": 1895,
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     },
     ".hath0r/memory/sessions/sess-20261016-123220-bb3476.json": {
       "sha256": "sha256:8f213a4191dc8119305e57069a34c6ed9f463520f9f0b7c50c897a65ff740f01",
       "content_hash": "sha256:abe94f31b838b5b540927425d6342e8f48f3389394e2d7d000849aa91aa805b1",
       "revision": 9,
       "byte_size": 2014,
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     },
     ".hath0r/memory/sessions/sess-20261028-133331-a485eb.json": {
-      "sha256": "sha256:e7e8e790d6a08af5271fa3419d653737c6cd9010f215eb54e7f2035e6c5190d4",
-      "content_hash": "sha256:9251eb0ced83c1483a96df97505ce7da8864fd2804518f18b20ffc18c14c54fb",
-      "revision": 12,
-      "byte_size": 1972,
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "sha256": "sha256:1ea8fdb1122d4968da1b6e8a38c7f4a75419da9cb75a6291098cb8c2a50b332a",
+      "content_hash": "sha256:be96fc0e17b201fffd779ba6768dec928536622f609f86d0cf415294872c2faf",
+      "revision": 13,
+      "byte_size": 1895,
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     }
   },
   "source_files": {
     ".hath0r/evals/latest.json": {
-      "sha256": "sha256:e4798a28619c6317e35621aead6b6b7920b44ca7a894dadb44bf03d7f85fe9e9",
-      "revision": 3,
-      "byte_size": 2628,
+      "sha256": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada",
+      "revision": 4,
+      "byte_size": 2699,
       "exists": true,
       "referenced_by": [
         "eval:eval-baseline-hath0r-mcp",
         "eval:issue-75",
+        "eval:issue-77",
         "eval:pr-76"
       ],
-      "updated_at": "2026-10-28T14:22:46.373947+00:00"
+      "updated_at": "2026-10-28T14:52:43.102738+00:00"
     }
   }
 }
