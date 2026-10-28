@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from knowledgebase.core.mcp_tools import get_default_mcp_tool_specs
-from knowledgebase.services.airflow_service import AirflowService, get_airflow_service
+from knowledgebase.services.airflow_service import AirflowService
 from knowledgebase.api.main import _execute_mcp_tool
 
 
