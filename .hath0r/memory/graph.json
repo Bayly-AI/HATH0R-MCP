@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "updated_at": "2026-10-28T14:56:20.355478+00:00",
+  "updated_at": "2026-10-28T15:19:49.915488+00:00",
   "nodes": [
     {
       "id": "rule:cr-cli-entry-001",
@@ -89,7 +89,7 @@
       "id": "episode:clean-repo-hath0r-mcp",
       "type": "episode",
       "label": "Clean Repo Lifecycle (hath0r-mcp)",
-      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-mcp.",
       "importance": 0.75,
       "tags": [
         "clean-repo",
@@ -98,11 +98,11 @@
         "episode",
         "compounded"
       ],
-      "valid_from": "2026-10-16T15:48:34.318294+00:00",
+      "valid_from": "2026-10-28T15:19:48.069078+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-16T15:48:34.318294+00:00",
-      "updated_at": "2026-10-16T15:48:34.318294+00:00",
+      "updated_at": "2026-10-28T15:19:48.069078+00:00",
       "metadata": {}
     },
     {
@@ -192,7 +192,7 @@
       "updated_at": "2026-10-28T13:35:55.782782+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         }
       }
     },
@@ -236,7 +236,7 @@
       "updated_at": "2026-10-28T13:43:14.075525+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         }
       }
     },
@@ -280,7 +280,7 @@
       "updated_at": "2026-10-28T14:21:13.647307+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         }
       }
     },
@@ -304,7 +304,7 @@
       "updated_at": "2026-10-28T14:52:41.792412+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         }
       }
     },
@@ -369,7 +369,7 @@
       "updated_at": "2026-10-28T14:56:16.087630+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         }
       }
     },
@@ -435,7 +435,31 @@
       "updated_at": "2026-10-28T14:56:19.078037+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
+        }
+      }
+    },
+    {
+      "id": "eval:clean-repo-hath0r-mcp",
+      "type": "eval",
+      "label": "Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "clean-repo-hath0r-mcp",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T15:19:49.456588+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T15:19:49.456588+00:00",
+      "updated_at": "2026-10-28T15:19:49.456588+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         }
       }
     },
@@ -443,7 +467,7 @@
       "id": "session:sess-20261028-133331-a485eb",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 5, Writes: 16 | Entries: Compounded eval:pr-78-merged: Task Evaluation pr-78-merged (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 6, Writes: 19 | Entries: Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -451,18 +475,18 @@
         "completed"
       ],
       "valid_from": "2026-10-28T13:33:31.993995+00:00",
-      "valid_to": "2026-10-28T14:56:15.089036+00:00",
+      "valid_to": "2026-10-28T15:19:48.103472+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:31.993995+00:00",
-      "updated_at": "2026-10-28T14:56:19.099150+00:00",
+      "updated_at": "2026-10-28T15:19:49.480532+00:00",
       "metadata": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 5,
-        "write_count": 16,
+        "read_count": 6,
+        "write_count": 19,
         "status": "completed",
-        "byte_size": 1836
+        "byte_size": 1920
       }
     }
   ],
@@ -896,8 +920,48 @@
       "weight": 1.0,
       "valid_from": "2026-10-28T14:56:19.101634+00:00",
       "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-mcp",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:19:48.089638+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:19:49.456588+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-mcp",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:19:49.456588+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-mcp",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:19:49.456588+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-mcp",
+      "target": "session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:19:49.483349+00:00",
+      "is_current": true
     }
   ],
-  "revision": 72,
-  "content_hash": "sha256:6773d5cf4f8368508b0100b1f5e0c1f0f34c8730132c1cc000ae91a9b1a6c06b"
+  "revision": 81,
+  "content_hash": "sha256:5433cad8f7a496087f9dc4b82c2a529b9df956aab23abebdfff048f219f2712c"
 }

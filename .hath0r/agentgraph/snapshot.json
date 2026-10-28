@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-28T14:56:19.551366+00:00",
+  "timestamp": "2026-10-28T15:19:49.912079+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -591,7 +591,7 @@
       "plane": "memory",
       "type": "episode",
       "label": "Clean Repo Lifecycle (hath0r-mcp)",
-      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-mcp.",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-mcp.",
       "properties": {
         "source": "local_memory",
         "tags": [
@@ -676,7 +676,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         },
         "source": "local_memory",
         "tags": [
@@ -717,7 +717,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         },
         "source": "local_memory",
         "tags": [
@@ -758,7 +758,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         },
         "source": "local_memory",
         "tags": [
@@ -780,7 +780,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7dfae048fb85e3c5e671670520d72faaacc23f802b8bcccc85963a52b664cada"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         },
         "source": "local_memory",
         "tags": [
@@ -841,7 +841,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e04529663a7573d2c08f2525d69c00a0872dc4c0ecd4d899bd63070facee1e43"
+          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
         },
         "source": "local_memory",
         "tags": [
@@ -918,19 +918,41 @@
       "is_current": true
     },
     {
+      "id": "memory:eval:clean-repo-hath0r-mcp",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "clean-repo-hath0r-mcp",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
       "id": "memory:session:sess-20261028-133331-a485eb",
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 5, Writes: 16 | Entries: Compounded eval:pr-78-merged: Task Evaluation pr-78-merged (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 6, Writes: 19 | Entries: Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 5,
-        "write_count": 16,
+        "read_count": 6,
+        "write_count": 19,
         "status": "completed",
-        "byte_size": 1836,
+        "byte_size": 1920,
         "source": "local_memory",
         "tags": [
           "session",
@@ -1308,6 +1330,36 @@
       "is_current": true
     },
     {
+      "source": "memory:episode:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261028-133331-a485eb",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -1495,6 +1547,12 @@
     },
     {
       "source": "memory:eval:pr-78-merged",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true

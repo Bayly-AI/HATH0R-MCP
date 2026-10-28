@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261028-145618-b05a26",
-  "task_id": "pr-78-merged",
+  "eval_id": "eval-20261028-151949-030142",
+  "task_id": "clean-repo-hath0r-mcp",
   "issue_number": null,
   "repo_name": "hath0r-mcp",
   "branch": "development",
-  "evaluated_at": "2026-10-28T14:56:18.461640+00:00",
-  "duration_ms": 244.8,
+  "evaluated_at": "2026-10-28T15:19:49.157981+00:00",
+  "duration_ms": 349.97,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 15,
+          "compounded_nodes_count": 16,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -64,13 +64,13 @@
       "estimated_usd": 0.0,
       "max_usd": 0.25,
       "session_id": "sess-20261028-133331-a485eb",
-      "session_reads": 5,
-      "session_writes": 15,
-      "session_bytes": 1828,
+      "session_reads": 6,
+      "session_writes": 18,
+      "session_bytes": 1761,
       "within_capsule_budget": true,
-      "latency_ms": 84.71,
-      "taguchi_quality_loss": 0.0001,
-      "snr_db": 27.46
+      "latency_ms": 116.68,
+      "taguchi_quality_loss": 0.0002,
+      "snr_db": 24.68
     },
     "adversarial": {
       "score": 1.0,
@@ -85,18 +85,16 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "pr-78-merged",
+      "task_id": "clean-repo-hath0r-mcp",
       "issue_number": null,
       "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-      "compounded_nodes_count": 15,
+      "compounded_nodes_count": 16,
       "consensus_score": 1.0
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
-    "mode": "live_synced",
-    "phoenix_logged": true,
-    "mlflow_run_id": "453e0f8af86647cfb57cb0d95461f7e6"
+    "mode": "pending"
   },
-  "content_hash": "sha256:3271a63dac7435455aa555dcc05b6a29c1acff92a085a5b0157258d437ed9023"
+  "content_hash": "sha256:a1f277d484b4a25044e1f2ab6f39c657d44a4e11557c8cac29e1c61724629276"
 }
