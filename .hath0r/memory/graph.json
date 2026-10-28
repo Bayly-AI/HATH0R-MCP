@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "updated_at": "2026-10-28T17:45:27.761644+00:00",
+  "updated_at": "2026-10-28T18:13:36.956319+00:00",
   "nodes": [
     {
       "id": "rule:cr-cli-entry-001",
@@ -88,21 +88,21 @@
     {
       "id": "episode:clean-repo-hath0r-mcp",
       "type": "episode",
-      "label": "Clean Repo Lifecycle (hath0r-mcp)",
-      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-mcp.",
-      "importance": 0.75,
+      "label": "Clean Repo Development Sync (hath0r-mcp)",
+      "content": "Verified all changes merged into development and synced for hath0r-mcp.",
+      "importance": 0.8,
       "tags": [
         "clean-repo",
-        "hygiene",
+        "development",
         "hath0r-mcp",
         "episode",
         "compounded"
       ],
-      "valid_from": "2026-10-28T15:19:48.069078+00:00",
+      "valid_from": "2026-10-28T18:13:34.891956+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-16T15:48:34.318294+00:00",
-      "updated_at": "2026-10-28T15:19:48.069078+00:00",
+      "updated_at": "2026-10-28T18:13:34.891956+00:00",
       "metadata": {}
     },
     {
@@ -192,7 +192,7 @@
       "updated_at": "2026-10-28T13:35:55.782782+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         }
       }
     },
@@ -236,7 +236,7 @@
       "updated_at": "2026-10-28T13:43:14.075525+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         }
       }
     },
@@ -281,7 +281,7 @@
       "updated_at": "2026-10-28T17:45:27.414443+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         }
       }
     },
@@ -305,7 +305,7 @@
       "updated_at": "2026-10-28T14:52:41.792412+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         }
       }
     },
@@ -370,7 +370,7 @@
       "updated_at": "2026-10-28T14:56:16.087630+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         }
       }
     },
@@ -436,7 +436,7 @@
       "updated_at": "2026-10-28T14:56:19.078037+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         }
       }
     },
@@ -453,14 +453,14 @@
         "passed",
         "compounded"
       ],
-      "valid_from": "2026-10-28T15:19:49.456588+00:00",
+      "valid_from": "2026-10-28T18:13:36.134148+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T15:19:49.456588+00:00",
-      "updated_at": "2026-10-28T15:19:49.456588+00:00",
+      "updated_at": "2026-10-28T18:13:36.134148+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         }
       }
     },
@@ -468,7 +468,7 @@
       "id": "session:sess-20261028-133331-a485eb",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 8, Writes: 22 | Entries: Compounded eval:eval-baseline-hath0r-mcp: Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 9, Writes: 24 | Entries: Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -479,15 +479,15 @@
       "valid_to": "2026-10-28T15:19:48.103472+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:31.993995+00:00",
-      "updated_at": "2026-10-28T17:45:27.431435+00:00",
+      "updated_at": "2026-10-28T18:13:36.170761+00:00",
       "metadata": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 8,
-        "write_count": 22,
+        "read_count": 9,
+        "write_count": 24,
         "status": "completed",
-        "byte_size": 1980
+        "byte_size": 1944
       }
     }
   ],
@@ -963,6 +963,6 @@
       "is_current": true
     }
   ],
-  "revision": 95,
-  "content_hash": "sha256:9ad5a4a7807c8c0da4df71ba1b89c7b1a2aab26b23950ebbd8b7bb07aadb5dc2"
+  "revision": 103,
+  "content_hash": "sha256:194c36279af53be5658a023e494bdaa50555e0f2274f3616fcc4e845fb09af62"
 }

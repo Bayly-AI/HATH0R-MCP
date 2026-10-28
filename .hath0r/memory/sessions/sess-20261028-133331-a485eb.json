@@ -3,43 +3,43 @@
   "session_id": "sess-20261028-133331-a485eb",
   "prior_session_id": "sess-20261016-123220-bb3476",
   "parent_session_id": "sess-20261016-123220-bb3476",
-  "revision": 29,
-  "content_hash": "sha256:4ca628c32bd1364643d2774295d1fd093e28edc90e0ed6b4765773e61c843158",
-  "base_graph_hash": "sha256:912008cee47f0efba796a5d90b4a2242f9758576fbac65d656fd90e52b1b24d7",
+  "revision": 32,
+  "content_hash": "sha256:a32cba3a24fa9534abb0c25b2a68ee20099dec6e1e63d982639316ca5d13349d",
+  "base_graph_hash": "sha256:9ad5a4a7807c8c0da4df71ba1b89c7b1a2aab26b23950ebbd8b7bb07aadb5dc2",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
   "started_at": "2026-10-28T13:33:31.993995+00:00",
-  "updated_at": "2026-10-28T17:45:27.431435+00:00",
+  "updated_at": "2026-10-28T18:13:36.170761+00:00",
   "ended_at": "2026-10-28T15:19:48.103472+00:00",
-  "read_count": 8,
-  "write_count": 22,
-  "last_read_at": "2026-10-28T17:45:26.718858+00:00",
-  "last_write_at": "2026-10-28T17:45:27.431435+00:00",
+  "read_count": 9,
+  "write_count": 24,
+  "last_read_at": "2026-10-28T18:13:34.856240+00:00",
+  "last_write_at": "2026-10-28T18:13:36.170761+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-  "prior_summary": "ounded eval:clean-repo-hath0r-mcp: T; Compounded rule:cr-task-eval-001: Automa; Compounded rule:cr-task-eval-001: Automa",
+  "prior_summary": "ounded rule:cr-task-eval-001: Automa; Compounded eval:eval-baseline-hath0r-mcp; Compounded episode:clean-repo-hath0r-mcp",
   "recalled_nodes": [
     {
-      "id": "eval:clean-repo-hath0r-mcp",
-      "type": "eval",
-      "label": "Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
-      "snippet": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det"
+      "id": "insight:hath0r-mcp",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-mcp",
+      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, lice"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T17:45:27.431435+00:00",
+      "timestamp": "2026-10-28T18:13:36.170761+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:eval-baseline-hath0r-mcp: Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)",
+      "summary": "Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "eval-baseline-hath0r-mcp",
+        "clean-repo-hath0r-mcp",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:eval-baseline-hath0r-mcp"
+      "node_id": "eval:clean-repo-hath0r-mcp"
     }
   ],
   "next_steps": [],
@@ -51,5 +51,5 @@
     "rule:cr-task-eval-001",
     "eval:eval-baseline-hath0r-mcp"
   ],
-  "capsule_bytes": 1980
+  "capsule_bytes": 1944
 }
