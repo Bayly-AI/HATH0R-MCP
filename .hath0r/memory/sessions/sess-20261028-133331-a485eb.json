@@ -3,53 +3,54 @@
   "session_id": "sess-20261028-133331-a485eb",
   "prior_session_id": "sess-20261016-123220-bb3476",
   "parent_session_id": "sess-20261016-123220-bb3476",
-  "revision": 24,
-  "content_hash": "sha256:80ef895691dc209a216bd06e98e88c4c0715f6a9c245775153c6c5dc207e90fc",
-  "base_graph_hash": "sha256:6773d5cf4f8368508b0100b1f5e0c1f0f34c8730132c1cc000ae91a9b1a6c06b",
+  "revision": 26,
+  "content_hash": "sha256:f04e22140f69aef6882d7088285ed341374173f46bf827a73d8d56b374c7bdfc",
+  "base_graph_hash": "sha256:5433cad8f7a496087f9dc4b82c2a529b9df956aab23abebdfff048f219f2712c",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
   "started_at": "2026-10-28T13:33:31.993995+00:00",
-  "updated_at": "2026-10-28T15:19:49.480532+00:00",
+  "updated_at": "2026-10-28T17:36:29.203826+00:00",
   "ended_at": "2026-10-28T15:19:48.103472+00:00",
-  "read_count": 6,
-  "write_count": 19,
-  "last_read_at": "2026-10-28T15:19:48.051496+00:00",
-  "last_write_at": "2026-10-28T15:19:49.480532+00:00",
+  "read_count": 7,
+  "write_count": 20,
+  "last_read_at": "2026-10-28T17:36:29.181370+00:00",
+  "last_write_at": "2026-10-28T17:36:29.203826+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-  "prior_summary": "ounded eval:pr-78-merged: Task Evalu; Compounded episode:clean-repo-hath0r-mcp; Clean Repo Lifecycle completed for hath0",
+  "prior_summary": "ounded episode:clean-repo-hath0r-mcp; Clean Repo Lifecycle completed for hath0; Compounded eval:clean-repo-hath0r-mcp: T",
   "recalled_nodes": [
     {
-      "id": "insight:hath0r-mcp",
-      "type": "insight",
-      "label": "Synthesized Insight on hath0r-mcp",
-      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, lice"
+      "id": "eval:clean-repo-hath0r-mcp",
+      "type": "eval",
+      "label": "Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
+      "snippet": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T15:19:49.480532+00:00",
+      "timestamp": "2026-10-28T17:36:29.203826+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
+      "summary": "Compounded rule:cr-task-eval-001: Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-EVAL-001)",
       "tags": [
-        "eval",
+        "rule",
+        "governance",
+        "evals",
         "cr-task-eval-001",
-        "clean-repo-hath0r-mcp",
-        "passed",
+        "scorecard",
         "compounded"
       ],
-      "node_id": "eval:clean-repo-hath0r-mcp"
+      "node_id": "rule:cr-task-eval-001"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:issue-77",
     "episode:pr-78",
     "eval:pr-78",
     "eval:pr-78-merged",
     "episode:clean-repo-hath0r-mcp",
-    "eval:clean-repo-hath0r-mcp"
+    "eval:clean-repo-hath0r-mcp",
+    "rule:cr-task-eval-001"
   ],
-  "capsule_bytes": 1920
+  "capsule_bytes": 1968
 }

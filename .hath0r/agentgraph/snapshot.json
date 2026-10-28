@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-28T15:19:49.912079+00:00",
+  "timestamp": "2026-10-28T17:36:29.545686+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -493,7 +493,7 @@
       "properties": {
         "path": "WARP.md",
         "category": "root",
-        "size_bytes": 4145
+        "size_bytes": 4565
       },
       "is_current": true
     },
@@ -676,7 +676,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         },
         "source": "local_memory",
         "tags": [
@@ -717,7 +717,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         },
         "source": "local_memory",
         "tags": [
@@ -735,8 +735,8 @@
       "id": "memory:rule:cr-task-eval-001",
       "plane": "memory",
       "type": "rule",
-      "label": "Automatic Task Evaluation Gate (CR-TASK-EVAL-001)",
-      "content": "Every task must execute and pass the 4-tier hybrid evaluation pipeline (R_task >= 0.80) and persist .hath0r/evals/latest.json prior to announcing complete.",
+      "label": "Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-EVAL-001)",
+      "content": "Every task must execute and pass the 4-tier hybrid evaluation pipeline (R_task >= 0.80), persist .hath0r/evals/latest.json, and always return a structured summary of the Eval Scorecard in the completion response to the user.",
       "properties": {
         "source": "local_memory",
         "tags": [
@@ -744,6 +744,7 @@
           "governance",
           "evals",
           "cr-task-eval-001",
+          "scorecard",
           "compounded"
         ],
         "importance": 1.0
@@ -758,7 +759,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         },
         "source": "local_memory",
         "tags": [
@@ -780,7 +781,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         },
         "source": "local_memory",
         "tags": [
@@ -841,7 +842,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         },
         "source": "local_memory",
         "tags": [
@@ -903,7 +904,7 @@
       "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e52abd0acd439b488147e8ff8486e47f266a61ad94086703bf52ca32ba4ed524"
+          ".hath0r/evals/latest.json": "sha256:453a5e73af97d29ac40b7af6dc1e451b6e8680b2e1f443838d8935149acab787"
         },
         "source": "local_memory",
         "tags": [
@@ -944,15 +945,15 @@
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133331-a485eb",
-      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 6, Writes: 19 | Entries: Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133331-a485eb [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 7, Writes: 20 | Entries: Compounded rule:cr-task-eval-001: Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-EVAL-001)",
       "properties": {
         "session_id": "sess-20261028-133331-a485eb",
         "prior_session_id": "sess-20261016-123220-bb3476",
         "parent_session_id": "sess-20261016-123220-bb3476",
-        "read_count": 6,
-        "write_count": 19,
+        "read_count": 7,
+        "write_count": 20,
         "status": "completed",
-        "byte_size": 1920,
+        "byte_size": 1968,
         "source": "local_memory",
         "tags": [
           "session",
