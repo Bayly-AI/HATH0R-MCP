@@ -1,0 +1,50 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261029-132722-954337",
+  "prior_session_id": "sess-20261029-124700-b22430",
+  "parent_session_id": "sess-20261029-124700-b22430",
+  "revision": 3,
+  "content_hash": "sha256:97bc96c1ac3563582b82e0f994eed7f5ab09a202dc9b0150bb2610a0a9cb423b",
+  "base_graph_hash": "sha256:1e26653178d436e313814efdfbc04bd071a1d682aba739a345d70c24f0f8b9cf",
+  "task_id": "rule-sync-and-workflow-upgrade",
+  "role": null,
+  "repo_name": "hath0r-mcp",
+  "status": "active",
+  "started_at": "2026-10-29T13:27:22.642776+00:00",
+  "updated_at": "2026-10-29T13:27:26.387488+00:00",
+  "ended_at": null,
+  "read_count": 1,
+  "write_count": 2,
+  "last_read_at": "2026-10-29T13:27:22.642776+00:00",
+  "last_write_at": "2026-10-29T13:27:26.387488+00:00",
+  "active_focus": "Active working session in hath0r-mcp",
+  "prior_summary": "ompounded eval:task-hath0r-mcp: Task Evaluation task-hath0r-mcp (R=1.00, PASS); Eliminated conflicting rules in AGENTS.m",
+  "recalled_nodes": [
+    {
+      "id": "rule:cr-task-eval-001",
+      "type": "rule",
+      "label": "Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-",
+      "snippet": "Every task must execute and pass the 4-tier hybrid evaluation pipeline (R_task >= 0.80), p"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-29T13:27:26.387488+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:task-hath0r-mcp: Task Evaluation task-hath0r-mcp (R=1.00, PASS)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "task-hath0r-mcp",
+        "passed",
+        "compounded"
+      ],
+      "node_id": "eval:task-hath0r-mcp"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "eval:task-hath0r-mcp"
+  ],
+  "capsule_bytes": 1780
+}

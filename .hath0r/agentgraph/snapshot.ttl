@@ -178,6 +178,21 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:eval:release-v1-2-6> a hath0r:Plane ;
+    rdfs:label "Task Evaluation release-v1-2-6 (R=1.00, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:eval:task-hath0r-mcp> a hath0r:Plane ;
+    rdfs:label "Task Evaluation task-hath0r-mcp (R=1.00, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:fact:pbac-curation-84> a hath0r:Plane ;
+    rdfs:label "PBAC Contextual Curation & L2 Secret/PII Sanitizer (#84)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:fact:repo-hath0r-mcp-orientation> a hath0r:Plane ;
     rdfs:label "hath0r-mcp Repository Memory Orientation" ;
     hath0r:inPlane "memory" ;
@@ -240,8 +255,18 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261029-124700-b22430> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261029-124700-b22430" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#role:reader> a hath0r:AgentRole ;
     rdfs:label "Read-Only Agent" ;
+    hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#rule:cr-agentic-sec-001> a hath0r:Plane ;
+    rdfs:label "Rule CR-AGENTIC-SEC-001" ;
+    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 
 <https://hath0r.dev/ontology/v1#rule:cr-bai-001> a hath0r:Plane ;
@@ -251,6 +276,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#rule:cr-branch-gov-001> a hath0r:Plane ;
     rdfs:label "Rule CR-BRANCH-GOV-001" ;
+    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
+    hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#rule:cr-claude-sync-001> a hath0r:Plane ;
+    rdfs:label "Rule CR-CLAUDE-SYNC-001" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 
@@ -276,6 +306,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#rule:cr-hath0r-root-001> a hath0r:Plane ;
     rdfs:label "Rule CR-HATH0R-ROOT-001" ;
+    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
+    hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#rule:cr-memory-compound-001> a hath0r:Plane ;
+    rdfs:label "Rule CR-MEMORY-COMPOUND-001" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 

@@ -1,24 +1,24 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261029-124700-b22430",
-  "prior_session_id": "sess-20261029-120736-38c7e4",
-  "parent_session_id": "sess-20261029-120736-38c7e4",
-  "revision": 4,
-  "content_hash": "sha256:68a1e5b0fd6bfaabd0ca24801739cccc5d1c06db121ab7e7de505aac37895d5c",
-  "base_graph_hash": "sha256:3951eed050161b662bb13c6d9863686081e73710e7a64a1f1aca6f045e18e623",
-  "task_id": "84",
+  "session_id": "sess-20261029-132722-954337",
+  "prior_session_id": "sess-20261029-124700-b22430",
+  "parent_session_id": "sess-20261029-124700-b22430",
+  "revision": 3,
+  "content_hash": "sha256:97bc96c1ac3563582b82e0f994eed7f5ab09a202dc9b0150bb2610a0a9cb423b",
+  "base_graph_hash": "sha256:1e26653178d436e313814efdfbc04bd071a1d682aba739a345d70c24f0f8b9cf",
+  "task_id": "rule-sync-and-workflow-upgrade",
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "active",
-  "started_at": "2026-10-29T12:47:00.069592+00:00",
-  "updated_at": "2026-10-29T12:47:05.067089+00:00",
+  "started_at": "2026-10-29T13:27:22.642776+00:00",
+  "updated_at": "2026-10-29T13:27:26.387488+00:00",
   "ended_at": null,
   "read_count": 1,
-  "write_count": 4,
-  "last_read_at": "2026-10-29T12:47:00.069592+00:00",
-  "last_write_at": "2026-10-29T12:47:05.067089+00:00",
-  "active_focus": "Implement PBAC contextual curation, L2 sanitizer, and KB redteam probes (#84)",
-  "prior_summary": "ted session focus: Implement PBAC co; Added PBACCurationEngine in src/knowledg; Compounded fact:pbac-curation-84: PBAC C",
+  "write_count": 2,
+  "last_read_at": "2026-10-29T13:27:22.642776+00:00",
+  "last_write_at": "2026-10-29T13:27:26.387488+00:00",
+  "active_focus": "Active working session in hath0r-mcp",
+  "prior_summary": "ompounded eval:task-hath0r-mcp: Task Evaluation task-hath0r-mcp (R=1.00, PASS); Eliminated conflicting rules in AGENTS.m",
   "recalled_nodes": [
     {
       "id": "rule:cr-task-eval-001",
@@ -29,7 +29,7 @@
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-29T12:47:05.067089+00:00",
+      "timestamp": "2026-10-29T13:27:26.387488+00:00",
       "kind": "compound",
       "summary": "Compounded eval:task-hath0r-mcp: Task Evaluation task-hath0r-mcp (R=1.00, PASS)",
       "tags": [
@@ -44,8 +44,7 @@
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "fact:pbac-curation-84",
     "eval:task-hath0r-mcp"
   ],
-  "capsule_bytes": 1822
+  "capsule_bytes": 1780
 }

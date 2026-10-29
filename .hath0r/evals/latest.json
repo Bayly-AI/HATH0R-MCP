@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261029-124704-a70942",
+  "eval_id": "eval-20261029-132725-3e655e",
   "task_id": "task-hath0r-mcp",
   "issue_number": null,
   "repo_name": "hath0r-mcp",
   "branch": "development",
-  "evaluated_at": "2026-10-29T12:47:04.351883+00:00",
-  "duration_ms": 251.39,
+  "evaluated_at": "2026-10-29T13:27:25.625278+00:00",
+  "duration_ms": 264.73,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -32,7 +32,7 @@
       "checks": {
         "version_valid": {
           "passed": true,
-          "version": "1.3.0",
+          "version": "1.3.1",
           "error": null
         },
         "agentgraph_valid": {
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 20,
+          "compounded_nodes_count": 21,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -63,14 +63,14 @@
       "max_tokens": 50000,
       "estimated_usd": 0.0,
       "max_usd": 0.25,
-      "session_id": "sess-20261029-124700-b22430",
+      "session_id": "sess-20261029-132722-954337",
       "session_reads": 1,
-      "session_writes": 3,
-      "session_bytes": 2019,
+      "session_writes": 1,
+      "session_bytes": 1902,
       "within_capsule_budget": true,
-      "latency_ms": 87.89,
+      "latency_ms": 78.55,
       "taguchi_quality_loss": 0.0001,
-      "snr_db": 27.14
+      "snr_db": 28.12
     },
     "adversarial": {
       "score": 1.0,
@@ -87,8 +87,8 @@
       "passed": true,
       "task_id": "task-hath0r-mcp",
       "issue_number": null,
-      "active_focus": "Implement PBAC contextual curation, L2 sanitizer, and KB redteam probes (#84)",
-      "compounded_nodes_count": 20,
+      "active_focus": "Active working session in hath0r-mcp",
+      "compounded_nodes_count": 21,
       "consensus_score": 1.0
     }
   },
@@ -99,34 +99,37 @@
         ".hath0r/evals/latest.json"
       ],
       "STATIC_AST_ANALYSIS": [
-        "src/knowledgebase/server.py",
-        "src/knowledgebase/search/curation.py",
-        "tests/unit/test_pbac_curation.py",
+        ".agents/skills/clean-repos/SKILL.md",
         ".hath0r/agentgraph/snapshot.json",
         ".hath0r/memory/graph.json",
         ".hath0r/memory/hashes.json",
         ".hath0r/memory/sessions/current.json",
         ".hath0r/memory/sessions/latest.json",
+        "AGENTS.md",
         "CHANGELOG.md",
         "pyproject.toml",
-        ".hath0r/memory/sessions/sess-20261029-124700-b22430.json"
+        ".hath0r/memory/sessions/sess-20261029-132722-954337.json",
+        "CLAUDE.md",
+        "THREATMODEL.md"
       ],
       "UNVERIFIED_FILE_PRESENCE": [
+        ".hath0r/agentgraph/snapshot.ttl",
         "VERSION",
-        "cfg/pbac/"
+        ".agents/skills/orient/",
+        ".hath0r/security/"
       ]
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 11,
-      "UNVERIFIED_FILE_PRESENCE": 2
+      "STATIC_AST_ANALYSIS": 12,
+      "UNVERIFIED_FILE_PRESENCE": 4
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
     "mode": "live_synced",
     "phoenix_logged": true,
-    "mlflow_run_id": "57e9279a07ce41ed8f96bc530c1ab704"
+    "mlflow_run_id": "ba585117287d408d93070a12b7a2f06b"
   },
-  "content_hash": "sha256:fd7fadb4dc697d53d133bad1a26fa8a7847c4ac9ad3bb65864901c118d931ef5"
+  "content_hash": "sha256:ed6cba14309c9ad868e28a1885f771f0ff7fbef4c9b21520aca610e21bc50592"
 }
