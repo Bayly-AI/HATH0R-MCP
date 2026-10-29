@@ -29,3 +29,23 @@ cfg/status.json
 .hath0r/events.jsonl
 .hath0r/finops/
 
+# Canonical Hath0r Graph Folders (NEVER ignore — CR-MEMORY-COMPOUND-001 & CR-AGENTGRAPH-001)
+!.hath0r/
+!.hath0r/memory/
+!.hath0r/memory/**
+!.hath0r/memory/sessions/
+!.hath0r/memory/sessions/**
+!.hath0r/agentgraph/
+!.hath0r/agentgraph/**
+!.hath0r/graphs/
+!.hath0r/graphs/**
+!.hath0r/state/
+!.hath0r/state/cache/
+!.hath0r/state/cache/**
+!.hath0r/state/context/
+!.hath0r/state/context/**
+
+!.hath0r/mcp.json
+
+!.hath0r/evals/
+!.hath0r/evals/**
