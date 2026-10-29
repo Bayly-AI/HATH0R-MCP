@@ -124,7 +124,7 @@ hath0r:governs a owl:ObjectProperty .
 hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:episode:clean-repo-hath0r-mcp> a hath0r:Plane ;
-    rdfs:label "Clean Repo Development Sync (hath0r-mcp)" ;
+    rdfs:label "Clean Repo Lifecycle (hath0r-mcp)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -257,6 +257,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:session:sess-20261029-124700-b22430> a hath0r:Plane ;
     rdfs:label "Micro Session sess-20261029-124700-b22430" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261029-132722-954337> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261029-132722-954337" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 

@@ -5,6 +5,12 @@ All notable changes to **HATH0R-MCP** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-10-29
+
+### Added
+- **Automatic Post-Task Evaluation & Pre-Push Verification Hooks (`CR-TASK-EVAL-001`)**:
+  - Provisioned `cfg/evals/task-eval.json` (`auto_run_after_every_task: true`, `require_scorecard_summary: true`), `.hath0r/evals/post-task-hook.sh`, `.git/hooks/pre-push` (`hath0r evals verify --auto-run`), and 1:1 `CLAUDE.md` ↔ `AGENTS.md` synchronization.
+
 ## [1.3.1] - 2026-10-29
 
 ### Changed

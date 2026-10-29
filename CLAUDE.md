@@ -1,7 +1,7 @@
 # AGENTS.md — HATH0R-MCP (Hath0r MCP Server)
 
 > HATHOR OpenSource member · Hath0r OpenSource Suite MCP service
-> Updated: 2026-10-29 · fileset pin `1.3.1` · engine version `1.11.1`
+> Updated: 2026-10-29 · fileset pin `1.3.2` · engine version `1.11.1`
 
 ## CR-CLI-ENTRY-001: Start with the CLI (CRITICAL — Org-Wide · CANONICAL)
 
