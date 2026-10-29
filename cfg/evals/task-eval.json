@@ -11,16 +11,16 @@
     "issue": 75
   },
   "weights": {
-    "deterministic": 0.40,
-    "trajectory": 0.20,
+    "deterministic": 0.4,
+    "trajectory": 0.2,
     "adversarial": 0.25,
     "goal_alignment": 0.15
   },
   "thresholds": {
-    "min_reward": 0.80,
-    "min_deterministic": 1.00,
-    "min_adversarial": 0.80,
-    "min_consensus": 0.70,
+    "min_reward": 0.8,
+    "min_deterministic": 1.0,
+    "min_adversarial": 0.8,
+    "min_consensus": 0.7,
     "max_tokens": 50000,
     "max_usd": 0.25,
     "target_latency_ms": 2000.0
@@ -29,7 +29,9 @@
     "require_deterministic_pass": true,
     "require_zero_critical_flaws": true,
     "require_finops_budget": true,
-    "require_memory_compounded": true
+    "require_memory_compounded": true,
+    "auto_run_after_every_task": true,
+    "require_scorecard_summary": true
   },
   "observability": {
     "phoenix_enabled": true,
