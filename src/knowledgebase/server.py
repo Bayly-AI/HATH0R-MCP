@@ -17,6 +17,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from knowledgebase import __version__
 from knowledgebase.core.jev_client import JevSettings, get_jev_client
+from knowledgebase.search.curation import pbac_curation_engine
 
 
 class ServiceSettings(BaseSettings):
@@ -148,39 +149,113 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
     def kb_search(
         query: Annotated[str, Field(min_length=1, max_length=500)],
         limit: Annotated[int, Field(ge=1, le=20)] = 5,
+        persona: Annotated[str | None, Field(description="Optional PBAC caller persona")] = None,
+        purpose: Annotated[str, Field(description="PBAC operational purpose")] = "kb_search",
     ) -> dict:
         """Search bundled suite references by case-insensitive words; no embedding provider needed."""
         terms = set(re.findall(r"\w+", query.casefold()))
         if not terms:
             raise ValueError("Query must contain a word")
         matches = []
+        redactions_applied = 0
         for doc in documents.values():
             body = doc["content"].casefold()
             score = sum(body.count(term) for term in terms)
             if score:
+                curation = pbac_curation_engine.curate_content(
+                    doc["content"][:600],
+                    persona=persona,
+                    purpose=purpose,
+                    title=doc["title"],
+                )
+                redactions_applied += (
+                    curation.redacted_secrets_count + curation.redacted_pii_count + curation.curated_spans_count
+                )
                 matches.append(
                     {
                         "id": doc["id"],
                         "title": doc["title"],
                         "score": score,
-                        "excerpt": doc["content"][:600],
+                        "excerpt": curation.curated_text,
+                        "sensitivity_tier": curation.sensitivity_tier,
                     }
                 )
         matches.sort(key=lambda hit: (-hit["score"], hit["id"]))
         results = matches[:limit]
         jev = get_jev_client()
-        meta = {"jev_mode": jev.settings.mode, "jev_enabled": jev.enabled}
+        meta: dict[str, Any] = {
+            "jev_mode": jev.settings.mode,
+            "jev_enabled": jev.enabled,
+            "pbac": {
+                "persona": persona or pbac_curation_engine.default_persona,
+                "purpose": purpose,
+                "redactions_applied": redactions_applied,
+            },
+        }
         if jev.enabled and jev.settings.mode == "stub" and results:
             results = [{**hit, "jev_stub_rank": i} for i, hit in enumerate(results)]
             meta["jev_note"] = "stub mode: lexical rank retained; enable live for System One scoring"
         return {"results": results, "total": len(matches), "jev": meta}
 
     @mcp.tool(annotations=read_annotations)
-    def kb_get_document(document_id: Annotated[str, Field(min_length=1, max_length=512)]) -> dict:
+    def kb_get_document(
+        document_id: Annotated[str, Field(min_length=1, max_length=512)],
+        persona: Annotated[str | None, Field(description="Optional PBAC caller persona")] = None,
+        purpose: Annotated[str, Field(description="PBAC operational purpose")] = "kb_get_document",
+    ) -> dict:
         """Read a reference by the exact ID returned by suite_info or kb_search."""
         if document_id not in documents:
             raise ValueError("Unknown document ID")
-        return documents[document_id]
+        raw_doc = documents[document_id]
+        if persona is None:
+            return raw_doc
+        curation = pbac_curation_engine.curate_content(
+            raw_doc["content"],
+            persona=persona,
+            purpose=purpose,
+            title=raw_doc["title"],
+        )
+        return {
+            **raw_doc,
+            "content": curation.curated_text,
+            "pbac": {
+                "persona": curation.persona,
+                "purpose": curation.purpose,
+                "sensitivity_tier": curation.sensitivity_tier,
+                "allowed": curation.allowed,
+                "redacted_secrets_count": curation.redacted_secrets_count,
+                "redacted_pii_count": curation.redacted_pii_count,
+                "curated_spans_count": curation.curated_spans_count,
+            },
+        }
+
+    @mcp.tool(annotations=read_annotations)
+    def pbac_curate(
+        text: Annotated[str, Field(min_length=1, description="Text content to curate under PBAC")],
+        persona: Annotated[str, Field(description="Target PBAC persona")] = "developer_agent",
+        purpose: Annotated[str, Field(description="Operational purpose")] = "general_query",
+        title: Annotated[str, Field(description="Optional document title")] = "",
+    ) -> dict:
+        """Curate text content according to Purpose-Based Access Control (PBAC) persona clearance."""
+        res = pbac_curation_engine.curate_content(text=text, persona=persona, purpose=purpose, title=title)
+        return {
+            "persona": res.persona,
+            "purpose": res.purpose,
+            "sensitivity_tier": res.sensitivity_tier,
+            "allowed": res.allowed,
+            "curated_text": res.curated_text,
+            "redacted_secrets_count": res.redacted_secrets_count,
+            "redacted_pii_count": res.redacted_pii_count,
+            "curated_spans_count": res.curated_spans_count,
+            "redaction_types": res.redaction_types,
+        }
+
+    @mcp.tool(annotations=read_annotations)
+    def pbac_redteam_probe(
+        personas: Annotated[list[str] | None, Field(description="Optional list of personas to test")] = None,
+    ) -> dict:
+        """Run Knostic-style adversarial oversharing red-team probes across bundled KB documents."""
+        return pbac_curation_engine.run_oversharing_redteam_probes(documents=documents, personas=personas)
 
     # ------------------------------------------------------------------------
     # 2. Knowledgebase Index Management & Health
@@ -248,10 +323,11 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
         title: Annotated[str | None, Field(description="Optional document title")] = None,
         path: Annotated[str | None, Field(description="Optional source file path")] = None,
     ) -> Any:
-        """Add a single document into the specified knowledgebase index."""
+        """Add a single document into the specified knowledgebase index (pre-persist L2 sanitized)."""
+        sanitized_content, _, _, _ = pbac_curation_engine.sanitize_pre_persist(content)
         return await _call_backend_tool(
             "kb_add_document",
-            {"id": id, "content": content, "index": index, "title": title, "path": path},
+            {"id": id, "content": sanitized_content, "index": index, "title": title, "path": path},
         )
 
     @mcp.tool(annotations=write_annotations)
@@ -263,12 +339,13 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
         path: Annotated[str | None, Field(description="Optional source file path")] = None,
         source_repo: Annotated[str | None, Field(description="Optional source repository")] = None,
     ) -> Any:
-        """Upsert a document into the knowledgebase with optional repository attribution."""
+        """Upsert a document into the knowledgebase with optional repository attribution (pre-persist L2 sanitized)."""
+        sanitized_content, _, _, _ = pbac_curation_engine.sanitize_pre_persist(content)
         return await _call_backend_tool(
             "kb_upsert_document",
             {
                 "id": id,
-                "content": content,
+                "content": sanitized_content,
                 "index": index,
                 "title": title,
                 "path": path,

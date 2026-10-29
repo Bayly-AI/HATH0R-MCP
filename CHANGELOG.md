@@ -5,6 +5,13 @@ All notable changes to **HATH0R-MCP** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-10-29
+
+### Added
+- **Purpose-Based Access Control (PBAC), Inline Contextual Curation & L2 Secret/PII Sanitizer (`knowledgebase.search.curation`)** (#84):
+  - Added `PBACCurationEngine` (`src/knowledgebase/search/curation.py`) and `cfg/pbac/personas.yaml` supporting agent personas (`operator`, `developer_agent`, `research_subagent`, `external_auditor`, `public_reader`), sensitivity tiers (`PUBLIC`, `INTERNAL`, `CONFIDENTIAL`, `RESTRICTED`), inline span curation (`[CURATED:restricted_for_persona=<persona>]`), and pre-persist secret/PII redaction (`[REDACTED:<type>]`, `[PII_REDACTED:<type>]`).
+  - Wired `PBACCurationEngine` into `kb_search`, `kb_get_document`, `kb_add_document`, and `kb_upsert_document` in `src/knowledgebase/server.py`, and exposed new MCP tools `pbac_curate` and `pbac_redteam_probe`.
+
 ## [1.2.6] - 2026-10-28
 
 ### Added

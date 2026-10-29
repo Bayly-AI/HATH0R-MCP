@@ -1,0 +1,132 @@
+{
+  "schema_version": "hath0r.evals.scorecard/v1",
+  "rule_id": "CR-TASK-EVAL-001",
+  "eval_id": "eval-20261029-124704-a70942",
+  "task_id": "task-hath0r-mcp",
+  "issue_number": null,
+  "repo_name": "hath0r-mcp",
+  "branch": "development",
+  "evaluated_at": "2026-10-29T12:47:04.351883+00:00",
+  "duration_ms": 251.39,
+  "passed_gate": true,
+  "r_task": 1.0,
+  "min_reward_threshold": 0.8,
+  "weights": {
+    "deterministic": 0.4,
+    "trajectory": 0.2,
+    "adversarial": 0.25,
+    "goal_alignment": 0.15
+  },
+  "tier_scores": {
+    "deterministic": 1.0,
+    "trajectory": 1.0,
+    "adversarial": 1.0,
+    "goal_alignment": 1.0
+  },
+  "tiers": {
+    "deterministic": {
+      "score": 1.0,
+      "passed": true,
+      "passed_checks": 4,
+      "total_checks": 4,
+      "checks": {
+        "version_valid": {
+          "passed": true,
+          "version": "1.3.0",
+          "error": null
+        },
+        "agentgraph_valid": {
+          "passed": true,
+          "cycles": 0,
+          "contradictions": 0
+        },
+        "memory_compounded": {
+          "passed": true,
+          "compounded_nodes_count": 20,
+          "session_read_verified": true,
+          "session_write_verified": true,
+          "hashes_verified": true,
+          "graphs_not_ignored": true,
+          "error": null
+        },
+        "test_suite": {
+          "passed": true,
+          "skipped": true,
+          "message": "Test execution skipped via flag or dry-run."
+        }
+      }
+    },
+    "trajectory": {
+      "score": 1.0,
+      "passed": true,
+      "tokens_used": 0,
+      "max_tokens": 50000,
+      "estimated_usd": 0.0,
+      "max_usd": 0.25,
+      "session_id": "sess-20261029-124700-b22430",
+      "session_reads": 1,
+      "session_writes": 3,
+      "session_bytes": 2019,
+      "within_capsule_budget": true,
+      "latency_ms": 87.89,
+      "taguchi_quality_loss": 0.0001,
+      "snr_db": 27.14
+    },
+    "adversarial": {
+      "score": 1.0,
+      "passed": true,
+      "adversarial_flaws_count": 0,
+      "adversarial_flaws": [],
+      "tech_debts_count": 0,
+      "auto_created_issues": [],
+      "change_categories": {},
+      "changed_files_count": 0
+    },
+    "goal_alignment": {
+      "score": 1.0,
+      "passed": true,
+      "task_id": "task-hath0r-mcp",
+      "issue_number": null,
+      "active_focus": "Implement PBAC contextual curation, L2 sanitizer, and KB redteam probes (#84)",
+      "compounded_nodes_count": 20,
+      "consensus_score": 1.0
+    }
+  },
+  "evidence_trust_report": {
+    "schema": "hath0r.security.evidence_trust_report/1",
+    "tiers": {
+      "VERIFIED_EXECUTION": [
+        ".hath0r/evals/latest.json"
+      ],
+      "STATIC_AST_ANALYSIS": [
+        "src/knowledgebase/server.py",
+        "src/knowledgebase/search/curation.py",
+        "tests/unit/test_pbac_curation.py",
+        ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/memory/graph.json",
+        ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
+        "CHANGELOG.md",
+        "pyproject.toml",
+        ".hath0r/memory/sessions/sess-20261029-124700-b22430.json"
+      ],
+      "UNVERIFIED_FILE_PRESENCE": [
+        "VERSION",
+        "cfg/pbac/"
+      ]
+    },
+    "counts": {
+      "VERIFIED_EXECUTION": 1,
+      "STATIC_AST_ANALYSIS": 11,
+      "UNVERIFIED_FILE_PRESENCE": 2
+    }
+  },
+  "blocking_reasons": [],
+  "observability_sync": {
+    "mode": "live_synced",
+    "phoenix_logged": true,
+    "mlflow_run_id": "57e9279a07ce41ed8f96bc530c1ab704"
+  },
+  "content_hash": "sha256:fd7fadb4dc697d53d133bad1a26fa8a7847c4ac9ad3bb65864901c118d931ef5"
+}

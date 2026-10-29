@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-29T12:08:03.163589+00:00",
+  "timestamp": "2026-10-29T12:47:05.419747+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -689,7 +689,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         },
         "source": "local_memory",
         "tags": [
@@ -730,7 +730,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         },
         "source": "local_memory",
         "tags": [
@@ -772,7 +772,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         },
         "source": "local_memory",
         "tags": [
@@ -794,7 +794,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         },
         "source": "local_memory",
         "tags": [
@@ -855,7 +855,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         },
         "source": "local_memory",
         "tags": [
@@ -917,7 +917,7 @@
       "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         },
         "source": "local_memory",
         "tags": [
@@ -939,7 +939,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         },
         "source": "local_memory",
         "tags": [
@@ -985,9 +985,9 @@
       "content": "Released v1.2.6 of HATH0R-MCP with CR-CLI-ENTRY-001, CR-TASK-EVAL-001, CR-SEMVER-BUMP-001, and CR-SONAR-PREANNOUNCE-001.",
       "properties": {
         "source_files": {
-          "VERSION": "sha256:5844ffcc346f89c07b13ba7596bfb3788ed73f4755e541182d7822d43b7c7a24",
-          "pyproject.toml": "sha256:f43e6b20d75a9a0695195a40ae9c7c14e455f5fcad72e31c30c7919a60691b98",
-          "CHANGELOG.md": "sha256:528f7f5ee8abb8b5c7ce182643af313e7905886ceb9d0ec37bec7f858236ee3c",
+          "VERSION": "sha256:64d23f858ef51b0f996e4966d4e27c0371b437e2d2787890b1f7ad22d4ec5663",
+          "pyproject.toml": "sha256:1b88d238411c68ad22df81a1be81f62ae0a867e15325d643cb498634141caeef",
+          "CHANGELOG.md": "sha256:9e657bb1793303a1194a76986c77ac219559b37bd25a17d9a9772c93d6c8c36d",
           "AGENTS.md": "sha256:82fce014b389a3a7454d2a40670bdaef7556e6aaf4076919d7622295ef543a1e"
         },
         "source": "local_memory",
@@ -1035,6 +1035,73 @@
         "write_count": 4,
         "status": "active",
         "byte_size": 2019,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "active"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:fact:pbac-curation-84",
+      "plane": "memory",
+      "type": "fact",
+      "label": "PBAC Contextual Curation & L2 Secret/PII Sanitizer (#84)",
+      "content": "Implemented PBACCurationEngine, cfg/pbac/personas.yaml, and MCP tools pbac_curate and pbac_redteam_probe (v1.3.0).",
+      "properties": {
+        "source_files": {
+          "src/knowledgebase/search/curation.py": "sha256:b4d605e33453490842c9227da0444939970356948c36fb47f10ed285c61b9043",
+          "src/knowledgebase/server.py": "sha256:4f38e6f1be50401ef2a5292d4ab9d29a81f6d62aad8a5e83704977aa8c26bca7",
+          "tests/unit/test_pbac_curation.py": "sha256:547c902b88ec57c07460e6d84510fc1104b46bda867f349dc3fac8d635d95bb4"
+        },
+        "source": "local_memory",
+        "tags": [
+          "fact",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:task-hath0r-mcp",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation task-hath0r-mcp (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for task-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:6a2065f37b2ee75ba09192439d48426f827ad3a03f3ab613cf2ff073c3282685"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "task-hath0r-mcp",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261029-124700-b22430",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261029-124700-b22430",
+      "content": "Micro Session sess-20261029-124700-b22430 [active] | Focus: Implement PBAC contextual curation, L2 sanitizer, and KB redteam probes (#84) | Reads: 1, Writes: 4 | Entries: Compounded eval:task-hath0r-mcp: Task Evaluation task-hath0r-mcp (R=1.00, PASS)",
+      "properties": {
+        "session_id": "sess-20261029-124700-b22430",
+        "prior_session_id": "sess-20261029-120736-38c7e4",
+        "parent_session_id": "sess-20261029-120736-38c7e4",
+        "read_count": 1,
+        "write_count": 4,
+        "status": "active",
+        "byte_size": 1822,
         "source": "local_memory",
         "tags": [
           "session",
@@ -1490,6 +1557,54 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261029-120736-38c7e4",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-124700-b22430",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:pbac-curation-84",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:pbac-curation-84",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -1713,6 +1828,24 @@
     },
     {
       "source": "memory:session:sess-20261029-120736-38c7e4",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:pbac-curation-84",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-124700-b22430",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
