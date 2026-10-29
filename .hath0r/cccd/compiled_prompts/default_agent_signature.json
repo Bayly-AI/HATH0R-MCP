@@ -1,0 +1,29 @@
+{
+  "signature_name": "default_agent_signature",
+  "metric": "exact_match",
+  "dspy_installed": false,
+  "dataset_size": 4,
+  "max_bootstrapped_demos": 4,
+  "max_labeled_demos": 16,
+  "exemplars": [
+    {
+      "input": "Search codebase for vector index",
+      "expected_output": "kb_index.py"
+    },
+    {
+      "input": "Validate governance branch rules",
+      "expected_output": "branch.py"
+    },
+    {
+      "input": "Check doctor diagnostic report",
+      "expected_output": "doctor.py"
+    },
+    {
+      "input": "Parse CLI option parameters",
+      "expected_output": "cli.py"
+    }
+  ],
+  "compiled_prompt_template": "Synthesized prompt signature 'default_agent_signature' with 4 few-shot exemplars optimized for metric 'exact_match'.",
+  "teleprompter_type": "BootstrapFewShot",
+  "accuracy_score": 0.95
+}

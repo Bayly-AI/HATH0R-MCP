@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "default_warmstart": {
+    "temperature": 0.5,
+    "max_tokens": 2048,
+    "top_p": 0.9,
+    "guardrail_threshold": 0.85
+  },
+  "task_models": {
+    "default_agent_signature": {
+      "parameters": {
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "guardrail_threshold": 0.85
+      },
+      "gradient_residual": 4.7333,
+      "updated_at": 1793199349.9886332
+    }
+  }
+}
