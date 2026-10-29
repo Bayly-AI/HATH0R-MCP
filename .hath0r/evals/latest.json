@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261028-181335-0eb17e",
-  "task_id": "clean-repo-hath0r-mcp",
+  "eval_id": "eval-20261029-120802-f371e3",
+  "task_id": "release-v1-2-6",
   "issue_number": null,
   "repo_name": "hath0r-mcp",
   "branch": "development",
-  "evaluated_at": "2026-10-28T18:13:35.718616+00:00",
-  "duration_ms": 473.33,
+  "evaluated_at": "2026-10-29T12:08:02.134335+00:00",
+  "duration_ms": 215.62,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -32,7 +32,7 @@
       "checks": {
         "version_valid": {
           "passed": true,
-          "version": "1.2.5",
+          "version": "1.2.6",
           "error": null
         },
         "agentgraph_valid": {
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 17,
+          "compounded_nodes_count": 18,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -63,14 +63,14 @@
       "max_tokens": 50000,
       "estimated_usd": 0.0,
       "max_usd": 0.25,
-      "session_id": "sess-20261028-133331-a485eb",
-      "session_reads": 9,
-      "session_writes": 23,
-      "session_bytes": 1929,
+      "session_id": "sess-20261029-120736-38c7e4",
+      "session_reads": 2,
+      "session_writes": 3,
+      "session_bytes": 1840,
       "within_capsule_budget": true,
-      "latency_ms": 134.08,
-      "taguchi_quality_loss": 0.0002,
-      "snr_db": 23.47
+      "latency_ms": 68.62,
+      "taguchi_quality_loss": 0.0001,
+      "snr_db": 29.29
     },
     "adversarial": {
       "score": 1.0,
@@ -85,16 +85,18 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "clean-repo-hath0r-mcp",
+      "task_id": "release-v1-2-6",
       "issue_number": null,
-      "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-      "compounded_nodes_count": 17,
+      "active_focus": "Release HATH0R-MCP v1.2.6 and promote to GitHub",
+      "compounded_nodes_count": 18,
       "consensus_score": 1.0
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
-    "mode": "pending"
+    "mode": "live_synced",
+    "phoenix_logged": true,
+    "mlflow_run_id": "944d75e5b639442eacba28536ea6098e"
   },
-  "content_hash": "sha256:f33882f2e21e3d3dd78cb6a7b9ea31b6c7c39e16752a696dd55e16caa515dcd9"
+  "content_hash": "sha256:09040f893b10dfdb4acbd0bb03272647fa08cf4bd0c4fde6f6a57dfe7b7f5d55"
 }

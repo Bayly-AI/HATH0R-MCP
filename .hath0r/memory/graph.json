@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "updated_at": "2026-10-28T18:13:36.956319+00:00",
+  "updated_at": "2026-10-29T12:08:03.866495+00:00",
   "nodes": [
     {
       "id": "rule:cr-cli-entry-001",
@@ -192,7 +192,7 @@
       "updated_at": "2026-10-28T13:35:55.782782+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         }
       }
     },
@@ -236,7 +236,7 @@
       "updated_at": "2026-10-28T13:43:14.075525+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         }
       }
     },
@@ -281,7 +281,7 @@
       "updated_at": "2026-10-28T17:45:27.414443+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         }
       }
     },
@@ -305,7 +305,7 @@
       "updated_at": "2026-10-28T14:52:41.792412+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         }
       }
     },
@@ -370,7 +370,7 @@
       "updated_at": "2026-10-28T14:56:16.087630+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         }
       }
     },
@@ -436,7 +436,7 @@
       "updated_at": "2026-10-28T14:56:19.078037+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         }
       }
     },
@@ -460,7 +460,7 @@
       "updated_at": "2026-10-28T18:13:36.134148+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
         }
       }
     },
@@ -488,6 +488,80 @@
         "write_count": 24,
         "status": "completed",
         "byte_size": 1944
+      }
+    },
+    {
+      "id": "release-v1.2.6",
+      "type": "episode",
+      "label": "Release HATH0R-MCP v1.2.6",
+      "content": "Released v1.2.6 of HATH0R-MCP with CR-CLI-ENTRY-001, CR-TASK-EVAL-001, CR-SEMVER-BUMP-001, and CR-SONAR-PREANNOUNCE-001.",
+      "importance": 0.8,
+      "tags": [
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-29T12:07:58.758306+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T12:07:58.758306+00:00",
+      "updated_at": "2026-10-29T12:07:58.758306+00:00",
+      "metadata": {
+        "source_files": {
+          "VERSION": "sha256:5844ffcc346f89c07b13ba7596bfb3788ed73f4755e541182d7822d43b7c7a24",
+          "pyproject.toml": "sha256:f43e6b20d75a9a0695195a40ae9c7c14e455f5fcad72e31c30c7919a60691b98",
+          "CHANGELOG.md": "sha256:528f7f5ee8abb8b5c7ce182643af313e7905886ceb9d0ec37bec7f858236ee3c",
+          "AGENTS.md": "sha256:82fce014b389a3a7454d2a40670bdaef7556e6aaf4076919d7622295ef543a1e"
+        }
+      }
+    },
+    {
+      "id": "eval:release-v1-2-6",
+      "type": "eval",
+      "label": "Task Evaluation release-v1-2-6 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for release-v1-2-6 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "release-v1-2-6",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-29T12:08:02.833668+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T12:08:02.833668+00:00",
+      "updated_at": "2026-10-29T12:08:02.833668+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
+        }
+      }
+    },
+    {
+      "id": "session:sess-20261029-120736-38c7e4",
+      "type": "session",
+      "label": "Micro Session sess-20261029-120736-38c7e4",
+      "content": "Micro Session sess-20261029-120736-38c7e4 [active] | Focus: Release HATH0R-MCP v1.2.6 and promote to GitHub | Reads: 2, Writes: 4 | Entries: Compounded release-v1.2.6: Release HATH0R-MCP v1.2.6; Compounded eval:release-v1-2-6: Task Evaluation release-v1-2-6 (R=1.00, PASS)",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "active"
+      ],
+      "valid_from": "2026-10-29T12:07:36.041887+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T12:07:36.041887+00:00",
+      "updated_at": "2026-10-29T12:08:02.852363+00:00",
+      "metadata": {
+        "session_id": "sess-20261029-120736-38c7e4",
+        "prior_session_id": "sess-20261028-133331-a485eb",
+        "parent_session_id": "sess-20261028-133331-a485eb",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "active",
+        "byte_size": 2019
       }
     }
   ],
@@ -961,8 +1035,72 @@
       "weight": 1.0,
       "valid_from": "2026-10-28T15:19:49.483349+00:00",
       "is_current": true
+    },
+    {
+      "source": "session:sess-20261028-133331-a485eb",
+      "target": "session:sess-20261029-120736-38c7e4",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T12:07:36.048814+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261029-120736-38c7e4",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-29T12:07:36.048814+00:00",
+      "is_current": true
+    },
+    {
+      "source": "release-v1.2.6",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T12:07:58.758306+00:00",
+      "is_current": true
+    },
+    {
+      "source": "release-v1.2.6",
+      "target": "session:sess-20261029-120736-38c7e4",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T12:07:58.782861+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-2-6",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T12:08:02.833668+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-2-6",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T12:08:02.833668+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-2-6",
+      "target": "session:sess-20261029-120736-38c7e4",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T12:08:02.833668+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-2-6",
+      "target": "session:sess-20261029-120736-38c7e4",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T12:08:02.854624+00:00",
+      "is_current": true
     }
   ],
-  "revision": 103,
-  "content_hash": "sha256:194c36279af53be5658a023e494bdaa50555e0f2274f3616fcc4e845fb09af62"
+  "revision": 113,
+  "content_hash": "sha256:3951eed050161b662bb13c6d9863686081e73710e7a64a1f1aca6f045e18e623"
 }

@@ -1,14 +1,14 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-28T18:13:36.951352+00:00",
+  "timestamp": "2026-10-29T12:08:03.163589+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "AGENTS.md (root)",
-      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Initialized: 2026-09-23 · fileset pin `0.2.0` · engine version `1.0.1`\n\n## Identity (CRITICAL)\n\n| Field | Value |\n|---|---|\n| Product | **HATH0R-MCP** (Hath0r MCP Server) |\n| Product ID | `hath0r-mcp` (service alias: `hath0r-mcp`) |\n| Local Path | `/Users/raybayly/Development/OpenSource/hath0r-mcp` |\n| GitHub | **`Bayly-AI/HATH0R-MCP`** |\n| Group Membership | **`hath0r-opensource`** (OpenSource Project member) |\n| Suite Role | MCP service provider for **`Hath0r OpenSource Suite`** (`hath0r-opensource`) |\n| Control Tower (Governance) | **`HATH0R-CLI`** (`Bayly-AI/HATH0R-CLI`) |\n| Control Tower (Suite Infra) | **`HATH0R-ATC`** (`Bayly-AI/HATH0R-ATC`) |\n| Operator CLI | **`hath0r`** |\n| Hidden Root | **`.hath0r/` only** |\n| Project KB | `.hath0r/knowledgebase` (stub pointing to group hub) |\n| Group KB Hub | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |\n| Setu",
+      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Initialized: 2026-09-23 · fileset pin `0.2.0` · engine version `1.0.1`\n\n## CR-CLI-ENTRY-001: Start with the CLI (CRITICAL — Org-Wide · CANONICAL)\n\n1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.\n2. **Missing Capability Offer**: If the required connection, MCP, workflow, bot, or factory does not exist in `hath0r`, offer to register the missing capability, using the original request as the acceptance test.\n3. **Docs before code**: Require procedure/playbook/runbook before scaffolding implementation.\n\nCanonical: [HATH0R-CLI `docs/governance/cli-first-rules.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md).\n\n## Ident",
       "properties": {
         "path": "AGENTS.md",
         "subsystem": "root"
@@ -73,6 +73,19 @@
       "content": "Governance policy rule CR-BAI-001 referenced in AGENTS.md",
       "properties": {
         "rule_code": "CR-BAI-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-cli-entry-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-CLI-ENTRY-001",
+      "content": "Governance policy rule CR-CLI-ENTRY-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-CLI-ENTRY-001",
         "priority": 4,
         "restricted_actions": []
       },
@@ -676,7 +689,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         },
         "source": "local_memory",
         "tags": [
@@ -717,7 +730,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         },
         "source": "local_memory",
         "tags": [
@@ -759,7 +772,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         },
         "source": "local_memory",
         "tags": [
@@ -781,7 +794,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         },
         "source": "local_memory",
         "tags": [
@@ -842,7 +855,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         },
         "source": "local_memory",
         "tags": [
@@ -904,7 +917,7 @@
       "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:27885da881a633efe851f24b58f077256d0c3d7247ea3db667f03092b1fc5262"
+          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
         },
         "source": "local_memory",
         "tags": [
@@ -959,6 +972,74 @@
           "session",
           "micro-session",
           "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:release-v1.2.6",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Release HATH0R-MCP v1.2.6",
+      "content": "Released v1.2.6 of HATH0R-MCP with CR-CLI-ENTRY-001, CR-TASK-EVAL-001, CR-SEMVER-BUMP-001, and CR-SONAR-PREANNOUNCE-001.",
+      "properties": {
+        "source_files": {
+          "VERSION": "sha256:5844ffcc346f89c07b13ba7596bfb3788ed73f4755e541182d7822d43b7c7a24",
+          "pyproject.toml": "sha256:f43e6b20d75a9a0695195a40ae9c7c14e455f5fcad72e31c30c7919a60691b98",
+          "CHANGELOG.md": "sha256:528f7f5ee8abb8b5c7ce182643af313e7905886ceb9d0ec37bec7f858236ee3c",
+          "AGENTS.md": "sha256:82fce014b389a3a7454d2a40670bdaef7556e6aaf4076919d7622295ef543a1e"
+        },
+        "source": "local_memory",
+        "tags": [
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:release-v1-2-6",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation release-v1-2-6 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for release-v1-2-6 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "release-v1-2-6",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261029-120736-38c7e4",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261029-120736-38c7e4",
+      "content": "Micro Session sess-20261029-120736-38c7e4 [active] | Focus: Release HATH0R-MCP v1.2.6 and promote to GitHub | Reads: 2, Writes: 4 | Entries: Compounded release-v1.2.6: Release HATH0R-MCP v1.2.6; Compounded eval:release-v1-2-6: Task Evaluation release-v1-2-6 (R=1.00, PASS)",
+      "properties": {
+        "session_id": "sess-20261029-120736-38c7e4",
+        "prior_session_id": "sess-20261028-133331-a485eb",
+        "parent_session_id": "sess-20261028-133331-a485eb",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "active",
+        "byte_size": 2019,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "active"
         ],
         "importance": 0.75
       },
@@ -1361,6 +1442,54 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261028-133331-a485eb",
+      "target": "memory:session:sess-20261029-120736-38c7e4",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-120736-38c7e4",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:release-v1.2.6",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:release-v1.2.6",
+      "target": "memory:session:sess-20261029-120736-38c7e4",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-2-6",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-2-6",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-2-6",
+      "target": "memory:session:sess-20261029-120736-38c7e4",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-2-6",
+      "target": "memory:session:sess-20261029-120736-38c7e4",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -1374,6 +1503,12 @@
     },
     {
       "source": "rule:cr-bai-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-cli-entry-001",
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
@@ -1560,6 +1695,24 @@
     },
     {
       "source": "memory:session:sess-20261028-133331-a485eb",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:release-v1.2.6",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-2-6",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-120736-38c7e4",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
