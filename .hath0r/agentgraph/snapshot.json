@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-29T13:58:54.283146+00:00",
+  "timestamp": "2026-10-29T14:17:25.470049+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -642,18 +642,18 @@
       "id": "memory:episode:clean-repo-hath0r-mcp",
       "plane": "memory",
       "type": "episode",
-      "label": "Clean Repo Development Sync (hath0r-mcp)",
-      "content": "Verified all changes merged into development and synced for hath0r-mcp.",
+      "label": "Clean Repo Lifecycle (hath0r-mcp)",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-mcp.",
       "properties": {
         "source": "local_memory",
         "tags": [
           "clean-repo",
-          "development",
+          "hygiene",
           "hath0r-mcp",
           "episode",
           "compounded"
         ],
-        "importance": 0.8
+        "importance": 0.75
       },
       "is_current": true
     },
@@ -978,7 +978,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:5d06f46e9f3ac6ab14b1ccf511a7bb7d2a29dd776416bc40edb2821cbd86e0da"
+          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
         },
         "source": "local_memory",
         "tags": [
@@ -1156,20 +1156,20 @@
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261029-132722-954337",
-      "content": "Micro Session sess-20261029-132722-954337 [active] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 3, Writes: 6 | Entries: Compounded eval:eval-baseline-hath0r-mcp: Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)",
+      "content": "Micro Session sess-20261029-132722-954337 [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 4, Writes: 9 | Entries: Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261029-132722-954337",
         "prior_session_id": "sess-20261029-124700-b22430",
         "parent_session_id": "sess-20261029-124700-b22430",
-        "read_count": 3,
-        "write_count": 6,
-        "status": "active",
-        "byte_size": 1893,
+        "read_count": 4,
+        "write_count": 9,
+        "status": "completed",
+        "byte_size": 1956,
         "source": "local_memory",
         "tags": [
           "session",
           "micro-session",
-          "active"
+          "completed"
         ],
         "importance": 0.75
       },
@@ -1705,6 +1705,24 @@
     },
     {
       "source": "memory:eval:eval-baseline-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
       "target": "memory:session:sess-20261029-132722-954337",
       "relation": "DERIVES_FROM",
       "is_current": true

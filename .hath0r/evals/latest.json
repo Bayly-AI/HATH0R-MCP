@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261029-135853-85f750",
-  "task_id": "eval-baseline-hath0r-mcp",
+  "eval_id": "eval-20261029-141724-dce1a8",
+  "task_id": "clean-repo-hath0r-mcp",
   "issue_number": null,
   "repo_name": "hath0r-mcp",
   "branch": "development",
-  "evaluated_at": "2026-10-29T13:58:53.253716+00:00",
-  "duration_ms": 214.27,
+  "evaluated_at": "2026-10-29T14:17:24.600228+00:00",
+  "duration_ms": 461.36,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -64,13 +64,13 @@
       "estimated_usd": 0.0,
       "max_usd": 0.25,
       "session_id": "sess-20261029-132722-954337",
-      "session_reads": 3,
-      "session_writes": 5,
-      "session_bytes": 1897,
+      "session_reads": 4,
+      "session_writes": 8,
+      "session_bytes": 1760,
       "within_capsule_budget": true,
-      "latency_ms": 79.8,
-      "taguchi_quality_loss": 0.0001,
-      "snr_db": 27.98
+      "latency_ms": 147.85,
+      "taguchi_quality_loss": 0.0003,
+      "snr_db": 22.62
     },
     "adversarial": {
       "score": 1.0,
@@ -85,7 +85,7 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "eval-baseline-hath0r-mcp",
+      "task_id": "clean-repo-hath0r-mcp",
       "issue_number": null,
       "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
       "compounded_nodes_count": 21,
@@ -99,22 +99,18 @@
         ".hath0r/evals/latest.json"
       ],
       "STATIC_AST_ANALYSIS": [
-        ".hath0r/evals/post-task-hook.sh",
         ".hath0r/agentgraph/snapshot.json",
-        ".hath0r/evals/history/eval-eval-baseline-hath0r-mcp.json",
-        ".hath0r/evals/latest.json",
         ".hath0r/memory/graph.json",
         ".hath0r/memory/hashes.json",
         ".hath0r/memory/sessions/current.json",
         ".hath0r/memory/sessions/latest.json",
-        ".hath0r/memory/sessions/sess-20261029-132722-954337.json",
-        "cfg/evals/task-eval.json"
+        ".hath0r/memory/sessions/sess-20261029-132722-954337.json"
       ],
       "UNVERIFIED_FILE_PRESENCE": []
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 10,
+      "STATIC_AST_ANALYSIS": 6,
       "UNVERIFIED_FILE_PRESENCE": 0
     }
   },
@@ -122,5 +118,5 @@
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:d5053d55ade3704e9fab01891de6ecbbd18c9443bc1a1a0a7ea797e74fcba896"
+  "content_hash": "sha256:4f5f4232ec56f02933346fe1be2478fbfd738b7ffb395df4a69bfdf711575385"
 }
