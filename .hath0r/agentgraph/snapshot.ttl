@@ -5,6 +5,374 @@
 hath0r: a owl:Ontology ;
     rdfs:label "Hath0r AgentGraph Policy Ontology" .
 
+<https://hath0r.dev/ontology/v1#bot:agent-dag-runner-bot> a hath0r:Plane ;
+    rdfs:label "agent-dag-runner-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:agentgraph-bot> a hath0r:Plane ;
+    rdfs:label "agentgraph-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:antagonistic-review-bot> a hath0r:Plane ;
+    rdfs:label "antagonistic-review-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:api-bot> a hath0r:Plane ;
+    rdfs:label "api-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:architecture-preservation-bot> a hath0r:Plane ;
+    rdfs:label "architecture-preservation-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:bite-verifier-bot> a hath0r:Plane ;
+    rdfs:label "bite-verifier-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:branch-bot> a hath0r:Plane ;
+    rdfs:label "branch-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:branch-guard-bot> a hath0r:Plane ;
+    rdfs:label "branch-guard-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:cag-engine-bot> a hath0r:Plane ;
+    rdfs:label "cag-engine-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:cag-rag-router-bot> a hath0r:Plane ;
+    rdfs:label "cag-rag-router-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:calibration-bot> a hath0r:Plane ;
+    rdfs:label "calibration-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:change-validation-bot> a hath0r:Plane ;
+    rdfs:label "change-validation-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:churn-manager-bot> a hath0r:Plane ;
+    rdfs:label "churn-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:cicccd-managing-bot> a hath0r:Plane ;
+    rdfs:label "cicccd-managing-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:clean-repos-workflow-bot> a hath0r:Plane ;
+    rdfs:label "clean-repos-workflow-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:context-manager-bot> a hath0r:Plane ;
+    rdfs:label "context-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:contracts-bot> a hath0r:Plane ;
+    rdfs:label "contracts-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:decision-radar-bot> a hath0r:Plane ;
+    rdfs:label "decision-radar-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:dependency-guard-bot> a hath0r:Plane ;
+    rdfs:label "dependency-guard-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:deploy-test-bot> a hath0r:Plane ;
+    rdfs:label "deploy-test-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:doc-refactor-bot> a hath0r:Plane ;
+    rdfs:label "doc-refactor-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:docker-bot> a hath0r:Plane ;
+    rdfs:label "docker-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:docker-monitor-bot> a hath0r:Plane ;
+    rdfs:label "docker-monitor-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:documentation-bot> a hath0r:Plane ;
+    rdfs:label "documentation-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:embedded-elt-bot> a hath0r:Plane ;
+    rdfs:label "embedded-elt-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:end-of-task-bot> a hath0r:Plane ;
+    rdfs:label "end-of-task-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:factory-manager-bot> a hath0r:Plane ;
+    rdfs:label "factory-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:gameshow-bot> a hath0r:Plane ;
+    rdfs:label "gameshow-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:git-janitor-bot> a hath0r:Plane ;
+    rdfs:label "git-janitor-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:governance-bot> a hath0r:Plane ;
+    rdfs:label "governance-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:hahp-protocol-bot> a hath0r:Plane ;
+    rdfs:label "hahp-protocol-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:hotspot-refactor-bot> a hath0r:Plane ;
+    rdfs:label "hotspot-refactor-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:hyper-context-bot> a hath0r:Plane ;
+    rdfs:label "hyper-context-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:iac-managing-bot> a hath0r:Plane ;
+    rdfs:label "iac-managing-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:issue-guard-bot> a hath0r:Plane ;
+    rdfs:label "issue-guard-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:issue-manager-bot> a hath0r:Plane ;
+    rdfs:label "issue-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:iteration-cascade-bot> a hath0r:Plane ;
+    rdfs:label "iteration-cascade-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:knowledge-organizer-bot> a hath0r:Plane ;
+    rdfs:label "knowledge-organizer-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:local-model-bot> a hath0r:Plane ;
+    rdfs:label "local-model-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:local-quality-gate-bot> a hath0r:Plane ;
+    rdfs:label "local-quality-gate-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:mcp-centralization-bot> a hath0r:Plane ;
+    rdfs:label "mcp-centralization-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:mcp-workflow-engine-bot> a hath0r:Plane ;
+    rdfs:label "mcp-workflow-engine-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:memory-manager-bot> a hath0r:Plane ;
+    rdfs:label "memory-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:mesh-manager-bot> a hath0r:Plane ;
+    rdfs:label "mesh-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:mlflow-manager-bot> a hath0r:Plane ;
+    rdfs:label "mlflow-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:multiagent-consensus-bot> a hath0r:Plane ;
+    rdfs:label "multiagent-consensus-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:orient-bot> a hath0r:Plane ;
+    rdfs:label "orient-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:paper-design-bot> a hath0r:Plane ;
+    rdfs:label "paper-design-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:phoenix-manager-bot> a hath0r:Plane ;
+    rdfs:label "phoenix-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:phoenix-observer-bot> a hath0r:Plane ;
+    rdfs:label "phoenix-observer-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:pmat-bot> a hath0r:Plane ;
+    rdfs:label "pmat-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:portrait-sync-bot> a hath0r:Plane ;
+    rdfs:label "portrait-sync-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:pr-bot> a hath0r:Plane ;
+    rdfs:label "pr-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:preflight-bot> a hath0r:Plane ;
+    rdfs:label "preflight-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:quality-gate-bot> a hath0r:Plane ;
+    rdfs:label "quality-gate-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:redteam-engine-bot> a hath0r:Plane ;
+    rdfs:label "redteam-engine-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:release-bot> a hath0r:Plane ;
+    rdfs:label "release-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:repo-hygiene-bot> a hath0r:Plane ;
+    rdfs:label "repo-hygiene-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:repo-layout-bot> a hath0r:Plane ;
+    rdfs:label "repo-layout-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:reporting-bot> a hath0r:Plane ;
+    rdfs:label "reporting-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:rule-rollout-bot> a hath0r:Plane ;
+    rdfs:label "rule-rollout-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:secret-pii-sanitizer-bot> a hath0r:Plane ;
+    rdfs:label "secret-pii-sanitizer-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:shadow-ai-classifier-bot> a hath0r:Plane ;
+    rdfs:label "shadow-ai-classifier-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:sibling-manager-bot> a hath0r:Plane ;
+    rdfs:label "sibling-manager-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:speech-listener-bot> a hath0r:Plane ;
+    rdfs:label "speech-listener-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:spoken-notification-service-bot> a hath0r:Plane ;
+    rdfs:label "spoken-notification-service-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:substrate-utilization-bot> a hath0r:Plane ;
+    rdfs:label "substrate-utilization-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:supercompress-bot> a hath0r:Plane ;
+    rdfs:label "supercompress-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:supersqueeze-bot> a hath0r:Plane ;
+    rdfs:label "supersqueeze-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:taguchi-bot> a hath0r:Plane ;
+    rdfs:label "taguchi-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:task-announcer-bot> a hath0r:Plane ;
+    rdfs:label "task-announcer-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:task-completion-verifier-bot> a hath0r:Plane ;
+    rdfs:label "task-completion-verifier-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:task-evaluator-bot> a hath0r:Plane ;
+    rdfs:label "task-evaluator-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:task-level-planner-bot> a hath0r:Plane ;
+    rdfs:label "task-level-planner-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:temporal-logic-planner-bot> a hath0r:Plane ;
+    rdfs:label "temporal-logic-planner-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:thread-parallelism-bot> a hath0r:Plane ;
+    rdfs:label "thread-parallelism-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:token-check-workflow-bot> a hath0r:Plane ;
+    rdfs:label "token-check-workflow-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:token-telemetry-bot> a hath0r:Plane ;
+    rdfs:label "token-telemetry-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:token-tree-budget-bot> a hath0r:Plane ;
+    rdfs:label "token-tree-budget-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:tokenizer-tax-bot> a hath0r:Plane ;
+    rdfs:label "tokenizer-tax-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:transformation-pipeline-bot> a hath0r:Plane ;
+    rdfs:label "transformation-pipeline-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:tri-graph-ingest-bot> a hath0r:Plane ;
+    rdfs:label "tri-graph-ingest-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:upgrade-announcer-bot> a hath0r:Plane ;
+    rdfs:label "upgrade-announcer-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:upgrade-bot> a hath0r:Plane ;
+    rdfs:label "upgrade-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:upgrade-verifier-bot> a hath0r:Plane ;
+    rdfs:label "upgrade-verifier-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:version-bot> a hath0r:Plane ;
+    rdfs:label "version-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:vision-bot> a hath0r:Plane ;
+    rdfs:label "vision-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:voice-daemon-bot> a hath0r:Plane ;
+    rdfs:label "voice-daemon-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:voice-service-bot> a hath0r:Plane ;
+    rdfs:label "voice-service-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:voice-speaker-bot> a hath0r:Plane ;
+    rdfs:label "voice-speaker-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:wasm-runtime-bot> a hath0r:Plane ;
+    rdfs:label "wasm-runtime-bot" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#bot:wasm-sandbox-bot> a hath0r:Plane ;
+    rdfs:label "wasm-sandbox-bot" ;
+    hath0r:inPlane "context" .
+
 <https://hath0r.dev/ontology/v1#contract:hath0r-cli-diagnostic-v1.schema.json> a hath0r:Plane ;
     rdfs:label "hath0r.cli.diagnostic/1" ;
     hath0r:inPlane "knowledge" .
@@ -138,6 +506,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:episode:issue-86-workflow-engine-bridges> a hath0r:Plane ;
+    rdfs:label "Completed Issue #86: Workflow-First Engine, BotRegistry Dispatch, 4h Calibration & hath0r-net Bridges in HATH0R-MCP" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:episode:pr-76> a hath0r:Plane ;
     rdfs:label "Completed PR #76 (feature)" ;
     hath0r:inPlane "memory" ;
@@ -170,6 +543,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:eval:issue-85> a hath0r:Plane ;
     rdfs:label "Task Evaluation issue-85 (R=0.93, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:eval:issue-86> a hath0r:Plane ;
+    rdfs:label "Task Evaluation issue-86 (R=0.93, PASS)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -213,6 +591,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:insight:agentgraph> a hath0r:Plane ;
+    rdfs:label "Synthesized Insight on agentgraph" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:insight:cr-task-eval-001> a hath0r:Plane ;
     rdfs:label "Synthesized Insight on cr-task-eval-001" ;
     hath0r:inPlane "memory" ;
@@ -225,6 +608,16 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:insight:hath0r-mcp> a hath0r:Plane ;
     rdfs:label "Synthesized Insight on hath0r-mcp" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:insight:mcp> a hath0r:Plane ;
+    rdfs:label "Synthesized Insight on mcp" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:insight:phoenix> a hath0r:Plane ;
+    rdfs:label "Synthesized Insight on phoenix" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -368,6 +761,294 @@ hath0r:informs a owl:ObjectProperty .
     rdfs:label "Rule rules" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#service:agent> a hath0r:Plane ;
+    rdfs:label "Multi-Agent DAG & Consensus Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:agentgraph> a hath0r:Plane ;
+    rdfs:label "Two-Level AgentGraph Governance & Routing Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:arch> a hath0r:Plane ;
+    rdfs:label "Suite Architecture, Substrate & Completion Verification Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:atc> a hath0r:Plane ;
+    rdfs:label "HATH0R-ATC Control Tower & Suite Status Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:branch> a hath0r:Plane ;
+    rdfs:label "Canonical Branch Governance Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:cccd> a hath0r:Plane ;
+    rdfs:label "4-Hour Automated Pre-Task Calibration Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:churn> a hath0r:Plane ;
+    rdfs:label "Code Churn & Hotspot Refactor Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:cic3dct> a hath0r:Plane ;
+    rdfs:label "4-Pillar CICCCDCT Alias Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:cicccd> a hath0r:Plane ;
+    rdfs:label "Continuous Integration, Calibration & Development Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:cicccdct> a hath0r:Plane ;
+    rdfs:label "4-Pillar CICCCDCT & Continuous Training Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:cicqubedct> a hath0r:Plane ;
+    rdfs:label "4-Pillar CICCCDCT Alias Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:clean-repo> a hath0r:Plane ;
+    rdfs:label "Single Repo Clean Workflow Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:clean-repos> a hath0r:Plane ;
+    rdfs:label "Clean Repos Fleet Workflow Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:code> a hath0r:Plane ;
+    rdfs:label "AST Code Parser & Transformation Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:context> a hath0r:Plane ;
+    rdfs:label "Hyper Context, CAG & SuperSqueeze Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:contracts> a hath0r:Plane ;
+    rdfs:label "Contract Pinning & Schema Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:cruise> a hath0r:Plane ;
+    rdfs:label "Hath0r-Cruise-Control Autonomous Runtime Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:cruise-control> a hath0r:Plane ;
+    rdfs:label "Hath0r-Cruise-Control Autonomous Runtime Alias Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:decision> a hath0r:Plane ;
+    rdfs:label "Hath0r-Cruise-Control Decision Radar & FactSettlement Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:deploy> a hath0r:Plane ;
+    rdfs:label "Deployment Verification Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:design> a hath0r:Plane ;
+    rdfs:label "Paper.design Bi-Directional UI Synthesis Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:docker> a hath0r:Plane ;
+    rdfs:label "Hath0r Docker Group Lifecycle Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:docs> a hath0r:Plane ;
+    rdfs:label "Documentation Hexad & MCP Publish Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:doctor> a hath0r:Plane ;
+    rdfs:label "Doctor Diagnostic Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:elt> a hath0r:Plane ;
+    rdfs:label "Embedded ELT DuckDB/Polars Pipeline Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:evals> a hath0r:Plane ;
+    rdfs:label "Continuous 4-Tier Task Evaluation, Local Q-Gates & Red-Team Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:factory> a hath0r:Plane ;
+    rdfs:label "Declarative Workflow & Factory Execution Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:finops> a hath0r:Plane ;
+    rdfs:label "FinOps Token Ledger, Budget & Tokenizer Tax Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:gameshow> a hath0r:Plane ;
+    rdfs:label "Hath0r Gameshow Evaluation Benchmark Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:iac> a hath0r:Plane ;
+    rdfs:label "Hardened Container & EKS Fargate IaC Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:infra> a hath0r:Plane ;
+    rdfs:label "Hardened Container & EKS Fargate IaC Alias Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:init> a hath0r:Plane ;
+    rdfs:label "Repository Initialization Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:issue> a hath0r:Plane ;
+    rdfs:label "GitHub Issue Governance Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:janitor> a hath0r:Plane ;
+    rdfs:label "Git Branch Reaping & Hygiene Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:jev> a hath0r:Plane ;
+    rdfs:label "JEV Tool Guard & Consequential Action Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:kb> a hath0r:Plane ;
+    rdfs:label "Knowledgebase & Hybrid Search Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:local> a hath0r:Plane ;
+    rdfs:label "Local Model Runtime Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:mcp> a hath0r:Plane ;
+    rdfs:label "Central Level 1 MCP Orchestration Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:memory> a hath0r:Plane ;
+    rdfs:label "Level 2 MemoryGraph & Micro-Session Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:mesh> a hath0r:Plane ;
+    rdfs:label "Agent Mesh & HAHP Handoff Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:mlflow> a hath0r:Plane ;
+    rdfs:label "Hathor-MLFLOW Experiment & Model Registry Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:observe> a hath0r:Plane ;
+    rdfs:label "OpenObservation & Suite Telemetry Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:optimize> a hath0r:Plane ;
+    rdfs:label "Taguchi Robust Parameter Optimization Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:orient> a hath0r:Plane ;
+    rdfs:label "Suite Orientation & Tri-Graph Bootstrap Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:phoenix> a hath0r:Plane ;
+    rdfs:label "Arize Phoenix (Hath0r-phoenix) OTel Trace Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:planes> a hath0r:Plane ;
+    rdfs:label "Architecture Planes Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:playbook> a hath0r:Plane ;
+    rdfs:label "Operational Playbook Execution Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:pmat> a hath0r:Plane ;
+    rdfs:label "PMAT Complexity & Maintainability Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:portraits> a hath0r:Plane ;
+    rdfs:label "Portrait Asset Sync Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:pr> a hath0r:Plane ;
+    rdfs:label "Pull Request Lifecycle & Antagonistic Review Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:preflight> a hath0r:Plane ;
+    rdfs:label "Pre-Flight Validation Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:promote> a hath0r:Plane ;
+    rdfs:label "Environment Promotion Path Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:quality> a hath0r:Plane ;
+    rdfs:label "SonarCloud & Local Quality Gate Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:radar> a hath0r:Plane ;
+    rdfs:label "Decision Radar Unblocking Wedge Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:release> a hath0r:Plane ;
+    rdfs:label "SemVer Release & Changelog Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:repo> a hath0r:Plane ;
+    rdfs:label "Multi-Repo Fleet Management Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:rules> a hath0r:Plane ;
+    rdfs:label "Cross-Repo Rule Rollout & Sync Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:schema> a hath0r:Plane ;
+    rdfs:label "Contract Schema Validation Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:serve> a hath0r:Plane ;
+    rdfs:label "Local Control Plane Server Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:skills> a hath0r:Plane ;
+    rdfs:label "BITE Skill & Prompt Supply-Chain Audit Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:speak> a hath0r:Plane ;
+    rdfs:label "Spoken Notification & Synthesis Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:squeeze> a hath0r:Plane ;
+    rdfs:label "SuperSqueeze Context Compression Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:task> a hath0r:Plane ;
+    rdfs:label "Canonical Task Lifecycle Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:threatmodel> a hath0r:Plane ;
+    rdfs:label "Fail-Closed THREATMODEL.md Validation Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:tlp> a hath0r:Plane ;
+    rdfs:label "Task/Temporal/Thread Parallelism Planner Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:tui> a hath0r:Plane ;
+    rdfs:label "Operator Terminal UI Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:upgrade> a hath0r:Plane ;
+    rdfs:label "Zero-Downtime CLI Upgrade & Rollback Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:validate-change> a hath0r:Plane ;
+    rdfs:label "Change Validation Gate Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:vision> a hath0r:Plane ;
+    rdfs:label "ColPali Vision & Multimodal Grounding Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:voice> a hath0r:Plane ;
+    rdfs:label "Bidirectional Neural Voice Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:wasm> a hath0r:Plane ;
+    rdfs:label "Wasm Sandbox Execution Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:workflow> a hath0r:Plane ;
+    rdfs:label "Workflow-First Engine & Missing-Workflow Offer Service" ;
+    hath0r:inPlane "context" .
 
 <https://hath0r.dev/ontology/v1#concept:tri-graph> a hath0r:Plane ;
     rdfs:label "Tri-Graph Substrate" ;
