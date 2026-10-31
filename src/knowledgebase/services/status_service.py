@@ -108,9 +108,9 @@ class StatusService(BaseService):
             "kb_embedding_info",
             "kb_rag_config_get",
             "kb_search_config_get",
-            "infraos_ping",
-            "infraos_context",
-            "infraos_env_list",
+            "hath0r_ping",
+            "hath0r_context",
+            "hath0r_env_list",
         ]
 
         for tool_name in tools_to_test:
@@ -421,9 +421,9 @@ class StatusService(BaseService):
             "aegis_echo": {"message": "status-check"},
             "aegis_env_get": {"name": "PATH"},
             "aegis_env_list": {"prefix": "KB_", "values": False},
-            "infraos_echo": {"message": "status-check"},
-            "infraos_env_get": {"name": "PATH"},
-            "infraos_env_list": {"prefix": "KB_", "values": False},
+            "hath0r_echo": {"message": "status-check"},
+            "hath0r_env_get": {"name": "PATH"},
+            "hath0r_env_list": {"prefix": "KB_", "values": False},
         }
         return argument_map.get(tool_name, {})
 

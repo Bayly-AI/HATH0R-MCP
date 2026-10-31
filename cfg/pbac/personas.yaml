@@ -1,0 +1,36 @@
+# Purpose-Based Access Control (PBAC) & Contextual Curation Policy (CR-AGENTIC-SEC-001 / WS3)
+schema: "hath0r.pbac.personas/1"
+default_persona: "developer_agent"
+
+sensitivity_tiers:
+  PUBLIC: 0
+  INTERNAL: 1
+  CONFIDENTIAL: 2
+  RESTRICTED: 3
+
+personas:
+  operator:
+    description: "Trusted human operator with full clearance"
+    max_tier: "RESTRICTED"
+    curate_restricted_spans: false
+    redact_pii: false
+  developer_agent:
+    description: "Autonomous coding/repository agent operating on source and internal docs"
+    max_tier: "INTERNAL"
+    curate_restricted_spans: true
+    redact_pii: true
+  research_subagent:
+    description: "Read-only research subagent with internal architecture clearance"
+    max_tier: "INTERNAL"
+    curate_restricted_spans: true
+    redact_pii: true
+  external_auditor:
+    description: "Third-party compliance/security auditor with public/sanitized internal clearance"
+    max_tier: "INTERNAL"
+    curate_restricted_spans: true
+    redact_pii: true
+  public_reader:
+    description: "Unauthenticated or external public reader"
+    max_tier: "PUBLIC"
+    curate_restricted_spans: true
+    redact_pii: true
