@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261031-125936-a162e3",
-  "task_id": "issue-86",
-  "issue_number": 86,
+  "eval_id": "eval-20261031-161720-132fe7",
+  "task_id": "clean-repo-hath0r-mcp",
+  "issue_number": null,
   "repo_name": "hath0r-mcp",
-  "branch": "feature/86-workflow-first-engine-cruise-mlflow-phoenix",
-  "evaluated_at": "2026-10-31T12:59:36.583110+00:00",
-  "duration_ms": 82015.46,
+  "branch": "development",
+  "evaluated_at": "2026-10-31T16:17:20.298178+00:00",
+  "duration_ms": 1437.84,
   "passed_gate": true,
-  "r_task": 0.9318,
+  "r_task": 0.9389,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,23 +18,24 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 0.9755,
-    "trajectory": 0.8663,
-    "adversarial": 0.916,
+    "deterministic": 0.9522,
+    "trajectory": 0.9238,
+    "adversarial": 0.936,
     "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 0.9755,
+      "score": 0.9522,
       "passed": true,
-      "passed_checks": 5,
-      "total_checks": 5,
+      "passed_checks": 6,
+      "total_checks": 6,
       "sub_scores": {
         "version_valid": 1.0,
         "agentgraph_valid": 1.0,
         "memory_compounded": 0.98,
-        "test_suite": 0.935,
-        "calibration_4h": 0.9895
+        "test_suite": 0.88,
+        "calibration_4h": 0.9077,
+        "local_quality_gates": 0.965
       },
       "checks": {
         "version_valid": {
@@ -51,7 +52,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 29,
+          "compounded_nodes_count": 30,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -60,79 +61,293 @@
         },
         "test_suite": {
           "passed": true,
-          "commands_run": 2,
-          "duration_s": 81.613,
-          "results": [
-            {
-              "command": [
-                "python",
-                "-m",
-                "pytest",
-                "-q"
-              ],
-              "ok": true,
-              "exit_code": 0,
-              "stdout_tail": "owledgebase/ui/app.py                         29      0      6      0 100.00%\nsrc/knowledgebase/ui/main.py                        19      0      2      0 100.00%\n---------------------------------------------------------------------------------------------\nTOTAL                                             7805   1292   2192    404  80.69%\nCoverage HTML written to dir htmlcov\nCoverage XML written to file coverage.xml\n============= 617 passed, 1 skipped, 1 warning in 80.01s (0:01:20) =============\n",
-              "stderr_tail": ""
-            },
-            {
-              "command": [
-                "python",
-                "-m",
-                "ruff",
-                "check",
-                "src"
-              ],
-              "ok": true,
-              "exit_code": 0,
-              "stdout_tail": "All checks passed!\n",
-              "stderr_tail": ""
-            }
-          ]
+          "skipped": true,
+          "message": "Test execution skipped via flag or dry-run (-0.12 confidence deduction)."
         },
         "calibration_4h": {
           "passed": true,
           "is_fresh": true,
-          "age_hours": 0.02,
+          "age_hours": 3.29,
           "max_age_hours": 4.0
+        },
+        "local_quality_gates": {
+          "passed": true,
+          "technology": "python",
+          "thresholds_file": "/Users/raybayly/Development/OpenSource/hath0r-mcp/thresholds.json",
+          "qgate_score": 0.965,
+          "failing_gates": [],
+          "gates": {
+            "errors": {
+              "gate": "errors",
+              "passed": true,
+              "actual_errors": 0,
+              "max_errors": 0,
+              "comparator": "<=",
+              "score": 1.0,
+              "findings": []
+            },
+            "coverage": {
+              "gate": "coverage",
+              "passed": true,
+              "actual_coverage_pct": 96.45,
+              "min_coverage_pct": 80.0,
+              "comparator": ">=",
+              "source": "test_suite_symbol_verification",
+              "score": 0.9705
+            },
+            "complexity": {
+              "gate": "complexity",
+              "passed": true,
+              "max_observed_complexity": 104,
+              "avg_complexity": 4.38,
+              "max_complexity": 15,
+              "comparator": "<=",
+              "functions_scanned": 659,
+              "offending_functions": [
+                {
+                  "function": "src/knowledgebase/__init__.py:_fallback_version_from_root",
+                  "line": 19,
+                  "complexity": 21
+                },
+                {
+                  "function": "src/knowledgebase/server.py:create_app",
+                  "line": 111,
+                  "complexity": 53
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:list_documents",
+                  "line": 1275,
+                  "complexity": 18
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:_resolve_target_indices_for_search",
+                  "line": 2323,
+                  "complexity": 34
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:_search_with_routing",
+                  "line": 2406,
+                  "complexity": 21
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_search",
+                  "line": 2675,
+                  "complexity": 23
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_add_document_or_kb_add_file",
+                  "line": 2840,
+                  "complexity": 43
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:_mcp_tool_runbook_search",
+                  "line": 3466,
+                  "complexity": 19
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_index_directory",
+                  "line": 3526,
+                  "complexity": 23
+                },
+                {
+                  "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_upsert_document",
+                  "line": 3620,
+                  "complexity": 19
+                }
+              ],
+              "score": 0.8808
+            },
+            "duplication": {
+              "gate": "duplication",
+              "passed": true,
+              "duplicated_lines_pct": 0.17,
+              "max_duplicated_lines_pct": 3.0,
+              "comparator": "<=",
+              "duplicated_lines": 30,
+              "total_analyzed_lines": 17225,
+              "duplicated_blocks": [
+                {
+                  "first": "src/knowledgebase/api/main.py:1690",
+                  "duplicate": "src/knowledgebase/api/main.py:1713"
+                },
+                {
+                  "first": "src/knowledgebase/api/main.py:1143",
+                  "duplicate": "src/knowledgebase/sync/service.py:45"
+                },
+                {
+                  "first": "src/knowledgebase/api/main.py:1153",
+                  "duplicate": "src/knowledgebase/sync/service.py:55"
+                }
+              ],
+              "score": 0.9883
+            }
+          },
+          "report": {
+            "success": true,
+            "passed": true,
+            "rule_id": "CR-LOCAL-QGATES-001",
+            "repo_name": "hath0r-mcp",
+            "technology": "python",
+            "thresholds_file": "/Users/raybayly/Development/OpenSource/hath0r-mcp/thresholds.json",
+            "thresholds_file_exists": true,
+            "thresholds": {
+              "max_errors": 0,
+              "min_coverage_pct": 80.0,
+              "max_complexity": 15,
+              "max_duplicated_lines_pct": 3.0,
+              "new_reliability_rating": 1,
+              "new_security_rating": 1,
+              "new_maintainability_rating": 1,
+              "min_security_hotspots_reviewed_pct": 100.0
+            },
+            "files_analyzed": 63,
+            "qgate_score": 0.965,
+            "failing_gates": [],
+            "gates": {
+              "errors": {
+                "gate": "errors",
+                "passed": true,
+                "actual_errors": 0,
+                "max_errors": 0,
+                "comparator": "<=",
+                "score": 1.0,
+                "findings": []
+              },
+              "coverage": {
+                "gate": "coverage",
+                "passed": true,
+                "actual_coverage_pct": 96.45,
+                "min_coverage_pct": 80.0,
+                "comparator": ">=",
+                "source": "test_suite_symbol_verification",
+                "score": 0.9705
+              },
+              "complexity": {
+                "gate": "complexity",
+                "passed": true,
+                "max_observed_complexity": 104,
+                "avg_complexity": 4.38,
+                "max_complexity": 15,
+                "comparator": "<=",
+                "functions_scanned": 659,
+                "offending_functions": [
+                  {
+                    "function": "src/knowledgebase/__init__.py:_fallback_version_from_root",
+                    "line": 19,
+                    "complexity": 21
+                  },
+                  {
+                    "function": "src/knowledgebase/server.py:create_app",
+                    "line": 111,
+                    "complexity": 53
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:list_documents",
+                    "line": 1275,
+                    "complexity": 18
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:_resolve_target_indices_for_search",
+                    "line": 2323,
+                    "complexity": 34
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:_search_with_routing",
+                    "line": 2406,
+                    "complexity": 21
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_search",
+                    "line": 2675,
+                    "complexity": 23
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_add_document_or_kb_add_file",
+                    "line": 2840,
+                    "complexity": 43
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:_mcp_tool_runbook_search",
+                    "line": 3466,
+                    "complexity": 19
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_index_directory",
+                    "line": 3526,
+                    "complexity": 23
+                  },
+                  {
+                    "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_upsert_document",
+                    "line": 3620,
+                    "complexity": 19
+                  }
+                ],
+                "score": 0.8808
+              },
+              "duplication": {
+                "gate": "duplication",
+                "passed": true,
+                "duplicated_lines_pct": 0.17,
+                "max_duplicated_lines_pct": 3.0,
+                "comparator": "<=",
+                "duplicated_lines": 30,
+                "total_analyzed_lines": 17225,
+                "duplicated_blocks": [
+                  {
+                    "first": "src/knowledgebase/api/main.py:1690",
+                    "duplicate": "src/knowledgebase/api/main.py:1713"
+                  },
+                  {
+                    "first": "src/knowledgebase/api/main.py:1143",
+                    "duplicate": "src/knowledgebase/sync/service.py:45"
+                  },
+                  {
+                    "first": "src/knowledgebase/api/main.py:1153",
+                    "duplicate": "src/knowledgebase/sync/service.py:55"
+                  }
+                ],
+                "score": 0.9883
+              }
+            }
+          }
         }
       }
     },
     "trajectory": {
-      "score": 0.8663,
+      "score": 0.9238,
       "passed": true,
-      "tokens_used": 143,
+      "tokens_used": 141,
       "max_tokens": 50000,
-      "estimated_usd": 0.000429,
+      "estimated_usd": 0.000423,
       "max_usd": 0.25,
-      "session_id": "sess-20261031-112758-ef9695",
+      "session_id": "sess-20261031-161719-7ef2b5",
       "session_reads": 2,
-      "session_writes": 4,
-      "session_bytes": 1911,
-      "capsule_fill_ratio": 0.9331,
+      "session_writes": 3,
+      "session_bytes": 1981,
+      "capsule_fill_ratio": 0.9673,
       "within_capsule_budget": true,
-      "latency_ms": 81705.8,
-      "taguchi_quality_loss": 100.1376,
-      "taguchi_score": 0.63,
-      "snr_db": -32.22
+      "latency_ms": 1016.29,
+      "taguchi_quality_loss": 0.0155,
+      "taguchi_score": 0.9413,
+      "snr_db": 5.88
     },
     "adversarial": {
-      "score": 0.916,
+      "score": 0.936,
       "passed": true,
       "adversarial_flaws_count": 0,
       "adversarial_flaws": [],
       "tech_debts_count": 0,
       "auto_created_issues": [],
       "minor_findings": [
-        "Modified script/source files without co-changing test files (-0.06)"
+        "Cognitive complexity hotspot observed (avg 4.38, max 104, -0.0400)"
       ],
-      "added_lines_count": 38,
+      "added_lines_count": 4,
       "change_categories": {
         "ui": [],
-        "script": [
-          "src/knowledgebase/core/workflow_engine.py"
+        "script": [],
+        "text": [
+          "thresholds.json"
         ],
-        "text": [],
         "other": []
       },
       "changed_files_count": 1
@@ -140,13 +355,141 @@
     "goal_alignment": {
       "score": 0.9287,
       "passed": true,
-      "task_id": "issue-86",
-      "issue_number": 86,
-      "active_focus": "Active working session in hath0r-mcp",
-      "goal_keywords_count": 5,
+      "task_id": "clean-repo-hath0r-mcp",
+      "issue_number": null,
+      "active_focus": "clean-repo-hath0r-mcp",
+      "goal_keywords_count": 4,
       "goal_overlap_score": 0.98,
-      "compounded_nodes_count": 29,
+      "compounded_nodes_count": 30,
       "consensus_score": 0.826
+    }
+  },
+  "local_quality_gates": {
+    "success": true,
+    "passed": true,
+    "rule_id": "CR-LOCAL-QGATES-001",
+    "repo_name": "hath0r-mcp",
+    "technology": "python",
+    "thresholds_file": "/Users/raybayly/Development/OpenSource/hath0r-mcp/thresholds.json",
+    "thresholds_file_exists": true,
+    "thresholds": {
+      "max_errors": 0,
+      "min_coverage_pct": 80.0,
+      "max_complexity": 15,
+      "max_duplicated_lines_pct": 3.0,
+      "new_reliability_rating": 1,
+      "new_security_rating": 1,
+      "new_maintainability_rating": 1,
+      "min_security_hotspots_reviewed_pct": 100.0
+    },
+    "files_analyzed": 63,
+    "qgate_score": 0.965,
+    "failing_gates": [],
+    "gates": {
+      "errors": {
+        "gate": "errors",
+        "passed": true,
+        "actual_errors": 0,
+        "max_errors": 0,
+        "comparator": "<=",
+        "score": 1.0,
+        "findings": []
+      },
+      "coverage": {
+        "gate": "coverage",
+        "passed": true,
+        "actual_coverage_pct": 96.45,
+        "min_coverage_pct": 80.0,
+        "comparator": ">=",
+        "source": "test_suite_symbol_verification",
+        "score": 0.9705
+      },
+      "complexity": {
+        "gate": "complexity",
+        "passed": true,
+        "max_observed_complexity": 104,
+        "avg_complexity": 4.38,
+        "max_complexity": 15,
+        "comparator": "<=",
+        "functions_scanned": 659,
+        "offending_functions": [
+          {
+            "function": "src/knowledgebase/__init__.py:_fallback_version_from_root",
+            "line": 19,
+            "complexity": 21
+          },
+          {
+            "function": "src/knowledgebase/server.py:create_app",
+            "line": 111,
+            "complexity": 53
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:list_documents",
+            "line": 1275,
+            "complexity": 18
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:_resolve_target_indices_for_search",
+            "line": 2323,
+            "complexity": 34
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:_search_with_routing",
+            "line": 2406,
+            "complexity": 21
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_search",
+            "line": 2675,
+            "complexity": 23
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_add_document_or_kb_add_file",
+            "line": 2840,
+            "complexity": 43
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:_mcp_tool_runbook_search",
+            "line": 3466,
+            "complexity": 19
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_index_directory",
+            "line": 3526,
+            "complexity": 23
+          },
+          {
+            "function": "src/knowledgebase/api/main.py:_mcp_tool_kb_upsert_document",
+            "line": 3620,
+            "complexity": 19
+          }
+        ],
+        "score": 0.8808
+      },
+      "duplication": {
+        "gate": "duplication",
+        "passed": true,
+        "duplicated_lines_pct": 0.17,
+        "max_duplicated_lines_pct": 3.0,
+        "comparator": "<=",
+        "duplicated_lines": 30,
+        "total_analyzed_lines": 17225,
+        "duplicated_blocks": [
+          {
+            "first": "src/knowledgebase/api/main.py:1690",
+            "duplicate": "src/knowledgebase/api/main.py:1713"
+          },
+          {
+            "first": "src/knowledgebase/api/main.py:1143",
+            "duplicate": "src/knowledgebase/sync/service.py:45"
+          },
+          {
+            "first": "src/knowledgebase/api/main.py:1153",
+            "duplicate": "src/knowledgebase/sync/service.py:55"
+          }
+        ],
+        "score": 0.9883
+      }
     }
   },
   "evidence_trust_report": {
@@ -156,25 +499,24 @@
         ".hath0r/evals/latest.json"
       ],
       "STATIC_AST_ANALYSIS": [
-        "src/knowledgebase/core/workflow_engine.py",
-        ".hath0r/cccd_state.json",
-        ".hath0r/memory/hashes.json"
+        ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/memory/graph.json",
+        ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
+        ".hath0r/memory/sessions/sess-20261031-161719-7ef2b5.json"
       ],
-      "UNVERIFIED_FILE_PRESENCE": [
-        ".hath0r/spool/mcp_telemetry.jsonl"
-      ]
+      "UNVERIFIED_FILE_PRESENCE": []
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 3,
-      "UNVERIFIED_FILE_PRESENCE": 1
+      "STATIC_AST_ANALYSIS": 6,
+      "UNVERIFIED_FILE_PRESENCE": 0
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
-    "mode": "live_synced",
-    "phoenix_logged": true,
-    "mlflow_run_id": "e893a2b962e241ec9364894c6519807a"
+    "mode": "pending"
   },
-  "content_hash": "sha256:73fb8027328f5db31132b0c96e0acd519746c46ab09d427480ff365bbeef9a20"
+  "content_hash": "sha256:1fdbe0431fbe57a26310527c0d3f4541ff650858cb84c3e2948ed20cb330f7ab"
 }
