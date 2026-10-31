@@ -5,8 +5,8 @@
     "name": "hath0r-mcp-otel",
     "control_tower": "Bayly-AI/HATH0R-CLI",
     "control_tower_ref": "cfg/observability/otel.json",
-    "updated": "2026-09-24",
-    "issue": 3,
+    "updated": "2026-10-31",
+    "issue": 85,
     "product": "hath0r-mcp"
   },
   "resource": {
@@ -19,7 +19,31 @@
       "protocol": "http/protobuf",
       "endpoint_env": "OTEL_EXPORTER_OTLP_ENDPOINT",
       "headers_env": "OTEL_EXPORTER_OTLP_HEADERS",
-      "default_endpoint": "http://localhost:58000/phoenix"
+      "default_endpoint": "http://localhost:38000/phoenix",
+      "container_endpoint": "http://Hath0r-phoenix:6006",
+      "direct_host_endpoint": "http://localhost:36006"
+    }
+  },
+  "network_services": {
+    "network": "hath0r-net",
+    "edge_gateway": "http://localhost:38000",
+    "phoenix": {
+      "container": "Hath0r-phoenix",
+      "host_url": "http://localhost:38000/phoenix",
+      "container_url": "http://Hath0r-phoenix:6006",
+      "otlp_http_traces": "http://localhost:38000/v1/traces"
+    },
+    "mlflow": {
+      "container": "Hathor-MLFLOW",
+      "host_url": "http://localhost:38000/mlflow/",
+      "container_url": "http://Hathor-MLFLOW:5000",
+      "direct_host_url": "http://localhost:35000"
+    },
+    "cruise_control": {
+      "container": "Hath0r-Cruise-Control",
+      "host_url": "http://localhost:38000/cruise/radar",
+      "container_url": "http://Hath0r-Cruise-Control:8090",
+      "direct_host_url": "http://localhost:38090"
     }
   },
   "traces": {

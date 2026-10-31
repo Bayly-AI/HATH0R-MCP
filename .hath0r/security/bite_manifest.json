@@ -1,0 +1,94 @@
+{
+  "schema": "hath0r.security.bite_manifest/1",
+  "scope": "skills_and_rules",
+  "generated_at": "2026-10-29T13:27:20.712792+00:00",
+  "passed": true,
+  "summary": {
+    "total_audited": 5,
+    "clean": 5,
+    "risky": 0,
+    "dangerous": 0
+  },
+  "artifacts": [
+    {
+      "artifact_id": ".agents/skills/clean-repos/SKILL.md",
+      "artifact_type": "skill",
+      "path": ".agents/skills/clean-repos/SKILL.md",
+      "sha256": "d6a908561b50ce12c20ed2ded24ea309c148fece48387b502e171a8e393b096d",
+      "stated_purpose": "comprehensive standard operating procedure for cleaning repositories across the suite. activates whenever the user says \"clean repo\", \"clean repos\", \"clean repository\", \"clean repositories\", or reques",
+      "verdict": "CLEAN",
+      "behaviors": [],
+      "invisible_unicode_count": 0
+    },
+    {
+      "artifact_id": ".agents/skills/orient/SKILL.md",
+      "artifact_type": "skill",
+      "path": ".agents/skills/orient/SKILL.md",
+      "sha256": "823de19538265b54d114f7947dc57c2c0ddbfffb9837ba16460424d83211ae06",
+      "stated_purpose": "standard operating procedure for repository orientation. activates whenever the operator runs \"orient\", \"run orient\", \"orient repo\", \"orient repository\", or requests full repository orientation. cli c",
+      "verdict": "CLEAN",
+      "behaviors": [],
+      "invisible_unicode_count": 0
+    },
+    {
+      "artifact_id": "AGENTS.md",
+      "artifact_type": "rule_file",
+      "path": "AGENTS.md",
+      "sha256": "7954961d5e00877daf31abdde75dded79b92bb6d25ed744079c97c3013639228",
+      "stated_purpose": "# agents.md \u2014 hath0r-mcp (hath0r mcp server) > hathor opensource member \u00b7 hath0r opensource suite mcp service > updated: 2026-10-29 \u00b7 fileset pin `1.3.1` \u00b7 engine version `1.11.1` cli command shell pr",
+      "verdict": "CLEAN",
+      "behaviors": [
+        {
+          "category": "CREDENTIAL_READ",
+          "indicator": "ssh_or_aws_creds",
+          "evidence_snippet": ".env",
+          "is_reachable": true,
+          "is_unnecessary": false,
+          "is_concealed": false,
+          "severity": "LOW"
+        }
+      ],
+      "invisible_unicode_count": 0
+    },
+    {
+      "artifact_id": "CLAUDE.md",
+      "artifact_type": "rule_file",
+      "path": "CLAUDE.md",
+      "sha256": "7954961d5e00877daf31abdde75dded79b92bb6d25ed744079c97c3013639228",
+      "stated_purpose": "# agents.md \u2014 hath0r-mcp (hath0r mcp server) > hathor opensource member \u00b7 hath0r opensource suite mcp service > updated: 2026-10-29 \u00b7 fileset pin `1.3.1` \u00b7 engine version `1.11.1` cli command shell pr",
+      "verdict": "CLEAN",
+      "behaviors": [
+        {
+          "category": "CREDENTIAL_READ",
+          "indicator": "ssh_or_aws_creds",
+          "evidence_snippet": ".env",
+          "is_reachable": true,
+          "is_unnecessary": false,
+          "is_concealed": false,
+          "severity": "LOW"
+        }
+      ],
+      "invisible_unicode_count": 0
+    },
+    {
+      "artifact_id": "WARP.md",
+      "artifact_type": "rule_file",
+      "path": "WARP.md",
+      "sha256": "b9a3087ff18d320b2f315447dad7a7e2e7833ab4f0fe24cccf8a8b13626f96ba",
+      "stated_purpose": "# synced from hath0r-cli/cfg/group (control tower) at 2026-09-22t19:07:59z # canonical git path: bayly-ai/hath0r-cli \u2192 cfg/group/ # re-run: ./scripts/sync-group-hub.sh cli command shell process run bu",
+      "verdict": "CLEAN",
+      "behaviors": [
+        {
+          "category": "CREDENTIAL_READ",
+          "indicator": "ssh_or_aws_creds",
+          "evidence_snippet": ".credentials/",
+          "is_reachable": true,
+          "is_unnecessary": false,
+          "is_concealed": false,
+          "severity": "LOW"
+        }
+      ],
+      "invisible_unicode_count": 0
+    }
+  ]
+}

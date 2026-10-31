@@ -1,14 +1,14 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-29T12:08:03.163589+00:00",
+  "timestamp": "2026-10-31T14:27:06.589428+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "AGENTS.md (root)",
-      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Initialized: 2026-09-23 · fileset pin `0.2.0` · engine version `1.0.1`\n\n## CR-CLI-ENTRY-001: Start with the CLI (CRITICAL — Org-Wide · CANONICAL)\n\n1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.\n2. **Missing Capability Offer**: If the required connection, MCP, workflow, bot, or factory does not exist in `hath0r`, offer to register the missing capability, using the original request as the acceptance test.\n3. **Docs before code**: Require procedure/playbook/runbook before scaffolding implementation.\n\nCanonical: [HATH0R-CLI `docs/governance/cli-first-rules.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md).\n\n## Ident",
+      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Updated: 2026-10-31 · fileset pin `1.5.0` · engine version `1.11.1`\n\n## CR-CLI-ENTRY-001 & CR-FEATURE-WORKFLOW-STANDARD-001: Start with the CLI & Workflow-First Standard (CRITICAL — Org-Wide · CANONICAL)\n\n1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.\n2. **Canonical Feature Definition (`CR-FEATURE-WORKFLOW-STANDARD-001`)**:\n   - **Every Feature is a Service run by at least one Bot (`>= 1` Bot)**: Every MCP tool, command, and workflow in `HATH0R-MCP` is bound to `>= 1` owning Bot in `BotRegistry` (`x-hath0r-owning-bot`).\n   - **Level 1 (`HATH0R-MCP`) & Level 2 (`HATH0R-CLI` / Bot Memory) on `AgentGraph`**: Tools, workflows, and canonical knowledge reside on *",
       "properties": {
         "path": "AGENTS.md",
         "subsystem": "root"
@@ -66,6 +66,19 @@
       "is_current": true
     },
     {
+      "id": "rule:cr-agentic-sec-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-AGENTIC-SEC-001",
+      "content": "Governance policy rule CR-AGENTIC-SEC-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-AGENTIC-SEC-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
       "id": "rule:cr-bai-001",
       "plane": "rules",
       "type": "rule_policy",
@@ -73,6 +86,19 @@
       "content": "Governance policy rule CR-BAI-001 referenced in AGENTS.md",
       "properties": {
         "rule_code": "CR-BAI-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-claude-sync-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-CLAUDE-SYNC-001",
+      "content": "Governance policy rule CR-CLAUDE-SYNC-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-CLAUDE-SYNC-001",
         "priority": 4,
         "restricted_actions": []
       },
@@ -105,6 +131,19 @@
       "is_current": true
     },
     {
+      "id": "rule:cr-feature-workflow-standard-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-FEATURE-WORKFLOW-STANDARD-001",
+      "content": "Governance policy rule CR-FEATURE-WORKFLOW-STANDARD-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-FEATURE-WORKFLOW-STANDARD-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
       "id": "rule:cr-hath0r-init-001",
       "plane": "rules",
       "type": "rule_policy",
@@ -112,6 +151,19 @@
       "content": "Governance policy rule CR-HATH0R-INIT-001 referenced in AGENTS.md",
       "properties": {
         "rule_code": "CR-HATH0R-INIT-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-memory-compound-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-MEMORY-COMPOUND-001",
+      "content": "Governance policy rule CR-MEMORY-COMPOUND-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-MEMORY-COMPOUND-001",
         "priority": 4,
         "restricted_actions": []
       },
@@ -603,18 +655,18 @@
       "id": "memory:episode:clean-repo-hath0r-mcp",
       "plane": "memory",
       "type": "episode",
-      "label": "Clean Repo Development Sync (hath0r-mcp)",
-      "content": "Verified all changes merged into development and synced for hath0r-mcp.",
+      "label": "Clean Repo Lifecycle (hath0r-mcp)",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-mcp.",
       "properties": {
         "source": "local_memory",
         "tags": [
           "clean-repo",
-          "development",
+          "hygiene",
           "hath0r-mcp",
           "episode",
           "compounded"
         ],
-        "importance": 0.8
+        "importance": 0.75
       },
       "is_current": true
     },
@@ -689,7 +741,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -730,7 +782,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -772,7 +824,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -794,7 +846,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -855,7 +907,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -917,7 +969,7 @@
       "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -939,7 +991,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:67152934056e59d8f11d803ed9dd57d8b2913a9e0723b6f672c5076b476e660b"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -985,10 +1037,10 @@
       "content": "Released v1.2.6 of HATH0R-MCP with CR-CLI-ENTRY-001, CR-TASK-EVAL-001, CR-SEMVER-BUMP-001, and CR-SONAR-PREANNOUNCE-001.",
       "properties": {
         "source_files": {
-          "VERSION": "sha256:5844ffcc346f89c07b13ba7596bfb3788ed73f4755e541182d7822d43b7c7a24",
-          "pyproject.toml": "sha256:f43e6b20d75a9a0695195a40ae9c7c14e455f5fcad72e31c30c7919a60691b98",
-          "CHANGELOG.md": "sha256:528f7f5ee8abb8b5c7ce182643af313e7905886ceb9d0ec37bec7f858236ee3c",
-          "AGENTS.md": "sha256:82fce014b389a3a7454d2a40670bdaef7556e6aaf4076919d7622295ef543a1e"
+          "VERSION": "sha256:acb57a7135b2d7d6e665f67f056e21353023b93835f54def1ae523bf76f1bfb3",
+          "pyproject.toml": "sha256:dcd5aa19e124ee8802d404d4ff9ccfa6dbae5b5887004a9caa9825e71d39e08c",
+          "CHANGELOG.md": "sha256:6b09e7b8283f95b370dbc542b3d097708c852f84bf3c255a2dc88ec23273aa77",
+          "AGENTS.md": "sha256:762326eea9c9c0202a3a39cb3d6df13bd816130fa6485b16f95a58d62a1a90b3"
         },
         "source": "local_memory",
         "tags": [
@@ -1007,7 +1059,7 @@
       "content": "4-Tier Task Evaluation for release-v1-2-6 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:1deaaddf2eb6191c10c9da78f6214ae31602d9b47c6a979c3469c306fd6c0c49"
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
         },
         "source": "local_memory",
         "tags": [
@@ -1040,6 +1092,337 @@
           "session",
           "micro-session",
           "active"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:fact:pbac-curation-84",
+      "plane": "memory",
+      "type": "fact",
+      "label": "PBAC Contextual Curation & L2 Secret/PII Sanitizer (#84)",
+      "content": "Implemented PBACCurationEngine, cfg/pbac/personas.yaml, and MCP tools pbac_curate and pbac_redteam_probe (v1.3.0).",
+      "properties": {
+        "source_files": {
+          "src/knowledgebase/search/curation.py": "sha256:b4d605e33453490842c9227da0444939970356948c36fb47f10ed285c61b9043",
+          "src/knowledgebase/server.py": "sha256:3ea4722e7724dad6158fce756040be7b84b949aabd681cb871acdf7d7a47b8d2",
+          "tests/unit/test_pbac_curation.py": "sha256:547c902b88ec57c07460e6d84510fc1104b46bda867f349dc3fac8d635d95bb4"
+        },
+        "source": "local_memory",
+        "tags": [
+          "fact",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:task-hath0r-mcp",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation task-hath0r-mcp (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for task-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "task-hath0r-mcp",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261029-124700-b22430",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261029-124700-b22430",
+      "content": "Micro Session sess-20261029-124700-b22430 [active] | Focus: Implement PBAC contextual curation, L2 sanitizer, and KB redteam probes (#84) | Reads: 1, Writes: 4 | Entries: Compounded eval:task-hath0r-mcp: Task Evaluation task-hath0r-mcp (R=1.00, PASS)",
+      "properties": {
+        "session_id": "sess-20261029-124700-b22430",
+        "prior_session_id": "sess-20261029-120736-38c7e4",
+        "parent_session_id": "sess-20261029-120736-38c7e4",
+        "read_count": 1,
+        "write_count": 4,
+        "status": "active",
+        "byte_size": 1822,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "active"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:release-v1-3-2",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation release-v1.3.2 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for release-v1.3.2 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "release-v1-3-2",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261029-132722-954337",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261029-132722-954337",
+      "content": "Micro Session sess-20261029-132722-954337 [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-mcp | Reads: 4, Writes: 10 | Entries: Compounded eval:release-v1-3-2: Task Evaluation release-v1.3.2 (R=1.00, PASS)",
+      "properties": {
+        "session_id": "sess-20261029-132722-954337",
+        "prior_session_id": "sess-20261029-124700-b22430",
+        "parent_session_id": "sess-20261029-124700-b22430",
+        "read_count": 4,
+        "write_count": 10,
+        "status": "completed",
+        "byte_size": 1956,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Completed Issue #85: Level 1 Suite Tools, AgentGraph, SuperSqueeze & OTel/OpenObserve/OpenFeature in HATH0R-MCP",
+      "content": "Implemented src/knowledgebase/core/suite_tools.py (SERVICE_BOT_WORKFLOW_REGISTRY with >=1 owning Bot & workflow_id per tool, mcp_agentgraph_status|query|route|sync|validate, hath0r_workflow_offer, and 28+ centralized suite tools), src/knowledgebase/core/supersqueeze.py (SuperSqueezeEngine + OpenFeature middleware achieving >=45% token savings), replaced ddtrace with OpenTelemetry exporting to Hath0r-phoenix (:38000/phoenix) + OpenObservation spooling, purged infraos_* tool prefixes, and bumped SemVer to 1.4.0.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "issue-85",
+          "mcp",
+          "level-1",
+          "agentgraph",
+          "supersqueeze",
+          "otel",
+          "openfeature",
+          "openobservation",
+          "phoenix",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.96
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:issue-85",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation issue-85 (R=0.93, PASS)",
+      "content": "4-Tier Task Evaluation for issue-85 on branch feature/85-centralize-l1-suite-tools-supersqueeze: R_task=0.9335 (det=0.97, traj=0.89, adv=0.90, goal=0.93). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "issue-85",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261031-110046-017cc9",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261031-110046-017cc9",
+      "content": "Micro Session sess-20261031-110046-017cc9 [completed] | Focus: Active working session in hath0r-mcp | Reads: 2, Writes: 4 | Entries: Completed Issue #85 in hath0r-mcp.; Compounded eval:issue-85: Task Evaluation issue-85 (R=0.93, PASS)",
+      "properties": {
+        "session_id": "sess-20261031-110046-017cc9",
+        "prior_session_id": "sess-20261029-132722-954337",
+        "parent_session_id": "sess-20261029-132722-954337",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1862,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:issue-86-workflow-engine-bridges",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Completed Issue #86: Workflow-First Engine, BotRegistry Dispatch, 4h Calibration & hath0r-net Bridges in HATH0R-MCP",
+      "content": "Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlflow_*, and mcp_phoenix_* in HATH0R-MCP with 617 passing tests and SemVer 1.5.0.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "issue-86",
+          "mcp",
+          "workflow-first",
+          "botregistry",
+          "agentgraph",
+          "calibration",
+          "cruise-control",
+          "mlflow",
+          "phoenix",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.96
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:mcp",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on mcp",
+      "content": "Consolidated from 2 memory nodes tagged 'mcp'. Recurring themes: with, completed, issue, suite. Latest context: Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlf",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "mcp",
+        "source": "local_memory",
+        "tags": [
+          "mcp",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:agentgraph",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on agentgraph",
+      "content": "Consolidated from 2 memory nodes tagged 'agentgraph'. Recurring themes: with, completed, issue, suite. Latest context: Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlf",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "agentgraph",
+        "source": "local_memory",
+        "tags": [
+          "agentgraph",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:phoenix",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on phoenix",
+      "content": "Consolidated from 2 memory nodes tagged 'phoenix'. Recurring themes: with, completed, issue, suite. Latest context: Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlf",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "phoenix",
+        "source": "local_memory",
+        "tags": [
+          "phoenix",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:issue-86",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation issue-86 (R=0.93, PASS)",
+      "content": "4-Tier Task Evaluation for issue-86 on branch feature/86-workflow-first-engine-cruise-mlflow-phoenix: R_task=0.9318 (det=0.98, traj=0.87, adv=0.92, goal=0.93). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:65f8da7cc8f7ad94dc117e0fe65cba3220f51c42991e2fa8f1b292946ab7aabc"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "issue-86",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:knowledge:suite-arch-and-local-qgates-20261031",
+      "plane": "memory",
+      "type": "concept",
+      "label": "Suite MCP-Central Architecture & Local Quality Gates (CR-LOCAL-QGATES-001)",
+      "content": "All 11 MCP-Central Architecture & Local Quality Gate PRs (#87, #88, #556-#560, #562, #314, #81, #107) completed, CLEAN, and shared to Group KB Hub and HATH0R-MCP.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "concept",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261031-112758-ef9695",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261031-112758-ef9695",
+      "content": "Micro Session sess-20261031-112758-ef9695 [completed] | Focus: Active working session in hath0r-mcp | Reads: 2, Writes: 6 | Entries: Compounded knowledge:suite-arch-and-local-qgates-20261031: Suite MCP-Central Architecture & Local Quality Gates (CR-LOCAL-QGATES-001)",
+      "properties": {
+        "session_id": "sess-20261031-112758-ef9695",
+        "prior_session_id": "sess-20261031-110046-017cc9",
+        "parent_session_id": "sess-20261031-110046-017cc9",
+        "read_count": 2,
+        "write_count": 6,
+        "status": "completed",
+        "byte_size": 1822,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
         ],
         "importance": 0.75
       },
@@ -1082,6 +1465,2234 @@
           "write_file",
           "git_push"
         ]
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:doctor",
+      "plane": "context",
+      "type": "service",
+      "label": "Doctor Diagnostic Service",
+      "content": "Service 'Doctor Diagnostic Service' for CLI command `hath0r doctor` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "doctor",
+        "owning_bots": [
+          "preflight-bot",
+          "quality-gate-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/preflight-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:preflight-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "preflight-bot",
+      "content": "Registered Bot 'preflight-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "preflight-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:quality-gate-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "quality-gate-bot",
+      "content": "Registered Bot 'quality-gate-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "quality-gate-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:init",
+      "plane": "context",
+      "type": "service",
+      "label": "Repository Initialization Service",
+      "content": "Service 'Repository Initialization Service' for CLI command `hath0r init` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "init",
+        "owning_bots": [
+          "repo-layout-bot",
+          "governance-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/repo-init-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:repo-layout-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "repo-layout-bot",
+      "content": "Registered Bot 'repo-layout-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "repo-layout-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:governance-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "governance-bot",
+      "content": "Registered Bot 'governance-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "governance-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:kb",
+      "plane": "context",
+      "type": "service",
+      "label": "Knowledgebase & Hybrid Search Service",
+      "content": "Service 'Knowledgebase & Hybrid Search Service' for CLI command `hath0r kb` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "kb",
+        "owning_bots": [
+          "cag-rag-router-bot",
+          "knowledge-organizer-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/mcp-kb-retrieval-workflow.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:cag-rag-router-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "cag-rag-router-bot",
+      "content": "Registered Bot 'cag-rag-router-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "cag-rag-router-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:knowledge-organizer-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "knowledge-organizer-bot",
+      "content": "Registered Bot 'knowledge-organizer-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "knowledge-organizer-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:planes",
+      "plane": "context",
+      "type": "service",
+      "label": "Architecture Planes Service",
+      "content": "Service 'Architecture Planes Service' for CLI command `hath0r planes` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "planes",
+        "owning_bots": [
+          "agentgraph-bot",
+          "governance-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/memory-agentgraph-sync-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:agentgraph-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "agentgraph-bot",
+      "content": "Registered Bot 'agentgraph-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "agentgraph-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:schema",
+      "plane": "context",
+      "type": "service",
+      "label": "Contract Schema Validation Service",
+      "content": "Service 'Contract Schema Validation Service' for CLI command `hath0r schema` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "schema",
+        "owning_bots": [
+          "contracts-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/preflight-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:contracts-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "contracts-bot",
+      "content": "Registered Bot 'contracts-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "contracts-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:mcp",
+      "plane": "context",
+      "type": "service",
+      "label": "Central Level 1 MCP Orchestration Service",
+      "content": "Service 'Central Level 1 MCP Orchestration Service' for CLI command `hath0r mcp` on L1_MCP",
+      "properties": {
+        "command": "mcp",
+        "owning_bots": [
+          "mcp-centralization-bot",
+          "bite-verifier-bot"
+        ],
+        "agentgraph_level": "L1_MCP",
+        "workflow_id": "cfg/factories/mcp-tool-dispatch-workflow.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:mcp-centralization-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "mcp-centralization-bot",
+      "content": "Registered Bot 'mcp-centralization-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "mcp-centralization-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:bite-verifier-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "bite-verifier-bot",
+      "content": "Registered Bot 'bite-verifier-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "bite-verifier-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:portraits",
+      "plane": "context",
+      "type": "service",
+      "label": "Portrait Asset Sync Service",
+      "content": "Service 'Portrait Asset Sync Service' for CLI command `hath0r portraits` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "portraits",
+        "owning_bots": [
+          "portrait-sync-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/portrait-sync-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:portrait-sync-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "portrait-sync-bot",
+      "content": "Registered Bot 'portrait-sync-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "portrait-sync-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:factory",
+      "plane": "context",
+      "type": "service",
+      "label": "Declarative Workflow & Factory Execution Service",
+      "content": "Service 'Declarative Workflow & Factory Execution Service' for CLI command `hath0r factory` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "factory",
+        "owning_bots": [
+          "factory-manager-bot",
+          "mcp-workflow-engine-bot",
+          "iteration-cascade-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/workflow-first-offer-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:factory-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "factory-manager-bot",
+      "content": "Registered Bot 'factory-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "factory-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:mcp-workflow-engine-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "mcp-workflow-engine-bot",
+      "content": "Registered Bot 'mcp-workflow-engine-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "mcp-workflow-engine-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:iteration-cascade-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "iteration-cascade-bot",
+      "content": "Registered Bot 'iteration-cascade-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "iteration-cascade-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:workflow",
+      "plane": "context",
+      "type": "service",
+      "label": "Workflow-First Engine & Missing-Workflow Offer Service",
+      "content": "Service 'Workflow-First Engine & Missing-Workflow Offer Service' for CLI command `hath0r workflow` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "workflow",
+        "owning_bots": [
+          "mcp-workflow-engine-bot",
+          "factory-manager-bot",
+          "iteration-cascade-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/workflow-first-offer-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:branch",
+      "plane": "context",
+      "type": "service",
+      "label": "Canonical Branch Governance Service",
+      "content": "Service 'Canonical Branch Governance Service' for CLI command `hath0r branch` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "branch",
+        "owning_bots": [
+          "branch-bot",
+          "branch-guard-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/start-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:branch-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "branch-bot",
+      "content": "Registered Bot 'branch-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "branch-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:branch-guard-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "branch-guard-bot",
+      "content": "Registered Bot 'branch-guard-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "branch-guard-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:pr",
+      "plane": "context",
+      "type": "service",
+      "label": "Pull Request Lifecycle & Antagonistic Review Service",
+      "content": "Service 'Pull Request Lifecycle & Antagonistic Review Service' for CLI command `hath0r pr` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "pr",
+        "owning_bots": [
+          "pr-bot",
+          "antagonistic-review-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/end-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:pr-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "pr-bot",
+      "content": "Registered Bot 'pr-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "pr-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:antagonistic-review-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "antagonistic-review-bot",
+      "content": "Registered Bot 'antagonistic-review-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "antagonistic-review-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:promote",
+      "plane": "context",
+      "type": "service",
+      "label": "Environment Promotion Path Service",
+      "content": "Service 'Environment Promotion Path Service' for CLI command `hath0r promote` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "promote",
+        "owning_bots": [
+          "release-bot",
+          "branch-guard-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/release-promotion-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:release-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "release-bot",
+      "content": "Registered Bot 'release-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "release-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:janitor",
+      "plane": "context",
+      "type": "service",
+      "label": "Git Branch Reaping & Hygiene Service",
+      "content": "Service 'Git Branch Reaping & Hygiene Service' for CLI command `hath0r janitor` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "janitor",
+        "owning_bots": [
+          "git-janitor-bot",
+          "repo-hygiene-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/clean-repos-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:git-janitor-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "git-janitor-bot",
+      "content": "Registered Bot 'git-janitor-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "git-janitor-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:repo-hygiene-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "repo-hygiene-bot",
+      "content": "Registered Bot 'repo-hygiene-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "repo-hygiene-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:task",
+      "plane": "context",
+      "type": "service",
+      "label": "Canonical Task Lifecycle Service",
+      "content": "Service 'Canonical Task Lifecycle Service' for CLI command `hath0r task` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "task",
+        "owning_bots": [
+          "end-of-task-bot",
+          "task-announcer-bot",
+          "cicccd-managing-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/start-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:end-of-task-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "end-of-task-bot",
+      "content": "Registered Bot 'end-of-task-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "end-of-task-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:task-announcer-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "task-announcer-bot",
+      "content": "Registered Bot 'task-announcer-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "task-announcer-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:cicccd-managing-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "cicccd-managing-bot",
+      "content": "Registered Bot 'cicccd-managing-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "cicccd-managing-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:jev",
+      "plane": "context",
+      "type": "service",
+      "label": "JEV Tool Guard & Consequential Action Service",
+      "content": "Service 'JEV Tool Guard & Consequential Action Service' for CLI command `hath0r jev` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "jev",
+        "owning_bots": [
+          "governance-bot",
+          "bite-verifier-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/mcp-security-audit-workflow.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:docker",
+      "plane": "context",
+      "type": "service",
+      "label": "Hath0r Docker Group Lifecycle Service",
+      "content": "Service 'Hath0r Docker Group Lifecycle Service' for CLI command `hath0r docker` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "docker",
+        "owning_bots": [
+          "docker-bot",
+          "docker-monitor-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/docker-group-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:docker-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "docker-bot",
+      "content": "Registered Bot 'docker-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "docker-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:docker-monitor-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "docker-monitor-bot",
+      "content": "Registered Bot 'docker-monitor-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "docker-monitor-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:quality",
+      "plane": "context",
+      "type": "service",
+      "label": "SonarCloud & Local Quality Gate Service",
+      "content": "Service 'SonarCloud & Local Quality Gate Service' for CLI command `hath0r quality` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "quality",
+        "owning_bots": [
+          "quality-gate-bot",
+          "local-quality-gate-bot",
+          "shadow-ai-classifier-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/local-qgates-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:local-quality-gate-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "local-quality-gate-bot",
+      "content": "Registered Bot 'local-quality-gate-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "local-quality-gate-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:shadow-ai-classifier-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "shadow-ai-classifier-bot",
+      "content": "Registered Bot 'shadow-ai-classifier-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "shadow-ai-classifier-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:preflight",
+      "plane": "context",
+      "type": "service",
+      "label": "Pre-Flight Validation Service",
+      "content": "Service 'Pre-Flight Validation Service' for CLI command `hath0r preflight` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "preflight",
+        "owning_bots": [
+          "preflight-bot",
+          "dependency-guard-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/preflight-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:dependency-guard-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "dependency-guard-bot",
+      "content": "Registered Bot 'dependency-guard-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "dependency-guard-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:deploy",
+      "plane": "context",
+      "type": "service",
+      "label": "Deployment Verification Service",
+      "content": "Service 'Deployment Verification Service' for CLI command `hath0r deploy` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "deploy",
+        "owning_bots": [
+          "deploy-test-bot",
+          "docker-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/deploy-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:deploy-test-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "deploy-test-bot",
+      "content": "Registered Bot 'deploy-test-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "deploy-test-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:release",
+      "plane": "context",
+      "type": "service",
+      "label": "SemVer Release & Changelog Service",
+      "content": "Service 'SemVer Release & Changelog Service' for CLI command `hath0r release` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "release",
+        "owning_bots": [
+          "release-bot",
+          "version-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/release-promotion-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:version-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "version-bot",
+      "content": "Registered Bot 'version-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "version-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:docs",
+      "plane": "context",
+      "type": "service",
+      "label": "Documentation Hexad & MCP Publish Service",
+      "content": "Service 'Documentation Hexad & MCP Publish Service' for CLI command `hath0r docs` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "docs",
+        "owning_bots": [
+          "documentation-bot",
+          "doc-refactor-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/docs-publish-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:documentation-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "documentation-bot",
+      "content": "Registered Bot 'documentation-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "documentation-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:doc-refactor-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "doc-refactor-bot",
+      "content": "Registered Bot 'doc-refactor-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "doc-refactor-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:issue",
+      "plane": "context",
+      "type": "service",
+      "label": "GitHub Issue Governance Service",
+      "content": "Service 'GitHub Issue Governance Service' for CLI command `hath0r issue` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "issue",
+        "owning_bots": [
+          "issue-guard-bot",
+          "issue-manager-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/start-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:issue-guard-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "issue-guard-bot",
+      "content": "Registered Bot 'issue-guard-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "issue-guard-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:issue-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "issue-manager-bot",
+      "content": "Registered Bot 'issue-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "issue-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:repo",
+      "plane": "context",
+      "type": "service",
+      "label": "Multi-Repo Fleet Management Service",
+      "content": "Service 'Multi-Repo Fleet Management Service' for CLI command `hath0r repo` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "repo",
+        "owning_bots": [
+          "repo-hygiene-bot",
+          "sibling-manager-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/clean-repos-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:sibling-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "sibling-manager-bot",
+      "content": "Registered Bot 'sibling-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "sibling-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:clean-repos",
+      "plane": "context",
+      "type": "service",
+      "label": "Clean Repos Fleet Workflow Service",
+      "content": "Service 'Clean Repos Fleet Workflow Service' for CLI command `hath0r clean-repos` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "clean-repos",
+        "owning_bots": [
+          "clean-repos-workflow-bot",
+          "git-janitor-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/clean-repos-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:clean-repos-workflow-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "clean-repos-workflow-bot",
+      "content": "Registered Bot 'clean-repos-workflow-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "clean-repos-workflow-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:clean-repo",
+      "plane": "context",
+      "type": "service",
+      "label": "Single Repo Clean Workflow Service",
+      "content": "Service 'Single Repo Clean Workflow Service' for CLI command `hath0r clean-repo` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "clean-repo",
+        "owning_bots": [
+          "clean-repos-workflow-bot",
+          "repo-hygiene-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/clean-repos-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:voice",
+      "plane": "context",
+      "type": "service",
+      "label": "Bidirectional Neural Voice Service",
+      "content": "Service 'Bidirectional Neural Voice Service' for CLI command `hath0r voice` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "voice",
+        "owning_bots": [
+          "voice-service-bot",
+          "voice-daemon-bot",
+          "speech-listener-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/voice-converse-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:voice-service-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "voice-service-bot",
+      "content": "Registered Bot 'voice-service-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "voice-service-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:voice-daemon-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "voice-daemon-bot",
+      "content": "Registered Bot 'voice-daemon-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "voice-daemon-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:speech-listener-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "speech-listener-bot",
+      "content": "Registered Bot 'speech-listener-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "speech-listener-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:speak",
+      "plane": "context",
+      "type": "service",
+      "label": "Spoken Notification & Synthesis Service",
+      "content": "Service 'Spoken Notification & Synthesis Service' for CLI command `hath0r speak` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "speak",
+        "owning_bots": [
+          "voice-speaker-bot",
+          "spoken-notification-service-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/voice-converse-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:voice-speaker-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "voice-speaker-bot",
+      "content": "Registered Bot 'voice-speaker-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "voice-speaker-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:spoken-notification-service-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "spoken-notification-service-bot",
+      "content": "Registered Bot 'spoken-notification-service-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "spoken-notification-service-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:playbook",
+      "plane": "context",
+      "type": "service",
+      "label": "Operational Playbook Execution Service",
+      "content": "Service 'Operational Playbook Execution Service' for CLI command `hath0r playbook` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "playbook",
+        "owning_bots": [
+          "factory-manager-bot",
+          "documentation-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/workflow-first-offer-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:context",
+      "plane": "context",
+      "type": "service",
+      "label": "Hyper Context, CAG & SuperSqueeze Service",
+      "content": "Service 'Hyper Context, CAG & SuperSqueeze Service' for CLI command `hath0r context` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "context",
+        "owning_bots": [
+          "context-manager-bot",
+          "hyper-context-bot",
+          "supercompress-bot",
+          "cag-engine-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/supersqueeze-context-workflow.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:context-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "context-manager-bot",
+      "content": "Registered Bot 'context-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "context-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:hyper-context-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "hyper-context-bot",
+      "content": "Registered Bot 'hyper-context-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "hyper-context-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:supercompress-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "supercompress-bot",
+      "content": "Registered Bot 'supercompress-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "supercompress-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:cag-engine-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "cag-engine-bot",
+      "content": "Registered Bot 'cag-engine-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "cag-engine-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:squeeze",
+      "plane": "context",
+      "type": "service",
+      "label": "SuperSqueeze Context Compression Service",
+      "content": "Service 'SuperSqueeze Context Compression Service' for CLI command `hath0r squeeze` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "squeeze",
+        "owning_bots": [
+          "supercompress-bot",
+          "supersqueeze-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/supersqueeze-context-workflow.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:supersqueeze-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "supersqueeze-bot",
+      "content": "Registered Bot 'supersqueeze-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "supersqueeze-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:memory",
+      "plane": "context",
+      "type": "service",
+      "label": "Level 2 MemoryGraph & Micro-Session Service",
+      "content": "Service 'Level 2 MemoryGraph & Micro-Session Service' for CLI command `hath0r memory` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "memory",
+        "owning_bots": [
+          "memory-manager-bot",
+          "tri-graph-ingest-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/memory-agentgraph-sync-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:memory-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "memory-manager-bot",
+      "content": "Registered Bot 'memory-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "memory-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:tri-graph-ingest-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "tri-graph-ingest-bot",
+      "content": "Registered Bot 'tri-graph-ingest-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "tri-graph-ingest-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:contracts",
+      "plane": "context",
+      "type": "service",
+      "label": "Contract Pinning & Schema Service",
+      "content": "Service 'Contract Pinning & Schema Service' for CLI command `hath0r contracts` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "contracts",
+        "owning_bots": [
+          "contracts-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/preflight-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:local",
+      "plane": "context",
+      "type": "service",
+      "label": "Local Model Runtime Service",
+      "content": "Service 'Local Model Runtime Service' for CLI command `hath0r local` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "local",
+        "owning_bots": [
+          "local-model-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/local-model-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:local-model-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "local-model-bot",
+      "content": "Registered Bot 'local-model-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "local-model-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:wasm",
+      "plane": "context",
+      "type": "service",
+      "label": "Wasm Sandbox Execution Service",
+      "content": "Service 'Wasm Sandbox Execution Service' for CLI command `hath0r wasm` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "wasm",
+        "owning_bots": [
+          "wasm-runtime-bot",
+          "wasm-sandbox-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/wasm-sandbox-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:wasm-runtime-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "wasm-runtime-bot",
+      "content": "Registered Bot 'wasm-runtime-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "wasm-runtime-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:wasm-sandbox-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "wasm-sandbox-bot",
+      "content": "Registered Bot 'wasm-sandbox-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "wasm-sandbox-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:tui",
+      "plane": "context",
+      "type": "service",
+      "label": "Operator Terminal UI Service",
+      "content": "Service 'Operator Terminal UI Service' for CLI command `hath0r tui` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "tui",
+        "owning_bots": [
+          "decision-radar-bot",
+          "phoenix-observer-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:decision-radar-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "decision-radar-bot",
+      "content": "Registered Bot 'decision-radar-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "decision-radar-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:phoenix-observer-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "phoenix-observer-bot",
+      "content": "Registered Bot 'phoenix-observer-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "phoenix-observer-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:serve",
+      "plane": "context",
+      "type": "service",
+      "label": "Local Control Plane Server Service",
+      "content": "Service 'Local Control Plane Server Service' for CLI command `hath0r serve` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "serve",
+        "owning_bots": [
+          "api-bot",
+          "decision-radar-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:api-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "api-bot",
+      "content": "Registered Bot 'api-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "api-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:validate-change",
+      "plane": "context",
+      "type": "service",
+      "label": "Change Validation Gate Service",
+      "content": "Service 'Change Validation Gate Service' for CLI command `hath0r validate-change` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "validate-change",
+        "owning_bots": [
+          "change-validation-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/end-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:change-validation-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "change-validation-bot",
+      "content": "Registered Bot 'change-validation-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "change-validation-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:vision",
+      "plane": "context",
+      "type": "service",
+      "label": "ColPali Vision & Multimodal Grounding Service",
+      "content": "Service 'ColPali Vision & Multimodal Grounding Service' for CLI command `hath0r vision` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "vision",
+        "owning_bots": [
+          "vision-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/vision-grounding-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:vision-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "vision-bot",
+      "content": "Registered Bot 'vision-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "vision-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:code",
+      "plane": "context",
+      "type": "service",
+      "label": "AST Code Parser & Transformation Service",
+      "content": "Service 'AST Code Parser & Transformation Service' for CLI command `hath0r code` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "code",
+        "owning_bots": [
+          "transformation-pipeline-bot",
+          "tri-graph-ingest-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/code-analysis-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:transformation-pipeline-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "transformation-pipeline-bot",
+      "content": "Registered Bot 'transformation-pipeline-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "transformation-pipeline-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:optimize",
+      "plane": "context",
+      "type": "service",
+      "label": "Taguchi Robust Parameter Optimization Service",
+      "content": "Service 'Taguchi Robust Parameter Optimization Service' for CLI command `hath0r optimize` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "optimize",
+        "owning_bots": [
+          "taguchi-bot",
+          "cicccd-managing-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/cccd-4h-calibration-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:taguchi-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "taguchi-bot",
+      "content": "Registered Bot 'taguchi-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "taguchi-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:finops",
+      "plane": "context",
+      "type": "service",
+      "label": "FinOps Token Ledger, Budget & Tokenizer Tax Service",
+      "content": "Service 'FinOps Token Ledger, Budget & Tokenizer Tax Service' for CLI command `hath0r finops` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "finops",
+        "owning_bots": [
+          "token-telemetry-bot",
+          "token-tree-budget-bot",
+          "tokenizer-tax-bot",
+          "token-check-workflow-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/finops-budget-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:token-telemetry-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "token-telemetry-bot",
+      "content": "Registered Bot 'token-telemetry-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "token-telemetry-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:token-tree-budget-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "token-tree-budget-bot",
+      "content": "Registered Bot 'token-tree-budget-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "token-tree-budget-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:tokenizer-tax-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "tokenizer-tax-bot",
+      "content": "Registered Bot 'tokenizer-tax-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "tokenizer-tax-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:token-check-workflow-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "token-check-workflow-bot",
+      "content": "Registered Bot 'token-check-workflow-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "token-check-workflow-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:agentgraph",
+      "plane": "context",
+      "type": "service",
+      "label": "Two-Level AgentGraph Governance & Routing Service",
+      "content": "Service 'Two-Level AgentGraph Governance & Routing Service' for CLI command `hath0r agentgraph` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "agentgraph",
+        "owning_bots": [
+          "agentgraph-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/memory-agentgraph-sync-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:design",
+      "plane": "context",
+      "type": "service",
+      "label": "Paper.design Bi-Directional UI Synthesis Service",
+      "content": "Service 'Paper.design Bi-Directional UI Synthesis Service' for CLI command `hath0r design` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "design",
+        "owning_bots": [
+          "paper-design-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/paper-design-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:paper-design-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "paper-design-bot",
+      "content": "Registered Bot 'paper-design-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "paper-design-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:observe",
+      "plane": "context",
+      "type": "service",
+      "label": "OpenObservation & Suite Telemetry Service",
+      "content": "Service 'OpenObservation & Suite Telemetry Service' for CLI command `hath0r observe` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "observe",
+        "owning_bots": [
+          "phoenix-observer-bot",
+          "reporting-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:reporting-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "reporting-bot",
+      "content": "Registered Bot 'reporting-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "reporting-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:phoenix",
+      "plane": "context",
+      "type": "service",
+      "label": "Arize Phoenix (Hath0r-phoenix) OTel Trace Service",
+      "content": "Service 'Arize Phoenix (Hath0r-phoenix) OTel Trace Service' for CLI command `hath0r phoenix` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "phoenix",
+        "owning_bots": [
+          "phoenix-manager-bot",
+          "phoenix-observer-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:phoenix-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "phoenix-manager-bot",
+      "content": "Registered Bot 'phoenix-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "phoenix-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:cccd",
+      "plane": "context",
+      "type": "service",
+      "label": "4-Hour Automated Pre-Task Calibration Service",
+      "content": "Service '4-Hour Automated Pre-Task Calibration Service' for CLI command `hath0r cccd` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "cccd",
+        "owning_bots": [
+          "cicccd-managing-bot",
+          "calibration-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/cccd-4h-calibration-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:calibration-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "calibration-bot",
+      "content": "Registered Bot 'calibration-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "calibration-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:cicccd",
+      "plane": "context",
+      "type": "service",
+      "label": "Continuous Integration, Calibration & Development Service",
+      "content": "Service 'Continuous Integration, Calibration & Development Service' for CLI command `hath0r cicccd` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "cicccd",
+        "owning_bots": [
+          "cicccd-managing-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/cccd-4h-calibration-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:cicccdct",
+      "plane": "context",
+      "type": "service",
+      "label": "4-Pillar CICCCDCT & Continuous Training Service",
+      "content": "Service '4-Pillar CICCCDCT & Continuous Training Service' for CLI command `hath0r cicccdct` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "cicccdct",
+        "owning_bots": [
+          "cicccd-managing-bot",
+          "mlflow-manager-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/cccd-4h-calibration-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:mlflow-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "mlflow-manager-bot",
+      "content": "Registered Bot 'mlflow-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "mlflow-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:cic3dct",
+      "plane": "context",
+      "type": "service",
+      "label": "4-Pillar CICCCDCT Alias Service",
+      "content": "Service '4-Pillar CICCCDCT Alias Service' for CLI command `hath0r cic3dct` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "cic3dct",
+        "owning_bots": [
+          "cicccd-managing-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/cccd-4h-calibration-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:cicqubedct",
+      "plane": "context",
+      "type": "service",
+      "label": "4-Pillar CICCCDCT Alias Service",
+      "content": "Service '4-Pillar CICCCDCT Alias Service' for CLI command `hath0r cicqubedct` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "cicqubedct",
+        "owning_bots": [
+          "cicccd-managing-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/cccd-4h-calibration-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:upgrade",
+      "plane": "context",
+      "type": "service",
+      "label": "Zero-Downtime CLI Upgrade & Rollback Service",
+      "content": "Service 'Zero-Downtime CLI Upgrade & Rollback Service' for CLI command `hath0r upgrade` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "upgrade",
+        "owning_bots": [
+          "upgrade-bot",
+          "upgrade-verifier-bot",
+          "upgrade-announcer-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/upgrade-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:upgrade-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "upgrade-bot",
+      "content": "Registered Bot 'upgrade-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "upgrade-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:upgrade-verifier-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "upgrade-verifier-bot",
+      "content": "Registered Bot 'upgrade-verifier-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "upgrade-verifier-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:upgrade-announcer-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "upgrade-announcer-bot",
+      "content": "Registered Bot 'upgrade-announcer-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "upgrade-announcer-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:churn",
+      "plane": "context",
+      "type": "service",
+      "label": "Code Churn & Hotspot Refactor Service",
+      "content": "Service 'Code Churn & Hotspot Refactor Service' for CLI command `hath0r churn` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "churn",
+        "owning_bots": [
+          "churn-manager-bot",
+          "hotspot-refactor-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/churn-refactor-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:churn-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "churn-manager-bot",
+      "content": "Registered Bot 'churn-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "churn-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:hotspot-refactor-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "hotspot-refactor-bot",
+      "content": "Registered Bot 'hotspot-refactor-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "hotspot-refactor-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:pmat",
+      "plane": "context",
+      "type": "service",
+      "label": "PMAT Complexity & Maintainability Service",
+      "content": "Service 'PMAT Complexity & Maintainability Service' for CLI command `hath0r pmat` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "pmat",
+        "owning_bots": [
+          "pmat-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/quality-gate-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:pmat-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "pmat-bot",
+      "content": "Registered Bot 'pmat-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "pmat-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:mesh",
+      "plane": "context",
+      "type": "service",
+      "label": "Agent Mesh & HAHP Handoff Service",
+      "content": "Service 'Agent Mesh & HAHP Handoff Service' for CLI command `hath0r mesh` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "mesh",
+        "owning_bots": [
+          "mesh-manager-bot",
+          "hahp-protocol-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/mesh-handoff-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:mesh-manager-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "mesh-manager-bot",
+      "content": "Registered Bot 'mesh-manager-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "mesh-manager-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:hahp-protocol-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "hahp-protocol-bot",
+      "content": "Registered Bot 'hahp-protocol-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "hahp-protocol-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:agent",
+      "plane": "context",
+      "type": "service",
+      "label": "Multi-Agent DAG & Consensus Service",
+      "content": "Service 'Multi-Agent DAG & Consensus Service' for CLI command `hath0r agent` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "agent",
+        "owning_bots": [
+          "agent-dag-runner-bot",
+          "multiagent-consensus-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/multiagent-consensus-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:agent-dag-runner-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "agent-dag-runner-bot",
+      "content": "Registered Bot 'agent-dag-runner-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "agent-dag-runner-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:multiagent-consensus-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "multiagent-consensus-bot",
+      "content": "Registered Bot 'multiagent-consensus-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "multiagent-consensus-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:evals",
+      "plane": "context",
+      "type": "service",
+      "label": "Continuous 4-Tier Task Evaluation, Local Q-Gates & Red-Team Service",
+      "content": "Service 'Continuous 4-Tier Task Evaluation, Local Q-Gates & Red-Team Service' for CLI command `hath0r evals` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "evals",
+        "owning_bots": [
+          "task-evaluator-bot",
+          "local-quality-gate-bot",
+          "redteam-engine-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/end-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:task-evaluator-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "task-evaluator-bot",
+      "content": "Registered Bot 'task-evaluator-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "task-evaluator-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:redteam-engine-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "redteam-engine-bot",
+      "content": "Registered Bot 'redteam-engine-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "redteam-engine-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:rules",
+      "plane": "context",
+      "type": "service",
+      "label": "Cross-Repo Rule Rollout & Sync Service",
+      "content": "Service 'Cross-Repo Rule Rollout & Sync Service' for CLI command `hath0r rules` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "rules",
+        "owning_bots": [
+          "rule-rollout-bot",
+          "governance-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/rule-rollout-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:rule-rollout-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "rule-rollout-bot",
+      "content": "Registered Bot 'rule-rollout-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "rule-rollout-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:mlflow",
+      "plane": "context",
+      "type": "service",
+      "label": "Hathor-MLFLOW Experiment & Model Registry Service",
+      "content": "Service 'Hathor-MLFLOW Experiment & Model Registry Service' for CLI command `hath0r mlflow` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "mlflow",
+        "owning_bots": [
+          "mlflow-manager-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:atc",
+      "plane": "context",
+      "type": "service",
+      "label": "HATH0R-ATC Control Tower & Suite Status Service",
+      "content": "Service 'HATH0R-ATC Control Tower & Suite Status Service' for CLI command `hath0r atc` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "atc",
+        "owning_bots": [
+          "docker-bot",
+          "decision-radar-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/docker-group-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:tlp",
+      "plane": "context",
+      "type": "service",
+      "label": "Task/Temporal/Thread Parallelism Planner Service",
+      "content": "Service 'Task/Temporal/Thread Parallelism Planner Service' for CLI command `hath0r tlp` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "tlp",
+        "owning_bots": [
+          "task-level-planner-bot",
+          "temporal-logic-planner-bot",
+          "thread-parallelism-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/tlp-planner-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:task-level-planner-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "task-level-planner-bot",
+      "content": "Registered Bot 'task-level-planner-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "task-level-planner-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:temporal-logic-planner-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "temporal-logic-planner-bot",
+      "content": "Registered Bot 'temporal-logic-planner-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "temporal-logic-planner-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:thread-parallelism-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "thread-parallelism-bot",
+      "content": "Registered Bot 'thread-parallelism-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "thread-parallelism-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:elt",
+      "plane": "context",
+      "type": "service",
+      "label": "Embedded ELT DuckDB/Polars Pipeline Service",
+      "content": "Service 'Embedded ELT DuckDB/Polars Pipeline Service' for CLI command `hath0r elt` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "elt",
+        "owning_bots": [
+          "embedded-elt-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/elt-pipeline-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:embedded-elt-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "embedded-elt-bot",
+      "content": "Registered Bot 'embedded-elt-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "embedded-elt-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:iac",
+      "plane": "context",
+      "type": "service",
+      "label": "Hardened Container & EKS Fargate IaC Service",
+      "content": "Service 'Hardened Container & EKS Fargate IaC Service' for CLI command `hath0r iac` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "iac",
+        "owning_bots": [
+          "iac-managing-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/iac-hardening-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:iac-managing-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "iac-managing-bot",
+      "content": "Registered Bot 'iac-managing-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "iac-managing-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:infra",
+      "plane": "context",
+      "type": "service",
+      "label": "Hardened Container & EKS Fargate IaC Alias Service",
+      "content": "Service 'Hardened Container & EKS Fargate IaC Alias Service' for CLI command `hath0r infra` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "infra",
+        "owning_bots": [
+          "iac-managing-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/iac-hardening-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:orient",
+      "plane": "context",
+      "type": "service",
+      "label": "Suite Orientation & Tri-Graph Bootstrap Service",
+      "content": "Service 'Suite Orientation & Tri-Graph Bootstrap Service' for CLI command `hath0r orient` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "orient",
+        "owning_bots": [
+          "orient-bot",
+          "agentgraph-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/start-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:orient-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "orient-bot",
+      "content": "Registered Bot 'orient-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "orient-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:gameshow",
+      "plane": "context",
+      "type": "service",
+      "label": "Hath0r Gameshow Evaluation Benchmark Service",
+      "content": "Service 'Hath0r Gameshow Evaluation Benchmark Service' for CLI command `hath0r gameshow` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "gameshow",
+        "owning_bots": [
+          "gameshow-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/gameshow-eval-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:gameshow-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "gameshow-bot",
+      "content": "Registered Bot 'gameshow-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "gameshow-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:decision",
+      "plane": "context",
+      "type": "service",
+      "label": "Hath0r-Cruise-Control Decision Radar & FactSettlement Service",
+      "content": "Service 'Hath0r-Cruise-Control Decision Radar & FactSettlement Service' for CLI command `hath0r decision` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "decision",
+        "owning_bots": [
+          "decision-radar-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:cruise",
+      "plane": "context",
+      "type": "service",
+      "label": "Hath0r-Cruise-Control Autonomous Runtime Service",
+      "content": "Service 'Hath0r-Cruise-Control Autonomous Runtime Service' for CLI command `hath0r cruise` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "cruise",
+        "owning_bots": [
+          "decision-radar-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:cruise-control",
+      "plane": "context",
+      "type": "service",
+      "label": "Hath0r-Cruise-Control Autonomous Runtime Alias Service",
+      "content": "Service 'Hath0r-Cruise-Control Autonomous Runtime Alias Service' for CLI command `hath0r cruise-control` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "cruise-control",
+        "owning_bots": [
+          "decision-radar-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:radar",
+      "plane": "context",
+      "type": "service",
+      "label": "Decision Radar Unblocking Wedge Service",
+      "content": "Service 'Decision Radar Unblocking Wedge Service' for CLI command `hath0r radar` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "radar",
+        "owning_bots": [
+          "decision-radar-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:skills",
+      "plane": "context",
+      "type": "service",
+      "label": "BITE Skill & Prompt Supply-Chain Audit Service",
+      "content": "Service 'BITE Skill & Prompt Supply-Chain Audit Service' for CLI command `hath0r skills` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "skills",
+        "owning_bots": [
+          "bite-verifier-bot",
+          "secret-pii-sanitizer-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/mcp-security-audit-workflow.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:secret-pii-sanitizer-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "secret-pii-sanitizer-bot",
+      "content": "Registered Bot 'secret-pii-sanitizer-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "secret-pii-sanitizer-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:threatmodel",
+      "plane": "context",
+      "type": "service",
+      "label": "Fail-Closed THREATMODEL.md Validation Service",
+      "content": "Service 'Fail-Closed THREATMODEL.md Validation Service' for CLI command `hath0r threatmodel` on L2_CLI_MEMORY",
+      "properties": {
+        "command": "threatmodel",
+        "owning_bots": [
+          "dependency-guard-bot",
+          "bite-verifier-bot"
+        ],
+        "agentgraph_level": "L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/mcp-security-audit-workflow.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:arch",
+      "plane": "context",
+      "type": "service",
+      "label": "Suite Architecture, Substrate & Completion Verification Service",
+      "content": "Service 'Suite Architecture, Substrate & Completion Verification Service' for CLI command `hath0r arch` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "arch",
+        "owning_bots": [
+          "architecture-preservation-bot",
+          "substrate-utilization-bot",
+          "task-completion-verifier-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/end-of-task-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:architecture-preservation-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "architecture-preservation-bot",
+      "content": "Registered Bot 'architecture-preservation-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "architecture-preservation-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:substrate-utilization-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "substrate-utilization-bot",
+      "content": "Registered Bot 'substrate-utilization-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "substrate-utilization-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:task-completion-verifier-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "task-completion-verifier-bot",
+      "content": "Registered Bot 'task-completion-verifier-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "task-completion-verifier-bot"
       },
       "is_current": true
     }
@@ -1490,6 +4101,282 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261029-120736-38c7e4",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-124700-b22430",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:pbac-curation-84",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:pbac-curation-84",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:session:sess-20261029-124700-b22430",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-124700-b22430",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-132722-954337",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-task-eval-001",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:eval-baseline-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:eval-baseline-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-mcp",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-3-2",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-3-2",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-3-2",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-3-2",
+      "target": "memory:session:sess-20261029-132722-954337",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-132722-954337",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-110046-017cc9",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-110046-017cc9",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-112758-ef9695",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-86-workflow-engine-bridges",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-86-workflow-engine-bridges",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:mcp",
+      "target": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:mcp",
+      "target": "memory:episode:issue-86-workflow-engine-bridges",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:agentgraph",
+      "target": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:agentgraph",
+      "target": "memory:episode:issue-86-workflow-engine-bridges",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:phoenix",
+      "target": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:phoenix",
+      "target": "memory:episode:issue-86-workflow-engine-bridges",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:knowledge:suite-arch-and-local-qgates-20261031",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:knowledge:suite-arch-and-local-qgates-20261031",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -1497,12 +4384,24 @@
     },
     {
       "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-agentic-sec-001",
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
     },
     {
       "source": "rule:cr-bai-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-claude-sync-001",
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
@@ -1520,7 +4419,19 @@
       "is_current": true
     },
     {
+      "source": "rule:cr-feature-workflow-standard-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
       "source": "rule:cr-hath0r-init-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-memory-compound-001",
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
@@ -1715,6 +4626,912 @@
       "source": "memory:session:sess-20261029-120736-38c7e4",
       "target": "role:developer",
       "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:pbac-curation-84",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:task-hath0r-mcp",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-124700-b22430",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-3-2",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-132722-954337",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-110046-017cc9",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-86-workflow-engine-bridges",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:mcp",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:agentgraph",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:phoenix",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:knowledge:suite-arch-and-local-qgates-20261031",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-112758-ef9695",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "service:doctor",
+      "target": "bot:preflight-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:doctor",
+      "target": "bot:quality-gate-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:init",
+      "target": "bot:repo-layout-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:init",
+      "target": "bot:governance-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:kb",
+      "target": "bot:cag-rag-router-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:kb",
+      "target": "bot:knowledge-organizer-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:planes",
+      "target": "bot:agentgraph-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:planes",
+      "target": "bot:governance-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:schema",
+      "target": "bot:contracts-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:mcp",
+      "target": "bot:mcp-centralization-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:mcp",
+      "target": "bot:bite-verifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:portraits",
+      "target": "bot:portrait-sync-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:factory",
+      "target": "bot:factory-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:factory",
+      "target": "bot:mcp-workflow-engine-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:factory",
+      "target": "bot:iteration-cascade-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:workflow",
+      "target": "bot:mcp-workflow-engine-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:workflow",
+      "target": "bot:factory-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:workflow",
+      "target": "bot:iteration-cascade-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:branch",
+      "target": "bot:branch-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:branch",
+      "target": "bot:branch-guard-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:pr",
+      "target": "bot:pr-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:pr",
+      "target": "bot:antagonistic-review-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:promote",
+      "target": "bot:release-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:promote",
+      "target": "bot:branch-guard-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:janitor",
+      "target": "bot:git-janitor-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:janitor",
+      "target": "bot:repo-hygiene-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:task",
+      "target": "bot:end-of-task-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:task",
+      "target": "bot:task-announcer-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:task",
+      "target": "bot:cicccd-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:jev",
+      "target": "bot:governance-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:jev",
+      "target": "bot:bite-verifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:docker",
+      "target": "bot:docker-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:docker",
+      "target": "bot:docker-monitor-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:quality",
+      "target": "bot:quality-gate-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:quality",
+      "target": "bot:local-quality-gate-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:quality",
+      "target": "bot:shadow-ai-classifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:preflight",
+      "target": "bot:preflight-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:preflight",
+      "target": "bot:dependency-guard-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:deploy",
+      "target": "bot:deploy-test-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:deploy",
+      "target": "bot:docker-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:release",
+      "target": "bot:release-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:release",
+      "target": "bot:version-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:docs",
+      "target": "bot:documentation-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:docs",
+      "target": "bot:doc-refactor-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:issue",
+      "target": "bot:issue-guard-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:issue",
+      "target": "bot:issue-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:repo",
+      "target": "bot:repo-hygiene-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:repo",
+      "target": "bot:sibling-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:clean-repos",
+      "target": "bot:clean-repos-workflow-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:clean-repos",
+      "target": "bot:git-janitor-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:clean-repo",
+      "target": "bot:clean-repos-workflow-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:clean-repo",
+      "target": "bot:repo-hygiene-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:voice",
+      "target": "bot:voice-service-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:voice",
+      "target": "bot:voice-daemon-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:voice",
+      "target": "bot:speech-listener-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:speak",
+      "target": "bot:voice-speaker-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:speak",
+      "target": "bot:spoken-notification-service-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:playbook",
+      "target": "bot:factory-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:playbook",
+      "target": "bot:documentation-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:context",
+      "target": "bot:context-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:context",
+      "target": "bot:hyper-context-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:context",
+      "target": "bot:supercompress-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:context",
+      "target": "bot:cag-engine-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:squeeze",
+      "target": "bot:supercompress-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:squeeze",
+      "target": "bot:supersqueeze-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:memory",
+      "target": "bot:memory-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:memory",
+      "target": "bot:tri-graph-ingest-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:contracts",
+      "target": "bot:contracts-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:local",
+      "target": "bot:local-model-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:wasm",
+      "target": "bot:wasm-runtime-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:wasm",
+      "target": "bot:wasm-sandbox-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:tui",
+      "target": "bot:decision-radar-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:tui",
+      "target": "bot:phoenix-observer-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:serve",
+      "target": "bot:api-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:serve",
+      "target": "bot:decision-radar-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:validate-change",
+      "target": "bot:change-validation-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:vision",
+      "target": "bot:vision-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:code",
+      "target": "bot:transformation-pipeline-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:code",
+      "target": "bot:tri-graph-ingest-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:optimize",
+      "target": "bot:taguchi-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:optimize",
+      "target": "bot:cicccd-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:finops",
+      "target": "bot:token-telemetry-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:finops",
+      "target": "bot:token-tree-budget-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:finops",
+      "target": "bot:tokenizer-tax-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:finops",
+      "target": "bot:token-check-workflow-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:agentgraph",
+      "target": "bot:agentgraph-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:design",
+      "target": "bot:paper-design-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:observe",
+      "target": "bot:phoenix-observer-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:observe",
+      "target": "bot:reporting-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:phoenix",
+      "target": "bot:phoenix-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:phoenix",
+      "target": "bot:phoenix-observer-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cccd",
+      "target": "bot:cicccd-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cccd",
+      "target": "bot:calibration-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cicccd",
+      "target": "bot:cicccd-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cicccdct",
+      "target": "bot:cicccd-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cicccdct",
+      "target": "bot:mlflow-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cic3dct",
+      "target": "bot:cicccd-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cicqubedct",
+      "target": "bot:cicccd-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:upgrade",
+      "target": "bot:upgrade-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:upgrade",
+      "target": "bot:upgrade-verifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:upgrade",
+      "target": "bot:upgrade-announcer-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:churn",
+      "target": "bot:churn-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:churn",
+      "target": "bot:hotspot-refactor-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:pmat",
+      "target": "bot:pmat-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:mesh",
+      "target": "bot:mesh-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:mesh",
+      "target": "bot:hahp-protocol-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:agent",
+      "target": "bot:agent-dag-runner-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:agent",
+      "target": "bot:multiagent-consensus-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:evals",
+      "target": "bot:task-evaluator-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:evals",
+      "target": "bot:local-quality-gate-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:evals",
+      "target": "bot:redteam-engine-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:rules",
+      "target": "bot:rule-rollout-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:rules",
+      "target": "bot:governance-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:mlflow",
+      "target": "bot:mlflow-manager-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:atc",
+      "target": "bot:docker-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:atc",
+      "target": "bot:decision-radar-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:tlp",
+      "target": "bot:task-level-planner-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:tlp",
+      "target": "bot:temporal-logic-planner-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:tlp",
+      "target": "bot:thread-parallelism-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:elt",
+      "target": "bot:embedded-elt-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:iac",
+      "target": "bot:iac-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:infra",
+      "target": "bot:iac-managing-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:orient",
+      "target": "bot:orient-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:orient",
+      "target": "bot:agentgraph-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:gameshow",
+      "target": "bot:gameshow-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:decision",
+      "target": "bot:decision-radar-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cruise",
+      "target": "bot:decision-radar-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:cruise-control",
+      "target": "bot:decision-radar-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:radar",
+      "target": "bot:decision-radar-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:skills",
+      "target": "bot:bite-verifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:skills",
+      "target": "bot:secret-pii-sanitizer-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:threatmodel",
+      "target": "bot:dependency-guard-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:threatmodel",
+      "target": "bot:bite-verifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:arch",
+      "target": "bot:architecture-preservation-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:arch",
+      "target": "bot:substrate-utilization-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:arch",
+      "target": "bot:task-completion-verifier-bot",
+      "relation": "OWNED_BY_BOT",
       "is_current": true
     }
   ],

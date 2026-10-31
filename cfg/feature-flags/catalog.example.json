@@ -19,6 +19,42 @@
       "description": "Expose Streamable HTTP /mcp transport",
       "type": "boolean",
       "default": true
+    },
+    {
+      "key": "mcp.supersqueeze.enabled",
+      "description": "Enable SuperSqueeze context compression middleware and hath0r_supersqueeze tool on HATH0R-MCP (Level 1)",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "mcp.pbac.enforce",
+      "description": "Enforce PBAC persona clearance and sensitivity curation on KB/MCP tools",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "mcp.l2_sanitizer.enforce",
+      "description": "Enforce L2 output sanitizer and canary honeytoken verification on MCP outputs",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "workflow.first.strict_offer",
+      "description": "Enforce Workflow-First standard (CR-FEATURE-WORKFLOW-STANDARD-001): offer to create a workflow when missing",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "feature.service_bot.enforce",
+      "description": "Enforce CR-FEATURE-WORKFLOW-STANDARD-001: every Feature is a Service run by >= 1 Bot on AgentGraph",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "key": "cccd.auto_calibrate.pre_task_enabled",
+      "description": "Automatically run agent calibration prior to task/workflow execution when 4h calibration window is expired",
+      "type": "boolean",
+      "default": true
     }
   ]
 }
