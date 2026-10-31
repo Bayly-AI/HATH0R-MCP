@@ -13,7 +13,11 @@
   "slis": [
     {"id": "mcp.health.success_rate", "target": 0.99, "window": "24h"},
     {"id": "mcp.ready.success_rate", "target": 0.99, "window": "24h"},
-    {"id": "mcp.tool.error_rate", "target_max": 0.05, "window": "1h"}
+    {"id": "mcp.tool.error_rate", "target_max": 0.05, "window": "1h"},
+    {"id": "mcp.tool.latency_p95_ms", "target_max": 250, "window": "1h"},
+    {"id": "supersqueeze.token_savings_ratio", "target": 0.45, "window": "24h"},
+    {"id": "workflow.first.coverage_rate", "target": 1.0, "window": "24h"},
+    {"id": "cccd.calibration.freshness_4h_rate", "target": 0.99, "window": "4h"}
   ],
   "event_classes": ["security", "governance", "ops", "product"],
   "spool": {

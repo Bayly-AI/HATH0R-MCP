@@ -108,7 +108,7 @@ def test_should_exclude_archive_document_id_only() -> None:
 
 
 # ---------------------------------------------------------------------------
-# observability (ddtrace path)
+# observability (OpenTelemetry + tracer path)
 # ---------------------------------------------------------------------------
 
 
@@ -132,7 +132,7 @@ def test_timed_operation_with_tracer_success(monkeypatch: pytest.MonkeyPatch) ->
 
 def test_timed_operation_tracer_trace_failure(monkeypatch: pytest.MonkeyPatch) -> None:
     tracer = MagicMock()
-    tracer.trace.side_effect = RuntimeError("no dd")
+    tracer.trace.side_effect = RuntimeError("tracer error")
     monkeypatch.setattr("knowledgebase.core.observability.tracer", tracer)
     with timed_operation("op_c"):
         pass
