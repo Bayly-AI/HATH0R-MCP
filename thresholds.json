@@ -24,7 +24,8 @@
       "mypy"
     ],
     "source_dirs": [
-      "src"
+      "src",
+      "lib"
     ],
     "test_dirs": [
       "tests"
@@ -35,6 +36,8 @@
         "-m",
         "ruff",
         "check",
+        "--select",
+        "E9,F63,F7,F82",
         "src"
       ],
       "typecheck": [
