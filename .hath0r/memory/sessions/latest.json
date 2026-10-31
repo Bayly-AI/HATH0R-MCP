@@ -1,55 +1,42 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261029-132722-954337",
-  "prior_session_id": "sess-20261029-124700-b22430",
-  "parent_session_id": "sess-20261029-124700-b22430",
-  "revision": 14,
-  "content_hash": "sha256:76ca73fbfc85e2aeb2cc454d1f51a9c8c86cf883b1a753c509e6cbac8e84491b",
-  "base_graph_hash": "sha256:78070389e78ba21a379f7247cab441f07edd098075f212f0b905efbe62704917",
-  "task_id": "rule-sync-and-workflow-upgrade",
+  "session_id": "sess-20261031-112758-ef9695",
+  "prior_session_id": "sess-20261031-110046-017cc9",
+  "parent_session_id": "sess-20261031-110046-017cc9",
+  "revision": 8,
+  "content_hash": "sha256:9d8ec58bcec72614a5ae11a7fb6d532d8310a7a0b6bb7d95d123944c11cf6675",
+  "base_graph_hash": "sha256:d238567877666bc0838925d1d17560e58dd37852e97ff4941e0259c8b0c57f6b",
+  "task_id": "Issue #86: expose Workflow-First engine, missing-workflow offer, BotRegistry dispatch, Level 1/2 AgentGraph & MemoryGraph sync, 4h calibration, and Phoenix/MLflow/Cruise Control tools in HATH0R-MCP",
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
-  "started_at": "2026-10-29T13:27:22.642776+00:00",
-  "updated_at": "2026-10-29T14:29:49.346886+00:00",
-  "ended_at": "2026-10-29T14:17:23.244849+00:00",
-  "read_count": 4,
-  "write_count": 10,
-  "last_read_at": "2026-10-29T14:17:23.146785+00:00",
-  "last_write_at": "2026-10-29T14:29:49.346886+00:00",
-  "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-  "prior_summary": "ounded episode:clean-repo-hath0r-mcp; Clean Repo Lifecycle completed for hath0; Compounded eval:clean-repo-hath0r-mcp: T",
-  "recalled_nodes": [
-    {
-      "id": "insight:hath0r-mcp",
-      "type": "insight",
-      "label": "Synthesized Insight on hath0r-mcp",
-      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, lice"
-    }
-  ],
+  "started_at": "2026-10-31T11:27:58.361274+00:00",
+  "updated_at": "2026-10-31T14:27:06.186448+00:00",
+  "ended_at": "2026-10-31T11:38:15.597509+00:00",
+  "read_count": 2,
+  "write_count": 6,
+  "last_read_at": "2026-10-31T11:27:59.106315+00:00",
+  "last_write_at": "2026-10-31T14:27:06.186448+00:00",
+  "active_focus": "Active working session in hath0r-mcp",
+  "prior_summary": "; Completed Issue #86 in hath0r-mcp.; Compounded eval:issue-86: Task Evaluatio; Compounded eval:issue-86: Task Evaluatio",
+  "recalled_nodes": [],
   "micro_entries": [
     {
-      "timestamp": "2026-10-29T14:29:49.346886+00:00",
+      "timestamp": "2026-10-31T14:27:06.186448+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:release-v1-3-2: Task Evaluation release-v1.3.2 (R=1.00, PASS)",
+      "summary": "Compounded knowledge:suite-arch-and-local-qgates-20261031: Suite MCP-Central Architecture & Local Quality Gates (CR-LOCAL-QGATES-001)",
       "tags": [
-        "eval",
-        "cr-task-eval-001",
-        "release-v1-3-2",
-        "passed",
+        "concept",
         "compounded"
       ],
-      "node_id": "eval:release-v1-3-2"
+      "node_id": "knowledge:suite-arch-and-local-qgates-20261031"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:task-hath0r-mcp",
-    "rule:cr-task-eval-001",
-    "eval:eval-baseline-hath0r-mcp",
-    "episode:clean-repo-hath0r-mcp",
-    "eval:clean-repo-hath0r-mcp",
-    "eval:release-v1-3-2"
+    "episode:issue-86-workflow-engine-bridges",
+    "eval:issue-86",
+    "knowledge:suite-arch-and-local-qgates-20261031"
   ],
-  "capsule_bytes": 1956
+  "capsule_bytes": 1822
 }

@@ -686,6 +686,229 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
         """Inspect execution status and state of a specific Apache Airflow DAG run."""
         return await _call_backend_tool("airflow_get_dag_run", {"dag_id": dag_id, "dag_run_id": dag_run_id})
 
+    # ------------------------------------------------------------------------
+    # 9. Level 1 Centralized Suite, AgentGraph, SuperSqueeze & Workflow-First Tools
+    # ------------------------------------------------------------------------
+
+    @mcp.tool(annotations=read_annotations)
+    async def hath0r_supersqueeze(
+        text: Annotated[str, Field(min_length=1, description="Input text or payload to compress")],
+        query: Annotated[str, Field(description="Optional query for salience-aware compression")] = "",
+        target_ratio: Annotated[float, Field(ge=0.10, le=0.90, description="Target compression ratio")] = 0.35,
+    ) -> Any:
+        """Compress verbose context, RAG excerpts, or tool payloads using SuperSqueeze (SuperCompressBot)."""
+        return await _call_backend_tool(
+            "hath0r_supersqueeze",
+            {"text": text, "query": query, "target_ratio": target_ratio},
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_agentgraph_status() -> Any:
+        """Inspect Level 1 (HATH0R-MCP) & Level 2 (HATH0R-CLI/Memory) AgentGraph node and edge distributions."""
+        return await _call_backend_tool("mcp_agentgraph_status", {})
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_agentgraph_query(
+        topic: Annotated[str, Field(min_length=1, description="Topic or keyword to search across AgentGraph")],
+        top_k: Annotated[int, Field(ge=1, le=50, description="Maximum results to return")] = 5,
+        plane: Annotated[str | None, Field(description="Optional plane filter")] = None,
+    ) -> Any:
+        """Query AgentGraph rules, contracts, roles, and knowledge nodes across Level 1 and Level 2."""
+        return await _call_backend_tool(
+            "mcp_agentgraph_query",
+            {"topic": topic, "top_k": top_k, "plane": plane},
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_agentgraph_route(
+        role: Annotated[str, Field(min_length=1, description="Caller role name")],
+        tool: Annotated[str | None, Field(description="Optional tool name")] = None,
+    ) -> Any:
+        """Evaluate AgentGraph role RBAC and Service-Bot ownership for a tool."""
+        return await _call_backend_tool("mcp_agentgraph_route", {"role": role, "tool": tool})
+
+    @mcp.tool(annotations=write_annotations)
+    async def mcp_agentgraph_sync() -> Any:
+        """Synchronize Level 1 and Level 2 AgentGraph state."""
+        return await _call_backend_tool("mcp_agentgraph_sync", {})
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_agentgraph_validate() -> Any:
+        """Validate AgentGraph integrity and CR-FEATURE-WORKFLOW-STANDARD-001 Service-Bot ownership."""
+        return await _call_backend_tool("mcp_agentgraph_validate", {})
+
+    @mcp.tool(annotations=read_annotations)
+    async def hath0r_workflow_offer(
+        intent: Annotated[str, Field(min_length=1, description="Task or capability request lacking a workflow")],
+        suggested_bots: Annotated[list[str] | None, Field(description="Optional owning Bot IDs")] = None,
+    ) -> Any:
+        """Generate a Missing-Workflow Offer (CR-FEATURE-WORKFLOW-STANDARD-001) using the request as acceptance test."""
+        return await _call_backend_tool(
+            "hath0r_workflow_offer",
+            {"intent": intent, "suggested_bots": suggested_bots},
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def hath0r_optimize_taguchi(
+        array: Annotated[str, Field(description="Orthogonal array (L4, L8, L9, L12, L18)")] = "L9",
+        factors: Annotated[list[str] | None, Field(description="Factor names")] = None,
+        snr_values: Annotated[list[float] | None, Field(description="Observed values")] = None,
+        criterion: Annotated[str, Field(description="SNR criterion")] = "smaller_is_better",
+        loss_k: Annotated[float | None, Field(description="Loss coefficient k")] = None,
+        target_m: Annotated[float | None, Field(description="Target nominal m")] = None,
+        measured_y: Annotated[float | None, Field(description="Measured characteristic y")] = None,
+    ) -> Any:
+        """Generate Taguchi orthogonal design array, SNR, and Quadratic Quality Loss L(y)."""
+        return await _call_backend_tool(
+            "hath0r_optimize_taguchi",
+            {
+                "array": array,
+                "factors": factors,
+                "snr_values": snr_values,
+                "criterion": criterion,
+                "loss_k": loss_k,
+                "target_m": target_m,
+                "measured_y": measured_y,
+            },
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def hath0r_finops_tokenizer_tax(
+        text: Annotated[str, Field(min_length=1, description="Text to audit")],
+        vocab_size: Annotated[int, Field(description="Vocabulary size")] = 256000,
+        hidden_dim: Annotated[int, Field(description="Hidden dimension")] = 4096,
+        precision: Annotated[str, Field(description="Weight precision")] = "fp16",
+    ) -> Any:
+        """Audit token inflation, serving VRAM overhead, and precision budget."""
+        return await _call_backend_tool(
+            "hath0r_finops_tokenizer_tax",
+            {"text": text, "vocab_size": vocab_size, "hidden_dim": hidden_dim, "precision": precision},
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def hath0r_finops_budget_check(
+        prompt: Annotated[str, Field(min_length=1, description="Prompt text")],
+        session_id: Annotated[str | None, Field(description="Optional session ID")] = None,
+    ) -> Any:
+        """Evaluate prompt against Token Tree Budget Guard before LLM execution."""
+        return await _call_backend_tool(
+            "hath0r_finops_budget_check",
+            {"prompt": prompt, "session_id": session_id},
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def hath0r_cicccdct_status() -> Any:
+        """Inspect 4-pillar CICCCDCT metrics and 4-hour calibration freshness."""
+        return await _call_backend_tool("hath0r_cicccdct_status", {})
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_workflow_list(
+        path: Annotated[str | None, Field(description="Optional workspace path")] = None,
+    ) -> Any:
+        """List all canonical workflows and factory blueprints on Level 1 HATH0R-MCP."""
+        return await _call_backend_tool("mcp_workflow_list", {"path": path})
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_workflow_match(
+        intent: Annotated[str, Field(min_length=1, description="Operator task intent")],
+        path: Annotated[str | None, Field(description="Optional workspace path")] = None,
+    ) -> Any:
+        """Match task intent to a canonical workflow or return a Missing-Workflow Offer."""
+        return await _call_backend_tool("mcp_workflow_match", {"intent": intent, "path": path})
+
+    @mcp.tool(annotations=write_annotations)
+    async def mcp_workflow_scaffold(
+        workflow_id: Annotated[str, Field(min_length=1, description="Canonical workflow ID")],
+        title: Annotated[str, Field(min_length=1, description="Workflow title")],
+        owning_bots: Annotated[list[str], Field(description="Owning BotRegistry bots")],
+        acceptance_test: Annotated[str, Field(min_length=1, description="Original request acceptance test")],
+        path: Annotated[str | None, Field(description="Optional workspace path")] = None,
+    ) -> Any:
+        """Scaffold a new declarative workflow YAML bound to >= 1 Bot in BotRegistry."""
+        return await _call_backend_tool(
+            "mcp_workflow_scaffold",
+            {
+                "workflow_id": workflow_id,
+                "title": title,
+                "owning_bots": owning_bots,
+                "acceptance_test": acceptance_test,
+                "path": path,
+            },
+        )
+
+    @mcp.tool(annotations=write_annotations)
+    async def mcp_workflow_run(
+        workflow_id: Annotated[str, Field(min_length=1, description="Canonical workflow ID")],
+        inputs: Annotated[dict[str, Any] | None, Field(description="Workflow inputs")] = None,
+        path: Annotated[str | None, Field(description="Optional workspace path")] = None,
+        max_calibration_age_hours: Annotated[float, Field(description="Max calibration age hours")] = 4.0,
+    ) -> Any:
+        """Execute a canonical Level 1 workflow with automatic 4h calibration check."""
+        return await _call_backend_tool(
+            "mcp_workflow_run",
+            {
+                "workflow_id": workflow_id,
+                "inputs": inputs or {},
+                "path": path,
+                "max_calibration_age_hours": max_calibration_age_hours,
+            },
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_bot_list(
+        domain: Annotated[str | None, Field(description="Optional bot domain filter")] = None,
+    ) -> Any:
+        """List all canonical bots registered in BotRegistry with their Level 1/2 capabilities."""
+        return await _call_backend_tool("mcp_bot_list", {"domain": domain})
+
+    @mcp.tool(annotations=write_annotations)
+    async def mcp_bot_invoke(
+        bot_name: Annotated[str, Field(min_length=1, description="Registered Bot class name")],
+        action: Annotated[str, Field(description="Bot action/method")] = "execute",
+        payload: Annotated[dict[str, Any] | None, Field(description="Invocation payload")] = None,
+    ) -> Any:
+        """Invoke a registered BotRegistry bot method via Level 1 AgentGraph dispatch."""
+        return await _call_backend_tool(
+            "mcp_bot_invoke",
+            {"bot_name": bot_name, "action": action, "payload": payload or {}},
+        )
+
+    @mcp.tool(annotations=write_annotations)
+    async def mcp_cccd_ensure_calibrated(
+        max_age_hours: Annotated[float, Field(description="Max calibration age in hours")] = 4.0,
+    ) -> Any:
+        """Ensure agent calibration is fresh within 4.0 hours; auto-calibrate if expired."""
+        return await _call_backend_tool("mcp_cccd_ensure_calibrated", {"max_age_hours": max_age_hours})
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_cruise_status() -> Any:
+        """Query Hath0r-Cruise-Control autonomous runtime status on hath0r-net."""
+        return await _call_backend_tool("mcp_cruise_status", {})
+
+    @mcp.tool(annotations=write_annotations)
+    async def mcp_mlflow_log_eval(
+        task_id: Annotated[str, Field(min_length=1, description="Evaluated task ID")],
+        eval_id: Annotated[str, Field(min_length=1, description="Evaluation run ID")],
+        r_task: Annotated[float, Field(description="Composite reward score R_task")],
+        tier_scores: Annotated[dict[str, float] | None, Field(description="Tier 1-4 breakdown")] = None,
+    ) -> Any:
+        """Log continuous 4-tier evaluation scorecard to Hathor-MLFLOW on hath0r-net."""
+        return await _call_backend_tool(
+            "mcp_mlflow_log_eval",
+            {"task_id": task_id, "eval_id": eval_id, "r_task": r_task, "tier_scores": tier_scores or {}},
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def mcp_phoenix_query_spans(
+        project_name: Annotated[str, Field(description="Phoenix project name")] = "hath0r-suite",
+        limit: Annotated[int, Field(description="Max spans")] = 20,
+    ) -> Any:
+        """Query OTel trace spans and LLM evaluations from Arize Phoenix (Hath0r-phoenix)."""
+        return await _call_backend_tool(
+            "mcp_phoenix_query_spans",
+            {"project_name": project_name, "limit": limit},
+        )
+
     transport = mcp.streamable_http_app()
 
     @asynccontextmanager

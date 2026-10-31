@@ -1,12 +1,15 @@
 # AGENTS.md — HATH0R-MCP (Hath0r MCP Server)
 
 > HATHOR OpenSource member · Hath0r OpenSource Suite MCP service
-> Updated: 2026-10-29 · fileset pin `1.3.2` · engine version `1.11.1`
+> Updated: 2026-10-31 · fileset pin `1.5.0` · engine version `1.11.1`
 
-## CR-CLI-ENTRY-001: Start with the CLI (CRITICAL — Org-Wide · CANONICAL)
+## CR-CLI-ENTRY-001 & CR-FEATURE-WORKFLOW-STANDARD-001: Start with the CLI & Workflow-First Standard (CRITICAL — Org-Wide · CANONICAL)
 
 1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.
-2. **Missing Capability Offer**: If the required connection, MCP, workflow, bot, or factory does not exist in `hath0r`, offer to register the missing capability, using the original request as the acceptance test.
+2. **Canonical Feature Definition (`CR-FEATURE-WORKFLOW-STANDARD-001`)**:
+   - **Every Feature is a Service run by at least one Bot (`>= 1` Bot)**: Every MCP tool, command, and workflow in `HATH0R-MCP` is bound to `>= 1` owning Bot in `BotRegistry` (`x-hath0r-owning-bot`).
+   - **Level 1 (`HATH0R-MCP`) & Level 2 (`HATH0R-CLI` / Bot Memory) on `AgentGraph`**: Tools, workflows, and canonical knowledge reside on **`HATH0R-MCP` (Level 1)**; CLI execution and Bot Memory reside on **`HATH0R-CLI` / `.hath0r/memory/` (Level 2)** — all utilizing **`AgentGraph`** (`mcp_agentgraph_status|query|route|sync|validate`).
+   - **Workflow-First Standard (`Everything We Do Is a Workflow`)**: Every task executes as a declarative workflow (`x-hath0r-workflow-id`); if a required capability or workflow does not exist, offer to create the workflow first (`hath0r_workflow_offer` / `mcp_workflow_scaffold`) using the original request as the acceptance test.
 3. **Docs before code**: Require procedure/playbook/runbook before scaffolding implementation.
 
 Canonical: [HATH0R-CLI `docs/governance/cli-first-rules.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md).

@@ -1,0 +1,62 @@
+{
+  "schema_version": "hath0r.quality.thresholds/v1",
+  "rule_id": "CR-LOCAL-QGATES-001",
+  "repo_name": "hath0r-mcp",
+  "technology": "python",
+  "source": "sonarcloud-canonical-thresholds",
+  "thresholds": {
+    "max_errors": 0,
+    "min_coverage_pct": 80.0,
+    "max_complexity": 15,
+    "max_duplicated_lines_pct": 3.0,
+    "new_reliability_rating": 1,
+    "new_security_rating": 1,
+    "new_maintainability_rating": 1,
+    "min_security_hotspots_reviewed_pct": 100.0
+  },
+  "stack": {
+    "language": "python",
+    "supporting_libraries": [
+      "pytest",
+      "pytest-cov",
+      "coverage",
+      "ruff",
+      "mypy"
+    ],
+    "source_dirs": [
+      "src"
+    ],
+    "test_dirs": [
+      "tests"
+    ],
+    "commands": {
+      "errors": [
+        "python3",
+        "-m",
+        "ruff",
+        "check",
+        "src"
+      ],
+      "typecheck": [
+        "python3",
+        "-m",
+        "mypy",
+        "src",
+        "--ignore-missing-imports"
+      ],
+      "tests": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "coverage": [
+        "python3",
+        "-m",
+        "pytest",
+        "--cov=src",
+        "--cov-report=xml"
+      ]
+    }
+  }
+}
