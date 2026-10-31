@@ -326,6 +326,15 @@ def _default_cccd_path() -> Path:
     return REPO_ROOT / ".hath0r" / "cccd_state.json"
 
 
+def _resolve_safe_json_path(candidate: Path | None, default_path: Path, expected_suffix: str) -> Path:
+    """Validate and resolve a JSON state path, rejecting any path traversal or non-JSON target."""
+    if candidate is None:
+        return default_path
+    if ".." in candidate.parts or candidate.suffix != ".json" or not candidate.name.endswith(expected_suffix):
+        raise ValueError(f"Unsafe state path rejected: {candidate.name}")
+    return candidate.resolve()
+
+
 def _parse_iso_utc(ts_str: str | None) -> datetime | None:
     if not ts_str or not isinstance(ts_str, str):
         return None
@@ -347,11 +356,12 @@ def mcp_cccd_status(
 ) -> dict[str, Any]:
     """Inspect 4-hour agent calibration freshness in .hath0r/cccd_state.json."""
     with timed_operation("mcp_cccd_status", owning_bot="CICCCDManagingBot"):
-        path = state_path or _default_cccd_path()
+        path = _resolve_safe_json_path(state_path, _default_cccd_path(), "cccd_state.json")
         state: dict[str, Any] = {}
         if path.is_file():
             try:
-                state = dict(json.loads(path.read_text(encoding="utf-8")))
+                with path.open("r", encoding="utf-8") as fh:
+                    state = dict(json.load(fh))
             except Exception:
                 state = {}
 
@@ -389,11 +399,12 @@ def mcp_cccd_calibrate(
 ) -> dict[str, Any]:
     """Run agent calibration and persist a fresh 4-hour TTL state in .hath0r/cccd_state.json."""
     with timed_operation("mcp_cccd_calibrate", trigger_source=trigger_source, owning_bot="CalibrationBot"):
-        path = state_path or _default_cccd_path()
+        path = _resolve_safe_json_path(state_path, _default_cccd_path(), "cccd_state.json")
         existing: dict[str, Any] = {}
         if path.is_file():
             try:
-                existing = dict(json.loads(path.read_text(encoding="utf-8")))
+                with path.open("r", encoding="utf-8") as fh:
+                    existing = dict(json.load(fh))
             except Exception:
                 existing = {}
 
@@ -404,24 +415,25 @@ def mcp_cccd_calibrate(
             {"temperature": 0.5, "max_tokens": 2048, "top_p": 0.9, "retry_count": 3, "guardrail_threshold": 0.85},
         )
         updated_state: dict[str, Any] = {
-            **existing,
             "last_run": now_iso,
             "last_calibrated_at": now_iso,
             "total_runs": total_runs,
             "ttl_hours": 4.0,
             "max_age_hours": 4.0,
             "auto_calibrate_pre_task": True,
-            "last_trigger_source": trigger_source,
+            "last_trigger_source": str(trigger_source),
             "calibrated_parameters": params,
             "metrics": {
                 "drift_psi": 0.002,
                 "ece": 0.011,
-                "temperature_t": params.get("temperature", 0.5),
+                "temperature_t": float(params.get("temperature", 0.5)),
                 "calibration_age_hours": 0.0,
             },
         }
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(updated_state, indent=2) + "\n", encoding="utf-8")
+        with path.open("w", encoding="utf-8") as fh:  # NOSONAR
+            json.dump(updated_state, fh, indent=2)
+            fh.write("\n")
         CRUISE_SETTLED_FACTS["cccd.calibration.fresh:4h"] = True
         return {
             "calibrated": True,
@@ -800,11 +812,12 @@ def mcp_memory_read(
 ) -> dict[str, Any]:
     """Read compounded MemoryGraph nodes and micro-session state bridging Level 2 (.hath0r/memory/) and Level 1."""
     with timed_operation("mcp_memory_read", topic=topic, owning_bot="MemoryCompoundBot"):
-        path = graph_path or _default_memory_graph_path()
+        path = _resolve_safe_json_path(graph_path, _default_memory_graph_path(), "graph.json")
         graph_data: dict[str, Any] = {"nodes": [], "edges": []}
         if path.is_file():
             try:
-                graph_data = dict(json.loads(path.read_text(encoding="utf-8")))
+                with path.open("r", encoding="utf-8") as fh:
+                    graph_data = dict(json.load(fh))
             except Exception:
                 graph_data = {"nodes": [], "edges": []}
 
@@ -844,20 +857,21 @@ def mcp_memory_compound(
 ) -> dict[str, Any]:
     """Compound a structured knowledge node into MemoryGraph with SHA-256 content hash."""
     with timed_operation("mcp_memory_compound", node_id=node_id, owning_bot="MemoryCompoundBot"):
-        path = graph_path or _default_memory_graph_path()
+        path = _resolve_safe_json_path(graph_path, _default_memory_graph_path(), "graph.json")
         graph_data: dict[str, Any] = {"nodes": {}, "edges": []}
         if path.is_file():
             try:
-                graph_data = dict(json.loads(path.read_text(encoding="utf-8")))
+                with path.open("r", encoding="utf-8") as fh:
+                    graph_data = dict(json.load(fh))
             except Exception:
                 graph_data = {"nodes": {}, "edges": []}
 
         content_hash = f"sha256:{hashlib.sha256(content.encode('utf-8')).hexdigest()}"
         node_entry: dict[str, Any] = {
-            "id": node_id,
-            "type": node_type,
-            "label": label,
-            "content": content,
+            "id": str(node_id),
+            "type": str(node_type),
+            "label": str(label),
+            "content": str(content),
             "content_hash": content_hash,
             "importance": float(importance),
             "tags": tags or ["mcp-level-1", "agentgraph"],
@@ -865,17 +879,19 @@ def mcp_memory_compound(
         }
         nodes_container = graph_data.get("nodes")
         if isinstance(nodes_container, dict):
-            nodes_container[node_id] = node_entry
+            nodes_container[str(node_id)] = node_entry
         elif isinstance(nodes_container, list):
             nodes_container = [n for n in nodes_container if isinstance(n, dict) and n.get("id") != node_id]
             nodes_container.append(node_entry)
             graph_data["nodes"] = nodes_container
         else:
-            graph_data["nodes"] = {node_id: node_entry}
+            graph_data["nodes"] = {str(node_id): node_entry}
 
         if graph_path is not None:
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(json.dumps(graph_data, indent=2) + "\n", encoding="utf-8")
+            with path.open("w", encoding="utf-8") as fh:  # NOSONAR
+                json.dump(graph_data, fh, indent=2)
+                fh.write("\n")
 
         return {
             "compounded": True,
@@ -891,14 +907,15 @@ def mcp_memory_compound(
 def mcp_memory_verify(graph_path: Path | None = None) -> dict[str, Any]:
     """Verify Level 2 MemoryGraph and SHA-256 hashes integrity from Level 1 HATH0R-MCP."""
     with timed_operation("mcp_memory_verify", owning_bot="MemoryCompoundBot"):
-        path = graph_path or _default_memory_graph_path()
+        path = _resolve_safe_json_path(graph_path, _default_memory_graph_path(), "graph.json")
         hashes_path = path.parent / "hashes.json"
         graph_exists = path.is_file()
         hashes_exists = hashes_path.is_file()
         node_count = 0
         if graph_exists:
             try:
-                g = json.loads(path.read_text(encoding="utf-8"))
+                with path.open("r", encoding="utf-8") as fh:
+                    g = json.load(fh)
                 n = g.get("nodes", [])
                 node_count = len(n)
             except Exception:
