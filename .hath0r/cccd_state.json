@@ -1,7 +1,7 @@
 {
   "active_calibration": false,
-  "last_run_timestamp": "2026-10-28T14:55:49Z",
-  "total_calibration_runs": 1,
+  "last_run_timestamp": "2026-10-31T11:00:56Z",
+  "total_calibration_runs": 2,
   "current_parameters": {
     "temperature": 0.5,
     "max_tokens": 2048,
@@ -28,6 +28,23 @@
       "mean_snr_db": -41.4122,
       "quality_loss": 4.7333,
       "mlflow_run_id": "80bab0ecf010413ca705222c664a6782"
+    },
+    {
+      "run_id": 2,
+      "timestamp": "2026-10-31T11:00:56Z",
+      "iterations": 3,
+      "signature_compiled": "default_agent_signature",
+      "optimal_parameters": {
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "guardrail_threshold": 0.85
+      },
+      "mean_snr_db": -41.4122,
+      "quality_loss": 4.7333,
+      "mlflow_run_id": "2e4eadea513f456a936765ac75d2bdb4"
     }
-  ]
+  ],
+  "ttl_hours": 4.0,
+  "max_age_hours": 4.0,
+  "auto_calibrate_pre_task": true
 }

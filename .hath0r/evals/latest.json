@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261029-142827-d13d7c",
-  "task_id": "release-v1.3.2",
-  "issue_number": null,
+  "eval_id": "eval-20261031-111203-55dc85",
+  "task_id": "issue-85",
+  "issue_number": 85,
   "repo_name": "hath0r-mcp",
-  "branch": "development",
-  "evaluated_at": "2026-10-29T14:28:27.518231+00:00",
-  "duration_ms": 81425.32,
+  "branch": "feature/85-centralize-l1-suite-tools-supersqueeze",
+  "evaluated_at": "2026-10-31T11:12:03.110423+00:00",
+  "duration_ms": 76430.05,
   "passed_gate": true,
-  "r_task": 1.0,
+  "r_task": 0.9335,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,31 +18,40 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 1.0,
-    "trajectory": 1.0,
-    "adversarial": 1.0,
-    "goal_alignment": 1.0
+    "deterministic": 0.9749,
+    "trajectory": 0.8944,
+    "adversarial": 0.9013,
+    "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 1.0,
+      "score": 0.9749,
       "passed": true,
-      "passed_checks": 4,
-      "total_checks": 4,
+      "passed_checks": 5,
+      "total_checks": 5,
+      "sub_scores": {
+        "version_valid": 1.0,
+        "agentgraph_valid": 1.0,
+        "memory_compounded": 0.98,
+        "test_suite": 0.935,
+        "calibration_4h": 0.9848
+      },
       "checks": {
         "version_valid": {
           "passed": true,
-          "version": "1.3.2",
+          "version": "1.4.0",
+          "changelog_aligned": true,
           "error": null
         },
         "agentgraph_valid": {
           "passed": true,
           "cycles": 0,
-          "contradictions": 0
+          "contradictions": 0,
+          "claude_md_synced": true
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 21,
+          "compounded_nodes_count": 23,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -52,6 +61,7 @@
         "test_suite": {
           "passed": true,
           "commands_run": 2,
+          "duration_s": 76.068,
           "results": [
             {
               "command": [
@@ -62,7 +72,7 @@
               ],
               "ok": true,
               "exit_code": 0,
-              "stdout_tail": "owledgebase/ui/app.py                         29      0      6      0 100.00%\nsrc/knowledgebase/ui/main.py                        19      0      2      0 100.00%\n---------------------------------------------------------------------------------------------\nTOTAL                                             7054   1204   1964    366  80.00%\nCoverage HTML written to dir htmlcov\nCoverage XML written to file coverage.xml\n============= 606 passed, 1 skipped, 1 warning in 79.84s (0:01:19) =============\n",
+              "stdout_tail": "owledgebase/ui/app.py                         29      0      6      0 100.00%\nsrc/knowledgebase/ui/main.py                        19      0      2      0 100.00%\n---------------------------------------------------------------------------------------------\nTOTAL                                             7408   1242   2060    382  80.38%\nCoverage HTML written to dir htmlcov\nCoverage XML written to file coverage.xml\n============= 610 passed, 1 skipped, 1 warning in 74.61s (0:01:14) =============\n",
               "stderr_tail": ""
             },
             {
@@ -79,43 +89,83 @@
               "stderr_tail": ""
             }
           ]
+        },
+        "calibration_4h": {
+          "passed": true,
+          "is_fresh": true,
+          "age_hours": 0.21,
+          "max_age_hours": 4.0
         }
       }
     },
     "trajectory": {
-      "score": 1.0,
+      "score": 0.8944,
       "passed": true,
-      "tokens_used": 0,
+      "tokens_used": 146,
       "max_tokens": 50000,
-      "estimated_usd": 0.0,
+      "estimated_usd": 0.000438,
       "max_usd": 0.25,
-      "session_id": "sess-20261029-132722-954337",
-      "session_reads": 4,
-      "session_writes": 9,
-      "session_bytes": 1956,
+      "session_id": "sess-20261031-110046-017cc9",
+      "session_reads": 2,
+      "session_writes": 3,
+      "session_bytes": 1500,
+      "capsule_fill_ratio": 0.7324,
       "within_capsule_budget": true,
-      "latency_ms": 81312.93,
-      "taguchi_quality_loss": 82.6474,
-      "snr_db": -32.18
+      "latency_ms": 76161.7,
+      "taguchi_quality_loss": 87.0091,
+      "taguchi_score": 0.63,
+      "snr_db": -31.61
     },
     "adversarial": {
-      "score": 1.0,
+      "score": 0.9013,
       "passed": true,
       "adversarial_flaws_count": 0,
       "adversarial_flaws": [],
       "tech_debts_count": 0,
       "auto_created_issues": [],
-      "change_categories": {},
-      "changed_files_count": 0
+      "minor_findings": [
+        "High diff addition volume (831 lines, -0.0387)"
+      ],
+      "added_lines_count": 831,
+      "change_categories": {
+        "ui": [],
+        "script": [
+          "src/knowledgebase/api/main.py",
+          "src/knowledgebase/core/feature_flags.py",
+          "src/knowledgebase/core/mcp_tools.py",
+          "src/knowledgebase/core/observability.py",
+          "src/knowledgebase/server.py",
+          "src/knowledgebase/services/status_service.py",
+          "tests/unit/test_coverage_boost_qg80.py",
+          "src/knowledgebase/core/suite_tools.py",
+          "src/knowledgebase/core/supersqueeze.py",
+          "tests/unit/test_issue85_level1_suite_tools_supersqueeze.py"
+        ],
+        "text": [
+          "AGENTS.md",
+          "CHANGELOG.md",
+          "CLAUDE.md",
+          "cfg/feature-flags/catalog.example.json",
+          "cfg/observability/openobservation.json",
+          "cfg/observability/otel.json",
+          "pyproject.toml"
+        ],
+        "other": [
+          "VERSION"
+        ]
+      },
+      "changed_files_count": 18
     },
     "goal_alignment": {
-      "score": 1.0,
+      "score": 0.9287,
       "passed": true,
-      "task_id": "release-v1.3.2",
-      "issue_number": null,
-      "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-      "compounded_nodes_count": 21,
-      "consensus_score": 1.0
+      "task_id": "issue-85",
+      "issue_number": 85,
+      "active_focus": "Active working session in hath0r-mcp",
+      "goal_keywords_count": 5,
+      "goal_overlap_score": 0.98,
+      "compounded_nodes_count": 23,
+      "consensus_score": 0.826
     }
   },
   "evidence_trust_report": {
@@ -125,30 +175,49 @@
         ".hath0r/evals/latest.json"
       ],
       "STATIC_AST_ANALYSIS": [
+        "src/knowledgebase/api/main.py",
+        "src/knowledgebase/core/feature_flags.py",
+        "src/knowledgebase/core/mcp_tools.py",
+        "src/knowledgebase/core/observability.py",
+        "src/knowledgebase/server.py",
+        "src/knowledgebase/services/status_service.py",
+        "tests/unit/test_coverage_boost_qg80.py",
+        "src/knowledgebase/core/suite_tools.py",
+        "src/knowledgebase/core/supersqueeze.py",
+        "tests/unit/test_issue85_level1_suite_tools_supersqueeze.py",
         ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/cccd_state.json",
+        ".hath0r/l2ws_warmstarts.json",
         ".hath0r/memory/graph.json",
         ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
         "AGENTS.md",
         "CHANGELOG.md",
         "CLAUDE.md",
-        "pyproject.toml"
+        "cfg/feature-flags/catalog.example.json",
+        "cfg/observability/openobservation.json",
+        "cfg/observability/otel.json",
+        "pyproject.toml",
+        ".hath0r/memory/sessions/sess-20261031-110046-017cc9.json"
       ],
       "UNVERIFIED_FILE_PRESENCE": [
         ".hath0r/agentgraph/snapshot.ttl",
-        "VERSION"
+        "VERSION",
+        ".hath0r/spool/"
       ]
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 7,
-      "UNVERIFIED_FILE_PRESENCE": 2
+      "STATIC_AST_ANALYSIS": 25,
+      "UNVERIFIED_FILE_PRESENCE": 3
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
     "mode": "live_synced",
     "phoenix_logged": true,
-    "mlflow_run_id": "4dbc91763c5748e6b7c4f29d0b915399"
+    "mlflow_run_id": "43f7d823ccdd48e6a713c8f7b661ee20"
   },
-  "content_hash": "sha256:454bd98a1ffab6aeca4f108c56636fd7f0142550ce2f52896ab99cf6847c9fc4"
+  "content_hash": "sha256:7e6b551d356ffc96783fafc284cc6132fd08a190c3f446a0a5742c91427cb538"
 }

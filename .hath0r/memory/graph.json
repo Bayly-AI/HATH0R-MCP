@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "updated_at": "2026-10-29T14:29:49.352889+00:00",
+  "updated_at": "2026-10-31T11:13:21.046454+00:00",
   "nodes": [
     {
       "id": "rule:cr-cli-entry-001",
@@ -192,7 +192,7 @@
       "updated_at": "2026-10-28T13:35:55.782782+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -236,7 +236,7 @@
       "updated_at": "2026-10-28T13:43:14.075525+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -281,7 +281,7 @@
       "updated_at": "2026-10-29T13:58:53.480366+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -305,7 +305,7 @@
       "updated_at": "2026-10-28T14:52:41.792412+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -370,7 +370,7 @@
       "updated_at": "2026-10-28T14:56:16.087630+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -436,7 +436,7 @@
       "updated_at": "2026-10-28T14:56:19.078037+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -460,7 +460,7 @@
       "updated_at": "2026-10-29T14:17:25.079186+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -507,10 +507,10 @@
       "updated_at": "2026-10-29T12:07:58.758306+00:00",
       "metadata": {
         "source_files": {
-          "VERSION": "sha256:33158972a53877b421cfe2598b8d93cab169963a4964b45ee889e85349979018",
-          "pyproject.toml": "sha256:e291af845de0b224fbdd17f46d0a34b6211b5320426a343fba1920072ec56350",
-          "CHANGELOG.md": "sha256:ce205b7b18ad3cdb4c576553c1c619ddcc7b05ff3fe885f600c355879f814a5d",
-          "AGENTS.md": "sha256:d8ad8744534519173dad990ced1f85171aff92f5fbe41c9ff9bb7cceece72ac2"
+          "VERSION": "sha256:78b591400c56b7b67b8cb3b2b8a8e65e9093897f02ce0878e6b5405c68620fa7",
+          "pyproject.toml": "sha256:a3c5492de12d5b5168f3051128bdcabc32131b52df9aa6f8457ea1e7ccd0ce72",
+          "CHANGELOG.md": "sha256:636bdd76db4f1834884042906f6526f9197cb570c1d93c2187efd18e94c47d9c",
+          "AGENTS.md": "sha256:598d1688e5048659941c67ffa96de245aef896e9819675d6c0516b8049ac8b86"
         }
       }
     },
@@ -534,7 +534,7 @@
       "updated_at": "2026-10-29T12:08:02.833668+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -582,7 +582,7 @@
       "metadata": {
         "source_files": {
           "src/knowledgebase/search/curation.py": "sha256:b4d605e33453490842c9227da0444939970356948c36fb47f10ed285c61b9043",
-          "src/knowledgebase/server.py": "sha256:4f38e6f1be50401ef2a5292d4ab9d29a81f6d62aad8a5e83704977aa8c26bca7",
+          "src/knowledgebase/server.py": "sha256:9350b68cd4a76a89fa99001775344a124eb570b03f20c38f6c7e9bfb291361d8",
           "tests/unit/test_pbac_curation.py": "sha256:547c902b88ec57c07460e6d84510fc1104b46bda867f349dc3fac8d635d95bb4"
         }
       }
@@ -607,7 +607,7 @@
       "updated_at": "2026-10-29T13:27:26.360941+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -657,7 +657,7 @@
       "updated_at": "2026-10-29T14:29:49.314819+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         }
       }
     },
@@ -685,6 +685,82 @@
         "write_count": 10,
         "status": "completed",
         "byte_size": 1956
+      }
+    },
+    {
+      "id": "episode:issue-85-level1-suite-tools-supersqueeze",
+      "type": "episode",
+      "label": "Completed Issue #85: Level 1 Suite Tools, AgentGraph, SuperSqueeze & OTel/OpenObserve/OpenFeature in HATH0R-MCP",
+      "content": "Implemented src/knowledgebase/core/suite_tools.py (SERVICE_BOT_WORKFLOW_REGISTRY with >=1 owning Bot & workflow_id per tool, mcp_agentgraph_status|query|route|sync|validate, hath0r_workflow_offer, and 28+ centralized suite tools), src/knowledgebase/core/supersqueeze.py (SuperSqueezeEngine + OpenFeature middleware achieving >=45% token savings), replaced ddtrace with OpenTelemetry exporting to Hath0r-phoenix (:38000/phoenix) + OpenObservation spooling, purged infraos_* tool prefixes, and bumped SemVer to 1.4.0.",
+      "importance": 0.96,
+      "tags": [
+        "issue-85",
+        "mcp",
+        "level-1",
+        "agentgraph",
+        "supersqueeze",
+        "otel",
+        "openfeature",
+        "openobservation",
+        "phoenix",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-31T11:11:59.455438+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-31T11:11:59.455438+00:00",
+      "updated_at": "2026-10-31T11:11:59.455438+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "eval:issue-85",
+      "type": "eval",
+      "label": "Task Evaluation issue-85 (R=0.93, PASS)",
+      "content": "4-Tier Task Evaluation for issue-85 on branch feature/85-centralize-l1-suite-tools-supersqueeze: R_task=0.9335 (det=0.97, traj=0.89, adv=0.90, goal=0.93). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "issue-85",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-31T11:13:19.947375+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-31T11:13:19.947375+00:00",
+      "updated_at": "2026-10-31T11:13:19.947375+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
+        }
+      }
+    },
+    {
+      "id": "session:sess-20261031-110046-017cc9",
+      "type": "session",
+      "label": "Micro Session sess-20261031-110046-017cc9",
+      "content": "Micro Session sess-20261031-110046-017cc9 [completed] | Focus: Active working session in hath0r-mcp | Reads: 2, Writes: 4 | Entries: Completed Issue #85 in hath0r-mcp.; Compounded eval:issue-85: Task Evaluation issue-85 (R=0.93, PASS)",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-31T11:00:46.452000+00:00",
+      "valid_to": "2026-10-31T11:12:00.545905+00:00",
+      "is_current": true,
+      "created_at": "2026-10-31T11:00:46.452000+00:00",
+      "updated_at": "2026-10-31T11:13:19.971861+00:00",
+      "metadata": {
+        "session_id": "sess-20261031-110046-017cc9",
+        "prior_session_id": "sess-20261029-132722-954337",
+        "parent_session_id": "sess-20261029-132722-954337",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1862
       }
     }
   ],
@@ -1398,8 +1474,72 @@
       "weight": 1.0,
       "valid_from": "2026-10-29T14:29:49.349424+00:00",
       "is_current": true
+    },
+    {
+      "source": "session:sess-20261029-132722-954337",
+      "target": "session:sess-20261031-110046-017cc9",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T11:00:46.459268+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261031-110046-017cc9",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-31T11:00:46.459268+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T11:11:59.455438+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "session:sess-20261031-110046-017cc9",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T11:11:59.486299+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-85",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T11:13:19.947375+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-85",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T11:13:19.947375+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-85",
+      "target": "session:sess-20261031-110046-017cc9",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T11:13:19.947375+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-85",
+      "target": "session:sess-20261031-110046-017cc9",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T11:13:19.973624+00:00",
+      "is_current": true
     }
   ],
-  "revision": 162,
-  "content_hash": "sha256:db9da1fa9bdbefc3589cc374188f50e5b133075cd45a8b59c318266238e97dc5"
+  "revision": 174,
+  "content_hash": "sha256:d3bdca735040e7cfb021e579805a8b2c4bc4722d5602be66e486ad0b16ca05a6"
 }

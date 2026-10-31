@@ -3829,7 +3829,7 @@ async def _mcp_tool_kb_search_analytics(
     return _mcp_text(json.dumps(output, indent=2, default=str))
 
 
-async def _mcp_tool_infraos_ping(
+async def _mcp_tool_hath0r_ping(
     tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
 ) -> dict[str, Any]:
     output = {
@@ -3840,7 +3840,7 @@ async def _mcp_tool_infraos_ping(
     return _mcp_text(json.dumps(output, indent=2, default=str))
 
 
-async def _mcp_tool_infraos_context(
+async def _mcp_tool_hath0r_context(
     tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
 ) -> dict[str, Any]:
     now = datetime.now()
@@ -3865,7 +3865,7 @@ async def _mcp_tool_infraos_context(
     return _mcp_text(json.dumps(output, indent=2, default=str))
 
 
-async def _mcp_tool_infraos_echo(
+async def _mcp_tool_hath0r_echo(
     tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
 ) -> dict[str, Any]:
     message_value = args.get("message")
@@ -3876,10 +3876,10 @@ async def _mcp_tool_infraos_echo(
     return _mcp_text(json.dumps(output, indent=2, default=str))
 
 
-async def _mcp_tool_infraos_env_get(
+async def _mcp_tool_hath0r_env_get(
     tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
 ) -> dict[str, Any]:
-    name_value = args.get("name")
+    name_value = args.get("name") or args.get("key")
     name = name_value if isinstance(name_value, str) else ""
     if not name:
         return fail(_ERR_MISSING_PARAM_NAME)
@@ -3888,7 +3888,7 @@ async def _mcp_tool_infraos_env_get(
     return _mcp_text(json.dumps(output, indent=2, default=str))
 
 
-async def _mcp_tool_infraos_env_list(
+async def _mcp_tool_hath0r_env_list(
     tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
 ) -> dict[str, Any]:
     prefix_value = args.get("prefix", "")
@@ -4235,11 +4235,11 @@ _MCP_TOOL_HANDLERS: dict[
     "kb_add_documents_batch": _mcp_tool_kb_add_documents_batch,
     "kb_index_reindex": _mcp_tool_kb_index_reindex,
     "kb_search_analytics": _mcp_tool_kb_search_analytics,
-    "infraos_ping": _mcp_tool_infraos_ping,
-    "infraos_context": _mcp_tool_infraos_context,
-    "infraos_echo": _mcp_tool_infraos_echo,
-    "infraos_env_get": _mcp_tool_infraos_env_get,
-    "infraos_env_list": _mcp_tool_infraos_env_list,
+    "hath0r_ping": _mcp_tool_hath0r_ping,
+    "hath0r_context": _mcp_tool_hath0r_context,
+    "hath0r_echo": _mcp_tool_hath0r_echo,
+    "hath0r_env_get": _mcp_tool_hath0r_env_get,
+    "hath0r_env_list": _mcp_tool_hath0r_env_list,
     "runbook_list": _mcp_tool_runbook_list,
     "runbook_get": _mcp_tool_runbook_get,
     "runbook_create": _mcp_tool_runbook_create,
@@ -4251,15 +4251,70 @@ _MCP_TOOL_HANDLERS: dict[
 }
 
 
+async def _mcp_tool_centralized_suite_dispatch(
+    tool_name: str, args: dict[str, Any], fail: Callable[[str], dict[str, Any]]
+) -> dict[str, Any]:
+    from knowledgebase.core.suite_tools import execute_suite_tool
+
+    try:
+        output = execute_suite_tool(tool_name, args)
+        return _mcp_text(json.dumps(output, indent=2, default=str))
+    except Exception as exc:
+        return fail(str(exc))
+
+
+_UTILITY_HANDLER_NAMES = ("hath0r_ping", "hath0r_context", "hath0r_echo", "hath0r_env_get", "hath0r_env_list")
 _MCP_TOOL_HANDLERS.update({
-    name.replace("infraos_", "aegis_", 1): handler
-    for name, handler in list(_MCP_TOOL_HANDLERS.items()) if name.startswith("infraos_")
+    name.replace("hath0r_", "aegis_", 1): _MCP_TOOL_HANDLERS[name]
+    for name in _UTILITY_HANDLER_NAMES
 })
 
-_MCP_TOOL_HANDLERS.update({
-    name.replace("infraos_", "hath0r_", 1): handler
-    for name, handler in list(_MCP_TOOL_HANDLERS.items()) if name.startswith("infraos_")
-})
+for _suite_tool_name in (
+    "hath0r_supersqueeze",
+    "mcp_agentgraph_status",
+    "mcp_agentgraph_query",
+    "mcp_agentgraph_route",
+    "mcp_agentgraph_sync",
+    "mcp_agentgraph_validate",
+    "hath0r_agentgraph_status",
+    "hath0r_agentgraph_query",
+    "hath0r_agentgraph_route",
+    "hath0r_workflow_offer",
+    "hath0r_cli",
+    "hath0r_doctor",
+    "hath0r_optimize_taguchi",
+    "hath0r_finops_tokenizer_tax",
+    "hath0r_finops_tokens_list",
+    "hath0r_finops_tokens_histogram",
+    "hath0r_finops_token_check",
+    "hath0r_finops_budget_check",
+    "hath0r_ray_search",
+    "hath0r_ray_get_document",
+    "hath0r_session_get",
+    "hath0r_session_set",
+    "hath0r_vision_parse_doc",
+    "hath0r_vision_ground",
+    "hath0r_design_status",
+    "hath0r_design_to_code",
+    "hath0r_upgrade",
+    "hath0r_clean_repos",
+    "hath0r_contracts_validate",
+    "hath0r_pr_review_antagonistic",
+    "hath0r_kb_smart_query",
+    "hath0r_evals_redteam",
+    "hath0r_issue_list",
+    "hath0r_cicccdct_status",
+    "hath0r_cicccdct_validate",
+    "hath0r_cicccdct_train",
+    "hath0r_cicccdct_curate_dataset",
+    "hath0r_model_registry_promote",
+    "hath0r_iac_audit",
+    "hath0r_iac_init",
+    "hath0r_iac_validate",
+    "hath0r_iac_salt",
+    "hath0r_iac_render",
+):
+    _MCP_TOOL_HANDLERS[_suite_tool_name] = _mcp_tool_centralized_suite_dispatch
 
 async def _execute_mcp_tool(tool_name: str, args: dict[str, Any]) -> dict[str, Any]:
     """Execute an MCP tool and return the result.

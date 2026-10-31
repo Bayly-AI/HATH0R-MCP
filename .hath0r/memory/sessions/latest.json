@@ -1,55 +1,53 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261029-132722-954337",
-  "prior_session_id": "sess-20261029-124700-b22430",
-  "parent_session_id": "sess-20261029-124700-b22430",
-  "revision": 14,
-  "content_hash": "sha256:76ca73fbfc85e2aeb2cc454d1f51a9c8c86cf883b1a753c509e6cbac8e84491b",
-  "base_graph_hash": "sha256:78070389e78ba21a379f7247cab441f07edd098075f212f0b905efbe62704917",
-  "task_id": "rule-sync-and-workflow-upgrade",
+  "session_id": "sess-20261031-110046-017cc9",
+  "prior_session_id": "sess-20261029-132722-954337",
+  "parent_session_id": "sess-20261029-132722-954337",
+  "revision": 6,
+  "content_hash": "sha256:e33716b945f0fa31a10cf83cf21b5d5ddfb9c3d65fa69954ed743231fd7583de",
+  "base_graph_hash": "sha256:43a66cc6773b43cfacaf6ddd67496ba872f01a68d1d652f74bb66065035cad6e",
+  "task_id": "Issue #85: centralize Level 1 suite tools & knowledge on AgentGraph, SuperSqueeze middleware, and OTel/OpenObserve/OpenFeature in HATH0R-MCP",
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
-  "started_at": "2026-10-29T13:27:22.642776+00:00",
-  "updated_at": "2026-10-29T14:29:49.346886+00:00",
-  "ended_at": "2026-10-29T14:17:23.244849+00:00",
-  "read_count": 4,
-  "write_count": 10,
-  "last_read_at": "2026-10-29T14:17:23.146785+00:00",
-  "last_write_at": "2026-10-29T14:29:49.346886+00:00",
-  "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-  "prior_summary": "ounded episode:clean-repo-hath0r-mcp; Clean Repo Lifecycle completed for hath0; Compounded eval:clean-repo-hath0r-mcp: T",
-  "recalled_nodes": [
-    {
-      "id": "insight:hath0r-mcp",
-      "type": "insight",
-      "label": "Synthesized Insight on hath0r-mcp",
-      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, lice"
-    }
-  ],
+  "started_at": "2026-10-31T11:00:46.452000+00:00",
+  "updated_at": "2026-10-31T11:13:19.971861+00:00",
+  "ended_at": "2026-10-31T11:12:00.545905+00:00",
+  "read_count": 2,
+  "write_count": 4,
+  "last_read_at": "2026-10-31T11:00:47.235690+00:00",
+  "last_write_at": "2026-10-31T11:13:19.971861+00:00",
+  "active_focus": "Active working session in hath0r-mcp",
+  "prior_summary": "Implemented Issue #85: centralized Level; Compounded episode:issue-85-level1-suite",
+  "recalled_nodes": [],
   "micro_entries": [
     {
-      "timestamp": "2026-10-29T14:29:49.346886+00:00",
+      "timestamp": "2026-10-31T11:12:00.545905+00:00",
+      "kind": "milestone",
+      "summary": "Completed Issue #85 in hath0r-mcp.",
+      "tags": [
+        "session-end"
+      ],
+      "node_id": null
+    },
+    {
+      "timestamp": "2026-10-31T11:13:19.971861+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:release-v1-3-2: Task Evaluation release-v1.3.2 (R=1.00, PASS)",
+      "summary": "Compounded eval:issue-85: Task Evaluation issue-85 (R=0.93, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "release-v1-3-2",
+        "issue-85",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:release-v1-3-2"
+      "node_id": "eval:issue-85"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:task-hath0r-mcp",
-    "rule:cr-task-eval-001",
-    "eval:eval-baseline-hath0r-mcp",
-    "episode:clean-repo-hath0r-mcp",
-    "eval:clean-repo-hath0r-mcp",
-    "eval:release-v1-3-2"
+    "episode:issue-85-level1-suite-tools-supersqueeze",
+    "eval:issue-85"
   ],
-  "capsule_bytes": 1956
+  "capsule_bytes": 1862
 }

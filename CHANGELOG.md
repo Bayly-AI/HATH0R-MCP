@@ -5,6 +5,14 @@ All notable changes to **HATH0R-MCP** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-10-31
+
+### Added
+- **Level 1 Centralized Suite Tools, `AgentGraph` Routing, `SuperSqueeze` Middleware & OTel/OpenObserve/OpenFeature Integration (`CR-FEATURE-WORKFLOW-STANDARD-001` · `CR-MCP-CENTRAL-001`)** (#85):
+  - Added `src/knowledgebase/core/suite_tools.py` defining `SERVICE_BOT_WORKFLOW_REGISTRY` (`x-hath0r-owning-bot`, `x-hath0r-workflow-id`, `x-hath0r-agentgraph-level`), Level 1 `AgentGraph` tools (`mcp_agentgraph_status|query|route|sync|validate`), `hath0r_workflow_offer` (Missing-Workflow Offer using the request as acceptance test), and 28+ centralized suite tools ported from `HATH0R-CLI`.
+  - Added `src/knowledgebase/core/supersqueeze.py` implementing `SuperSqueezeEngine` (`hath0r_supersqueeze`) and OpenFeature-gated response middleware (`mcp.supersqueeze.enabled`) achieving `>= 45%` token reduction on verbose payloads (`> 1024` tokens).
+  - Upgraded `src/knowledgebase/core/observability.py`, `src/knowledgebase/core/feature_flags.py`, `cfg/observability/otel.json`, `cfg/observability/openobservation.json`, and `cfg/feature-flags/catalog.example.json` to replace legacy `ddtrace` with OpenTelemetry exporting to `Hath0r-phoenix` (`http://localhost:38000/phoenix` / `http://Hath0r-phoenix:6006`) + non-blocking `.hath0r/spool/mcp_telemetry.jsonl` OpenObservation telemetry, and purged legacy `infraos_*` tool prefixes.
+
 ## [1.3.2] - 2026-10-29
 
 ### Added

@@ -1,14 +1,14 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-29T14:29:49.676540+00:00",
+  "timestamp": "2026-10-31T11:13:20.266159+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "AGENTS.md (root)",
-      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Updated: 2026-10-29 · fileset pin `1.3.2` · engine version `1.11.1`\n\n## CR-CLI-ENTRY-001: Start with the CLI (CRITICAL — Org-Wide · CANONICAL)\n\n1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.\n2. **Missing Capability Offer**: If the required connection, MCP, workflow, bot, or factory does not exist in `hath0r`, offer to register the missing capability, using the original request as the acceptance test.\n3. **Docs before code**: Require procedure/playbook/runbook before scaffolding implementation.\n\nCanonical: [HATH0R-CLI `docs/governance/cli-first-rules.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md).\n\n## Identity",
+      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Updated: 2026-10-31 · fileset pin `1.4.0` · engine version `1.11.1`\n\n## CR-CLI-ENTRY-001 & CR-FEATURE-WORKFLOW-STANDARD-001: Start with the CLI & Workflow-First Standard (CRITICAL — Org-Wide · CANONICAL)\n\n1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.\n2. **Canonical Feature Definition (`CR-FEATURE-WORKFLOW-STANDARD-001`)**:\n   - **Every Feature is a Service run by at least one Bot (`>= 1` Bot)**: Every MCP tool, command, and workflow in `HATH0R-MCP` is bound to `>= 1` owning Bot in `BotRegistry` (`x-hath0r-owning-bot`).\n   - **Level 1 (`HATH0R-MCP`) & Level 2 (`HATH0R-CLI` / Bot Memory) on `AgentGraph`**: Tools, workflows, and canonical knowledge reside on *",
       "properties": {
         "path": "AGENTS.md",
         "subsystem": "root"
@@ -125,6 +125,19 @@
       "content": "Governance policy rule CR-CLI-FEATURE-STANDARD-001 referenced in AGENTS.md",
       "properties": {
         "rule_code": "CR-CLI-FEATURE-STANDARD-001",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-feature-workflow-standard-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-FEATURE-WORKFLOW-STANDARD-001",
+      "content": "Governance policy rule CR-FEATURE-WORKFLOW-STANDARD-001 referenced in AGENTS.md",
+      "properties": {
+        "rule_code": "CR-FEATURE-WORKFLOW-STANDARD-001",
         "priority": 4,
         "restricted_actions": []
       },
@@ -728,7 +741,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -769,7 +782,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -811,7 +824,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -833,7 +846,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -894,7 +907,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -956,7 +969,7 @@
       "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -978,7 +991,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -1024,10 +1037,10 @@
       "content": "Released v1.2.6 of HATH0R-MCP with CR-CLI-ENTRY-001, CR-TASK-EVAL-001, CR-SEMVER-BUMP-001, and CR-SONAR-PREANNOUNCE-001.",
       "properties": {
         "source_files": {
-          "VERSION": "sha256:33158972a53877b421cfe2598b8d93cab169963a4964b45ee889e85349979018",
-          "pyproject.toml": "sha256:e291af845de0b224fbdd17f46d0a34b6211b5320426a343fba1920072ec56350",
-          "CHANGELOG.md": "sha256:ce205b7b18ad3cdb4c576553c1c619ddcc7b05ff3fe885f600c355879f814a5d",
-          "AGENTS.md": "sha256:d8ad8744534519173dad990ced1f85171aff92f5fbe41c9ff9bb7cceece72ac2"
+          "VERSION": "sha256:78b591400c56b7b67b8cb3b2b8a8e65e9093897f02ce0878e6b5405c68620fa7",
+          "pyproject.toml": "sha256:a3c5492de12d5b5168f3051128bdcabc32131b52df9aa6f8457ea1e7ccd0ce72",
+          "CHANGELOG.md": "sha256:636bdd76db4f1834884042906f6526f9197cb570c1d93c2187efd18e94c47d9c",
+          "AGENTS.md": "sha256:598d1688e5048659941c67ffa96de245aef896e9819675d6c0516b8049ac8b86"
         },
         "source": "local_memory",
         "tags": [
@@ -1046,7 +1059,7 @@
       "content": "4-Tier Task Evaluation for release-v1-2-6 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -1093,7 +1106,7 @@
       "properties": {
         "source_files": {
           "src/knowledgebase/search/curation.py": "sha256:b4d605e33453490842c9227da0444939970356948c36fb47f10ed285c61b9043",
-          "src/knowledgebase/server.py": "sha256:4f38e6f1be50401ef2a5292d4ab9d29a81f6d62aad8a5e83704977aa8c26bca7",
+          "src/knowledgebase/server.py": "sha256:9350b68cd4a76a89fa99001775344a124eb570b03f20c38f6c7e9bfb291361d8",
           "tests/unit/test_pbac_curation.py": "sha256:547c902b88ec57c07460e6d84510fc1104b46bda867f349dc3fac8d635d95bb4"
         },
         "source": "local_memory",
@@ -1113,7 +1126,7 @@
       "content": "4-Tier Task Evaluation for task-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2918855579cbe694f79f268ea2497fbcbe90f2b6b4546a908575720dbd7991ab"
+          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
         },
         "source": "local_memory",
         "tags": [
@@ -1187,6 +1200,77 @@
         "write_count": 10,
         "status": "completed",
         "byte_size": 1956,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Completed Issue #85: Level 1 Suite Tools, AgentGraph, SuperSqueeze & OTel/OpenObserve/OpenFeature in HATH0R-MCP",
+      "content": "Implemented src/knowledgebase/core/suite_tools.py (SERVICE_BOT_WORKFLOW_REGISTRY with >=1 owning Bot & workflow_id per tool, mcp_agentgraph_status|query|route|sync|validate, hath0r_workflow_offer, and 28+ centralized suite tools), src/knowledgebase/core/supersqueeze.py (SuperSqueezeEngine + OpenFeature middleware achieving >=45% token savings), replaced ddtrace with OpenTelemetry exporting to Hath0r-phoenix (:38000/phoenix) + OpenObservation spooling, purged infraos_* tool prefixes, and bumped SemVer to 1.4.0.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "issue-85",
+          "mcp",
+          "level-1",
+          "agentgraph",
+          "supersqueeze",
+          "otel",
+          "openfeature",
+          "openobservation",
+          "phoenix",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.96
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:issue-85",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation issue-85 (R=0.93, PASS)",
+      "content": "4-Tier Task Evaluation for issue-85 on branch feature/85-centralize-l1-suite-tools-supersqueeze: R_task=0.9335 (det=0.97, traj=0.89, adv=0.90, goal=0.93). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "issue-85",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261031-110046-017cc9",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261031-110046-017cc9",
+      "content": "Micro Session sess-20261031-110046-017cc9 [completed] | Focus: Active working session in hath0r-mcp | Reads: 2, Writes: 4 | Entries: Completed Issue #85 in hath0r-mcp.; Compounded eval:issue-85: Task Evaluation issue-85 (R=0.93, PASS)",
+      "properties": {
+        "session_id": "sess-20261031-110046-017cc9",
+        "prior_session_id": "sess-20261029-132722-954337",
+        "parent_session_id": "sess-20261029-132722-954337",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1862,
         "source": "local_memory",
         "tags": [
           "session",
@@ -1774,6 +1858,54 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261029-132722-954337",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-110046-017cc9",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "memory:session:sess-20261031-110046-017cc9",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -1811,6 +1943,12 @@
     },
     {
       "source": "rule:cr-cli-feature-standard-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-feature-workflow-standard-001",
       "target": "role:developer",
       "relation": "GOVERNS",
       "is_current": true
@@ -2045,6 +2183,24 @@
     },
     {
       "source": "memory:session:sess-20261029-132722-954337",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-85",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-110046-017cc9",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true

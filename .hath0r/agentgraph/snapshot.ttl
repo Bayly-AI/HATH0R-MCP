@@ -183,6 +183,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:eval:release-v1-3-2> a hath0r:Plane ;
+    rdfs:label "Task Evaluation release-v1.3.2 (R=1.00, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:eval:task-hath0r-mcp> a hath0r:Plane ;
     rdfs:label "Task Evaluation task-hath0r-mcp (R=1.00, PASS)" ;
     hath0r:inPlane "memory" ;
@@ -265,6 +270,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261031-110046-017cc9> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261031-110046-017cc9" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#role:reader> a hath0r:AgentRole ;
     rdfs:label "Read-Only Agent" ;
     hath0r:inPlane "rules" .
@@ -301,6 +311,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#rule:cr-cli-first-001> a hath0r:Plane ;
     rdfs:label "Rule CR-CLI-FIRST-001" ;
+    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
+    hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#rule:cr-feature-workflow-standard-001> a hath0r:Plane ;
+    rdfs:label "Rule CR-FEATURE-WORKFLOW-STANDARD-001" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 
