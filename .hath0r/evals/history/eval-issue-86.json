@@ -1,0 +1,208 @@
+{
+  "schema_version": "hath0r.evals.scorecard/v1",
+  "rule_id": "CR-TASK-EVAL-001",
+  "eval_id": "eval-20261031-113824-c66d32",
+  "task_id": "issue-86",
+  "issue_number": 86,
+  "repo_name": "hath0r-mcp",
+  "branch": "feature/86-workflow-first-engine-cruise-mlflow-phoenix",
+  "evaluated_at": "2026-10-31T11:38:24.437393+00:00",
+  "duration_ms": 83821.15,
+  "passed_gate": true,
+  "r_task": 0.9374,
+  "min_reward_threshold": 0.8,
+  "weights": {
+    "deterministic": 0.4,
+    "trajectory": 0.2,
+    "adversarial": 0.25,
+    "goal_alignment": 0.15
+  },
+  "tier_scores": {
+    "deterministic": 0.9733,
+    "trajectory": 0.8911,
+    "adversarial": 0.9221,
+    "goal_alignment": 0.9287
+  },
+  "tiers": {
+    "deterministic": {
+      "score": 0.9733,
+      "passed": true,
+      "passed_checks": 5,
+      "total_checks": 5,
+      "sub_scores": {
+        "version_valid": 1.0,
+        "agentgraph_valid": 1.0,
+        "memory_compounded": 0.98,
+        "test_suite": 0.935,
+        "calibration_4h": 0.9738
+      },
+      "checks": {
+        "version_valid": {
+          "passed": true,
+          "version": "1.5.0",
+          "changelog_aligned": true,
+          "error": null
+        },
+        "agentgraph_valid": {
+          "passed": true,
+          "cycles": 0,
+          "contradictions": 0,
+          "claude_md_synced": true
+        },
+        "memory_compounded": {
+          "passed": true,
+          "compounded_nodes_count": 28,
+          "session_read_verified": true,
+          "session_write_verified": true,
+          "hashes_verified": true,
+          "graphs_not_ignored": true,
+          "error": null
+        },
+        "test_suite": {
+          "passed": true,
+          "commands_run": 2,
+          "duration_s": 83.405,
+          "results": [
+            {
+              "command": [
+                "python",
+                "-m",
+                "pytest",
+                "-q"
+              ],
+              "ok": true,
+              "exit_code": 0,
+              "stdout_tail": "owledgebase/ui/app.py                         29      0      6      0 100.00%\nsrc/knowledgebase/ui/main.py                        19      0      2      0 100.00%\n---------------------------------------------------------------------------------------------\nTOTAL                                             7790   1291   2188    403  80.68%\nCoverage HTML written to dir htmlcov\nCoverage XML written to file coverage.xml\n============= 617 passed, 1 skipped, 1 warning in 81.66s (0:01:21) =============\n",
+              "stderr_tail": ""
+            },
+            {
+              "command": [
+                "python",
+                "-m",
+                "ruff",
+                "check",
+                "src"
+              ],
+              "ok": true,
+              "exit_code": 0,
+              "stdout_tail": "All checks passed!\n",
+              "stderr_tail": ""
+            }
+          ]
+        },
+        "calibration_4h": {
+          "passed": true,
+          "is_fresh": true,
+          "age_hours": 0.65,
+          "max_age_hours": 4.0
+        }
+      }
+    },
+    "trajectory": {
+      "score": 0.8911,
+      "passed": true,
+      "tokens_used": 143,
+      "max_tokens": 50000,
+      "estimated_usd": 0.000429,
+      "max_usd": 0.25,
+      "session_id": "sess-20261031-112758-ef9695",
+      "session_reads": 2,
+      "session_writes": 3,
+      "session_bytes": 1549,
+      "capsule_fill_ratio": 0.7563,
+      "within_capsule_budget": true,
+      "latency_ms": 83505.47,
+      "taguchi_quality_loss": 104.5974,
+      "taguchi_score": 0.63,
+      "snr_db": -32.41
+    },
+    "adversarial": {
+      "score": 0.9221,
+      "passed": true,
+      "adversarial_flaws_count": 0,
+      "adversarial_flaws": [],
+      "tech_debts_count": 0,
+      "auto_created_issues": [],
+      "minor_findings": [
+        "High diff addition volume (518 lines, -0.0179)"
+      ],
+      "added_lines_count": 518,
+      "change_categories": {
+        "ui": [],
+        "script": [
+          "src/knowledgebase/api/main.py",
+          "src/knowledgebase/core/mcp_tools.py",
+          "src/knowledgebase/core/suite_tools.py",
+          "src/knowledgebase/server.py",
+          "src/knowledgebase/core/workflow_engine.py",
+          "tests/unit/test_issue86_workflow_engine_bot_dispatch_and_bridges.py"
+        ],
+        "text": [
+          "AGENTS.md",
+          "CHANGELOG.md",
+          "CLAUDE.md",
+          "pyproject.toml"
+        ],
+        "other": [
+          "VERSION"
+        ]
+      },
+      "changed_files_count": 11
+    },
+    "goal_alignment": {
+      "score": 0.9287,
+      "passed": true,
+      "task_id": "issue-86",
+      "issue_number": 86,
+      "active_focus": "Active working session in hath0r-mcp",
+      "goal_keywords_count": 5,
+      "goal_overlap_score": 0.98,
+      "compounded_nodes_count": 28,
+      "consensus_score": 0.826
+    }
+  },
+  "evidence_trust_report": {
+    "schema": "hath0r.security.evidence_trust_report/1",
+    "tiers": {
+      "VERIFIED_EXECUTION": [
+        ".hath0r/evals/latest.json"
+      ],
+      "STATIC_AST_ANALYSIS": [
+        "src/knowledgebase/api/main.py",
+        "src/knowledgebase/core/mcp_tools.py",
+        "src/knowledgebase/core/suite_tools.py",
+        "src/knowledgebase/server.py",
+        "src/knowledgebase/core/workflow_engine.py",
+        "tests/unit/test_issue86_workflow_engine_bot_dispatch_and_bridges.py",
+        ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/cccd_state.json",
+        ".hath0r/memory/graph.json",
+        ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
+        "AGENTS.md",
+        "CHANGELOG.md",
+        "CLAUDE.md",
+        "pyproject.toml",
+        ".hath0r/memory/sessions/sess-20261031-112758-ef9695.json"
+      ],
+      "UNVERIFIED_FILE_PRESENCE": [
+        ".hath0r/agentgraph/snapshot.ttl",
+        ".hath0r/spool/mcp_telemetry.jsonl",
+        "VERSION"
+      ]
+    },
+    "counts": {
+      "VERIFIED_EXECUTION": 1,
+      "STATIC_AST_ANALYSIS": 17,
+      "UNVERIFIED_FILE_PRESENCE": 3
+    }
+  },
+  "blocking_reasons": [],
+  "observability_sync": {
+    "mode": "live_synced",
+    "phoenix_logged": true,
+    "mlflow_run_id": "28a58ff6fbc3466fa0594ffc9a22df69"
+  },
+  "content_hash": "sha256:b8164d95e415b2035cb91e815f1063ff0668fcd7266d5d0430502f3286dee6a7"
+}

@@ -1,14 +1,14 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-mcp",
-  "timestamp": "2026-10-31T11:13:20.266159+00:00",
+  "timestamp": "2026-10-31T11:39:49.417893+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "AGENTS.md (root)",
-      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Updated: 2026-10-31 · fileset pin `1.4.0` · engine version `1.11.1`\n\n## CR-CLI-ENTRY-001 & CR-FEATURE-WORKFLOW-STANDARD-001: Start with the CLI & Workflow-First Standard (CRITICAL — Org-Wide · CANONICAL)\n\n1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.\n2. **Canonical Feature Definition (`CR-FEATURE-WORKFLOW-STANDARD-001`)**:\n   - **Every Feature is a Service run by at least one Bot (`>= 1` Bot)**: Every MCP tool, command, and workflow in `HATH0R-MCP` is bound to `>= 1` owning Bot in `BotRegistry` (`x-hath0r-owning-bot`).\n   - **Level 1 (`HATH0R-MCP`) & Level 2 (`HATH0R-CLI` / Bot Memory) on `AgentGraph`**: Tools, workflows, and canonical knowledge reside on *",
+      "content": "# AGENTS.md — HATH0R-MCP (Hath0r MCP Server)\n\n> HATHOR OpenSource member · Hath0r OpenSource Suite MCP service\n> Updated: 2026-10-31 · fileset pin `1.5.0` · engine version `1.11.1`\n\n## CR-CLI-ENTRY-001 & CR-FEATURE-WORKFLOW-STANDARD-001: Start with the CLI & Workflow-First Standard (CRITICAL — Org-Wide · CANONICAL)\n\n1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.\n2. **Canonical Feature Definition (`CR-FEATURE-WORKFLOW-STANDARD-001`)**:\n   - **Every Feature is a Service run by at least one Bot (`>= 1` Bot)**: Every MCP tool, command, and workflow in `HATH0R-MCP` is bound to `>= 1` owning Bot in `BotRegistry` (`x-hath0r-owning-bot`).\n   - **Level 1 (`HATH0R-MCP`) & Level 2 (`HATH0R-CLI` / Bot Memory) on `AgentGraph`**: Tools, workflows, and canonical knowledge reside on *",
       "properties": {
         "path": "AGENTS.md",
         "subsystem": "root"
@@ -741,7 +741,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -782,7 +782,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -824,7 +824,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -846,7 +846,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -907,7 +907,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -969,7 +969,7 @@
       "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -991,7 +991,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -1037,10 +1037,10 @@
       "content": "Released v1.2.6 of HATH0R-MCP with CR-CLI-ENTRY-001, CR-TASK-EVAL-001, CR-SEMVER-BUMP-001, and CR-SONAR-PREANNOUNCE-001.",
       "properties": {
         "source_files": {
-          "VERSION": "sha256:78b591400c56b7b67b8cb3b2b8a8e65e9093897f02ce0878e6b5405c68620fa7",
-          "pyproject.toml": "sha256:a3c5492de12d5b5168f3051128bdcabc32131b52df9aa6f8457ea1e7ccd0ce72",
-          "CHANGELOG.md": "sha256:636bdd76db4f1834884042906f6526f9197cb570c1d93c2187efd18e94c47d9c",
-          "AGENTS.md": "sha256:598d1688e5048659941c67ffa96de245aef896e9819675d6c0516b8049ac8b86"
+          "VERSION": "sha256:acb57a7135b2d7d6e665f67f056e21353023b93835f54def1ae523bf76f1bfb3",
+          "pyproject.toml": "sha256:dcd5aa19e124ee8802d404d4ff9ccfa6dbae5b5887004a9caa9825e71d39e08c",
+          "CHANGELOG.md": "sha256:6b09e7b8283f95b370dbc542b3d097708c852f84bf3c255a2dc88ec23273aa77",
+          "AGENTS.md": "sha256:762326eea9c9c0202a3a39cb3d6df13bd816130fa6485b16f95a58d62a1a90b3"
         },
         "source": "local_memory",
         "tags": [
@@ -1059,7 +1059,7 @@
       "content": "4-Tier Task Evaluation for release-v1-2-6 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -1106,7 +1106,7 @@
       "properties": {
         "source_files": {
           "src/knowledgebase/search/curation.py": "sha256:b4d605e33453490842c9227da0444939970356948c36fb47f10ed285c61b9043",
-          "src/knowledgebase/server.py": "sha256:9350b68cd4a76a89fa99001775344a124eb570b03f20c38f6c7e9bfb291361d8",
+          "src/knowledgebase/server.py": "sha256:3ea4722e7724dad6158fce756040be7b84b949aabd681cb871acdf7d7a47b8d2",
           "tests/unit/test_pbac_curation.py": "sha256:547c902b88ec57c07460e6d84510fc1104b46bda867f349dc3fac8d635d95bb4"
         },
         "source": "local_memory",
@@ -1126,7 +1126,7 @@
       "content": "4-Tier Task Evaluation for task-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -1172,7 +1172,7 @@
       "content": "4-Tier Task Evaluation for release-v1.3.2 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:c747a84f0769e696232be80e73dd1d46172926679c1f5b6170a75551ffe51336"
+          ".hath0r/evals/latest.json": "sha256:e748dca954307317b8ce3fa1b6b8cff245f891ea5ad50f2517eaac5e4aa7c119"
         },
         "source": "local_memory",
         "tags": [
@@ -1271,6 +1271,137 @@
         "write_count": 4,
         "status": "completed",
         "byte_size": 1862,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:issue-86-workflow-engine-bridges",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Completed Issue #86: Workflow-First Engine, BotRegistry Dispatch, 4h Calibration & hath0r-net Bridges in HATH0R-MCP",
+      "content": "Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlflow_*, and mcp_phoenix_* in HATH0R-MCP with 617 passing tests and SemVer 1.5.0.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "issue-86",
+          "mcp",
+          "workflow-first",
+          "botregistry",
+          "agentgraph",
+          "calibration",
+          "cruise-control",
+          "mlflow",
+          "phoenix",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.96
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:mcp",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on mcp",
+      "content": "Consolidated from 2 memory nodes tagged 'mcp'. Recurring themes: with, completed, issue, suite. Latest context: Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlf",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "mcp",
+        "source": "local_memory",
+        "tags": [
+          "mcp",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:agentgraph",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on agentgraph",
+      "content": "Consolidated from 2 memory nodes tagged 'agentgraph'. Recurring themes: with, completed, issue, suite. Latest context: Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlf",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "agentgraph",
+        "source": "local_memory",
+        "tags": [
+          "agentgraph",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:phoenix",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on phoenix",
+      "content": "Consolidated from 2 memory nodes tagged 'phoenix'. Recurring themes: with, completed, issue, suite. Latest context: Implemented workflow_engine.py exposing mcp_workflow_*, mcp_factory_*, mcp_bot_*, mcp_memory_*, mcp_cccd_* (4h pre-task auto-calibration), mcp_cruise_*, mcp_mlf",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "phoenix",
+        "source": "local_memory",
+        "tags": [
+          "phoenix",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:issue-86",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation issue-86 (R=0.94, PASS)",
+      "content": "4-Tier Task Evaluation for issue-86 on branch feature/86-workflow-first-engine-cruise-mlflow-phoenix: R_task=0.9374 (det=0.97, traj=0.89, adv=0.92, goal=0.93). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:0ebf71e3160408412f2d76aeb90e6801c487c7f04d704414503a96376559f4d3"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "issue-86",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261031-112758-ef9695",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261031-112758-ef9695",
+      "content": "Micro Session sess-20261031-112758-ef9695 [completed] | Focus: Active working session in hath0r-mcp | Reads: 2, Writes: 4 | Entries: Completed Issue #86 in hath0r-mcp.; Compounded eval:issue-86: Task Evaluation issue-86 (R=0.94, PASS)",
+      "properties": {
+        "session_id": "sess-20261031-112758-ef9695",
+        "prior_session_id": "sess-20261031-110046-017cc9",
+        "parent_session_id": "sess-20261031-110046-017cc9",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1911,
         "source": "local_memory",
         "tags": [
           "session",
@@ -1906,6 +2037,90 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261031-110046-017cc9",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-112758-ef9695",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-86-workflow-engine-bridges",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-86-workflow-engine-bridges",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:mcp",
+      "target": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:mcp",
+      "target": "memory:episode:issue-86-workflow-engine-bridges",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:agentgraph",
+      "target": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:agentgraph",
+      "target": "memory:episode:issue-86-workflow-engine-bridges",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:phoenix",
+      "target": "memory:episode:issue-85-level1-suite-tools-supersqueeze",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:phoenix",
+      "target": "memory:episode:issue-86-workflow-engine-bridges",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "memory:session:sess-20261031-112758-ef9695",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -2201,6 +2416,42 @@
     },
     {
       "source": "memory:session:sess-20261031-110046-017cc9",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-86-workflow-engine-bridges",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:mcp",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:agentgraph",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:phoenix",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:issue-86",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261031-112758-ef9695",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true

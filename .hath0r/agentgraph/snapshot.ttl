@@ -133,6 +133,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:episode:issue-85-level1-suite-tools-supersqueeze> a hath0r:Plane ;
+    rdfs:label "Completed Issue #85: Level 1 Suite Tools, AgentGraph, SuperSqueeze & OTel/OpenObserve/OpenFeature in HATH0R-MCP" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:episode:pr-76> a hath0r:Plane ;
     rdfs:label "Completed PR #76 (feature)" ;
     hath0r:inPlane "memory" ;
@@ -160,6 +165,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:eval:issue-77> a hath0r:Plane ;
     rdfs:label "Task Evaluation issue-77 (R=1.00, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:eval:issue-85> a hath0r:Plane ;
+    rdfs:label "Task Evaluation issue-85 (R=0.93, PASS)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -272,6 +282,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:session:sess-20261031-110046-017cc9> a hath0r:Plane ;
     rdfs:label "Micro Session sess-20261031-110046-017cc9" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261031-112758-ef9695> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261031-112758-ef9695" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 

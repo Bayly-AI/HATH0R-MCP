@@ -46,5 +46,22 @@
   ],
   "ttl_hours": 4.0,
   "max_age_hours": 4.0,
-  "auto_calibrate_pre_task": true
+  "auto_calibrate_pre_task": true,
+  "last_run": "2026-10-31T11:38:31Z",
+  "last_calibrated_at": "2026-10-31T11:38:31Z",
+  "total_runs": 2,
+  "last_trigger_source": "mcp_calibrate",
+  "calibrated_parameters": {
+    "temperature": 0.5,
+    "max_tokens": 2048,
+    "top_p": 0.9,
+    "retry_count": 3,
+    "guardrail_threshold": 0.85
+  },
+  "metrics": {
+    "drift_psi": 0.002,
+    "ece": 0.011,
+    "temperature_t": 0.5,
+    "calibration_age_hours": 0.0
+  }
 }

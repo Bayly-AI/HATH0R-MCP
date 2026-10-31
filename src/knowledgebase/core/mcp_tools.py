@@ -1021,6 +1021,239 @@ DEFAULT_MCP_TOOL_SPECS: tuple[MCPToolSpec, ...] = (
             }
         ),
     ),
+    MCPToolSpec(
+        name="mcp_workflow_list",
+        description="List all canonical workflows and factory blueprints on Level 1 HATH0R-MCP",
+        input_schema=_schema({"path": {"type": "string", "description": "Optional workspace path"}}),
+    ),
+    MCPToolSpec(
+        name="mcp_workflow_match",
+        description="Match task intent to a canonical workflow or return a Missing-Workflow Offer",
+        input_schema=_schema(
+            {
+                "intent": {"type": "string", "description": "Operator task intent or request"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            },
+            required=["intent"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_workflow_scaffold",
+        description="Scaffold a new declarative workflow YAML bound to >= 1 Bot in BotRegistry",
+        input_schema=_schema(
+            {
+                "workflow_id": {"type": "string", "description": "Canonical workflow ID (wf.domain.slug)"},
+                "title": {"type": "string", "description": "Workflow title"},
+                "owning_bots": {"type": "array", "items": {"type": "string"}, "description": "Owning BotRegistry bots"},
+                "acceptance_test": {"type": "string", "description": "Original operator request used as acceptance test"},
+                "steps": {"type": "array", "items": {"type": "object"}, "description": "Declarative workflow steps"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            },
+            required=["workflow_id", "title", "owning_bots", "acceptance_test"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_workflow_run",
+        description="Execute a canonical Level 1 workflow with automatic 4h calibration check",
+        input_schema=_schema(
+            {
+                "workflow_id": {"type": "string", "description": "Canonical workflow ID"},
+                "inputs": {"type": "object", "description": "Workflow input parameters"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+                "max_calibration_age_hours": {"type": "number", "description": "Max calibration age in hours", "default": 4.0},
+            },
+            required=["workflow_id"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_workflow_status",
+        description="Inspect execution status of a workflow run or list recent workflow runs",
+        input_schema=_schema(
+            {
+                "run_id": {"type": "string", "description": "Optional workflow run ID"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_workflow_validate",
+        description="Validate declarative workflow definition and Service-Bot ownership",
+        input_schema=_schema(
+            {
+                "workflow_id": {"type": "string", "description": "Workflow ID to validate"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_factory_list",
+        description="List declarative AgentFactory blueprints registered on Level 1 HATH0R-MCP",
+        input_schema=_schema({"path": {"type": "string", "description": "Optional workspace path"}}),
+    ),
+    MCPToolSpec(
+        name="mcp_factory_execute",
+        description="Execute a declarative AgentFactory blueprint on Level 1 HATH0R-MCP",
+        input_schema=_schema(
+            {
+                "factory_id": {"type": "string", "description": "Factory blueprint ID"},
+                "inputs": {"type": "object", "description": "Factory execution inputs"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            },
+            required=["factory_id"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_bot_list",
+        description="List all canonical bots registered in BotRegistry with their Level 1/2 capabilities",
+        input_schema=_schema({"domain": {"type": "string", "description": "Optional bot domain filter"}}),
+    ),
+    MCPToolSpec(
+        name="mcp_bot_invoke",
+        description="Invoke a registered BotRegistry bot method via Level 1 AgentGraph dispatch",
+        input_schema=_schema(
+            {
+                "bot_name": {"type": "string", "description": "Registered Bot class name"},
+                "action": {"type": "string", "description": "Bot action/method to invoke", "default": "execute"},
+                "payload": {"type": "object", "description": "Invocation payload"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            },
+            required=["bot_name"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_bot_health",
+        description="Verify health and registration coverage of all BotRegistry bots",
+        input_schema=_schema({"bot_name": {"type": "string", "description": "Optional specific bot name"}}),
+    ),
+    MCPToolSpec(
+        name="mcp_memory_read",
+        description="Read Level 2 MemoryGraph nodes and micro-memory sessions bridged via AgentGraph",
+        input_schema=_schema(
+            {
+                "topic": {"type": "string", "description": "Optional topic or node filter"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_memory_compound",
+        description="Compound an episode/fact/decision node into Level 2 MemoryGraph via Level 1 MCP",
+        input_schema=_schema(
+            {
+                "node_id": {"type": "string", "description": "MemoryGraph node ID"},
+                "node_type": {"type": "string", "description": "Node type (episode|fact|decision|eval)"},
+                "label": {"type": "string", "description": "Concise node label"},
+                "content": {"type": "string", "description": "Detailed node content"},
+                "importance": {"type": "number", "description": "Node importance [0.0, 1.0]", "default": 0.9},
+                "tags": {"type": "array", "items": {"type": "string"}, "description": "Node tags"},
+                "path": {"type": "string", "description": "Optional workspace path"},
+            },
+            required=["node_id", "label", "content"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_memory_verify",
+        description="Verify Level 2 MemoryGraph integrity and SHA-256 file hashes",
+        input_schema=_schema({"path": {"type": "string", "description": "Optional workspace path"}}),
+    ),
+    MCPToolSpec(
+        name="mcp_cccd_status",
+        description="Inspect Continuous Calibration & Drift (CCCD) status and 4-hour freshness",
+        input_schema=_schema(
+            {
+                "max_age_hours": {"type": "number", "description": "Maximum calibration age in hours", "default": 4.0},
+                "state_path": {"type": "string", "description": "Optional cccd_state.json path override"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_cccd_calibrate",
+        description="Execute Continuous Calibration & Drift (CCCD) calibration run and persist timestamp",
+        input_schema=_schema(
+            {
+                "reason": {"type": "string", "description": "Calibration trigger reason"},
+                "state_path": {"type": "string", "description": "Optional cccd_state.json path override"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_cccd_ensure_calibrated",
+        description="Ensure agent calibration is fresh within 4.0 hours; auto-calibrate if expired",
+        input_schema=_schema(
+            {
+                "max_age_hours": {"type": "number", "description": "Maximum calibration age in hours", "default": 4.0},
+                "state_path": {"type": "string", "description": "Optional cccd_state.json path override"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_cruise_status",
+        description="Query Hath0r-Cruise-Control autonomous runtime status on hath0r-net",
+        input_schema=_schema({}),
+    ),
+    MCPToolSpec(
+        name="mcp_cruise_decisions",
+        description="List recent autonomous boundary decisions from Hath0r-Cruise-Control",
+        input_schema=_schema({"limit": {"type": "integer", "description": "Max decisions to return", "default": 20}}),
+    ),
+    MCPToolSpec(
+        name="mcp_cruise_approve_boundary",
+        description="Approve or record a boundary gate decision with Hath0r-Cruise-Control",
+        input_schema=_schema(
+            {
+                "decision_id": {"type": "string", "description": "Boundary decision ID"},
+                "approved": {"type": "boolean", "description": "Whether boundary is approved", "default": True},
+                "reviewer": {"type": "string", "description": "Approving agent or operator"},
+            },
+            required=["decision_id"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_cruise_settle",
+        description="Settle completed task trajectory with Hath0r-Cruise-Control",
+        input_schema=_schema(
+            {
+                "task_id": {"type": "string", "description": "Completed task ID"},
+                "r_task": {"type": "number", "description": "Composite reward score R_task"},
+                "passed_gate": {"type": "boolean", "description": "Whether task evaluation gate passed"},
+            },
+            required=["task_id", "r_task", "passed_gate"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_mlflow_log_eval",
+        description="Log continuous 4-tier evaluation scorecard to Hathor-MLFLOW on hath0r-net",
+        input_schema=_schema(
+            {
+                "task_id": {"type": "string", "description": "Evaluated task ID"},
+                "eval_id": {"type": "string", "description": "Evaluation run ID"},
+                "r_task": {"type": "number", "description": "Composite reward score R_task"},
+                "tier_scores": {"type": "object", "description": "Tier 1-4 breakdown scores"},
+                "experiment_name": {"type": "string", "description": "MLflow experiment name", "default": "hath0r-evals"},
+            },
+            required=["task_id", "eval_id", "r_task"],
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_mlflow_query_runs",
+        description="Query recent evaluation and calibration runs from Hathor-MLFLOW",
+        input_schema=_schema(
+            {
+                "experiment_name": {"type": "string", "description": "MLflow experiment name", "default": "hath0r-evals"},
+                "limit": {"type": "integer", "description": "Max runs to return", "default": 10},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="mcp_phoenix_query_spans",
+        description="Query OTel trace spans and LLM evaluations from Arize Phoenix (Hath0r-phoenix)",
+        input_schema=_schema(
+            {
+                "project_name": {"type": "string", "description": "Phoenix project name", "default": "hath0r-suite"},
+                "limit": {"type": "integer", "description": "Max spans to return", "default": 20},
+            }
+        ),
+    ),
 )
 
 # Preserve compatibility client aliases for core utility tools.

@@ -5,6 +5,17 @@ All notable changes to **HATH0R-MCP** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-10-31
+
+### Added
+- **Level 1 Workflow-First Engine, `BotRegistry` Service Dispatch, `MemoryGraph` Bridge, 4-Hour Auto-Calibration Gate & `hath0r-net` Bridges (`CR-FEATURE-WORKFLOW-STANDARD-001`)** (#86):
+  - Added `src/knowledgebase/core/workflow_engine.py` exposing 24 Level 1 MCP tools across `mcp_tools.py`, `api/main.py`, and `server.py`:
+    - Workflow & Factory Engine: `mcp_workflow_list`, `mcp_workflow_match` (with automatic Missing-Workflow Offer using the request as acceptance test), `mcp_workflow_scaffold`, `mcp_workflow_run` (with pre-task 4h calibration gate), `mcp_workflow_status`, `mcp_workflow_validate`, `mcp_factory_list`, `mcp_factory_execute`.
+    - `BotRegistry` Service Dispatch: `mcp_bot_list`, `mcp_bot_invoke` (enforcing `feature.service_bot.enforce`), `mcp_bot_health`.
+    - Level 1 ↔ Level 2 `MemoryGraph` Bridge: `mcp_memory_read`, `mcp_memory_compound`, `mcp_memory_verify`.
+    - 4-Hour Pre-Task Agent Calibration (`max_age_hours = 4.0`): `mcp_cccd_status`, `mcp_cccd_calibrate`, `mcp_cccd_ensure_calibrated`.
+    - `hath0r-net` Bridges: `mcp_cruise_status`, `mcp_cruise_decisions`, `mcp_cruise_approve_boundary`, `mcp_cruise_settle` (`Hath0r-Cruise-Control`), `mcp_mlflow_log_eval`, `mcp_mlflow_query_runs` (`Hathor-MLFLOW`), and `mcp_phoenix_query_spans` (`Hath0r-phoenix`).
+
 ## [1.4.0] - 2026-10-31
 
 ### Added

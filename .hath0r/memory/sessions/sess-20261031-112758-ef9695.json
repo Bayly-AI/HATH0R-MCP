@@ -1,0 +1,53 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261031-112758-ef9695",
+  "prior_session_id": "sess-20261031-110046-017cc9",
+  "parent_session_id": "sess-20261031-110046-017cc9",
+  "revision": 6,
+  "content_hash": "sha256:e67f20f8fc0a419e7076b9d35077879f4bacde86b42e2a7fb02efe997f9e19e3",
+  "base_graph_hash": "sha256:d238567877666bc0838925d1d17560e58dd37852e97ff4941e0259c8b0c57f6b",
+  "task_id": "Issue #86: expose Workflow-First engine, missing-workflow offer, BotRegistry dispatch, Level 1/2 AgentGraph & MemoryGraph sync, 4h calibration, and Phoenix/MLflow/Cruise Control tools in HATH0R-MCP",
+  "role": null,
+  "repo_name": "hath0r-mcp",
+  "status": "completed",
+  "started_at": "2026-10-31T11:27:58.361274+00:00",
+  "updated_at": "2026-10-31T11:39:48.748599+00:00",
+  "ended_at": "2026-10-31T11:38:15.597509+00:00",
+  "read_count": 2,
+  "write_count": 4,
+  "last_read_at": "2026-10-31T11:27:59.106315+00:00",
+  "last_write_at": "2026-10-31T11:39:48.748599+00:00",
+  "active_focus": "Active working session in hath0r-mcp",
+  "prior_summary": "Implemented Issue #86: Workflow-First en; Compounded episode:issue-86-workflow-eng",
+  "recalled_nodes": [],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-31T11:38:15.597509+00:00",
+      "kind": "milestone",
+      "summary": "Completed Issue #86 in hath0r-mcp.",
+      "tags": [
+        "session-end"
+      ],
+      "node_id": null
+    },
+    {
+      "timestamp": "2026-10-31T11:39:48.748599+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:issue-86: Task Evaluation issue-86 (R=0.94, PASS)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "issue-86",
+        "passed",
+        "compounded"
+      ],
+      "node_id": "eval:issue-86"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:issue-86-workflow-engine-bridges",
+    "eval:issue-86"
+  ],
+  "capsule_bytes": 1911
+}

@@ -120,6 +120,54 @@ SERVICE_BOT_WORKFLOW_REGISTRY: dict[str, dict[str, Any]] = {
         "workflow_id": "cfg/factories/paper-design-workflow.yaml",
         "agentgraph_level": "L1_MCP",
     },
+    "mcp_workflow_": {
+        "service": "Workflow-First Execution & Missing-Workflow Offer Service",
+        "owning_bots": ["MCPWorkflowEngineBot", "FactoryScaffoldBot"],
+        "workflow_id": "cfg/factories/workflow-first-offer-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "mcp_factory_": {
+        "service": "Declarative Factory Execution Service",
+        "owning_bots": ["MCPWorkflowEngineBot", "FactoryScaffoldBot"],
+        "workflow_id": "cfg/factories/workflow-first-offer-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "mcp_bot_": {
+        "service": "Bot-Backed Feature Registry & Dispatch Service",
+        "owning_bots": ["ArchitecturePreservationBot", "MCPCentralizationBot"],
+        "workflow_id": "cfg/factories/bot-service-dispatch-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "mcp_memory_": {
+        "service": "Level 1 <-> Level 2 MemoryGraph Compounding Service",
+        "owning_bots": ["MemoryCompoundBot", "AgentGraphBot"],
+        "workflow_id": "cfg/factories/memory-agentgraph-sync-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "mcp_cccd_": {
+        "service": "4-Hour Pre-Task Agent Calibration Service",
+        "owning_bots": ["CICCCDManagingBot", "CalibrationBot"],
+        "workflow_id": "cfg/factories/cccd-4h-calibration-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "mcp_cruise_": {
+        "service": "Hath0r-Cruise-Control Decision Radar & Settlement Service",
+        "owning_bots": ["DecisionRadarBot"],
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "mcp_mlflow_": {
+        "service": "Hathor-MLFLOW Experiment & Model Registry Service",
+        "owning_bots": ["MLflowManagerBot"],
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "mcp_phoenix_": {
+        "service": "Hath0r-phoenix OpenTelemetry & OpenInference Trace Service",
+        "owning_bots": ["PhoenixObserverBot"],
+        "workflow_id": "cfg/factories/hath0r-net-telemetry-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
     "hath0r_": {
         "service": "Hath0r Core Suite Operator Service",
         "owning_bots": ["MCPCentralizationBot", "MCPWorkflowEngineBot", "ArchitecturePreservationBot"],
@@ -435,6 +483,96 @@ def execute_suite_tool(tool_name: str, args: dict[str, Any]) -> dict[str, Any]:
             return offer_missing_workflow(
                 intent=str(args.get("intent", "")),
                 suggested_bots=args.get("suggested_bots"),
+            )
+
+        # Issue #86: Workflow-First Engine, BotRegistry Dispatch, MemoryGraph, 4h Calibration, Phoenix/MLflow/Cruise Control
+        from knowledgebase.core import workflow_engine as wf_eng
+
+        if tool_name in ("mcp_workflow_list", "mcp_factory_list"):
+            return wf_eng.mcp_workflow_list()
+        if tool_name == "mcp_workflow_match":
+            return wf_eng.mcp_workflow_match(intent=str(args.get("intent", "")))
+        if tool_name == "mcp_workflow_scaffold":
+            return wf_eng.mcp_workflow_scaffold(
+                name=str(args.get("name", "custom")),
+                intent=str(args.get("intent", "")),
+                owning_bots=args.get("owning_bots"),
+                steps=args.get("steps"),
+            )
+        if tool_name in ("mcp_workflow_run", "mcp_factory_execute"):
+            wid = str(args.get("workflow_id") or args.get("factory_id") or "")
+            return wf_eng.mcp_workflow_run(workflow_id=wid, params=args.get("params"))
+        if tool_name == "mcp_workflow_status":
+            return wf_eng.mcp_workflow_status(run_id=args.get("run_id"))
+        if tool_name == "mcp_workflow_validate":
+            return wf_eng.mcp_workflow_validate(workflow_id=args.get("workflow_id"))
+        if tool_name == "mcp_bot_list":
+            return wf_eng.mcp_bot_list(category=args.get("category"))
+        if tool_name == "mcp_bot_invoke":
+            return wf_eng.mcp_bot_invoke(
+                bot_name=str(args.get("bot_name") or args.get("bot_id") or ""),
+                action=str(args.get("action", "status")),
+                params=args.get("params"),
+            )
+        if tool_name == "mcp_bot_health":
+            return wf_eng.mcp_bot_health(bot_name=args.get("bot_name") or args.get("bot_id"))
+        if tool_name == "mcp_memory_read":
+            return wf_eng.mcp_memory_read(
+                topic=str(args.get("topic", "")),
+                node_type=args.get("node_type"),
+                limit=int(args.get("limit", 10)),
+            )
+        if tool_name == "mcp_memory_compound":
+            return wf_eng.mcp_memory_compound(
+                node_id=str(args.get("node_id", "")),
+                label=str(args.get("label", "")),
+                content=str(args.get("content", "")),
+                node_type=str(args.get("node_type", "episode")),
+                importance=float(args.get("importance", 0.90)),
+                tags=args.get("tags"),
+            )
+        if tool_name == "mcp_memory_verify":
+            return wf_eng.mcp_memory_verify()
+        if tool_name == "mcp_cccd_status":
+            return wf_eng.mcp_cccd_status(max_age_hours=float(args.get("max_age_hours", 4.0)))
+        if tool_name == "mcp_cccd_calibrate":
+            return wf_eng.mcp_cccd_calibrate(trigger_source=str(args.get("trigger_source", "mcp_calibrate")))
+        if tool_name == "mcp_cccd_ensure_calibrated":
+            return wf_eng.mcp_cccd_ensure_calibrated(
+                max_age_hours=float(args.get("max_age_hours", 4.0)),
+                trigger_source=str(args.get("trigger_source", "pre_task")),
+            )
+        if tool_name == "mcp_cruise_status":
+            return wf_eng.mcp_cruise_status()
+        if tool_name == "mcp_cruise_decisions":
+            return wf_eng.mcp_cruise_decisions(status=str(args.get("status", "all")))
+        if tool_name == "mcp_cruise_approve_boundary":
+            return wf_eng.mcp_cruise_approve_boundary(
+                gate_type=str(args.get("gate_type", "input")),
+                task_id=str(args.get("task_id", "issue-86")),
+                decision=str(args.get("decision", "approved")),
+            )
+        if tool_name == "mcp_cruise_settle":
+            return wf_eng.mcp_cruise_settle(
+                fact_key=str(args.get("fact_key", "")),
+                fact_value=args.get("fact_value", True),
+            )
+        if tool_name == "mcp_mlflow_log_eval":
+            return wf_eng.mcp_mlflow_log_eval(
+                task_id=str(args.get("task_id", "issue-86")),
+                r_task=float(args.get("r_task", 0.90)),
+                tier_scores=args.get("tier_scores"),
+                experiment_name=str(args.get("experiment_name", "hath0r-task-evals")),
+            )
+        if tool_name == "mcp_mlflow_query_runs":
+            return wf_eng.mcp_mlflow_query_runs(
+                experiment_name=str(args.get("experiment_name", "hath0r-task-evals")),
+                limit=int(args.get("limit", 10)),
+            )
+        if tool_name == "mcp_phoenix_query_spans":
+            return wf_eng.mcp_phoenix_query_spans(
+                service_name=str(args.get("service_name", "hath0r-mcp")),
+                limit=int(args.get("limit", 20)),
             )
 
         return {
