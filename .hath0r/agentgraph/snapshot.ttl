@@ -141,6 +141,10 @@ hath0r: a owl:Ontology ;
     rdfs:label "iac-managing-bot" ;
     hath0r:inPlane "context" .
 
+<https://hath0r.dev/ontology/v1#bot:install-wizard-bot> a hath0r:Plane ;
+    rdfs:label "install-wizard-bot" ;
+    hath0r:inPlane "context" .
+
 <https://hath0r.dev/ontology/v1#bot:issue-guard-bot> a hath0r:Plane ;
     rdfs:label "issue-guard-bot" ;
     hath0r:inPlane "context" .
@@ -423,67 +427,59 @@ hath0r:definesRole a owl:ObjectProperty .
     rdfs:label "Warp" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:_hath0r__knowledgebase__README_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:_hath0r%5Cknowledgebase%5CREADME_md> a hath0r:Plane ;
     rdfs:label "Readme" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:_hath0r__knowledgebase__lessons-learned__pr-76_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:_hath0r%5Cknowledgebase%5Clessons-learned%5Cpr-76_md> a hath0r:Plane ;
     rdfs:label "Pr 76" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:_hath0r__knowledgebase__lessons-learned__pr-78_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:_hath0r%5Cknowledgebase%5Clessons-learned%5Cpr-78_md> a hath0r:Plane ;
     rdfs:label "Pr 78" ;
-    hath0r:inPlane "knowledge" .
-
-<https://hath0r.dev/ontology/v1#doc:agents-data> a hath0r:Plane ;
-    rdfs:label "AGENTS.md (data)" ;
-    hath0r:inPlane "knowledge" .
-
-<https://hath0r.dev/ontology/v1#doc:agents-lib> a hath0r:Plane ;
-    rdfs:label "AGENTS.md (lib)" ;
     hath0r:inPlane "knowledge" .
 
 <https://hath0r.dev/ontology/v1#doc:agents-root> a hath0r:Plane ;
     rdfs:label "AGENTS.md (root)" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__HOWTO-MCP-SETUP_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5CHOWTO-MCP-SETUP_md> a hath0r:Plane ;
     rdfs:label "Howto Mcp Setup" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__INDEX_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5CINDEX_md> a hath0r:Plane ;
     rdfs:label "Index" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__TICKET-AGENTGRAPH-REFACTOR_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5CTICKET-AGENTGRAPH-REFACTOR_md> a hath0r:Plane ;
     rdfs:label "Ticket Agentgraph Refactor" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__governance__SUITE_STANDARDS_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5Cgovernance%5CSUITE_STANDARDS_md> a hath0r:Plane ;
     rdfs:label "Suite Standards" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__governance__playbooks__release-runbook_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5Cgovernance%5Cplaybooks%5Crelease-runbook_md> a hath0r:Plane ;
     rdfs:label "Release Runbook" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__governance__semantic-versioning_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5Cgovernance%5Csemantic-versioning_md> a hath0r:Plane ;
     rdfs:label "Semantic Versioning" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__jev-tool-guard-performance_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5Cjev-tool-guard-performance_md> a hath0r:Plane ;
     rdfs:label "Jev Tool Guard Performance" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__jev-tool-guard-poc_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5Cjev-tool-guard-poc_md> a hath0r:Plane ;
     rdfs:label "Jev Tool Guard Poc" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__provenance_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5Cprovenance_md> a hath0r:Plane ;
     rdfs:label "Provenance" ;
     hath0r:inPlane "knowledge" .
 
-<https://hath0r.dev/ontology/v1#doc:docs__runbook_md> a hath0r:Plane ;
+<https://hath0r.dev/ontology/v1#doc:docs%5Crunbook_md> a hath0r:Plane ;
     rdfs:label "Runbook" ;
     hath0r:inPlane "knowledge" .
 
@@ -522,12 +518,12 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
 <https://hath0r.dev/ontology/v1#memory:eval:clean-repo-hath0r-mcp> a hath0r:Plane ;
-    rdfs:label "Task Evaluation clean-repo-hath0r-mcp (R=1.00, PASS)" ;
+    rdfs:label "Task Evaluation clean-repo-hath0r-mcp (R=0.94, PASS)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
 <https://hath0r.dev/ontology/v1#memory:eval:eval-baseline-hath0r-mcp> a hath0r:Plane ;
-    rdfs:label "Task Evaluation eval-baseline-hath0r-mcp (R=1.00, PASS)" ;
+    rdfs:label "Task Evaluation eval-baseline-hath0r-mcp (R=0.94, PASS)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -576,6 +572,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:eval:task-HATH0R-MCP> a hath0r:Plane ;
+    rdfs:label "Task Evaluation task-HATH0R-MCP (R=0.93, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:eval:task-hath0r-mcp> a hath0r:Plane ;
     rdfs:label "Task Evaluation task-hath0r-mcp (R=1.00, PASS)" ;
     hath0r:inPlane "memory" ;
@@ -587,7 +588,7 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
 <https://hath0r.dev/ontology/v1#memory:fact:repo-hath0r-mcp-orientation> a hath0r:Plane ;
-    rdfs:label "hath0r-mcp Repository Memory Orientation" ;
+    rdfs:label "HATH0R-MCP Repository Memory Orientation" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -623,6 +624,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:insight:pr> a hath0r:Plane ;
     rdfs:label "Synthesized Insight on pr" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:knowledge:suite-arch-and-local-qgates-20261031> a hath0r:Plane ;
+    rdfs:label "Suite MCP-Central Architecture & Local Quality Gates (CR-LOCAL-QGATES-001)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -680,6 +686,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#memory:session:sess-20261031-112758-ef9695> a hath0r:Plane ;
     rdfs:label "Micro Session sess-20261031-112758-ef9695" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261031-161719-7ef2b5> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261031-161719-7ef2b5" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -754,11 +765,6 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#rule:cr-task-eval-001> a hath0r:Plane ;
     rdfs:label "Rule CR-TASK-EVAL-001" ;
-    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
-    hath0r:inPlane "rules" .
-
-<https://hath0r.dev/ontology/v1#rule:rules> a hath0r:Plane ;
-    rdfs:label "Rule rules" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 
@@ -890,6 +896,10 @@ hath0r:informs a owl:ObjectProperty .
     rdfs:label "Repository Initialization Service" ;
     hath0r:inPlane "context" .
 
+<https://hath0r.dev/ontology/v1#service:install-wizard> a hath0r:Plane ;
+    rdfs:label "Hath0r CLI & Hath0r MCP Docker Install Wizard Service" ;
+    hath0r:inPlane "context" .
+
 <https://hath0r.dev/ontology/v1#service:issue> a hath0r:Plane ;
     rdfs:label "GitHub Issue Governance Service" ;
     hath0r:inPlane "context" .
@@ -996,6 +1006,10 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#service:serve> a hath0r:Plane ;
     rdfs:label "Local Control Plane Server Service" ;
+    hath0r:inPlane "context" .
+
+<https://hath0r.dev/ontology/v1#service:setup> a hath0r:Plane ;
+    rdfs:label "Hath0r CLI & Hath0r MCP Docker Install Wizard Alias Service" ;
     hath0r:inPlane "context" .
 
 <https://hath0r.dev/ontology/v1#service:skills> a hath0r:Plane ;

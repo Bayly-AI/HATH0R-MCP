@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-HATH0R-MCP",
-  "timestamp": "2026-11-01T17:27:15.619929+00:00",
+  "timestamp": "2026-11-01T18:16:59.760820+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -691,7 +691,7 @@
       "content": "4-Tier Task Evaluation for issue-75 on branch feature/75-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -732,7 +732,7 @@
       "content": "4-Tier Task Evaluation for pr-76 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -770,18 +770,18 @@
       "id": "memory:eval:eval-baseline-hath0r-mcp",
       "plane": "memory",
       "type": "eval",
-      "label": "Task Evaluation eval-baseline-hath0r-mcp (R=0.86, FAIL)",
-      "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=0.8587 (det=0.75, traj=0.93, adv=0.94, goal=0.93). Gate=FAILED.",
+      "label": "Task Evaluation eval-baseline-hath0r-mcp (R=0.94, PASS)",
+      "content": "4-Tier Task Evaluation for eval-baseline-hath0r-mcp on branch development: R_task=0.9363 (det=0.94, traj=0.93, adv=0.94, goal=0.93). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
           "eval",
           "cr-task-eval-001",
           "eval-baseline-hath0r-mcp",
-          "failed",
+          "passed",
           "compounded"
         ],
         "importance": 0.85
@@ -796,7 +796,7 @@
       "content": "4-Tier Task Evaluation for issue-77 on branch chore/77-sync-warp-eval-rule: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -857,7 +857,7 @@
       "content": "4-Tier Task Evaluation for pr-78 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -919,7 +919,7 @@
       "content": "4-Tier Task Evaluation for pr-78-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -941,7 +941,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-mcp on branch development: R_task=0.9389 (det=0.95, traj=0.92, adv=0.94, goal=0.93). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -1009,7 +1009,7 @@
       "content": "4-Tier Task Evaluation for release-v1-2-6 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -1076,7 +1076,7 @@
       "content": "4-Tier Task Evaluation for task-hath0r-mcp on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -1122,7 +1122,7 @@
       "content": "4-Tier Task Evaluation for release-v1.3.2 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -1193,7 +1193,7 @@
       "content": "4-Tier Task Evaluation for issue-85 on branch feature/85-centralize-l1-suite-tools-supersqueeze: R_task=0.9335 (det=0.97, traj=0.89, adv=0.90, goal=0.93). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -1324,7 +1324,7 @@
       "content": "4-Tier Task Evaluation for issue-86 on branch feature/86-workflow-first-engine-cruise-mlflow-phoenix: R_task=0.9318 (det=0.98, traj=0.87, adv=0.92, goal=0.93). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:123a4aeef6f17799b7fe197fd231326c87658d2aa33012dcba1cde3da9997bd8"
+          ".hath0r/evals/latest.json": "sha256:a13ac32cde5eab80a51dab20a3f35176c64548792a98e48158cac35183068fec"
         },
         "source": "local_memory",
         "tags": [
@@ -1382,18 +1382,18 @@
       "id": "memory:eval:task-HATH0R-MCP",
       "plane": "memory",
       "type": "eval",
-      "label": "Task Evaluation task-HATH0R-MCP (R=0.93, PASS)",
-      "content": "4-Tier Task Evaluation for task-HATH0R-MCP on branch development: R_task=0.9284 (det=0.94, traj=0.89, adv=0.94, goal=0.93). Gate=PASSED.",
+      "label": "Task Evaluation task-HATH0R-MCP (R=0.85, FAIL)",
+      "content": "4-Tier Task Evaluation for task-HATH0R-MCP on branch development: R_task=0.8456 (det=0.75, traj=0.86, adv=0.94, goal=0.93). Gate=FAILED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:7fa1101f81394afbde90dcdef8fe1ef1addae86f2f650925dab187220e0cf878"
+          ".hath0r/evals/latest.json": "sha256:40df6f03dcc2f4109ef78bea7efda45fcd9f44da67c6a66964b6735a10973e79"
         },
         "source": "local_memory",
         "tags": [
           "eval",
           "cr-task-eval-001",
           "task-hath0r-mcp",
-          "passed",
+          "failed",
           "compounded"
         ],
         "importance": 0.85
@@ -1405,15 +1405,15 @@
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261031-161719-7ef2b5",
-      "content": "Micro Session sess-20261031-161719-7ef2b5 [completed] | Focus: Repository orientation verified for HATH0R-MCP | Reads: 4, Writes: 8 | Entries: Compounded eval:task-HATH0R-MCP: Task Evaluation task-HATH0R-MCP (R=0.93, PASS)",
+      "content": "Micro Session sess-20261031-161719-7ef2b5 [completed] | Focus: Repository orientation verified for HATH0R-MCP | Reads: 8, Writes: 15 | Entries: Compounded eval:task-HATH0R-MCP: Task Evaluation task-HATH0R-MCP (R=0.85, FAIL)",
       "properties": {
         "session_id": "sess-20261031-161719-7ef2b5",
         "prior_session_id": "sess-20261031-112758-ef9695",
         "parent_session_id": "sess-20261031-112758-ef9695",
-        "read_count": 4,
-        "write_count": 8,
+        "read_count": 8,
+        "write_count": 15,
         "status": "completed",
-        "byte_size": 1964,
+        "byte_size": 1965,
         "source": "local_memory",
         "tags": [
           "session",
@@ -3691,6 +3691,51 @@
         "bot_id": "task-completion-verifier-bot"
       },
       "is_current": true
+    },
+    {
+      "id": "service:install-wizard",
+      "plane": "context",
+      "type": "service",
+      "label": "Hath0r CLI & Hath0r MCP Docker Install Wizard Service",
+      "content": "Service 'Hath0r CLI & Hath0r MCP Docker Install Wizard Service' for CLI command `hath0r install-wizard` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "install-wizard",
+        "owning_bots": [
+          "install-wizard-bot",
+          "upgrade-verifier-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/install-wizard-factory.yaml"
+      },
+      "is_current": true
+    },
+    {
+      "id": "bot:install-wizard-bot",
+      "plane": "context",
+      "type": "bot",
+      "label": "install-wizard-bot",
+      "content": "Registered Bot 'install-wizard-bot' in BotRegistry",
+      "properties": {
+        "bot_id": "install-wizard-bot"
+      },
+      "is_current": true
+    },
+    {
+      "id": "service:setup",
+      "plane": "context",
+      "type": "service",
+      "label": "Hath0r CLI & Hath0r MCP Docker Install Wizard Alias Service",
+      "content": "Service 'Hath0r CLI & Hath0r MCP Docker Install Wizard Alias Service' for CLI command `hath0r setup` on L1_MCP_AND_L2_CLI_MEMORY",
+      "properties": {
+        "command": "setup",
+        "owning_bots": [
+          "install-wizard-bot",
+          "upgrade-verifier-bot"
+        ],
+        "agentgraph_level": "L1_MCP_AND_L2_CLI_MEMORY",
+        "workflow_id": "cfg/factories/install-wizard-factory.yaml"
+      },
+      "is_current": true
     }
   ],
   "edges": [
@@ -5605,6 +5650,30 @@
     {
       "source": "service:arch",
       "target": "bot:task-completion-verifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:install-wizard",
+      "target": "bot:install-wizard-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:install-wizard",
+      "target": "bot:upgrade-verifier-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:setup",
+      "target": "bot:install-wizard-bot",
+      "relation": "OWNED_BY_BOT",
+      "is_current": true
+    },
+    {
+      "source": "service:setup",
+      "target": "bot:upgrade-verifier-bot",
       "relation": "OWNED_BY_BOT",
       "is_current": true
     }

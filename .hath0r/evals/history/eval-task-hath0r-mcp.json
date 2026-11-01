@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261101-172712-3b3c37",
+  "eval_id": "eval-20261101-181634-ef4bd7",
   "task_id": "task-HATH0R-MCP",
   "issue_number": null,
   "repo_name": "HATH0R-MCP",
   "branch": "development",
-  "evaluated_at": "2026-11-01T17:27:12.183448+00:00",
-  "duration_ms": 2906.0,
-  "passed_gate": true,
-  "r_task": 0.9284,
+  "evaluated_at": "2026-11-01T18:16:34.406680+00:00",
+  "duration_ms": 7016.0,
+  "passed_gate": false,
+  "r_task": 0.8456,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,22 +18,22 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 0.9417,
-    "trajectory": 0.8869,
+    "deterministic": 0.7481,
+    "trajectory": 0.8605,
     "adversarial": 0.94,
     "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 0.9417,
-      "passed": true,
-      "passed_checks": 6,
+      "score": 0.7481,
+      "passed": false,
+      "passed_checks": 5,
       "total_checks": 6,
       "sub_scores": {
         "version_valid": 1.0,
         "agentgraph_valid": 1.0,
         "memory_compounded": 0.98,
-        "test_suite": 0.88,
+        "test_suite": 0.0,
         "calibration_4h": 0.82,
         "local_quality_gates": 0.965
       },
@@ -52,7 +52,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 30,
+          "compounded_nodes_count": 31,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -60,14 +60,41 @@
           "error": null
         },
         "test_suite": {
-          "passed": true,
-          "skipped": true,
-          "message": "Test execution skipped via flag or dry-run (-0.12 confidence deduction)."
+          "passed": false,
+          "commands_run": 2,
+          "duration_s": 5.5,
+          "results": [
+            {
+              "command": [
+                "python",
+                "-m",
+                "pytest",
+                "-q"
+              ],
+              "ok": false,
+              "exit_code": 2,
+              "stdout_tail": "ests/unit/test_storage_factory.py\nERROR tests/unit/test_storage_local.py\nERROR tests/unit/test_storage_opensearch.py\nERROR tests/unit/test_stub_packages.py\nERROR tests/unit/test_sync_service.py\nERROR tests/unit/test_ui_app.py\nERROR tests/unit/test_ui_main.py\nERROR tests/unit/test_voice_service.py - Failed: 'asyncio' not found in `mark...\n!!!!!!!!!!!!!!!!!! Interrupted: 41 errors during collection !!!!!!!!!!!!!!!!!!!\n============================= 41 errors in 4.53s ==============================\n",
+              "stderr_tail": ""
+            },
+            {
+              "command": [
+                "python",
+                "-m",
+                "ruff",
+                "check",
+                "src"
+              ],
+              "ok": true,
+              "exit_code": 0,
+              "stdout_tail": "All checks passed!\n",
+              "stderr_tail": ""
+            }
+          ]
         },
         "calibration_4h": {
           "passed": true,
           "is_fresh": false,
-          "age_hours": 28.46,
+          "age_hours": 29.28,
           "max_age_hours": 4.0
         },
         "local_quality_gates": {
@@ -314,22 +341,22 @@
       }
     },
     "trajectory": {
-      "score": 0.8869,
+      "score": 0.8605,
       "passed": true,
-      "tokens_used": 21,
+      "tokens_used": 50,
       "max_tokens": 50000,
-      "estimated_usd": 6.3e-05,
+      "estimated_usd": 0.00015,
       "max_usd": 0.25,
       "session_id": "sess-20261031-161719-7ef2b5",
-      "session_reads": 4,
-      "session_writes": 7,
-      "session_bytes": 1972,
-      "capsule_fill_ratio": 0.9629,
+      "session_reads": 8,
+      "session_writes": 14,
+      "session_bytes": 2001,
+      "capsule_fill_ratio": 0.9771,
       "within_capsule_budget": true,
-      "latency_ms": 2469.0,
-      "taguchi_quality_loss": 0.0914,
-      "taguchi_score": 0.7515,
-      "snr_db": -1.83
+      "latency_ms": 6641.0,
+      "taguchi_quality_loss": 0.6615,
+      "taguchi_score": 0.63,
+      "snr_db": -10.42
     },
     "adversarial": {
       "score": 0.94,
@@ -358,7 +385,7 @@
       "active_focus": "Repository orientation verified for HATH0R-MCP",
       "goal_keywords_count": 4,
       "goal_overlap_score": 0.98,
-      "compounded_nodes_count": 30,
+      "compounded_nodes_count": 31,
       "consensus_score": 0.826
     }
   },
@@ -496,18 +523,33 @@
       "VERIFIED_EXECUTION": [
         ".hath0r/evals/latest.json"
       ],
-      "STATIC_AST_ANALYSIS": [],
-      "UNVERIFIED_FILE_PRESENCE": []
+      "STATIC_AST_ANALYSIS": [
+        ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/evals/history/eval-eval-baseline-hath0r-mcp.json",
+        ".hath0r/evals/latest.json",
+        ".hath0r/memory/graph.json",
+        ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
+        ".hath0r/memory/sessions/sess-20261031-161719-7ef2b5.json"
+      ],
+      "UNVERIFIED_FILE_PRESENCE": [
+        ".hath0r/agentgraph/snapshot.ttl"
+      ]
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 0,
-      "UNVERIFIED_FILE_PRESENCE": 0
+      "STATIC_AST_ANALYSIS": 8,
+      "UNVERIFIED_FILE_PRESENCE": 1
     }
   },
-  "blocking_reasons": [],
+  "blocking_reasons": [
+    "Tier 1 deterministic gate failed: test_suite"
+  ],
   "observability_sync": {
-    "mode": "pending"
+    "mode": "spooled_local",
+    "phoenix_logged": true,
+    "mlflow_run_id": null
   },
-  "content_hash": "sha256:338576f175033d14ce0f4d15e480f4a3e33fce58da70fdfded8d8f1363c0d37c"
+  "content_hash": "sha256:61a4595bafb023a0d87ee800ecfb2adc8cd55c47ed1262d818a32ac8b8571dfe"
 }

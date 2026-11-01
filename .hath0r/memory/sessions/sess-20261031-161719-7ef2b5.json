@@ -3,20 +3,20 @@
   "session_id": "sess-20261031-161719-7ef2b5",
   "prior_session_id": "sess-20261031-112758-ef9695",
   "parent_session_id": "sess-20261031-112758-ef9695",
-  "revision": 11,
-  "content_hash": "sha256:10667ddfede562319004dc1470e07731f5c1fec26ee85eb49f2cfdef1bbb8a3a",
-  "base_graph_hash": "sha256:e21b3f55f8ef627a2f3c9b9472237895e0265e7223da24dd481ad6752c00bfbb",
+  "revision": 22,
+  "content_hash": "sha256:ef66de23165e3c1ffc6d0380bb8aec1fc87db19424486b4d39c2209ddb09e5d8",
+  "base_graph_hash": "sha256:a41ce01fe99a09ec64c37a3a2e6de8bfb84ee80989ba90160e52ebcf9acc8747",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
   "started_at": "2026-10-31T16:17:19.214197+00:00",
-  "updated_at": "2026-11-01T17:27:15.203496+00:00",
+  "updated_at": "2026-11-01T18:16:59.617635+00:00",
   "ended_at": "2026-10-31T16:17:19.327009+00:00",
-  "read_count": 4,
-  "write_count": 8,
-  "last_read_at": "2026-11-01T15:43:56.626763+00:00",
-  "last_write_at": "2026-11-01T17:27:15.203496+00:00",
+  "read_count": 8,
+  "write_count": 15,
+  "last_read_at": "2026-11-01T17:53:09.088676+00:00",
+  "last_write_at": "2026-11-01T18:16:59.617635+00:00",
   "active_focus": "Repository orientation verified for HATH0R-MCP",
   "prior_summary": "ounded fact:repo-hath0r-mcp-orientat; Compounded rule:cr-task-eval-001: Automa; Compounded eval:eval-baseline-hath0r-mcp",
   "recalled_nodes": [
@@ -29,14 +29,14 @@
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-11-01T17:27:15.203496+00:00",
+      "timestamp": "2026-11-01T18:16:59.617635+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:task-HATH0R-MCP: Task Evaluation task-HATH0R-MCP (R=0.93, PASS)",
+      "summary": "Compounded eval:task-HATH0R-MCP: Task Evaluation task-HATH0R-MCP (R=0.85, FAIL)",
       "tags": [
         "eval",
         "cr-task-eval-001",
         "task-hath0r-mcp",
-        "passed",
+        "failed",
         "compounded"
       ],
       "node_id": "eval:task-HATH0R-MCP"
@@ -51,5 +51,5 @@
     "eval:eval-baseline-hath0r-mcp",
     "eval:task-HATH0R-MCP"
   ],
-  "capsule_bytes": 1964
+  "capsule_bytes": 1965
 }

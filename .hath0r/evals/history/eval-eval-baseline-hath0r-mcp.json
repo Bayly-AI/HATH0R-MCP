@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261101-154355-3b7a96",
+  "eval_id": "eval-20261101-175307-6d6353",
   "task_id": "eval-baseline-hath0r-mcp",
   "issue_number": null,
   "repo_name": "HATH0R-MCP",
   "branch": "development",
-  "evaluated_at": "2026-11-01T15:43:55.955014+00:00",
-  "duration_ms": 485.0,
-  "passed_gate": false,
-  "r_task": 0.8587,
+  "evaluated_at": "2026-11-01T17:53:07.807981+00:00",
+  "duration_ms": 1047.0,
+  "passed_gate": true,
+  "r_task": 0.9363,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,21 +18,21 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 0.7457,
-    "trajectory": 0.9305,
+    "deterministic": 0.9417,
+    "trajectory": 0.9264,
     "adversarial": 0.94,
     "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 0.7457,
-      "passed": false,
-      "passed_checks": 5,
+      "score": 0.9417,
+      "passed": true,
+      "passed_checks": 6,
       "total_checks": 6,
       "sub_scores": {
         "version_valid": 1.0,
         "agentgraph_valid": 1.0,
-        "memory_compounded": 0.0,
+        "memory_compounded": 0.98,
         "test_suite": 0.88,
         "calibration_4h": 0.82,
         "local_quality_gates": 0.965
@@ -51,13 +51,13 @@
           "claude_md_synced": true
         },
         "memory_compounded": {
-          "passed": false,
-          "compounded_nodes_count": 30,
+          "passed": true,
+          "compounded_nodes_count": 31,
           "session_read_verified": true,
           "session_write_verified": true,
-          "hashes_verified": false,
+          "hashes_verified": true,
           "graphs_not_ignored": true,
-          "error": "CR-MEMORY-COMPOUND-001: Memory file hash verification failed (mismatched=1, missing=0, stale_source_files=0). Run 'hath0r memory hash --sync' or re-compound stale knowledge nodes."
+          "error": null
         },
         "test_suite": {
           "passed": true,
@@ -67,7 +67,7 @@
         "calibration_4h": {
           "passed": true,
           "is_fresh": false,
-          "age_hours": 26.74,
+          "age_hours": 28.89,
           "max_age_hours": 4.0
         },
         "local_quality_gates": {
@@ -314,22 +314,22 @@
       }
     },
     "trajectory": {
-      "score": 0.9305,
+      "score": 0.9264,
       "passed": true,
-      "tokens_used": 647,
+      "tokens_used": 35,
       "max_tokens": 50000,
-      "estimated_usd": 0.001941,
+      "estimated_usd": 0.000105,
       "max_usd": 0.25,
       "session_id": "sess-20261031-161719-7ef2b5",
-      "session_reads": 3,
-      "session_writes": 6,
-      "session_bytes": 1942,
-      "capsule_fill_ratio": 0.9482,
+      "session_reads": 7,
+      "session_writes": 13,
+      "session_bytes": 2015,
+      "capsule_fill_ratio": 0.9839,
       "within_capsule_budget": true,
-      "latency_ms": 469.0,
-      "taguchi_quality_loss": 0.0033,
-      "taguchi_score": 0.9718,
-      "snr_db": 12.6
+      "latency_ms": 657.0,
+      "taguchi_quality_loss": 0.0065,
+      "taguchi_score": 0.9637,
+      "snr_db": 9.67
     },
     "adversarial": {
       "score": 0.94,
@@ -358,7 +358,7 @@
       "active_focus": "Provisioning CR-TASK-EVAL-001 for HATH0R-MCP",
       "goal_keywords_count": 5,
       "goal_overlap_score": 0.98,
-      "compounded_nodes_count": 30,
+      "compounded_nodes_count": 31,
       "consensus_score": 0.826
     }
   },
@@ -496,20 +496,27 @@
       "VERIFIED_EXECUTION": [
         ".hath0r/evals/latest.json"
       ],
-      "STATIC_AST_ANALYSIS": [],
+      "STATIC_AST_ANALYSIS": [
+        ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/evals/history/eval-eval-baseline-hath0r-mcp.json",
+        ".hath0r/evals/latest.json",
+        ".hath0r/memory/graph.json",
+        ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
+        ".hath0r/memory/sessions/sess-20261031-161719-7ef2b5.json"
+      ],
       "UNVERIFIED_FILE_PRESENCE": []
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 0,
+      "STATIC_AST_ANALYSIS": 8,
       "UNVERIFIED_FILE_PRESENCE": 0
     }
   },
-  "blocking_reasons": [
-    "Tier 1 deterministic gate failed: memory_compounded"
-  ],
+  "blocking_reasons": [],
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:e9a6eb81bf21b6ff4bcc956d7066354dee584007ee6a1a58c9bf47fb162e1a42"
+  "content_hash": "sha256:7d596d7029cb0e503b98fa35e705416c6766d8d0fb55837124f02831584aa120"
 }
