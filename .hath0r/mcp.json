@@ -4,7 +4,7 @@
   "default_provider": "hath0r-mcp",
   "group": "hath0r-opensource",
   "default_server": "hath0r-mcp",
-  "description": "Canonical Hath0r MCP configuration for hath0r-mcp (group: hath0r-opensource)",
+  "description": "Canonical Hath0r MCP configuration for HATH0R-MCP (group: hath0r-opensource)",
   "mcpServers": {
     "hath0r-mcp": {
       "type": "streamable-http",
@@ -25,6 +25,13 @@
       "url": "https://mcp.1-nation.com/mcp",
       "engine": "hath0r-mcp",
       "group": "1-nation",
+      "default": false
+    },
+    "author-mcp": {
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:18083/mcp",
+      "engine": "hath0r-mcp",
+      "group": "author",
       "default": false
     },
     "bai-mcp": {
@@ -89,6 +96,24 @@
       "enabled": true,
       "local_path": "/Users/raybayly/Development/1-Nation/MCP",
       "github": "Bayly-AI/1-Nation-MCP"
+    },
+    {
+      "id": "author-mcp",
+      "name": "AuthorMCP",
+      "engine": "hath0r-mcp",
+      "scope": "group",
+      "group": "author",
+      "priority": 5,
+      "product_id": "author-mcp",
+      "transport": "streamable-http",
+      "base_url": "http://127.0.0.1:18083",
+      "mcp_endpoint": "/mcp",
+      "health_endpoint": "/health",
+      "ready_endpoint": "/ready",
+      "description": "Author MCP root knowledge server, Air Traffic Control (ATC), and tools for Author project",
+      "enabled": true,
+      "local_path": "/Users/raybayly/Development/Projects/Author/mcp",
+      "github": "somesayray/author-mcp"
     },
     {
       "id": "bai-mcp",

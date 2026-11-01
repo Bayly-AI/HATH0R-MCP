@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261029-135853-85f750",
+  "eval_id": "eval-20261101-154355-3b7a96",
   "task_id": "eval-baseline-hath0r-mcp",
   "issue_number": null,
-  "repo_name": "hath0r-mcp",
+  "repo_name": "HATH0R-MCP",
   "branch": "development",
-  "evaluated_at": "2026-10-29T13:58:53.253716+00:00",
-  "duration_ms": 214.27,
-  "passed_gate": true,
-  "r_task": 1.0,
+  "evaluated_at": "2026-11-01T15:43:55.955014+00:00",
+  "duration_ms": 485.0,
+  "passed_gate": false,
+  "r_task": 0.8587,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,78 +18,476 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 1.0,
-    "trajectory": 1.0,
-    "adversarial": 1.0,
-    "goal_alignment": 1.0
+    "deterministic": 0.7457,
+    "trajectory": 0.9305,
+    "adversarial": 0.94,
+    "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 1.0,
-      "passed": true,
-      "passed_checks": 4,
-      "total_checks": 4,
+      "score": 0.7457,
+      "passed": false,
+      "passed_checks": 5,
+      "total_checks": 6,
+      "sub_scores": {
+        "version_valid": 1.0,
+        "agentgraph_valid": 1.0,
+        "memory_compounded": 0.0,
+        "test_suite": 0.88,
+        "calibration_4h": 0.82,
+        "local_quality_gates": 0.965
+      },
       "checks": {
         "version_valid": {
           "passed": true,
-          "version": "1.3.1",
+          "version": "1.5.0",
+          "changelog_aligned": true,
           "error": null
         },
         "agentgraph_valid": {
           "passed": true,
           "cycles": 0,
-          "contradictions": 0
+          "contradictions": 0,
+          "claude_md_synced": true
         },
         "memory_compounded": {
-          "passed": true,
-          "compounded_nodes_count": 21,
+          "passed": false,
+          "compounded_nodes_count": 30,
           "session_read_verified": true,
           "session_write_verified": true,
-          "hashes_verified": true,
+          "hashes_verified": false,
           "graphs_not_ignored": true,
-          "error": null
+          "error": "CR-MEMORY-COMPOUND-001: Memory file hash verification failed (mismatched=1, missing=0, stale_source_files=0). Run 'hath0r memory hash --sync' or re-compound stale knowledge nodes."
         },
         "test_suite": {
           "passed": true,
           "skipped": true,
-          "message": "Test execution skipped via flag or dry-run."
+          "message": "Test execution skipped via flag or dry-run (-0.12 confidence deduction)."
+        },
+        "calibration_4h": {
+          "passed": true,
+          "is_fresh": false,
+          "age_hours": 26.74,
+          "max_age_hours": 4.0
+        },
+        "local_quality_gates": {
+          "passed": true,
+          "technology": "python",
+          "thresholds_file": "C:\\Users\\RaymondBayly\\Documents\\HATH0R-MCP\\thresholds.json",
+          "qgate_score": 0.965,
+          "failing_gates": [],
+          "gates": {
+            "errors": {
+              "gate": "errors",
+              "passed": true,
+              "actual_errors": 0,
+              "max_errors": 0,
+              "comparator": "<=",
+              "score": 1.0,
+              "findings": []
+            },
+            "coverage": {
+              "gate": "coverage",
+              "passed": true,
+              "actual_coverage_pct": 96.45,
+              "min_coverage_pct": 80.0,
+              "comparator": ">=",
+              "source": "test_suite_symbol_verification",
+              "score": 0.9705
+            },
+            "complexity": {
+              "gate": "complexity",
+              "passed": true,
+              "max_observed_complexity": 104,
+              "avg_complexity": 4.38,
+              "max_complexity": 15,
+              "comparator": "<=",
+              "functions_scanned": 659,
+              "offending_functions": [
+                {
+                  "function": "src\\knowledgebase\\__init__.py:_fallback_version_from_root",
+                  "line": 19,
+                  "complexity": 21
+                },
+                {
+                  "function": "src\\knowledgebase\\server.py:create_app",
+                  "line": 111,
+                  "complexity": 53
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:list_documents",
+                  "line": 1275,
+                  "complexity": 18
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:_resolve_target_indices_for_search",
+                  "line": 2323,
+                  "complexity": 34
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:_search_with_routing",
+                  "line": 2406,
+                  "complexity": 21
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_search",
+                  "line": 2675,
+                  "complexity": 23
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_add_document_or_kb_add_file",
+                  "line": 2840,
+                  "complexity": 43
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_runbook_search",
+                  "line": 3466,
+                  "complexity": 19
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_index_directory",
+                  "line": 3526,
+                  "complexity": 23
+                },
+                {
+                  "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_upsert_document",
+                  "line": 3620,
+                  "complexity": 19
+                }
+              ],
+              "score": 0.8808
+            },
+            "duplication": {
+              "gate": "duplication",
+              "passed": true,
+              "duplicated_lines_pct": 0.17,
+              "max_duplicated_lines_pct": 3.0,
+              "comparator": "<=",
+              "duplicated_lines": 30,
+              "total_analyzed_lines": 17225,
+              "duplicated_blocks": [
+                {
+                  "first": "src\\knowledgebase\\api\\main.py:1690",
+                  "duplicate": "src\\knowledgebase\\api\\main.py:1713"
+                },
+                {
+                  "first": "src\\knowledgebase\\api\\main.py:1143",
+                  "duplicate": "src\\knowledgebase\\sync\\service.py:45"
+                },
+                {
+                  "first": "src\\knowledgebase\\api\\main.py:1153",
+                  "duplicate": "src\\knowledgebase\\sync\\service.py:55"
+                }
+              ],
+              "score": 0.9883
+            }
+          },
+          "report": {
+            "success": true,
+            "passed": true,
+            "rule_id": "CR-LOCAL-QGATES-001",
+            "repo_name": "HATH0R-MCP",
+            "technology": "python",
+            "thresholds_file": "C:\\Users\\RaymondBayly\\Documents\\HATH0R-MCP\\thresholds.json",
+            "thresholds_file_exists": true,
+            "thresholds": {
+              "max_errors": 0,
+              "min_coverage_pct": 80.0,
+              "max_complexity": 15,
+              "max_duplicated_lines_pct": 3.0,
+              "new_reliability_rating": 1,
+              "new_security_rating": 1,
+              "new_maintainability_rating": 1,
+              "min_security_hotspots_reviewed_pct": 100.0
+            },
+            "files_analyzed": 63,
+            "qgate_score": 0.965,
+            "failing_gates": [],
+            "gates": {
+              "errors": {
+                "gate": "errors",
+                "passed": true,
+                "actual_errors": 0,
+                "max_errors": 0,
+                "comparator": "<=",
+                "score": 1.0,
+                "findings": []
+              },
+              "coverage": {
+                "gate": "coverage",
+                "passed": true,
+                "actual_coverage_pct": 96.45,
+                "min_coverage_pct": 80.0,
+                "comparator": ">=",
+                "source": "test_suite_symbol_verification",
+                "score": 0.9705
+              },
+              "complexity": {
+                "gate": "complexity",
+                "passed": true,
+                "max_observed_complexity": 104,
+                "avg_complexity": 4.38,
+                "max_complexity": 15,
+                "comparator": "<=",
+                "functions_scanned": 659,
+                "offending_functions": [
+                  {
+                    "function": "src\\knowledgebase\\__init__.py:_fallback_version_from_root",
+                    "line": 19,
+                    "complexity": 21
+                  },
+                  {
+                    "function": "src\\knowledgebase\\server.py:create_app",
+                    "line": 111,
+                    "complexity": 53
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:list_documents",
+                    "line": 1275,
+                    "complexity": 18
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:_resolve_target_indices_for_search",
+                    "line": 2323,
+                    "complexity": 34
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:_search_with_routing",
+                    "line": 2406,
+                    "complexity": 21
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_search",
+                    "line": 2675,
+                    "complexity": 23
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_add_document_or_kb_add_file",
+                    "line": 2840,
+                    "complexity": 43
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_runbook_search",
+                    "line": 3466,
+                    "complexity": 19
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_index_directory",
+                    "line": 3526,
+                    "complexity": 23
+                  },
+                  {
+                    "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_upsert_document",
+                    "line": 3620,
+                    "complexity": 19
+                  }
+                ],
+                "score": 0.8808
+              },
+              "duplication": {
+                "gate": "duplication",
+                "passed": true,
+                "duplicated_lines_pct": 0.17,
+                "max_duplicated_lines_pct": 3.0,
+                "comparator": "<=",
+                "duplicated_lines": 30,
+                "total_analyzed_lines": 17225,
+                "duplicated_blocks": [
+                  {
+                    "first": "src\\knowledgebase\\api\\main.py:1690",
+                    "duplicate": "src\\knowledgebase\\api\\main.py:1713"
+                  },
+                  {
+                    "first": "src\\knowledgebase\\api\\main.py:1143",
+                    "duplicate": "src\\knowledgebase\\sync\\service.py:45"
+                  },
+                  {
+                    "first": "src\\knowledgebase\\api\\main.py:1153",
+                    "duplicate": "src\\knowledgebase\\sync\\service.py:55"
+                  }
+                ],
+                "score": 0.9883
+              }
+            }
+          }
         }
       }
     },
     "trajectory": {
-      "score": 1.0,
+      "score": 0.9305,
       "passed": true,
-      "tokens_used": 0,
+      "tokens_used": 647,
       "max_tokens": 50000,
-      "estimated_usd": 0.0,
+      "estimated_usd": 0.001941,
       "max_usd": 0.25,
-      "session_id": "sess-20261029-132722-954337",
+      "session_id": "sess-20261031-161719-7ef2b5",
       "session_reads": 3,
-      "session_writes": 5,
-      "session_bytes": 1897,
+      "session_writes": 6,
+      "session_bytes": 1942,
+      "capsule_fill_ratio": 0.9482,
       "within_capsule_budget": true,
-      "latency_ms": 79.8,
-      "taguchi_quality_loss": 0.0001,
-      "snr_db": 27.98
+      "latency_ms": 469.0,
+      "taguchi_quality_loss": 0.0033,
+      "taguchi_score": 0.9718,
+      "snr_db": 12.6
     },
     "adversarial": {
-      "score": 1.0,
+      "score": 0.94,
       "passed": true,
       "adversarial_flaws_count": 0,
       "adversarial_flaws": [],
       "tech_debts_count": 0,
       "auto_created_issues": [],
-      "change_categories": {},
+      "minor_findings": [
+        "Cognitive complexity hotspot observed (avg 4.38, max 104, -0.0400)"
+      ],
+      "added_lines_count": 0,
+      "change_categories": {
+        "ui": [],
+        "script": [],
+        "text": [],
+        "other": []
+      },
       "changed_files_count": 0
     },
     "goal_alignment": {
-      "score": 1.0,
+      "score": 0.9287,
       "passed": true,
       "task_id": "eval-baseline-hath0r-mcp",
       "issue_number": null,
-      "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-mcp",
-      "compounded_nodes_count": 21,
-      "consensus_score": 1.0
+      "active_focus": "Provisioning CR-TASK-EVAL-001 for HATH0R-MCP",
+      "goal_keywords_count": 5,
+      "goal_overlap_score": 0.98,
+      "compounded_nodes_count": 30,
+      "consensus_score": 0.826
+    }
+  },
+  "local_quality_gates": {
+    "success": true,
+    "passed": true,
+    "rule_id": "CR-LOCAL-QGATES-001",
+    "repo_name": "HATH0R-MCP",
+    "technology": "python",
+    "thresholds_file": "C:\\Users\\RaymondBayly\\Documents\\HATH0R-MCP\\thresholds.json",
+    "thresholds_file_exists": true,
+    "thresholds": {
+      "max_errors": 0,
+      "min_coverage_pct": 80.0,
+      "max_complexity": 15,
+      "max_duplicated_lines_pct": 3.0,
+      "new_reliability_rating": 1,
+      "new_security_rating": 1,
+      "new_maintainability_rating": 1,
+      "min_security_hotspots_reviewed_pct": 100.0
+    },
+    "files_analyzed": 63,
+    "qgate_score": 0.965,
+    "failing_gates": [],
+    "gates": {
+      "errors": {
+        "gate": "errors",
+        "passed": true,
+        "actual_errors": 0,
+        "max_errors": 0,
+        "comparator": "<=",
+        "score": 1.0,
+        "findings": []
+      },
+      "coverage": {
+        "gate": "coverage",
+        "passed": true,
+        "actual_coverage_pct": 96.45,
+        "min_coverage_pct": 80.0,
+        "comparator": ">=",
+        "source": "test_suite_symbol_verification",
+        "score": 0.9705
+      },
+      "complexity": {
+        "gate": "complexity",
+        "passed": true,
+        "max_observed_complexity": 104,
+        "avg_complexity": 4.38,
+        "max_complexity": 15,
+        "comparator": "<=",
+        "functions_scanned": 659,
+        "offending_functions": [
+          {
+            "function": "src\\knowledgebase\\__init__.py:_fallback_version_from_root",
+            "line": 19,
+            "complexity": 21
+          },
+          {
+            "function": "src\\knowledgebase\\server.py:create_app",
+            "line": 111,
+            "complexity": 53
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:list_documents",
+            "line": 1275,
+            "complexity": 18
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:_resolve_target_indices_for_search",
+            "line": 2323,
+            "complexity": 34
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:_search_with_routing",
+            "line": 2406,
+            "complexity": 21
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_search",
+            "line": 2675,
+            "complexity": 23
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_add_document_or_kb_add_file",
+            "line": 2840,
+            "complexity": 43
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_runbook_search",
+            "line": 3466,
+            "complexity": 19
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_index_directory",
+            "line": 3526,
+            "complexity": 23
+          },
+          {
+            "function": "src\\knowledgebase\\api\\main.py:_mcp_tool_kb_upsert_document",
+            "line": 3620,
+            "complexity": 19
+          }
+        ],
+        "score": 0.8808
+      },
+      "duplication": {
+        "gate": "duplication",
+        "passed": true,
+        "duplicated_lines_pct": 0.17,
+        "max_duplicated_lines_pct": 3.0,
+        "comparator": "<=",
+        "duplicated_lines": 30,
+        "total_analyzed_lines": 17225,
+        "duplicated_blocks": [
+          {
+            "first": "src\\knowledgebase\\api\\main.py:1690",
+            "duplicate": "src\\knowledgebase\\api\\main.py:1713"
+          },
+          {
+            "first": "src\\knowledgebase\\api\\main.py:1143",
+            "duplicate": "src\\knowledgebase\\sync\\service.py:45"
+          },
+          {
+            "first": "src\\knowledgebase\\api\\main.py:1153",
+            "duplicate": "src\\knowledgebase\\sync\\service.py:55"
+          }
+        ],
+        "score": 0.9883
+      }
     }
   },
   "evidence_trust_report": {
@@ -98,29 +496,20 @@
       "VERIFIED_EXECUTION": [
         ".hath0r/evals/latest.json"
       ],
-      "STATIC_AST_ANALYSIS": [
-        ".hath0r/evals/post-task-hook.sh",
-        ".hath0r/agentgraph/snapshot.json",
-        ".hath0r/evals/history/eval-eval-baseline-hath0r-mcp.json",
-        ".hath0r/evals/latest.json",
-        ".hath0r/memory/graph.json",
-        ".hath0r/memory/hashes.json",
-        ".hath0r/memory/sessions/current.json",
-        ".hath0r/memory/sessions/latest.json",
-        ".hath0r/memory/sessions/sess-20261029-132722-954337.json",
-        "cfg/evals/task-eval.json"
-      ],
+      "STATIC_AST_ANALYSIS": [],
       "UNVERIFIED_FILE_PRESENCE": []
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 10,
+      "STATIC_AST_ANALYSIS": 0,
       "UNVERIFIED_FILE_PRESENCE": 0
     }
   },
-  "blocking_reasons": [],
+  "blocking_reasons": [
+    "Tier 1 deterministic gate failed: memory_compounded"
+  ],
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:d5053d55ade3704e9fab01891de6ecbbd18c9443bc1a1a0a7ea797e74fcba896"
+  "content_hash": "sha256:e9a6eb81bf21b6ff4bcc956d7066354dee584007ee6a1a58c9bf47fb162e1a42"
 }

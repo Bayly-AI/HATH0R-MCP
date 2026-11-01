@@ -3,58 +3,52 @@
   "session_id": "sess-20261031-161719-7ef2b5",
   "prior_session_id": "sess-20261031-112758-ef9695",
   "parent_session_id": "sess-20261031-112758-ef9695",
-  "revision": 5,
-  "content_hash": "sha256:9903593f313b11a7a717f226463506c4df01f06bcfc1f740febd8fddda98dac1",
-  "base_graph_hash": "sha256:0370af397664ee2321f15d20b0ab33270da35830cae057c25ed37c87c38b1719",
+  "revision": 10,
+  "content_hash": "sha256:9cb0833bc9c6a4cfaf6b9924ca1a800cbc50e92fbe1ee84fae9cd87701efa672",
+  "base_graph_hash": "sha256:e21b3f55f8ef627a2f3c9b9472237895e0265e7223da24dd481ad6752c00bfbb",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-mcp",
   "status": "completed",
   "started_at": "2026-10-31T16:17:19.214197+00:00",
-  "updated_at": "2026-10-31T16:17:21.785232+00:00",
+  "updated_at": "2026-11-01T15:43:56.626763+00:00",
   "ended_at": "2026-10-31T16:17:19.327009+00:00",
-  "read_count": 2,
-  "write_count": 4,
-  "last_read_at": "2026-10-31T16:17:19.243351+00:00",
-  "last_write_at": "2026-10-31T16:17:21.785232+00:00",
-  "active_focus": "clean-repo-hath0r-mcp",
-  "prior_summary": " Quality Gates (CR-LOCAL-QGATES-001); Started session focus: clean-repo-hath0r; Compounded episode:clean-repo-hath0r-mcp",
+  "read_count": 4,
+  "write_count": 7,
+  "last_read_at": "2026-11-01T15:43:56.626763+00:00",
+  "last_write_at": "2026-11-01T15:43:56.521443+00:00",
+  "active_focus": "Repository orientation verified for HATH0R-MCP",
+  "prior_summary": "ounded eval:clean-repo-hath0r-mcp: T; Compounded fact:repo-hath0r-mcp-orientat; Compounded rule:cr-task-eval-001: Automa",
   "recalled_nodes": [
     {
-      "id": "insight:hath0r-mcp",
-      "type": "insight",
-      "label": "Synthesized Insight on hath0r-mcp",
-      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-mcp'. Recurring themes: https, badge, lice"
+      "id": "fact:repo-hath0r-mcp-orientation",
+      "type": "fact",
+      "label": "HATH0R-MCP Repository Memory Orientation",
+      "snippet": "HATH0R-MCP: [![CI](https://github.com/Bayly-AI/HATH0R-MCP/actions/workflows/ci.yml/badge.s"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-31T16:17:19.327009+00:00",
-      "kind": "milestone",
-      "summary": "Clean Repo Lifecycle completed for hath0r-mcp.",
-      "tags": [
-        "session-end"
-      ],
-      "node_id": null
-    },
-    {
-      "timestamp": "2026-10-31T16:17:21.785232+00:00",
+      "timestamp": "2026-11-01T15:43:56.521443+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:clean-repo-hath0r-mcp: Task Evaluation clean-repo-hath0r-mcp (R=0.94, PASS)",
+      "summary": "Compounded eval:eval-baseline-hath0r-mcp: Task Evaluation eval-baseline-hath0r-mcp (R=0.86, FAIL)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "clean-repo-hath0r-mcp",
-        "passed",
+        "eval-baseline-hath0r-mcp",
+        "failed",
         "compounded"
       ],
-      "node_id": "eval:clean-repo-hath0r-mcp"
+      "node_id": "eval:eval-baseline-hath0r-mcp"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
     "episode:clean-repo-hath0r-mcp",
-    "eval:clean-repo-hath0r-mcp"
+    "eval:clean-repo-hath0r-mcp",
+    "fact:repo-hath0r-mcp-orientation",
+    "rule:cr-task-eval-001",
+    "eval:eval-baseline-hath0r-mcp"
   ],
-  "capsule_bytes": 2041
+  "capsule_bytes": 1972
 }
