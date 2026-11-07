@@ -3,6 +3,17 @@
 > HATHOR OpenSource member · Hath0r OpenSource Suite MCP service
 > Updated: 2026-10-31 · fileset pin `1.5.0` · engine version `1.11.1`
 
+## CR-CONTEXT-SQUEEZE-001: Compress Context with SuperSqueeze (CRITICAL — Org-Wide · CANONICAL)
+
+1. **Squeeze before you load**: Bulky context (whole files, logs, CI/tool output, KB/RAG hits, transcripts, anything over ~2,000 tokens) MUST go through SuperSqueeze before it enters an agent's context or a prompt: `hath0r squeeze -q "<active query>" -f <file>` (or `-c "<text>"`), or `SuperSqueezeBot` in code. No hand-rolled truncation.
+2. **Anchor on the active query** and re-squeeze when the query changes.
+3. **Quality floor**: if `verifier.quality_score` < 0.90, lower `--threshold` or switch to targeted reads (line ranges, `grep`, `hath0r code`); never dump the whole source.
+4. **Local-first**: use `--local` for sensitive content; never squeeze secrets.
+5. **Exact-text exceptions**: code being edited, diffs under review, quoted legal text and fixtures are read verbatim with targeted reads.
+6. **Pipelines route through SuperSqueeze** (`CAGEngine.pack_context()`, `HybridCAGRAGRouter`, HAHP envelopes, MCP responses); audited by `SubstrateUtilizationBot` and the Tier 2 eval.
+
+Canonical: [HATH0R-CLI `docs/governance/rules/cr-context-squeeze-001.md`](https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/rules/cr-context-squeeze-001.md).
+
 ## CR-CLI-ENTRY-001 & CR-FEATURE-WORKFLOW-STANDARD-001: Start with the CLI & Workflow-First Standard (CRITICAL — Org-Wide · CANONICAL)
 
 1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts. Check `hath0r --help` and the matching `hath0r <group> --help` first.
