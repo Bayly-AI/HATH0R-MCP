@@ -20,12 +20,18 @@ MAX_STATE_BYTES = 2 * 1024 * 1024
 MAX_ANDON_EVENTS = 5000
 _PROCESS_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,63}$")
 _DEFAULT_ROOT = Path(__file__).resolve().parents[3]
+_STATE_DIR = ".hath0r"
+_PRIORITY_ORDER = {"H": 0, "M": 1, "L": 2}
 
 
 def qa_root() -> Path:
     """Return the workspace whose ``.hath0r/`` state is reported."""
     env = os.environ.get("HATH0R_MCP_QA_ROOT", "").strip()
     return Path(env).resolve() if env else _DEFAULT_ROOT
+
+
+def _state(root: Path | None) -> Path:
+    return (root or qa_root()) / _STATE_DIR
 
 
 def _read_text(path: Path) -> str | None:
@@ -44,7 +50,7 @@ def _missing(what: str, command: str) -> dict[str, Any]:
 
 def msa_report(root: Path | None = None) -> dict[str, Any]:
     """Latest gauge (Gage R&R) study of the eval pipeline, without raw measurements."""
-    text = _read_text((root or qa_root()) / ".hath0r" / "evals" / "msa" / "latest.json")
+    text = _read_text(_state(root) / "evals" / "msa" / "latest.json")
     if text is None:
         return _missing("MSA study", "hath0r evals msa run")
     study = json.loads(text)
@@ -54,7 +60,7 @@ def msa_report(root: Path | None = None) -> dict[str, Any]:
 
 def spc_status(root: Path | None = None, metric: str | None = None) -> dict[str, Any]:
     """Latest SPC status (charts and capability) written by ``hath0r spc status`` or the gate."""
-    text = _read_text((root or qa_root()) / ".hath0r" / "spc" / "latest.json")
+    text = _read_text(_state(root) / "spc" / "latest.json")
     if text is None:
         return _missing("SPC status", "hath0r spc status")
     status = json.loads(text)
@@ -64,6 +70,24 @@ def spc_status(root: Path | None = None, metric: str | None = None) -> dict[str,
             raise ValueError(f"unknown metric '{metric}'. Known: {', '.join(sorted(metrics))}")
         status["metrics"] = {metric: metrics[metric]}
     return {"success": True, "exists": True, "source": "hath0r spc status", **status}
+
+
+def _fmea_files(base: Path, process: str | None) -> list[Path]:
+    if process:
+        return [base / f"{process}.yaml"]
+    if not base.is_dir():
+        return []
+    return sorted(base.glob("*.yaml"))
+
+
+def _rpn(row: dict[str, Any]) -> int:
+    return int(row.get("rpn") or 0)
+
+
+def _row_matches(row: dict[str, Any], priority: str | None, min_rpn: int | None) -> bool:
+    if priority and row.get("action_priority") != priority:
+        return False
+    return min_rpn is None or _rpn(row) >= min_rpn
 
 
 def fmea_query(
@@ -76,28 +100,22 @@ def fmea_query(
     """Rows of the process FMEAs, highest action priority and RPN first."""
     if process is not None and not _PROCESS_RE.match(process):
         raise ValueError("process must be a lowercase FMEA name such as 'end-of-task'")
-    if priority is not None and priority not in ("H", "M", "L"):
+    if priority is not None and priority not in _PRIORITY_ORDER:
         raise ValueError("priority must be H, M or L")
-    base = (root or qa_root()) / ".hath0r" / "fmea"
-    files = [base / f"{process}.yaml"] if process else (sorted(base.glob("*.yaml")) if base.is_dir() else [])
-    order = {"H": 0, "M": 1, "L": 2}
     rows: list[dict[str, Any]] = []
     processes: list[str] = []
-    for path in files:
+    for path in _fmea_files(_state(root) / "fmea", process):
         text = _read_text(path)
         if text is None:
             continue
         data = yaml.safe_load(text) or {}
-        processes.append(str(data.get("process") or path.stem))
-        for row in data.get("rows") or []:
-            if priority and row.get("action_priority") != priority:
-                continue
-            if min_rpn is not None and int(row.get("rpn") or 0) < min_rpn:
-                continue
-            rows.append({"process": data.get("process") or path.stem, **row})
+        name = str(data.get("process") or path.stem)
+        processes.append(name)
+        rows.extend({"process": name, **row} for row in data.get("rows") or [] if _row_matches(row, priority, min_rpn))
     if not processes:
-        return _missing("FMEA" if not process else f"FMEA for '{process}'", "hath0r fmea init <process>")
-    rows.sort(key=lambda r: (order.get(str(r.get("action_priority")), 3), -int(r.get("rpn") or 0)))
+        what = f"FMEA for '{process}'" if process else "FMEA"
+        return _missing(what, "hath0r fmea init <process>")
+    rows.sort(key=lambda r: (_PRIORITY_ORDER.get(str(r.get("action_priority")), 3), -_rpn(r)))
     limit = max(1, min(int(limit), 500))
     return {
         "success": True,
@@ -112,7 +130,7 @@ def fmea_query(
 
 def andon_status(root: Path | None = None) -> dict[str, Any]:
     """Active Andon events (open or acknowledged) folded from the hash-chained ledger."""
-    text = _read_text((root or qa_root()) / ".hath0r" / "state" / "andon" / "events.jsonl")
+    text = _read_text(_state(root) / "state" / "andon" / "events.jsonl")
     if text is None:
         return {"success": True, "exists": False, "stopped": False, "active": [], "source": "hath0r andon status"}
     state: dict[str, dict[str, Any]] = {}

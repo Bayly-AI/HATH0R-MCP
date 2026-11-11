@@ -74,7 +74,8 @@ def test_tools_are_registered_with_owning_bots() -> None:
 
 def test_msa_report_drops_raw_measurements(workspace: Path) -> None:
     res = qa_state.msa_report()
-    assert res["exists"] and res["gage_rr"]["pct_grr"] == 0.076
+    assert res["exists"]
+    assert res["gage_rr"]["pct_grr"] == 0.076
     assert "measurements" not in res
 
 
@@ -103,7 +104,8 @@ def test_andon_status_folds_the_ledger(workspace: Path) -> None:
     res = qa_state.andon_status()
     assert res["stopped"] is True
     assert {e["event_id"]: e["state"] for e in res["active"]} == {"a1": "acknowledged", "a2": "open"}
-    assert res["stops"] == 1 and res["warnings"] == 1
+    assert res["stops"] == 1
+    assert res["warnings"] == 1
 
 
 def test_missing_state_is_reported_not_invented(tmp_path: Path, monkeypatch) -> None:
@@ -112,7 +114,8 @@ def test_missing_state_is_reported_not_invented(tmp_path: Path, monkeypatch) -> 
     assert qa_state.spc_status()["exists"] is False
     assert qa_state.fmea_query()["exists"] is False
     andon = qa_state.andon_status()
-    assert andon["exists"] is False and andon["stopped"] is False
+    assert andon["exists"] is False
+    assert andon["stopped"] is False
 
 
 def test_oversized_state_is_refused(tmp_path: Path, monkeypatch) -> None:
@@ -127,7 +130,8 @@ def test_oversized_state_is_refused(tmp_path: Path, monkeypatch) -> None:
 async def test_backend_dispatch(workspace: Path) -> None:
     res = await _execute_mcp_tool("fmea_query", {"priority": "H"})
     body = json.loads(res["content"][0]["text"])
-    assert body["total"] == 2 and body["owning_bots"] == ["fmea-bot"]
+    assert body["total"] == 2
+    assert body["owning_bots"] == ["fmea-bot"]
     res = await _execute_mcp_tool("quality_spc_status", {"metric": "nope"})
     assert res.get("isError")
     for name in ("evals_msa_report", "andon_status"):
