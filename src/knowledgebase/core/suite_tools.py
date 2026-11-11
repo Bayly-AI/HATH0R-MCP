@@ -96,6 +96,30 @@ SERVICE_BOT_WORKFLOW_REGISTRY: dict[str, dict[str, Any]] = {
         "workflow_id": "cfg/factories/taguchi-optimization-workflow.yaml",
         "agentgraph_level": "L1_MCP",
     },
+    "evals_msa_report": {
+        "service": "Eval Measurement System Analysis Service",
+        "owning_bots": ["measurement-system-bot"],
+        "workflow_id": "cfg/factories/msa-study-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "quality_spc_status": {
+        "service": "Statistical Process Control Service",
+        "owning_bots": ["spc-monitor-bot"],
+        "workflow_id": "cfg/factories/spc-monitor-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "fmea_query": {
+        "service": "Agent FMEA Service",
+        "owning_bots": ["fmea-bot"],
+        "workflow_id": "cfg/factories/fmea-review-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
+    "andon_status": {
+        "service": "Andon Stop-the-Line Service",
+        "owning_bots": ["andon-bot"],
+        "workflow_id": "cfg/factories/andon-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
     "hath0r_cicccdct_": {
         "service": "CICCCDCT 4-Hour Calibration & Continuous Training Service",
         "owning_bots": ["CICCCDManagingBot", "CalibrationBot"],
@@ -386,6 +410,26 @@ def execute_suite_tool(tool_name: str, args: dict[str, Any]) -> dict[str, Any]:
             status = execute_agentgraph_status()
             status["synced"] = True
             return status
+
+        if tool_name in ("evals_msa_report", "quality_spc_status", "fmea_query", "andon_status"):
+            from knowledgebase.core import qa_state
+
+            if tool_name == "evals_msa_report":
+                return {**qa_state.msa_report(), **meta}
+            if tool_name == "quality_spc_status":
+                return {**qa_state.spc_status(metric=args.get("metric") or None), **meta}
+            if tool_name == "fmea_query":
+                min_rpn = args.get("min_rpn")
+                return {
+                    **qa_state.fmea_query(
+                        process=args.get("process") or None,
+                        priority=args.get("priority") or None,
+                        min_rpn=int(min_rpn) if min_rpn is not None else None,
+                        limit=int(args.get("limit") or 50),
+                    ),
+                    **meta,
+                }
+            return {**qa_state.andon_status(), **meta}
 
         if tool_name == "hath0r_optimize_taguchi":
             array = str(args.get("array", "L9"))

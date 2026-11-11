@@ -30,6 +30,7 @@ Runnable, read-only Model Context Protocol (MCP) server and knowledge engine for
 1. **`suite_info()`**: Returns Hath0r OpenSource Suite identity, ATC control tower reference, and the available reference document catalog.
 2. **`kb_search(query, limit=5)`**: Case-insensitive word search across reference markdown documents, returning scores, excerpts, and document IDs.
 3. **`kb_get_document(document_id)`**: Safe retrieval by exact document ID (never executes client-supplied filesystem paths).
+4. **Industrial QA (read-only)**: `evals_msa_report()`, `quality_spc_status(metric=None)`, `fmea_query(process=None, priority=None, min_rpn=None)` and `andon_status()` report what the HATH0R-CLI tools (`hath0r evals msa`, `hath0r spc`, `hath0r fmea`, `hath0r andon`) wrote under `.hath0r/`. Set `HATH0R_MCP_QA_ROOT` to the CLI workspace when it is mounted elsewhere.
 
 Additionally, the preserved BAI knowledge engine remains available under `src/knowledgebase/` for hybrid dense-vector and BM25 search and legacy REST/SSE API endpoints (`/mcp/sse`).
 
