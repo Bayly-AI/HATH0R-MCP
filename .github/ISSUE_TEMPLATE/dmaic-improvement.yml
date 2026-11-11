@@ -1,0 +1,54 @@
+name: DMAIC improvement project
+description: Run a quality fix as a Define-Measure-Analyze-Improve-Control project (hath0r dmaic).
+title: "DMAIC: "
+labels: ["dmaic", "quality"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start the project with `hath0r dmaic start <this issue number> --ctq <metric>`.
+        It closes only through `hath0r dmaic close`, which needs 20 in-control CTQ points after the change.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Define - problem statement
+      description: What is wrong, where, and how much it costs. One or two sentences.
+    validations:
+      required: true
+  - type: dropdown
+    id: ctq
+    attributes:
+      label: CTQ metric
+      description: The one metric this project moves (any `hath0r spc` metric).
+      options: [r_task, deterministic, trajectory, adversarial, goal_alignment, eval_duration_ms, total_tokens, cost_usd, latency_ms]
+    validations:
+      required: true
+  - type: input
+    id: baseline
+    attributes:
+      label: Measure - baseline
+      description: From `hath0r dmaic start` or `hath0r spc chart -m <metric>` (center, sigma, Cpk).
+  - type: input
+    id: target
+    attributes:
+      label: Target
+      description: The CTQ value that counts as fixed.
+    validations:
+      required: true
+  - type: textarea
+    id: root_cause
+    attributes:
+      label: Analyze - root cause
+      description: The 5 Whys chain from `hath0r rca why <issue>` and its cause category.
+  - type: textarea
+    id: change
+    attributes:
+      label: Improve - change
+      description: The PR, config or rule that addresses the root cause (`hath0r dmaic improve`).
+  - type: textarea
+    id: control_plan
+    attributes:
+      label: Control plan
+      description: How the gain is held (SPC chart, guard, FMEA row update, rule).
+    validations:
+      required: true
