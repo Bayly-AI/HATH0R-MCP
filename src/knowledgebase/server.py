@@ -749,6 +749,35 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
         )
 
     @mcp.tool(annotations=read_annotations)
+    async def evals_msa_report() -> Any:
+        """Read-only: latest Gage R&R study of the eval pipeline, as written by 'hath0r evals msa run'."""
+        return await _call_backend_tool("evals_msa_report", {})
+
+    @mcp.tool(annotations=read_annotations)
+    async def quality_spc_status(
+        metric: Annotated[str | None, Field(max_length=64, description="Optional metric, e.g. r_task")] = None,
+    ) -> Any:
+        """Read-only: SPC chart status and R_task Cpk, as written by 'hath0r spc status'."""
+        return await _call_backend_tool("quality_spc_status", {"metric": metric})
+
+    @mcp.tool(annotations=read_annotations)
+    async def fmea_query(
+        process: Annotated[str | None, Field(max_length=64, description="FMEA name, e.g. end-of-task")] = None,
+        priority: Annotated[Literal["H", "M", "L"] | None, Field(description="Action priority")] = None,
+        min_rpn: Annotated[int | None, Field(ge=1, le=1000, description="Minimum RPN")] = None,
+        limit: Annotated[int, Field(ge=1, le=500)] = 50,
+    ) -> Any:
+        """Read-only: agent FMEA rows ranked by action priority then RPN ('hath0r fmea report')."""
+        return await _call_backend_tool(
+            "fmea_query", {"process": process, "priority": priority, "min_rpn": min_rpn, "limit": limit}
+        )
+
+    @mcp.tool(annotations=read_annotations)
+    async def andon_status() -> Any:
+        """Read-only: active Andon stops and warnings ('hath0r andon status'); ack and clear stay in the CLI."""
+        return await _call_backend_tool("andon_status", {})
+
+    @mcp.tool(annotations=read_annotations)
     async def hath0r_optimize_taguchi(
         array: Annotated[str, Field(description="Orthogonal array (L4, L8, L9, L12, L18)")] = "L9",
         factors: Annotated[list[str] | None, Field(description="Factor names")] = None,

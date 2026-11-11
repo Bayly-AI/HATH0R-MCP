@@ -745,6 +745,33 @@ DEFAULT_MCP_TOOL_SPECS: tuple[MCPToolSpec, ...] = (
         input_schema=_schema(),
     ),
     MCPToolSpec(
+        name="evals_msa_report",
+        description="Read-only: latest Gage R&R study of the eval pipeline (%GRR, ndc, attribute agreement)",
+        input_schema=_schema(),
+    ),
+    MCPToolSpec(
+        name="quality_spc_status",
+        description="Read-only: SPC control-chart status and R_task Cpk written by hath0r spc",
+        input_schema=_schema({"metric": {"type": "string", "description": "Optional metric, e.g. r_task"}}),
+    ),
+    MCPToolSpec(
+        name="fmea_query",
+        description="Read-only: agent FMEA rows ranked by action priority and RPN",
+        input_schema=_schema(
+            {
+                "process": {"type": "string", "description": "FMEA name, e.g. end-of-task"},
+                "priority": {"type": "string", "enum": ["H", "M", "L"], "description": "Action priority filter"},
+                "min_rpn": {"type": "integer", "description": "Minimum RPN"},
+                "limit": {"type": "integer", "description": "Max rows (default 50)"},
+            }
+        ),
+    ),
+    MCPToolSpec(
+        name="andon_status",
+        description="Read-only: active Andon stops and warnings from the hash-chained ledger",
+        input_schema=_schema(),
+    ),
+    MCPToolSpec(
         name="hath0r_optimize_taguchi",
         description="Generate Taguchi orthogonal design array, SNR, and Quadratic Quality Loss L(y)",
         input_schema=_schema(

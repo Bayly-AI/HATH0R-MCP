@@ -568,7 +568,7 @@ wheels = [
 
 [[package]]
 name = "hath0r-mcp"
-version = "1.2.2"
+version = "1.6.0"
 source = { editable = "." }
 dependencies = [
     { name = "boto3" },
@@ -589,6 +589,7 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "python-multipart" },
     { name = "pytz" },
+    { name = "pyyaml" },
     { name = "rank-bm25" },
     { name = "requests" },
     { name = "requests-aws4auth" },
@@ -618,6 +619,7 @@ requires-dist = [
     { name = "python-dotenv", specifier = "==1.2.2" },
     { name = "python-multipart", specifier = "==0.0.31" },
     { name = "pytz", specifier = "==2026.1.post1" },
+    { name = "pyyaml", specifier = ">=6.0" },
     { name = "rank-bm25", specifier = ">=0.2.2" },
     { name = "requests", specifier = ">=2.32.2,<3" },
     { name = "requests-aws4auth", specifier = ">=1.2.3" },

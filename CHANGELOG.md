@@ -5,6 +5,12 @@ All notable changes to **HATH0R-MCP** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-11-11
+
+### Added
+- **Read-only industrial QA tools** (Bayly-AI/HATH0R-CLI#594, epic #580): `evals_msa_report` (latest Gage R&R study of the eval pipeline), `quality_spc_status` (control-chart status and R_task Cpk), `fmea_query` (agent FMEA rows ranked by action priority and RPN) and `andon_status` (active Andon stops and warnings). They read the state the Hath0r tools in HATH0R-CLI write under `.hath0r/` (`hath0r evals msa`, `hath0r spc`, `hath0r fmea`, `hath0r andon`) and never recompute an eval. Owning bots `measurement-system-bot`, `spc-monitor-bot`, `fmea-bot`, `andon-bot`. Set `HATH0R_MCP_QA_ROOT` when the CLI workspace is mounted elsewhere. Client input never names a path; state files are capped at 2 MiB.
+- `pyyaml>=6.0` is now a direct runtime dependency (it was already installed through `uvicorn[standard]`).
+
 ## [1.5.1] - 2026-11-07
 
 ### Added

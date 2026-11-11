@@ -15,6 +15,7 @@ Key capabilities:
   - `suite_info`: Returns canonical Hath0r OpenSource Suite identity and loaded document catalog.
   - `kb_search(query, limit=5)`: Deterministic lexical word match search against canonical reference documents.
   - `kb_get_document(document_id)`: Exact document retrieval by identifier.
+  - `evals_msa_report`, `quality_spc_status`, `fmea_query`, `andon_status`: read-only industrial QA views of the HATH0R-CLI `.hath0r/` state (`HATH0R_MCP_QA_ROOT` points at the workspace).
   - `voice_speak(text, voice=None)`: Synthesize and speak feedback text to the user via host audio.
   - `voice_listen(prompt=None, timeout_seconds=10.0, simulated_input=None)`: Request spoken input from user with timeout/cancellation.
   - `voice_dispatch_action(transcript, intent, routing_tier, ...)`: Dispatch standardized `hath0r.voice.action/1` intent guarded by JEV tool-guard policy.
