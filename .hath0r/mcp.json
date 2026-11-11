@@ -4,7 +4,7 @@
   "default_provider": "hath0r-mcp",
   "group": "hath0r-opensource",
   "default_server": "hath0r-mcp",
-  "description": "Canonical Hath0r MCP configuration for HATH0R-MCP (group: hath0r-opensource)",
+  "description": "Canonical Hath0r MCP configuration for hath0r-mcp (group: hath0r-opensource)",
   "mcpServers": {
     "hath0r-mcp": {
       "type": "streamable-http",
