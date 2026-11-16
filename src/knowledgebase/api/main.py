@@ -4284,6 +4284,7 @@ for _suite_tool_name in (
     "hath0r_doctor",
     "hath0r_optimize_taguchi",
     "evals_msa_report",
+    "evals_judge_calibration_report",
     "quality_spc_status",
     "fmea_query",
     "andon_status",

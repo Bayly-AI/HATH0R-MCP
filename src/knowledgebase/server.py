@@ -754,6 +754,14 @@ def create_app(config: ServiceSettings | None = None) -> FastAPI:
         return await _call_backend_tool("evals_msa_report", {})
 
     @mcp.tool(annotations=read_annotations)
+    async def evals_judge_calibration_report(
+        judge: Annotated[str | None, Field(max_length=64, description="Optional judge id, e.g. claude-opus")] = None,
+        level: Annotated[str | None, Field(max_length=4, description="Optional level: L1-L5, R1-R5 or 6-12")] = None,
+    ) -> Any:
+        """Read-only: latest judge calibration, as written by 'hath0r evals judges calibrate'."""
+        return await _call_backend_tool("evals_judge_calibration_report", {"judge": judge, "level": level})
+
+    @mcp.tool(annotations=read_annotations)
     async def quality_spc_status(
         metric: Annotated[str | None, Field(max_length=64, description="Optional metric, e.g. r_task")] = None,
     ) -> Any:
