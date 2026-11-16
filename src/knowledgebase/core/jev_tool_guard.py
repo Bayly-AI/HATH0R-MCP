@@ -7,7 +7,10 @@ a block/allow decision for the agent tool execution path.
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
+import os
+from dataclasses import dataclass, replace
+from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Mapping, Optional, Sequence
 
 import structlog
@@ -31,6 +34,7 @@ class ToolRiskProfile:
     safeguards: tuple[str, ...]
     policy: tuple[str, ...]
     reversibility: str  # reversible | partially_reversible | irreversible
+    risk_level: str = ""  # R1-R5 (HATH0R-CLI #615); empty derives it from reversibility
 
 
 # Tools that mutate knowledge state or external systems. Read-only tools are
@@ -49,6 +53,7 @@ GUARDED_TOOL_PROFILES: dict[str, ToolRiskProfile] = {
         safeguards=("force flag required for populated indices when configured",),
         policy=("Index delete requires human approval in production", "Prefer backup before delete"),
         reversibility="irreversible",
+        risk_level="R5",
     ),
     "kb_add_document": ToolRiskProfile(
         action_template="Add document {id} to index",
@@ -158,6 +163,69 @@ GUARDED_TOOL_PROFILES: dict[str, ToolRiskProfile] = {
 }
 
 
+# Risk levels for JEV calibration (HATH0R-CLI Study B, #615): R1 read, R2 reversible write,
+# R3 partially reversible, R4 irreversible, R5 irreversible with production data loss.
+_REVERSIBILITY_LEVEL = {"reversible": "R2", "partially_reversible": "R3", "irreversible": "R4"}
+_LEVEL_ORDER = ("R1", "R2", "R3", "R4", "R5")
+
+
+def risk_level(tool_name: str) -> Optional[str]:
+    """Risk level (R1-R5) of a guarded tool, or None for unguarded tools."""
+    profile = GUARDED_TOOL_PROFILES.get(tool_name)
+    if profile is None:
+        return None
+    return profile.risk_level or _REVERSIBILITY_LEVEL.get(profile.reversibility, "R3")
+
+
+def _calibration_mode() -> str:
+    """``off`` | ``warn`` (default) | ``enforce`` for the level-aware trust fallback."""
+    mode = (os.environ.get("JEV_CALIBRATION_FALLBACK") or "warn").strip().lower()
+    return mode if mode in {"off", "warn", "enforce"} else "warn"
+
+
+def apply_trust_fallback(result: ToolGuardResult, level: Optional[str], *, certified: Optional[bool], mode: Optional[str] = None) -> ToolGuardResult:
+    """Do not trust an uncalibrated JEV ``allow`` at R3 and above (#98).
+
+    Study B certifies JEV per risk level. When JEV is not certified at the tool's level, an ``allow``
+    from the live service is downgraded to "needs human confirmation" in ``enforce`` mode, and
+    annotated in ``warn`` mode. Stub, disabled and error results are left to the existing policy.
+    """
+    mode = mode or _calibration_mode()
+    if mode == "off" or level is None or result.source != "jev_live" or result.decision != "allow" or certified:
+        return result
+    if _LEVEL_ORDER.index(level) < _LEVEL_ORDER.index(os.environ.get("JEV_CALIBRATION_MIN_LEVEL", "R3")):
+        return result
+    why = "never calibrated" if certified is None else "not certified"
+    note = f"JEV is {why} at {level} (hath0r evals judges)."
+    if mode == "enforce":
+        return replace(result, blocked=True, guidance=f"{result.guidance} {note} Human confirmation required.".strip())
+    return replace(result, guidance=f"{result.guidance} {note} Allowed in warn mode.".strip())
+
+
+def log_decision(tool_name: str, level: Optional[str], request: ToolGuardRequest, result: ToolGuardResult) -> None:
+    """Append a live decision to ``JEV_DECISION_LOG`` (JSONL) so it can be rated in later studies."""
+    target = os.environ.get("JEV_DECISION_LOG", "").strip()
+    if not target:
+        return
+    rec = {
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "tool": tool_name,
+        "level": level,
+        "request": {"tool": request.tool, "action": request.action, "reversibility": request.reversibility},
+        "decision": result.decision,
+        "confidence": round(result.confidence, 4),
+        "blocked": result.blocked,
+        "source": result.source,
+    }
+    try:
+        path = Path(target)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(rec, sort_keys=True) + "\n")
+    except OSError as exc:  # read-only rootfs in the container: log and carry on
+        logger.warning("jev_decision_log_failed", error=str(exc))
+
+
 def is_guarded_tool(tool_name: str) -> bool:
     """Return True when the tool is in the mutating/consequential set."""
     return tool_name in GUARDED_TOOL_PROFILES
@@ -235,9 +303,16 @@ async def evaluate_tool_guard(
         return None
 
     result = await jev.guard_tool_call(request)
+    level = risk_level(tool_name)
+    if result.source == "jev_live" and _calibration_mode() != "off":
+        from knowledgebase.core import qa_state
+
+        result = apply_trust_fallback(result, level, certified=qa_state.judge_certified("jev", level or "R3"))
+    log_decision(tool_name, level, request, result)
     logger.info(
         "jev_tool_guard_evaluated",
         tool=tool_name,
+        risk_level=level,
         decision=result.decision,
         confidence=result.confidence,
         blocked=result.blocked,

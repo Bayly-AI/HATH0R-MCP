@@ -58,6 +58,73 @@ def msa_report(root: Path | None = None) -> dict[str, Any]:
     return {"success": True, "exists": True, "source": "hath0r evals msa report", **study}
 
 
+_JUDGE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,63}$")
+_LEVEL_RE = re.compile(r"^(L[1-5]|R[1-5]|[6-9]|1[0-2])$")
+
+
+def judge_calibration_report(root: Path | None = None, judge: str | None = None, level: str | None = None) -> dict[str, Any]:
+    """Latest judge calibration (Study B, HATH0R-CLI #615) and the judge registry, read-only.
+
+    With ``judge`` the report is narrowed to that judge; with ``judge`` and ``level`` it also says
+    whether the judge is certified there. Raw ratings and fit tables per part are left out.
+    """
+    if judge is not None and not _JUDGE_RE.match(judge):
+        raise ValueError("judge must be a judge id such as 'claude-opus'")
+    if level is not None and not _LEVEL_RE.match(level):
+        raise ValueError("level must be L1-L5, R1-R5 or an MHC order 6-12")
+    base = _state(root) / "evals" / "judges"
+    text = _read_text(base / "latest.json")
+    if text is None:
+        return _missing("judge calibration", "hath0r evals judges calibrate")
+    study = json.loads(text)
+    reg_text = _read_text(base / "registry.json")
+    registry = json.loads(reg_text) if reg_text else {"judges": {}}
+    banks: dict[str, Any] = {}
+    for name, bank in (study.get("banks") or {}).items():
+        decisions = bank.get("decisions") or {}
+        if judge:
+            decisions = {judge: decisions[judge]} if judge in decisions else {}
+        banks[name] = {
+            "summary": bank.get("summary"),
+            "anchors": bank.get("anchors"),
+            "reference": (bank.get("bias") or {}).get("reference"),
+            "decisions": decisions,
+            "swings": {k: v for k, v in ((bank.get("bias") or {}).get("swings") or {}).items() if not judge or k == judge},
+            "agreement_with_truth": {k: v for k, v in (bank.get("agreement_with_truth") or {}).items() if not judge or k == judge},
+            "gates": bank.get("gates"),
+            "error": bank.get("error"),
+        }
+    out: dict[str, Any] = {
+        "success": True,
+        "exists": True,
+        "source": "hath0r evals judges report",
+        "study_id": study.get("study_id"),
+        "created_at": study.get("created_at"),
+        "complete": study.get("complete"),
+        "spend_usd": study.get("spend_usd"),
+        "judges": study.get("judges"),
+        "banks": banks,
+        "registry": registry.get("judges") if not judge else {judge: (registry.get("judges") or {}).get(judge)},
+    }
+    if judge and level:
+        entry = ((registry.get("judges") or {}).get(judge) or {}).get("banks") or {}
+        certified = any(level in (b.get("certified_levels") or []) for b in entry.values())
+        out["certified"] = certified
+        out["level"] = level
+    return out
+
+
+def judge_certified(judge: str, level: str, root: Path | None = None) -> bool | None:
+    """True or False from the registry, or None when there is no calibration for the judge."""
+    try:
+        rep = judge_calibration_report(root, judge=judge, level=level)
+    except ValueError:
+        return None
+    if not rep.get("exists") or not (rep.get("registry") or {}).get(judge):
+        return None
+    return bool(rep.get("certified"))
+
+
 def spc_status(root: Path | None = None, metric: str | None = None) -> dict[str, Any]:
     """Latest SPC status (charts and capability) written by ``hath0r spc status`` or the gate."""
     text = _read_text(_state(root) / "spc" / "latest.json")

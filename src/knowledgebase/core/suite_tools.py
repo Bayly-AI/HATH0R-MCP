@@ -102,6 +102,12 @@ SERVICE_BOT_WORKFLOW_REGISTRY: dict[str, dict[str, Any]] = {
         "workflow_id": "cfg/factories/msa-study-factory.yaml",
         "agentgraph_level": "L1_MCP",
     },
+    "evals_judge_calibration_report": {
+        "service": "Judge Calibration (Many-Facet Rasch) Service",
+        "owning_bots": ["judge-calibration-bot"],
+        "workflow_id": "cfg/factories/judge-calibration-factory.yaml",
+        "agentgraph_level": "L1_MCP",
+    },
     "quality_spc_status": {
         "service": "Statistical Process Control Service",
         "owning_bots": ["spc-monitor-bot"],
@@ -411,11 +417,13 @@ def execute_suite_tool(tool_name: str, args: dict[str, Any]) -> dict[str, Any]:
             status["synced"] = True
             return status
 
-        if tool_name in ("evals_msa_report", "quality_spc_status", "fmea_query", "andon_status"):
+        if tool_name in ("evals_msa_report", "evals_judge_calibration_report", "quality_spc_status", "fmea_query", "andon_status"):
             from knowledgebase.core import qa_state
 
             if tool_name == "evals_msa_report":
                 return {**qa_state.msa_report(), **meta}
+            if tool_name == "evals_judge_calibration_report":
+                return {**qa_state.judge_calibration_report(judge=args.get("judge") or None, level=args.get("level") or None), **meta}
             if tool_name == "quality_spc_status":
                 return {**qa_state.spc_status(metric=args.get("metric") or None), **meta}
             if tool_name == "fmea_query":

@@ -750,6 +750,16 @@ DEFAULT_MCP_TOOL_SPECS: tuple[MCPToolSpec, ...] = (
         input_schema=_schema(),
     ),
     MCPToolSpec(
+        name="evals_judge_calibration_report",
+        description="Read-only: latest judge calibration (MFRM): each judge's status at each complexity level",
+        input_schema=_schema(
+            {
+                "judge": {"type": "string", "description": "Optional judge id, e.g. claude-opus"},
+                "level": {"type": "string", "description": "Optional level (L1-L5, R1-R5, 6-12); with judge, says if certified"},
+            }
+        ),
+    ),
+    MCPToolSpec(
         name="quality_spc_status",
         description="Read-only: SPC control-chart status and R_task Cpk written by hath0r spc",
         input_schema=_schema({"metric": {"type": "string", "description": "Optional metric, e.g. r_task"}}),

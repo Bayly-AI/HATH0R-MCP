@@ -6,7 +6,11 @@
     "stub": "Offline deterministic heuristics (no API key); good for local demos/tests",
     "live": "Call JEV HTTP API with JEV_API_KEY / TYPESAFE_API_KEY"
   },
-  "block_decisions": ["deny", "confirm", "review"],
+  "block_decisions": [
+    "deny",
+    "confirm",
+    "review"
+  ],
   "guarded_tools": [
     "kb_index_create",
     "kb_index_delete",
@@ -33,11 +37,34 @@
     "JEV_PROTOCOL": "preset|systemone",
     "JEV_TIMEOUT_SECONDS": "2.5",
     "JEV_ON_ERROR": "allow|deny",
-    "JEV_MIN_CONFIDENCE": "0.0"
+    "JEV_MIN_CONFIDENCE": "0.0",
+    "JEV_CALIBRATION_FALLBACK": "off|warn|enforce (default warn)",
+    "JEV_CALIBRATION_MIN_LEVEL": "R3",
+    "JEV_DECISION_LOG": "optional JSONL path for live decisions (rated in later calibration studies)"
   },
   "notes": [
     "JEV returns signals; application policy still owns allow/deny enforcement.",
     "Read-only tools (kb_search, kb_get_document, health/stats) are not guarded.",
     "POC treats confirm and review as blocks so agents cannot self-approve."
-  ]
+  ],
+  "calibration": {
+    "issue": "Bayly-AI/HATH0R-MCP#98 (epic Bayly-AI/HATH0R-CLI#610)",
+    "judge_id": "jev",
+    "model": "jev-latest",
+    "risk_levels": {
+      "R1": "read-only",
+      "R2": "reversible write",
+      "R3": "partially reversible",
+      "R4": "irreversible",
+      "R5": "irreversible with production data loss"
+    },
+    "derived_from_reversibility": {
+      "reversible": "R2",
+      "partially_reversible": "R3",
+      "irreversible": "R4"
+    },
+    "trust_fallback": "An allow from live JEV at R3+ where JEV is not certified by the latest HATH0R-CLI judge calibration is annotated (warn) or blocked for human confirmation (enforce).",
+    "registry": ".hath0r/evals/judges/registry.json under HATH0R_MCP_QA_ROOT",
+    "report_tool": "evals_judge_calibration_report"
+  }
 }
