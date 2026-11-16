@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`evals_judge_calibration_report`** (#98, epic Bayly-AI/HATH0R-CLI#610): read-only view of the latest HATH0R-CLI judge calibration (many-facet Rasch, Study B) and the judge registry: each judge's status (certified, not certified, removed for bias or noise) at each complexity level, optionally for one judge and level. Owning bot `judge-calibration-bot`. Per-part fit tables are left out; inputs are validated.
 - **Level-aware JEV trust fallback**: guarded tools carry a risk level (R1-R5, from reversibility; `kb_index_delete` is R5). A live JEV `allow` at R3 or above where JEV is not certified by the latest calibration is annotated (`JEV_CALIBRATION_FALLBACK=warn`, default) or blocked for human confirmation (`enforce`). `JEV_DECISION_LOG` optionally records live decisions as JSONL for later studies. Documented in `cfg/jev.json`.
 
+### Fixed
+- JEV live calls now send a `User-Agent` header (`hath0r-mcp/jev-client`). jevai.org's Cloudflare edge rejects default client User-Agents with error 1010 (HTTP 403).
+
 ## [1.6.0] - 2026-11-11
 
 ### Added

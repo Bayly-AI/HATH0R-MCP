@@ -20,6 +20,7 @@ GuardDecision = Literal["allow", "confirm", "review", "deny"]
 VALID_DECISIONS: frozenset[str] = frozenset({"allow", "confirm", "review", "deny"})
 
 DEFAULT_TOOL_GUARD_URL = "https://www.jevai.org/api/v1/decisions/tool-guard"
+JEV_USER_AGENT = "hath0r-mcp/jev-client"
 DEFAULT_SYSTEMONE_URL = "https://api.typesafe.ai/v1/systemone"
 DEFAULT_TIMEOUT_SECONDS = 2.5
 
@@ -435,6 +436,8 @@ class JevClient:
             "Authorization": f"Bearer {self.settings.api_key}",
             "Content-Type": "application/json",
             "Accept": "application/json",
+            # jevai.org sits behind Cloudflare, which rejects default client User-Agents (error 1010).
+            "User-Agent": JEV_USER_AGENT,
         }
         timeout = httpx.Timeout(self.settings.timeout_seconds)
         async with httpx.AsyncClient(transport=self._transport, timeout=timeout) as client:

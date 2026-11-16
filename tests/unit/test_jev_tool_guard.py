@@ -142,6 +142,7 @@ async def test_client_disabled_allows() -> None:
 @pytest.mark.asyncio
 async def test_client_live_http_mock_allow() -> None:
     def handler(request: httpx.Request) -> httpx.Response:
+        assert request.headers["user-agent"].startswith("hath0r-mcp/")
         assert request.method == "POST"
         assert "tool-guard" in str(request.url) or request.url.path.endswith("/tool-guard")
         payload = {
